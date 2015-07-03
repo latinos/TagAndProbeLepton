@@ -1,5 +1,7 @@
 # TagAndProbe for Muons
 
+*****************************
+
 To install tag and probe follow instructions:
 
 https://twiki.cern.ch/twiki/bin/viewauth/CMS/MuonTagAndProbeTreesRun2
@@ -14,6 +16,7 @@ Tag and Probe tree will be located at:
 
 /eos/cms/store/group/phys_higgs/cmshww
 
+*****************************
 
 MC DY Samples:
 
@@ -37,13 +40,13 @@ MINAOD MC:
 
 CMSSW_7_4_1_patch1
 
+*****************************
 
-MC ggH->WW->2l2nu Smaples:
+MC ggH->WW->2l2nu Smaples (it is not used for TnP):
 
 /GluGluHToWWTo2L2Nu_M120_13TeV_powheg_JHUgen_pythia8/RunIISpring15DR74-Asympt25ns_MCRUN2_74_V9-v1/AODSIM
 
 CMSSW_7_4_1_patch3
 
-it is not used for TnP. 
-
+*****************************
  
