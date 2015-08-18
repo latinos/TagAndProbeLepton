@@ -28,4 +28,4 @@ MultiCRAB
 
     python multicrab_Run2015B.py samples/samples_Run2015B.py 
 
-    crab status folder_name
+    crab status -d folder_name
