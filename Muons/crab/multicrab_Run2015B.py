@@ -19,12 +19,12 @@ config.JobType.allowUndistributedCMSSW = True
 config.section_('Data')    
 config.Data.inputDBS      = 'global'
 config.Data.splitting     = 'FileBased'
-#config.Data.unitsPerJob   = 5 # number of files, lumi sec. or events depending of "splitting"
+config.Data.unitsPerJob   = 100 # number of files, lumi sec. or events depending of "splitting"
 config.Data.splitting     = 'LumiBased'
-config.Data.totalUnits    = 100 # total number of files, lumi sec. or events depending of "splitting"
+#config.Data.totalUnits    = 100 # total number of files, lumi sec. or events depending of "splitting"
 #config.Data.outLFNDirBase = '/store/group/phys_higgs/cmshww/amassiro/RunII/test/'
 config.Data.outLFNDirBase = '/store/group/phys_higgs/cmshww/kropiv/TnP_Muons/'
-config.Data.lumiMask = 
+config.Data.lumiMask = 'https://cms-service-dqm.web.cern.ch/cms-service-dqm/CAF/certification/Collisions15/13TeV/Cert_246908-251883_13TeV_PromptReco_Collisions15_JSON_MuonPhys_v4.txt' 
 
 config.section_('Site')
 config.Site.storageSite = 'T2_CH_CERN'

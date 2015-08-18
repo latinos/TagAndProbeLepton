@@ -26,4 +26,6 @@ MultiCRAB
 
     python multicrab.py samples/samples_spring15.py
 
+    python multicrab_Run2015B.py samples/samples_Run2015B.py 
+
     crab status folder_name

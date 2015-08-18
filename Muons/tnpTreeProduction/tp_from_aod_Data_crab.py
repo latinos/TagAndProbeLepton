@@ -1,5 +1,32 @@
 import FWCore.ParameterSet.Config as cms
 
+# The line below always has to be included to make VarParsing work 
+from FWCore.ParameterSet.VarParsing import VarParsing
+# In teh line below 'analysis' is an instance of VarParsing object 
+options = VarParsing ('analysis')
+options.register ('globalTag',
+                  'MCRUN2_74_V9A',
+                   VarParsing.multiplicity.singleton,
+                   VarParsing.varType.string,
+                  'GlobalTag')
+
+#-------------------------------------------------------------------------------
+# defaults
+options.maxEvents = -1 #all events ---> already the default
+#options.maxEvents = 500 #all events ---> already the default
+options.outputFile = 'tnpZ_MC.root'
+print " options.maxEvents = ",options.maxEvents
+print " options.outputFile = ",options.outputFile
+#-------------------------------------------------------------------------------
+
+options.parseArguments()
+
+# load configurations
+#label = options.label
+#globalTag = options.globalTag + "::All"
+globalTag = options.globalTag
+print " globalTag = ",globalTag
+
 process = cms.Process("TagProbe")
 
 process.load('Configuration.StandardSequences.Services_cff')
