@@ -19,7 +19,8 @@
 # 50 ns DATA:
 ########
  
-samples['SingleMu_Run2015B_05Aug2015']         = ['/SingleMuon/Run2015B-05Aug2015-v1/AOD',  ['globalTag=75X_dataRun2_Prompt_v0']]
+samples['SingleMu_Run2015B_05Aug2015']         = ['/SingleMuon/Run2015B-05Aug2015-v1/AOD',  ['globalTag=75X_dataRun2_Prompt_v0']]  #CMSSW_7_5_1
+samples['SingleMu_Run2015B_PromptReco']        = ['/SingleMuon/Run2015B-PromptReco-v1/AOD',  ['globalTag=74X_dataRun2_Prompt_v0']] #CMSSW_7_4_7_patch2
 #samples['ZeroBias_Run2015B']         = ['/ZeroBias/Run2015B-PromptReco-v1/RECO',  ['globalTag=74X_dataRun2_Prompt_v1']]
 #samples['ZeroBias1_Run2015B']        = ['/ZeroBias1/Run2015B-PromptReco-v1/RECO',  ['globalTag=74X_dataRun2_Prompt_v1']]
 #samples['ZeroBias2_Run2015B']        = ['/ZeroBias2/Run2015B-PromptReco-v1/RECO',  ['globalTag=74X_dataRun2_Prompt_v1']]
