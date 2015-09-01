@@ -5,8 +5,8 @@ FitFunction = "vpvPlusExpo"
 
 #filename = 'Data'
 filename = 'MC'
-isMuonSel = 'Tight2012'
-#isMuonSel = 'Medium'
+#isMuonSel = 'Tight2012'
+isMuonSel = 'Medium'
 
 process = cms.Process("TagProbe")
 
@@ -89,7 +89,7 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
                 #tag_Tight2012 = cms.vstring("pass"),
                 abseta = cms.vdouble(0, 2.4),
                 dB = cms.vdouble(0., 0.01),
-                dzPV = cms.vdouble(0., 0.1),
+                dzPV = cms.vdouble(-0.1, 0.1),
                 pt = cms.vdouble(10, 15, 20),
             ),
             BinToPDFmap = cms.vstring(FitFunction)
@@ -104,7 +104,7 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
                 #tag_Tight2012 = cms.vstring("pass"),
                 abseta = cms.vdouble(0, 2.4),
                 dB = cms.vdouble(0., 0.02),
-                dzPV = cms.vdouble(0., 0.1),
+                dzPV = cms.vdouble(-0.1, 0.1),
                 pt = cms.vdouble(20, 30, 40, 60, 100),
             ),
             BinToPDFmap = cms.vstring(FitFunction)
@@ -130,7 +130,7 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
                 tag_IsoMu24_eta2p1 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
                 abseta = cms.vdouble(0., 0.8, 1.2, 2.1, 2.4),
                 dB = cms.vdouble(0., 0.01),
-                dzPV = cms.vdouble(0., 0.1),
+                dzPV = cms.vdouble(-0.1, 0.1),
                 pt = cms.vdouble(10, 20),
             ),
             BinToPDFmap = cms.vstring(FitFunction)
@@ -143,7 +143,7 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
                 tag_IsoMu24_eta2p1 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
                 abseta = cms.vdouble(0., 0.8, 1.2, 2.1, 2.4),
                 dB = cms.vdouble(0., 0.02),
-                dzPV = cms.vdouble(0., 0.1),
+                dzPV = cms.vdouble(-0.1, 0.1),
                 pt = cms.vdouble(20, 1000),
             ),
             BinToPDFmap = cms.vstring(FitFunction)
@@ -171,7 +171,7 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
                 abseta = cms.vdouble(0., 2.4),
                 pt = cms.vdouble(10, 20),
                 dB = cms.vdouble(0., 0.01),
-                dzPV = cms.vdouble(0., 0.1),
+                dzPV = cms.vdouble(-0.1, 0.1),
                 phi = cms.vdouble(-3.142, -1.5, 0., 1.5, 3.142), # for GI or CI MC only
             ),
             BinToPDFmap = cms.vstring(FitFunction)
@@ -185,7 +185,7 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
                 abseta = cms.vdouble(0., 2.4),
                 pt = cms.vdouble(20, 1000),
                 dB = cms.vdouble(0., 0.02),
-                dzPV = cms.vdouble(0., 0.1),
+                dzPV = cms.vdouble(-0.1, 0.1),
                 phi = cms.vdouble(-3.142, -1.5, 0., 1.5, 3.142), # for GI or CI MC only
             ),
             BinToPDFmap = cms.vstring(FitFunction)
