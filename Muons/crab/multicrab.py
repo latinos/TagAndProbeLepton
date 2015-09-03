@@ -6,7 +6,7 @@ pyCfgParams = ['outputFile=tnp_MC.root']
 
 config.section_('General')
 config.General.transferLogs = True
-config.General.workArea     = 'crab_projects_tnp'  # Make sure you set this parameter
+config.General.workArea     = 'crab_projects_tnp_v2'  # Make sure you set this parameter
 
 config.section_('JobType')
 config.JobType.pluginName       = 'Analysis'
