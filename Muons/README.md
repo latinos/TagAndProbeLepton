@@ -2,19 +2,38 @@
 
 *****************************
 
-To install tag and probe follow instructions:
+To install tag and probe follow instructions (current V2):
 
 https://twiki.cern.ch/twiki/bin/viewauth/CMS/MuonTagAndProbeTreesRun2
 
-Do not forget to set correct architecture before cmsenv:
+Do not forget to set correct architecture before cmsenv, if not compiled well:
 
 export SCRAM_ARCH=slc6_amd64_gcc491
 
-We are going to use CMSSW_7_4_6_patch3.
+We are going to use CMSSW_7_4_7.
+
+git clone https://github.com/latinos/TagAndProbeLepton.git
+
 
 Tag and Probe tree will be located at:
 
 /eos/cms/store/group/phys_higgs/cmshww
+
+*****************************
+
+Triggers and Selections are listed here:
+https://github.com/latinos/LatinoTrees/blob/master/AnalysisStep/python/skimEventProducer_cfi.py
+
+*****************************
+
+Check HLT menue:
+
+https://cmsweb-testbed.cern.ch/confdb/
+
+or if it is down:
+
+http://testserver1.cern.ch/
+
 
 *****************************
 
