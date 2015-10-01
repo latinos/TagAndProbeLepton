@@ -24,7 +24,10 @@ MultiCRAB
 
     cmsenv
 
-    python multicrab.py samples/samples_spring15.py
+
+    python multicrab.py samples/samples_spring15.py - it is not working version
+
+    working versions:
 
     python multicrab_Run2015B.py samples/samples_Run2015B.py 
 
