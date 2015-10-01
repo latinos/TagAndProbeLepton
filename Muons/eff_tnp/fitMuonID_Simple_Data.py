@@ -22,7 +22,8 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
                                  #"root://eoscms//eos/cms/store/group/phys_higgs/cmshww/kropiv/TnP_Muons/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/crab_50ns_DY_Spring15/150707_143432/0000/tnp_MC_99.root",
                                  #"file:../crab/crab_projects_tnp/crab_50ns_DY_Spring15/results/tnp_MC.root",  
                                  #DY 25 ns
-                                 "file:../crab/tnp_Run2015B_PromptReco.root",  
+                                 #"file:tnp_Run2015B_PromptReco_v2.root",  
+                                 "file:tnp_50nsDY_v2_part.root",  
                                  #"root://eoscms//eos/cms/store/group/phys_higgs/cmshww/kropiv/TnP_Muons/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/crab_25ns_DY_Spring15/150707_143420/0000/tnp_MC_100.root",
                                  ), ## can put more than one
     ## copy locally to be faster: xrdcp root://eoscms//eos/cms/store/cmst3/user/botta/TnPtrees/tnpZ_Data.190456-193557.root $PWD/tnpZ_Data.190456-193557.root
@@ -40,6 +41,9 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
         tag_nVertices = cms.vstring("Tag nVertices", "0.", "100.", ""),
         dB     = cms.vstring("dxy muon", "0", "2", "cm"),
         dzPV     = cms.vstring("dz PV muon", "-5", "5", "cm"),
+        tag_pt     = cms.vstring("tag muon p_{T}", "0", "1000", "GeV/c"),
+        combRelIsoPF04dBeta = cms.vstring("PF Combined Relative Iso", "-100", "99999", ""),
+        tag_combRelIsoPF04dBeta = cms.vstring("PF Combined Relative Iso for tag muon", "-100", "99999", ""),
     ),
     ## Flags you want to use to define numerator and possibly denominator
     Categories = cms.PSet(
@@ -49,6 +53,10 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
         Tight2012 = cms.vstring("Tight2012 Muon", "dummy[pass=1,fail=0]"),
         #tag_Tight2012 = cms.vstring("Tight 2012 tag Muon", "dummy[pass=1,fail=0]"), #this variable is not included in tag muon
         Medium = cms.vstring("Medium Muon", "dummy[pass=1,fail=0]"),
+        tag_IsoMu20 = cms.vstring("tag_IsoMu20 tag Muon", "dummy[pass=1,fail=0]"),
+        IsoMu20 = cms.vstring("IsoMu20  probe Muon", "dummy[pass=1,fail=0]"),
+        IsoTkMu20 = cms.vstring("IsoTkMu20 probe Muon", "dummy[pass=1,fail=0]"),
+        tag_IsoTkMu20 = cms.vstring("tag_IsoTkMu20 tag Muon", "dummy[pass=1,fail=0]"),
     ),
     ## What to fit
     Efficiencies = cms.PSet(
@@ -60,18 +68,142 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
     #            pt     = cms.vdouble( 10, 20, 30, 40, 60, 100 ),
     #            abseta = cms.vdouble( 0.0, 1.2, 2.4),
     #            ## flags and conditions required at the denominator, 
-    #            tag_IsoMu24_eta2p1 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+    #            tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
     #            pair_dz = cms.vdouble(-1.,1.)             ## and for which -1.0 < dz < 1.0
     #        ),
     #        BinToPDFmap = cms.vstring("vpvPlusExpo"), ## PDF to use, as defined below
     #    ),
 ########
+        IsoMu20_pt_Tight2012 = cms.PSet(
+            UnbinnedVariables = cms.vstring("mass"),
+            EfficiencyCategoryAndState = cms.vstring("IsoMu20", "pass"), ## Numerator definition
+            #EfficiencyCategoryAndState = cms.vstring("PF", "pass"), ## Numerator definition
+            BinnedVariables = cms.PSet(
+                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_pt = cms.vdouble(22, 5000.),
+                Tight2012 = cms.vstring("pass"), ## probe muon is tight
+                combRelIsoPF04dBeta = cms.vdouble(0., 0.12),
+                #tag_Tight2012 = cms.vstring("pass"),
+                abseta = cms.vdouble(0, 2.4),
+                pt = cms.vdouble(10, 20, 22, 30, 40, 60, 100),
+            ),
+            BinToPDFmap = cms.vstring(FitFunction)
+        ),
+########
+        IsoMu20_abseta_Tight2012 = cms.PSet(
+            UnbinnedVariables = cms.vstring("mass"),
+            EfficiencyCategoryAndState = cms.vstring("IsoMu20", "pass"), ## Numerator definition
+            BinnedVariables = cms.PSet(
+                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_pt = cms.vdouble(22, 5000.),
+                Tight2012 = cms.vstring("pass"), ## probe muon is tight
+                combRelIsoPF04dBeta = cms.vdouble(0., 0.12),
+                abseta = cms.vdouble(0., 0.8, 1.2, 2.1, 2.4),
+                pt = cms.vdouble(22, 1000),
+            ),
+            BinToPDFmap = cms.vstring(FitFunction)
+        ),
+########
+        IsoMu20_phi_Tight2012 = cms.PSet(
+           EfficiencyCategoryAndState = cms.vstring("IsoMu20", "pass"),
+            UnbinnedVariables = cms.vstring("mass"),
+            BinnedVariables = cms.PSet(
+                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_pt = cms.vdouble(22, 5000.),
+                Tight2012 = cms.vstring("pass"), ## probe muon is tight
+                combRelIsoPF04dBeta = cms.vdouble(0., 0.12),
+                abseta = cms.vdouble(0., 2.4),
+                pt = cms.vdouble(22, 1000),
+                phi = cms.vdouble(-3.142, -1.5, 0., 1.5, 3.142), # for GI or CI MC only
+            ),
+            BinToPDFmap = cms.vstring(FitFunction)
+        ),
+########
+        IsoMu20_tag_nVertices_Tight2012 = cms.PSet(
+           EfficiencyCategoryAndState = cms.vstring("IsoMu20", "pass"),
+            UnbinnedVariables = cms.vstring("mass"),
+            BinnedVariables = cms.PSet(
+                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_pt = cms.vdouble(22, 5000.),
+                Tight2012 = cms.vstring("pass"), ## probe muon is tight
+                combRelIsoPF04dBeta = cms.vdouble(0., 0.12),
+                abseta = cms.vdouble(0., 2.4),
+                pt = cms.vdouble(22, 1000),
+                tag_nVertices = cms.vdouble(0., 7., 10., 13., 20.), # for GI or CI MC only
+            ),
+            BinToPDFmap = cms.vstring(FitFunction)
+        ),
+########
+########################
+########
+        IsoTkMu20_pt_Medium = cms.PSet(
+            UnbinnedVariables = cms.vstring("mass"),
+            EfficiencyCategoryAndState = cms.vstring("IsoTkMu20", "pass"), ## Numerator definition
+            #EfficiencyCategoryAndState = cms.vstring("PF", "pass"), ## Numerator definition
+            BinnedVariables = cms.PSet(
+                tag_IsoTkMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_pt = cms.vdouble(22, 5000.),
+                Medium = cms.vstring("pass"), ## probe muon is tight
+                combRelIsoPF04dBeta = cms.vdouble(0., 0.12),
+                #tag_Medium = cms.vstring("pass"),
+                abseta = cms.vdouble(0, 2.4),
+                pt = cms.vdouble(10, 20, 22, 30, 40, 60, 100),
+            ),
+            BinToPDFmap = cms.vstring(FitFunction)
+        ),
+########
+        IsoTkMu20_abseta_Medium = cms.PSet(
+            UnbinnedVariables = cms.vstring("mass"),
+            EfficiencyCategoryAndState = cms.vstring("IsoTkMu20", "pass"), ## Numerator definition
+            BinnedVariables = cms.PSet(
+               tag_IsoTkMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_pt = cms.vdouble(22, 5000.),
+                Medium = cms.vstring("pass"), ## probe muon is tight
+                combRelIsoPF04dBeta = cms.vdouble(0., 0.12),
+                abseta = cms.vdouble(0., 0.8, 1.2, 2.1, 2.4),
+                pt = cms.vdouble(22, 1000),
+           ),
+            BinToPDFmap = cms.vstring(FitFunction)
+        ),
+########
+        IsoTkMu20_phi_Medium = cms.PSet(
+           EfficiencyCategoryAndState = cms.vstring("IsoTkMu20", "pass"),
+            UnbinnedVariables = cms.vstring("mass"),
+            BinnedVariables = cms.PSet(
+                tag_IsoTkMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_pt = cms.vdouble(22, 5000.),
+                Medium = cms.vstring("pass"), ## probe muon is tight
+                combRelIsoPF04dBeta = cms.vdouble(0., 0.12),
+                abseta = cms.vdouble(0., 2.4),
+                pt = cms.vdouble(22, 1000),
+                phi = cms.vdouble(-3.142, -1.5, 0., 1.5, 3.142), # for GI or CI MC only
+            ),
+            BinToPDFmap = cms.vstring(FitFunction)
+        ),
+########
+        IsoTkMu20_tag_nVertices_Tight2012 = cms.PSet(
+           EfficiencyCategoryAndState = cms.vstring("IsoTkMu20", "pass"),
+            UnbinnedVariables = cms.vstring("mass"),
+            BinnedVariables = cms.PSet(
+                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_pt = cms.vdouble(22, 5000.),
+                Medium = cms.vstring("pass"), ## probe muon is tight
+                combRelIsoPF04dBeta = cms.vdouble(0., 0.12),
+                abseta = cms.vdouble(0., 2.4),
+                pt = cms.vdouble(22, 1000),
+                tag_nVertices = cms.vdouble(0., 7., 10., 13., 20.), # for GI or CI MC only
+            ),
+            BinToPDFmap = cms.vstring(FitFunction)
+        ),
+########
+################################
         pt_Tight2012 = cms.PSet(
             UnbinnedVariables = cms.vstring("mass"),
             EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"), ## Numerator definition
             #EfficiencyCategoryAndState = cms.vstring("PF", "pass"), ## Numerator definition
             BinnedVariables = cms.PSet(
-                tag_IsoMu24_eta2p1 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_pt = cms.vdouble(22, 5000.),
                 #tag_Tight2012 = cms.vstring("pass"),
                 abseta = cms.vdouble(0, 2.4),
                 pt = cms.vdouble(10, 20, 30, 40, 60, 100),
@@ -84,7 +216,8 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
             EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"), ## Numerator definition
             #EfficiencyCategoryAndState = cms.vstring("PF", "pass"), ## Numerator definition
             BinnedVariables = cms.PSet(
-                tag_IsoMu24_eta2p1 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_pt = cms.vdouble(22, 5000.),
                 #tag_Tight2012 = cms.vstring("pass"),
                 abseta = cms.vdouble(0, 2.4),
                 dB = cms.vdouble(0., 0.01),
@@ -99,7 +232,8 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
             EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"), ## Numerator definition
             #EfficiencyCategoryAndState = cms.vstring("PF", "pass"), ## Numerator definition
             BinnedVariables = cms.PSet(
-                tag_IsoMu24_eta2p1 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_pt = cms.vdouble(22, 5000.),
                 #tag_Tight2012 = cms.vstring("pass"),
                 abseta = cms.vdouble(0, 2.4),
                 dB = cms.vdouble(0., 0.02),
@@ -115,7 +249,8 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
             UnbinnedVariables = cms.vstring("mass"),
             EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"), ## Numerator definition
             BinnedVariables = cms.PSet(
-                tag_IsoMu24_eta2p1 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_pt = cms.vdouble(22, 5000.),
                 abseta = cms.vdouble(0., 0.8, 1.2, 2.1, 2.4),
                 pt = cms.vdouble(10, 1000),
             ),
@@ -126,7 +261,8 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
             UnbinnedVariables = cms.vstring("mass"),
             EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"), ## Numerator definition
             BinnedVariables = cms.PSet(
-                tag_IsoMu24_eta2p1 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_pt = cms.vdouble(22, 5000.),
                 abseta = cms.vdouble(0., 0.8, 1.2, 2.1, 2.4),
                 dB = cms.vdouble(0., 0.01),
                 dzPV = cms.vdouble(-0.1, 0.1),
@@ -139,7 +275,8 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
             UnbinnedVariables = cms.vstring("mass"),
             EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"), ## Numerator definition
             BinnedVariables = cms.PSet(
-                tag_IsoMu24_eta2p1 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_pt = cms.vdouble(22, 5000.),
                 abseta = cms.vdouble(0., 0.8, 1.2, 2.1, 2.4),
                 dB = cms.vdouble(0., 0.02),
                 dzPV = cms.vdouble(-0.1, 0.1),
@@ -154,7 +291,8 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
            EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"),
             UnbinnedVariables = cms.vstring("mass"),
             BinnedVariables = cms.PSet(
-                tag_IsoMu24_eta2p1 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_pt = cms.vdouble(22, 5000.),
                 abseta = cms.vdouble(0., 2.4),
                 pt = cms.vdouble(10, 1000),
                 phi = cms.vdouble(-3.142, -1.5, 0., 1.5, 3.142), # for GI or CI MC only
@@ -166,7 +304,8 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
            EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"),
             UnbinnedVariables = cms.vstring("mass"),
             BinnedVariables = cms.PSet(
-                tag_IsoMu24_eta2p1 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_pt = cms.vdouble(22, 5000.),
                 abseta = cms.vdouble(0., 2.4),
                 pt = cms.vdouble(10, 20),
                 dB = cms.vdouble(0., 0.01),
@@ -180,7 +319,8 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
            EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"),
             UnbinnedVariables = cms.vstring("mass"),
             BinnedVariables = cms.PSet(
-                tag_IsoMu24_eta2p1 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_pt = cms.vdouble(22, 5000.),
                 abseta = cms.vdouble(0., 2.4),
                 pt = cms.vdouble(20, 1000),
                 dB = cms.vdouble(0., 0.02),
@@ -198,7 +338,8 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
            EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"),
             UnbinnedVariables = cms.vstring("mass"),
             BinnedVariables = cms.PSet(
-                tag_IsoMu24_eta2p1 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_pt = cms.vdouble(22, 5000.),
                 abseta = cms.vdouble(0., 2.4),
                 pt = cms.vdouble(10, 1000),
                 tag_nVertices = cms.vdouble(0., 7., 10., 13., 20.), # for GI or CI MC only
@@ -210,7 +351,8 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
            EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"),
             UnbinnedVariables = cms.vstring("mass"),
             BinnedVariables = cms.PSet(
-                tag_IsoMu24_eta2p1 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_pt = cms.vdouble(22, 5000.),
                 abseta = cms.vdouble(0., 2.4),
                 pt = cms.vdouble(10, 20),
                 dB = cms.vdouble(0., 0.01),
@@ -224,7 +366,8 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
            EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"),
             UnbinnedVariables = cms.vstring("mass"),
             BinnedVariables = cms.PSet(
-                tag_IsoMu24_eta2p1 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_pt = cms.vdouble(22, 5000.),
                 abseta = cms.vdouble(0., 2.4),
                 pt = cms.vdouble(20, 1000),
                 dB = cms.vdouble(0., 0.02),
@@ -279,7 +422,8 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
        #         tag_nVertices = cms.vdouble(0.5,4.5,8.5,12.5,16.5,20.5,24.5,30.5), 
        #         #PF = cms.vstring("pass"),                 ## 
        #         Tight2012 = cms.vstring("pass"),
-       #         tag_IsoMu24_eta2p1 = cms.vstring("pass"), ## tag trigger matched
+       #         tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
+       #         tag_pt = cms.vdouble(22, 5000.),
        #         #pair_dz = cms.vdouble( -1.,1. ),          ## and for which -1.0 < dz < 1.0
        #         pt     = cms.vdouble( 25,  100 ),
        #         abseta = cms.vdouble( 0.0, 2.4 ),
@@ -293,7 +437,8 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
        #         tag_nVertices = cms.vdouble(0.5,4.5,8.5,12.5,16.5,20.5,24.5,30.5), 
        #         #PF = cms.vstring("pass"),                 ## 
        #         Tight2012 = cms.vstring("pass"),
-       #         tag_IsoMu24_eta2p1 = cms.vstring("pass"), ## tag trigger matched
+       #         tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
+       #         tag_pt = cms.vdouble(22, 5000.),
        #         #pair_dz = cms.vdouble( -1.,1. ),          ## and for which -1.0 < dz < 1.0
        #         pt     = cms.vdouble( 25,  100 ),
        #         abseta = cms.vdouble( 0.0, 2.4 ),
@@ -308,7 +453,8 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
                 pt = cms.vdouble(10, 20, 30, 40, 60, 100),
                 #PF = cms.vstring("pass"),                 ## 
                 Tight2012 = cms.vstring("pass"),
-                tag_IsoMu24_eta2p1 = cms.vstring("pass"), ## tag trigger matched
+                tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
+                tag_pt = cms.vdouble(22, 5000.),
                 #pair_dz = cms.vdouble( -1.,1. ),          ## and for which -1.0 < dz < 1.0
                 abseta = cms.vdouble( 0.0, 2.4 ),
             ),
@@ -322,7 +468,8 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
                 abseta = cms.vdouble( 0.0, 0.8, 1.2, 2.1, 2.4 ),
                 #PF = cms.vstring("pass"),                 ## 
                 Tight2012 = cms.vstring("pass"),
-                tag_IsoMu24_eta2p1 = cms.vstring("pass"), ## tag trigger matched
+                tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
+                tag_pt = cms.vdouble(22, 5000.),
                 #pair_dz = cms.vdouble( -1.,1. ),          ## and for which -1.0 < dz < 1.0
                 pt = cms.vdouble(10,1000),
             ),
@@ -338,7 +485,8 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
                 pt = cms.vdouble(10, 20, 30, 40, 60, 100),
                 #PF = cms.vstring("pass"),                 ## 
                 Tight2012 = cms.vstring("pass"),
-                tag_IsoMu24_eta2p1 = cms.vstring("pass"), ## tag trigger matched
+                tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
+                tag_pt = cms.vdouble(22, 5000.),
                 #pair_dz = cms.vdouble( -1.,1. ),          ## and for which -1.0 < dz < 1.0
                 abseta = cms.vdouble( 0.0, 2.4 ),
             ),
@@ -352,7 +500,8 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
                 abseta = cms.vdouble( 0.0, 0.8, 1.2, 2.1, 2.4 ),
                 #PF = cms.vstring("pass"),                 ## 
                 Tight2012 = cms.vstring("pass"),
-                tag_IsoMu24_eta2p1 = cms.vstring("pass"), ## tag trigger matched
+                tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
+                tag_pt = cms.vdouble(22, 5000.),
                 #pair_dz = cms.vdouble( -1.,1. ),          ## and for which -1.0 < dz < 1.0
                 pt = cms.vdouble(10,1000),
             ),
