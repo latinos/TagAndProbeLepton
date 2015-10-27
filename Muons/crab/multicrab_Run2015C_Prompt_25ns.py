@@ -2,7 +2,7 @@ import os
 from WMCore.Configuration import Configuration
 config = Configuration()
 
-pyCfgParams = ['outputFile=tnp_MC.root']
+pyCfgParams = ['outputFile=tnp_Run2015C_25ns.root']
 
 config.section_('General')
 config.General.transferLogs = True
@@ -13,17 +13,18 @@ config.JobType.pluginName       = 'Analysis'
 #config.JobType.pluginName       = 'PrivateMC'
 config.JobType.psetName         = '../tnpTreeProduction/tp_from_aod_Data_crab.py'
 config.JobType.maxJobRuntimeMin = 2800
-config.JobType.outputFiles      = ['tnp_MC.root']
+config.JobType.outputFiles      = ['tnp_Run2015C_25ns.root']
 config.JobType.allowUndistributedCMSSW = True
 
 config.section_('Data')    
 config.Data.inputDBS      = 'global'
 config.Data.splitting     = 'FileBased'
-config.Data.unitsPerJob   = 5 # number of files, lumi sec. or events depending of "splitting"
-#config.Data.splitting     = 'LumiBased'
-config.Data.totalUnits    = 150 # total number of files, lumi sec. or events depending of "splitting"
+config.Data.unitsPerJob   = 100 # number of files, lumi sec. or events depending of "splitting"
+config.Data.splitting     = 'LumiBased'
+#config.Data.totalUnits    = 100 # total number of files, lumi sec. or events depending of "splitting"
 #config.Data.outLFNDirBase = '/store/group/phys_higgs/cmshww/amassiro/RunII/test/'
 config.Data.outLFNDirBase = '/store/group/phys_higgs/cmshww/kropiv/TnP_Muons/'
+config.Data.lumiMask = 'https://cms-service-dqm.web.cern.ch/cms-service-dqm/CAF/certification/Collisions15/13TeV/Cert_246908-258750_13TeV_PromptReco_Collisions15_25ns_JSON.txt'
 config.section_('Site')
 config.Site.storageSite = 'T2_CH_CERN'
 

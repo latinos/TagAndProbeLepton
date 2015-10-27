@@ -2,7 +2,7 @@
 
 *****************************
 
-To install tag and probe follow instructions (current V2):
+To install tag and probe follow instructions (current V3.1):
 
 https://twiki.cern.ch/twiki/bin/viewauth/CMS/MuonTagAndProbeTreesRun2
 
@@ -10,7 +10,7 @@ Do not forget to set correct architecture before cmsenv, if not compiled well:
 
 export SCRAM_ARCH=slc6_amd64_gcc491
 
-We are going to use CMSSW_7_4_7.
+We are going to use CMSSW_7_4_14.
 
 git clone https://github.com/latinos/TagAndProbeLepton.git
 
@@ -47,9 +47,9 @@ CMSSW_7_4_1_patch1
 
 Global tags :
 
-for 25 ns : MCRUN2_74_V9
+for 25 ns : 74X_mcRun2_asymptotic_v2
 
-for 50 ns : MCRUN2_74_V9A
+for 50 ns : 74X_mcRun2_asymptotic50ns_v0
 
 MINAOD MC:
 

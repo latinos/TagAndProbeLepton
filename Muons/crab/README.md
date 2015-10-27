@@ -31,6 +31,12 @@ MultiCRAB
 
     python multicrab_Run2015B.py samples/samples_Run2015B.py 
 
+    python multicrab_Run2015C_Prompt_50ns.py samples/samples_Run2015C_50ns.py
+
+    python multicrab_Run2015C_Prompt_25ns.py samples/samples_Run2015C_25ns.py
+
+    python multicrab_Run2015D_Prompt_25ns.py samples/samples_Run2015D_25ns.py
+
     python multicrab_MClikeData.py samples/samples_spring15.py
 
     crab status -d folder_name
