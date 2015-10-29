@@ -57,29 +57,21 @@ void tnp_nVer( bool isSave = true ) {
   //TString PU = "noPU";//for Data
   TString PU = "withPU";//for Data
 
-  TString Run = "Run2015B50ns";
-  //TString Run = "Run2015C50ns";
-  //TString Run = "Run2015C25ns";
-  //TString Run = "Run2015D25ns";
+  //TString Bunch = "50ns";
+  TString Bunch = "25ns";
 
-  TString MC = "DY50ns";
-  //TString MC = "DY25ns";
+  //TString Run = "Run2015B";
+  //TString Run = "Run2015C";
+  TString Run = "Run2015D";
+
+  TString MC = "DY";
 
   TString MCPlot = "AP";//for Data
   //TString MCPlot = "A2";//for MC if you want <- not used now
 
 
-  TFile* tnpGblMuIdMC = TFile::Open(pathAnna+"tnp_50nsDY_v3_PUlikeRun2015B_50ns.root" );
-  TFile* tnpGblMuIdDATA = TFile::Open(pathAnna+"tnp_Run2015B_PromptReco_50ns_v3.root" );
-  if (MC == "DY50ns" && Run == "Run2015B50ns")tnpGblMuIdMC   = TFile::Open(pathAnna+"tnp_50nsDY_v3_PUlikeRun2015B_50ns.root" );
-  if (MC == "DY50ns" && Run == "Run2015C50ns")tnpGblMuIdMC   = TFile::Open(pathAnna+"tnp_50nsDY_v3_PUlikeRun2015C_50ns.root" );
-  if (MC == "DY25ns" && Run == "Run2015C25ns")tnpGblMuIdMC   = TFile::Open(pathAnna+"tnp_25nsDY_v3_PUlikeRun2015C_25ns.root" );
-  if (MC == "DY25ns" && Run == "Run2015D25ns")tnpGblMuIdMC   = TFile::Open(pathAnna+"tnp_25nsDY_v3_PUlikeRun2015D_25ns.root" );
-  if (Run == "Run2015B50ns") tnpGblMuIdDATA   = TFile::Open(pathAnna+"tnp_Run2015B_PromptReco_50ns_v3.root" );
-  if (Run == "Run2015C50ns") tnpGblMuIdDATA   = TFile::Open(pathAnna+"tnp_Run2015C_PromptReco_50ns_v3.root" );
-  if (Run == "Run2015C25ns") tnpGblMuIdDATA   = TFile::Open(pathAnna+"tnp_Run2015C_PromptReco_25ns_v3.root" );
-  if (Run == "Run2015D25ns") tnpGblMuIdDATA   = TFile::Open(pathAnna+"tnp_Run2015D_PromptReco_25ns_v3.root" );
-
+  TFile* tnpGblMuIdMC = TFile::Open(pathAnna+"tnp_"+Bunch+MC+"_v3_PUlike"+Run+"_"+Bunch+".root" );
+  TFile* tnpGblMuIdDATA = TFile::Open(pathAnna+"tnp_"+Run+"_PromptReco_"+Bunch+"_v3.root" );
 
   TTree  &tMC =     * (TTree *) tnpGblMuIdMC    ->Get("tpTree/fitter_tree");
   TTree  &tData =   * (TTree *) tnpGblMuIdDATA  ->Get("tpTree/fitter_tree");
@@ -89,15 +81,19 @@ void tnp_nVer( bool isSave = true ) {
    hMC_nVer->Sumw2();
    TH1F *hData_nVer = new TH1F("hData_nVer","Data #Vertices",50,-0.5,49.5);
    hData_nVer->Sumw2();
+   TH1F *hData_pt = new TH1F("hData_pt","Data probe pt",100,-0.5,99.5);
+   hData_pt->Sumw2();
 
 
    //if(PU == "noPU")tMC.Draw("tag_nVertices>>hMC_nVer");
    //if(PU== "withPU")tMC.Draw("tag_nVertices>>hMC_nVer","weight*(tag_nVertices>0)");
    //tData.Draw("tag_nVertices>>hData_nVer");
 
-   if(PU == "noPU")tMC.Draw("tag_nVertices>>hMC_nVer","IsoMu20>0");
-   if(PU== "withPU")tMC.Draw("tag_nVertices>>hMC_nVer","weight*(IsoMu20>0)");
-   tData.Draw("tag_nVertices>>hData_nVer","IsoMu20>0");
+   if(PU == "noPU")tMC.Draw("tag_nVertices>>hMC_nVer","tag_IsoMu20>0 && pt>10");
+   if(PU== "withPU")tMC.Draw("tag_nVertices>>hMC_nVer","weight*(tag_IsoMu20>0 && pt>10)");
+   tData.Draw("tag_nVertices>>hData_nVer","tag_IsoMu20>0 && pt>10");
+
+   tData.Draw("pt>>hData_pt","tag_IsoMu20>0");
 
 
    hMC_nVer->Scale(1.0/hMC_nVer->Integral());
@@ -109,14 +105,12 @@ void tnp_nVer( bool isSave = true ) {
      if(PU == "noPU")tl->AddEntry(hMC_nVer, "no PU weight"     ,"");
      if(PU == "withPU")tl->AddEntry(hMC_nVer, "with PU weight"     ,"");
      tl->AddEntry(hMC_nVer, "#sqrt{s} = 13 TeV"     ,"");
-     if(MC == "DY50ns")tl->AddEntry(hMC_nVer, "Drell-Yan Spring15, 50 ns"  ,"lp");
-     if(MC == "DY25ns")tl->AddEntry(hMC_nVer, "Drell-Yan Spring15, 25 ns"  ,"lp");
-     if(Run == "Run2015B50ns")tl->AddEntry(hData_nVer, "DATA 2015B, 50 ns"     ,"lp");
-     if(Run == "Run2015C50ns")tl->AddEntry(hData_nVer, "DATA 2015C, 50 ns"     ,"lp");
-     if(Run == "Run2015C25ns")tl->AddEntry(hData_nVer, "DATA 2015C, 25 ns"     ,"lp");
-     if(Run == "Run2015D25ns")tl->AddEntry(hData_nVer, "DATA 2015D, 25 ns"     ,"lp");
+     tl->AddEntry(hMC_nVer, "Drell-Yan Spring15, "+Bunch  ,"lp");
+     if(Run == "Run2015B")tl->AddEntry(hData_nVer, "DATA 2015B, "+Bunch     ,"lp");
+     if(Run == "Run2015C")tl->AddEntry(hData_nVer, "DATA 2015C, "+Bunch     ,"lp");
+     if(Run == "Run2015D")tl->AddEntry(hData_nVer, "DATA 2015D, "+Bunch     ,"lp");
 //////////////////////////////
-  std::cout <<"test2"<< std::endl;
+  //std::cout <<"test2"<< std::endl;
 
 //////////////////////////////
 
@@ -174,7 +168,7 @@ void tnp_nVer( bool isSave = true ) {
   if (!isSave) return;
 
   // print pictures
-  cGblMuIdvs_tag_nVertices  -> SaveAs(png+"nVertices_"+Run+"_"+MC+"_"+PU+".png"); 
+  cGblMuIdvs_tag_nVertices  -> SaveAs(png+"nVertices_"+Run+"_"+Bunch+"_"+MC+"_"+PU+".png"); 
 }
 
 //////////////////////////////////////////

@@ -18,12 +18,18 @@ process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(1) )
 process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
     ## Input, output 
     InputFileNames = cms.vstring(
-                                 #"root://eoscms//eos/cms/store/group/phys_higgs/cmshww/kropiv/TnP_Muons/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/crab_50ns_DY_Spring15/50ns_DY_Spring15.root"
-                                 #"root://eoscms//eos/cms/store/group/phys_higgs/cmshww/kropiv/TnP_Muons/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/crab_50ns_DY_Spring15/150707_143432/0000/tnp_MC_99.root",
                                  #"file:../crab/crab_projects_tnp/crab_50ns_DY_Spring15/results/tnp_MC.root",  
-                                 #DY 25 ns
+                                 #DY 
                                  #"file:tnp_Run2015B_PromptReco_v2.root",  
-                                 "file:tnp_50nsDY_v2_part.root",  
+                                 #"file:tnp_50nsDY_v3_PUlikeRun2015B_50ns.root",  
+                                 "file:tnp_50nsDY_v3_PUlikeRun2015C_50ns.root",  
+                                 #"file:tnp_25nsDY_v3_PUlikeRun2015C_25ns.root",  
+                                 #"file:tnp_25nsDY_v3_PUlikeRun2015D_25ns.root",  
+                                 #DATA: 
+                                 #"file:tnp_Run2015B_PromptReco_50ns_v3.root",  
+                                 #"file:tnp_Run2015C_PromptReco_50ns_v3.root",  
+                                 #"file:tnp_Run2015C_PromptReco_25ns_v3.root",  
+                                 #"file:tnp_Run2015D_PromptReco_25ns_v3.root",
                                  #"root://eoscms//eos/cms/store/group/phys_higgs/cmshww/kropiv/TnP_Muons/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/crab_25ns_DY_Spring15/150707_143420/0000/tnp_MC_100.root",
                                  ), ## can put more than one
     ## copy locally to be faster: xrdcp root://eoscms//eos/cms/store/cmst3/user/botta/TnPtrees/tnpZ_Data.190456-193557.root $PWD/tnpZ_Data.190456-193557.root

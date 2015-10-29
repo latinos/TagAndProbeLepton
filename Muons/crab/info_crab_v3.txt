@@ -1,0 +1,207 @@
+********************************************
+********************************************
+crab status -d crab_projects_tnp_v3/crab_25ns_DY_Spring15_v3/
+********************************************
+Contacting voms2.cern.ch:15002 [/DC=ch/DC=cern/OU=computers/CN=voms2.cern.ch] "cms"...
+Remote VOMS server contacted succesfully.
+
+
+Created proxy in /tmp/x509up_u24482.
+
+Your proxy is valid until Thu Oct 29 10:09:39 CET 2015
+CRAB project directory:		/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_4_14/src/TagAndProbeLepton/Muons/crab/crab_projects_tnp_v3/crab_25ns_DY_Spring15_v3
+Task name:			151026_161445:kropiv_crab_25ns_DY_Spring15_v3
+Grid scheduler:			crab3test-3@vocms096.cern.ch
+Task status:			FAILED
+Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=crab&refresh=0&table=Jobs&p=1&records=25&activemenu=2&status=&site=&tid=151026_161445%3Akropiv_crab_25ns_DY_Spring15_v3
+
+Jobs status:			failed         17.6% ( 6/34)
+				finished       82.4% (28/34)
+
+No publication information available yet
+
+Error Summary: (use --verboseErrors for details about the errors)
+
+ 4 jobs failed in postprocessing step
+
+ 2 jobs failed with exit code 8001
+
+Have a look at https://twiki.cern.ch/twiki/bin/viewauth/CMSPublic/JobExitCodes for a description of the exit codes.
+Log file is /afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_4_14/src/TagAndProbeLepton/Muons/crab/crab_projects_tnp_v3/crab_25ns_DY_Spring15_v3/crab.log
+********************************************
+********************************************
+crab status -d crab_projects_tnp_v3/crab_50ns_DY_Spring15_v3/
+********************************************
+CRAB project directory:		/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_4_14/src/TagAndProbeLepton/Muons/crab/crab_projects_tnp_v3/crab_50ns_DY_Spring15_v3
+Task name:			151026_161419:kropiv_crab_50ns_DY_Spring15_v3
+Grid scheduler:			crab3-4@vocms066.cern.ch
+Task status:			FAILED
+Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=crab&refresh=0&table=Jobs&p=1&records=25&activemenu=2&status=&site=&tid=151026_161419%3Akropiv_crab_50ns_DY_Spring15_v3
+
+Jobs status:			failed         12.5% ( 4/32)
+				finished       87.5% (28/32)
+
+No publication information available yet
+
+Error Summary: (use --verboseErrors for details about the errors)
+
+ 4 jobs failed with exit code 8001
+
+Have a look at https://twiki.cern.ch/twiki/bin/viewauth/CMSPublic/JobExitCodes for a description of the exit codes.
+Log file is /afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_4_14/src/TagAndProbeLepton/Muons/crab/crab_projects_tnp_v3/crab_50ns_DY_Spring15_v3/crab.log
+
+********************************************
+********************************************
+crab status -d crab_projects_tnp_v3/crab_Run2015B_PromptReco_50ns_SingleMuon/
+********************************************
+CRAB project directory:		/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_4_14/src/TagAndProbeLepton/Muons/crab/crab_projects_tnp_v3/crab_Run2015B_PromptReco_50ns_SingleMuon
+Task name:			151026_111105:kropiv_crab_Run2015B_PromptReco_50ns_SingleMuon
+Grid scheduler:			crab3-1@submit-5.t2.ucsd.edu
+Task status:			FAILED
+Warning:			The CRAB3 server got a non-critical error while checking stageout permissions. Please use checkwrite to check if everything is fine.
+Warning:			The CRAB3 server got a non-critical error while checking stageout permissions. Please use checkwrite to check if everything is fine.
+Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=crab&refresh=0&table=Jobs&p=1&records=25&activemenu=2&status=&site=&tid=151026_111105%3Akropiv_crab_Run2015B_PromptReco_50ns_SingleMuon
+
+Jobs status:			failed          6.9% ( 2/29)
+				finished       93.1% (27/29)
+
+No publication information available yet
+
+Error Summary: (use --verboseErrors for details about the errors)
+
+ 1 jobs failed with exit code 8023
+
+ 1 jobs failed with exit code 8001
+
+Have a look at https://twiki.cern.ch/twiki/bin/viewauth/CMSPublic/JobExitCodes for a description of the exit codes.
+Log file is /afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_4_14/src/TagAndProbeLepton/Muons/crab/crab_projects_tnp_v3/crab_Run2015B_PromptReco_50ns_SingleMuon/crab.log
+
+********************************************
+********************************************
+crab status -d crab_projects_tnp_v3/crab_Run2015C_PromptReco_50ns_SingleMuon/
+********************************************
+CRAB project directory:		/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_4_14/src/TagAndProbeLepton/Muons/crab/crab_projects_tnp_v3/crab_Run2015C_PromptReco_50ns_SingleMuon
+Task name:			151026_111604:kropiv_crab_Run2015C_PromptReco_50ns_SingleMuon
+Grid scheduler:			crab3test-3@vocms096.cern.ch
+Task status:			FAILED
+Warning:			The CRAB3 server got a non-critical error while checking stageout permissions. Please use checkwrite to check if everything is fine.
+Warning:			The CRAB3 server got a non-critical error while checking stageout permissions. Please use checkwrite to check if everything is fine.
+Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=crab&refresh=0&table=Jobs&p=1&records=25&activemenu=2&status=&site=&tid=151026_111604%3Akropiv_crab_Run2015C_PromptReco_50ns_SingleMuon
+
+Jobs status:			failed         12.5% ( 2/16)
+				finished       87.5% (14/16)
+
+No publication information available yet
+
+Error Summary: (use --verboseErrors for details about the errors)
+
+ 2 jobs failed with exit code 8001
+
+Have a look at https://twiki.cern.ch/twiki/bin/viewauth/CMSPublic/JobExitCodes for a description of the exit codes.
+Log file is /afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_4_14/src/TagAndProbeLepton/Muons/crab/crab_projects_tnp_v3/crab_Run2015C_PromptReco_50ns_SingleMuon/crab.log
+
+********************************************
+********************************************
+crab status -d crab_projects_tnp_v3/crab_Run2015C_PromptReco_25ns_SingleMuon/
+********************************************
+CRAB project directory:		/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_4_14/src/TagAndProbeLepton/Muons/crab/crab_projects_tnp_v3/crab_Run2015C_PromptReco_25ns_SingleMuon
+Task name:			151026_112711:kropiv_crab_Run2015C_PromptReco_25ns_SingleMuon
+Grid scheduler:			crab3-3@submit-4.t2.ucsd.edu
+Task status:			COMPLETED
+Warning:			The CRAB3 server got a non-critical error while checking stageout permissions. Please use checkwrite to check if everything is fine.
+Warning:			The CRAB3 server got a non-critical error while checking stageout permissions. Please use checkwrite to check if everything is fine.
+Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=crab&refresh=0&table=Jobs&p=1&records=25&activemenu=2&status=&site=&tid=151026_112711%3Akropiv_crab_Run2015C_PromptReco_25ns_SingleMuon
+
+Jobs status:			finished      100.0% (11/11)
+
+No publication information available yet
+Log file is /afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_4_14/src/TagAndProbeLepton/Muons/crab/crab_projects_tnp_v3/crab_Run2015C_PromptReco_25ns_SingleMuon/crab.log
+********************************************
+********************************************
+***** undergoing ***************************
+crab status -d crab_projects_tnp_v3/crab_Run2015D_PromptReco_25ns_SingleMuon/
+********************************************
+crab status --verboseErrors crab_projects_tnp_v3/crab_Run2015D_PromptReco_25ns_SingleMuon/
+CRAB project directory:		/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_4_14/src/TagAndProbeLepton/Muons/crab/crab_projects_tnp_v3/crab_Run2015D_PromptReco_25ns_SingleMuon
+Task name:			151026_114313:kropiv_crab_Run2015D_PromptReco_25ns_SingleMuon
+Grid scheduler:			crab3-3@submit-4.t2.ucsd.edu
+Task status:			FAILED
+Warning:			The CRAB3 server got a non-critical error while checking stageout permissions. Please use checkwrite to check if everything is fine.
+Warning:			The CRAB3 server got a non-critical error while checking stageout permissions. Please use checkwrite to check if everything is fine.
+Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=crab&refresh=0&table=Jobs&p=1&records=25&activemenu=2&status=&site=&tid=151026_114313%3Akropiv_crab_Run2015D_PromptReco_25ns_SingleMuon
+
+Jobs status:			failed          6.5% (  7/108)
+				finished       93.5% (101/108)
+
+No publication information available yet
+
+Error Summary:
+
+  5 jobs failed with exit code 8001:
+	(Showing only the 3 most frequent errors messages for this exit code)
+
+	  1 jobs failed with following error message: (for example, job 78)
+
+		CmsRunFailure
+		CMSSW error message follows.
+		Fatal Exception
+		An exception of category 'ProductNotFound' occurred while
+		   [0] Processing run: 258706 lumi: 460 event: 798612529
+		   [1] Running path 'tagAndProbeTkL1'
+		   [2] Calling event method for module TagProbeFitTreeProducer/'tpTreeL1'
+		Exception Message:
+		Principal::getByToken: Found zero products matching all criteria
+		Looking for type: edm::ValueMap<float>
+		Looking for module label: nverticesModule
+		Looking for productInstanceName: 
+		   Additional Info:
+		      [a] If you wish to continue processing events after a ProductNotFound exception,
+		add "SkipEvent = cms.untracked.vstring('ProductNotFound')" to the "options" PSet in the configuration.
+
+	  1 jobs failed with following error message: (for example, job 11)
+
+		CmsRunFailure
+		CMSSW error message follows.
+		Fatal Exception
+		An exception of category 'ProductNotFound' occurred while
+		   [0] Processing run: 258177 lumi: 434 event: 645074537
+		   [1] Running path 'tagAndProbeTkL1'
+		   [2] Calling event method for module TagProbeFitTreeProducer/'tpTreeL1'
+		Exception Message:
+		Principal::getByToken: Found zero products matching all criteria
+		Looking for type: edm::ValueMap<float>
+		Looking for module label: nverticesModule
+		Looking for productInstanceName: 
+		   Additional Info:
+		      [a] If you wish to continue processing events after a ProductNotFound exception,
+		add "SkipEvent = cms.untracked.vstring('ProductNotFound')" to the "options" PSet in the configuration.
+
+	  1 jobs failed with following error message: (for example, job 62)
+
+		CmsRunFailure
+		CMSSW error message follows.
+		Fatal Exception
+		An exception of category 'ProductNotFound' occurred while
+		   [0] Processing run: 258448 lumi: 689 event: 822092636
+		   [1] Running path 'tagAndProbeTkL1'
+		   [2] Calling event method for module TagProbeFitTreeProducer/'tpTreeL1'
+		Exception Message:
+		Principal::getByToken: Found zero products matching all criteria
+		Looking for type: edm::ValueMap<float>
+		Looking for module label: nverticesModule
+		Looking for productInstanceName: 
+		   Additional Info:
+		      [a] If you wish to continue processing events after a ProductNotFound exception,
+		add "SkipEvent = cms.untracked.vstring('ProductNotFound')" to the "options" PSet in the configuration.
+
+	For the error messages of the other 2 jobs, please have a look at the dashboard task monitoring web page.
+
+  2 jobs failed with exit code -1:
+
+	  2 jobs failed with following error message: (for example, job 10)
+
+		The framework job report could be loaded, but no error message was found there.
+
+Have a look at https://twiki.cern.ch/twiki/bin/viewauth/CMSPublic/JobExitCodes for a description of the exit codes.
+Log file is /afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_4_14/src/TagAndProbeLepton/Muons/crab/crab_projects_tnp_v3/crab_Run2015D_PromptReco_25ns_SingleMuon/crab.log
+
