@@ -12,8 +12,11 @@
 # 25 and 50 ns
 ########
 #        CRAB task name       DAS name                                                                                    Latino name
-samples['25ns_DY_Spring15_v3']        = ['/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/RunIISpring15DR74-Asympt25ns_MCRUN2_74_V9-v3/AODSIM',   ['globalTag=74X_mcRun2_asymptotic_v2']]       #for 25 ns
-samples['50ns_DY_Spring15_v3']        = ['/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/RunIISpring15DR74-Asympt50ns_MCRUN2_74_V9A-v2/AODSIM',  ['globalTag=74X_mcRun2_asymptotic50ns_v0']]   #for 50 ns
+samples['25ns_DY_Spring15madgraph_v3']        = ['/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISpring15DR74-Asympt25ns_MCRUN2_74_V9-v1/AODSIM',   ['globalTag=74X_mcRun2_asymptotic_v2']]       #for 25 ns
+samples['50ns_DY_Spring15madgraph_v3']        = ['/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISpring15DR74-Asympt50ns_MCRUN2_74_V9A-v1/AODSIM',  ['globalTag=74X_mcRun2_asymptotic50ns_v0']]   #for 50 ns
+
+#samples['25ns_DY_Spring15_v3']        = ['/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/RunIISpring15DR74-Asympt25ns_MCRUN2_74_V9-v3/AODSIM',   ['globalTag=74X_mcRun2_asymptotic_v2']]       #for 25 ns
+#samples['50ns_DY_Spring15_v3']        = ['/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/RunIISpring15DR74-Asympt50ns_MCRUN2_74_V9A-v2/AODSIM',  ['globalTag=74X_mcRun2_asymptotic50ns_v0']]   #for 50 ns
 
 
 ########

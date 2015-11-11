@@ -12,7 +12,7 @@ config.section_('JobType')
 config.JobType.pluginName       = 'Analysis'
 #config.JobType.pluginName       = 'PrivateMC'
 config.JobType.psetName         = '../tnpTreeProduction/tp_from_aod_Data_crab.py'
-config.JobType.maxJobRuntimeMin = 2800
+config.JobType.maxJobRuntimeMin = 2700
 config.JobType.outputFiles      = ['tnp_MC.root']
 config.JobType.allowUndistributedCMSSW = True
 
