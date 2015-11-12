@@ -45,13 +45,13 @@ void tnp_plots( bool isSave = true ) {
 
   // ---------------------------------------------------------------------------
   // general variables
-  TString png      = "/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_4_7/src/TagAndProbeLepton/Muons/plot_tnp/Plots/";
-  TString rootPlot = "/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_4_7/src/TagAndProbeLepton/Muons/plot_tnp/Plots/";
+  TString png      = "/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_4_14/src/TagAndProbeLepton/Muons/plot_tnp/Plots/";
+  TString rootPlot = "/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_4_14/src/TagAndProbeLepton/Muons/plot_tnp/Plots/";
   // ---------------------------------------------------------------------------
 
 
   // ---- open the MC files ----
-  TString pathAnna="/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_4_7/src/TagAndProbeLepton/Muons/eff_tnp/";
+  TString pathAnna="/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_4_14/src/TagAndProbeLepton/Muons/eff_tnp/";
 
   TString MCPlot = "AP";//for Data
   //TString MCPlot = "A2";//for MC if you want <- not used now
@@ -71,24 +71,30 @@ void tnp_plots( bool isSave = true ) {
   Float_t xmin = 0.96; 
   Float_t xmin_trig = 0.6; 
   Float_t xmax = 1.01; 
-  TString EffType = "Tight2012"; // for Tight seleciton
-  //TString EffType = "Medium"; // for Medium selection
   TString index_data = "";//for Muon ID
   TString index_mc = "";//for Muon ID
   TString MuonAdd = "Muon";
   TString MuonType = "Tight2012";
   TString MCMuonType = "Medium";
+
+  //TString EffType = "Tight2012"; // for Tight seleciton
+  TString EffType = "Medium"; // for Medium selection
+
+  TString Bunch = "50ns";
+
   TString DataType = "Run2015B"; 
-  TString MCType = "DY_50ns"; 
+
+  TString MCType = "DY"; 
+
   TString Title = "Tag #mu: is Tight, Probe #mu: "; 
   TString Title_trigger = "Tag #mu: match to trigger, Probe #mu: MuonID+ISO &"; 
   TString ptCut= ""; 
      // 
      ptCut= ""; 
-     //MuonType = "Medium";
-     //MCMuonType = "Medium";
-     MuonType = "Tight2012";
-     MCMuonType = "Tight2012";
+     MuonType = "Medium";
+     MCMuonType = "Medium";
+     //MuonType = "Tight2012";
+     //MCMuonType = "Tight2012";
      //
      //ptCut= "_ptLt20"; 
      //ptCut= "_ptGt20"; 
@@ -103,16 +109,32 @@ void tnp_plots( bool isSave = true ) {
      index_data = "";//for Muon ID
      index_mc = "";//for Muon ID
      MuonAdd = "Muon";
-     DataType = "Run2015B"; 
-     MCType = "DY_50ns"; 
      Title = "MuonID, Probe #mu: is Tracker & "; 
+
+     //Bunch = "50ns"; 
+     //DataType = "Run2015B"; 
+     //MCType = "DY"; 
+
+     //Bunch = "50ns"; 
+     //DataType = "Run2015C"; 
+     //MCType = "DY"; 
+
+     //Bunch = "25ns"; 
+     //DataType = "Run2015C"; 
+     //MCType = "DY"; 
+
+     Bunch = "25ns"; 
+     DataType = "Run2015D"; 
+     //MCType = "DY"; 
+     MCType = "DY_madgraph"; 
+
   }
 
-  TString sample_data = MuonType+"_"+DataType;
-  TString sample_mc = MCMuonType+"_"+MCType;
+  TString sample_data = DataType+Bunch;
+  TString sample_mc = MCType+Bunch;
 
-  TFile* tnpGblMuIdMC   = TFile::Open(pathAnna+"TnP_"+EffType+"_"+MCType+".root" );
-  TFile* tnpGblMuIdDATA   = TFile::Open(pathAnna+"TnP_"+EffType+"_"+DataType+".root" );
+  TFile* tnpGblMuIdMC   = TFile::Open(pathAnna+"TnP_"+EffType+"_"+MCType+Bunch+"Like"+DataType+"_"+Bunch+".root" );
+  TFile* tnpGblMuIdDATA   = TFile::Open(pathAnna+"TnP_"+EffType+"_"+DataType+"_"+Bunch+".root" );
 
 
   std::cout << std::endl;
@@ -125,25 +147,25 @@ void tnp_plots( bool isSave = true ) {
   // get the canvas first
   //TCanvas* cGblMuIdMC   = (TCanvas*) tnpGblMuIdMC  ->Get("muonEffs/pt/fit_eff_plots/pt_PLOT");
   //TCanvas* cGblMuIdDATA = (TCanvas*) tnpGblMuIdDATA->Get("muonEffs/pt/fit_eff_plots/pt_PLOT");
-  TCanvas* cGblMuIdMC   = (TCanvas*) tnpGblMuIdMC  ->Get("tpTree/pt_Tight2012"+ptCut+"/fit_eff_plots/pt_PLOT_tag_IsoMu20_pass"+index_mc);
-  TCanvas* cGblMuIdDATA = (TCanvas*) tnpGblMuIdDATA->Get("tpTree/pt_Tight2012"+ptCut+"/fit_eff_plots/pt_PLOT_tag_IsoMu20_pass"+index_data);
-  TCanvas* cGblMuIdMC_eta   = (TCanvas*) tnpGblMuIdMC  ->Get("tpTree/abseta_Tight2012"+ptCut+"/fit_eff_plots/abseta_PLOT_tag_IsoMu20_pass"+index_mc);
-  TCanvas* cGblMuIdDATA_eta = (TCanvas*) tnpGblMuIdDATA->Get("tpTree/abseta_Tight2012"+ptCut+"/fit_eff_plots/abseta_PLOT_tag_IsoMu20_pass"+index_data);
-  TCanvas* cGblMuIdMC_phi   = (TCanvas*) tnpGblMuIdMC  ->Get("tpTree/phi_Tight2012"+ptCut+"/fit_eff_plots/phi_PLOT_tag_IsoMu20_pass"+index_mc);
-  TCanvas* cGblMuIdDATA_phi = (TCanvas*) tnpGblMuIdDATA->Get("tpTree/phi_Tight2012"+ptCut+"/fit_eff_plots/phi_PLOT_tag_IsoMu20_pass"+index_data);
-  TCanvas* cGblMuIdMC_tag_nVertices   = (TCanvas*) tnpGblMuIdMC  ->Get("tpTree/tag_nVertices_Tight2012"+ptCut+"/fit_eff_plots/tag_nVertices_PLOT_tag_IsoMu20_pass"+index_mc);
-  TCanvas* cGblMuIdDATA_tag_nVertices = (TCanvas*) tnpGblMuIdDATA->Get("tpTree/tag_nVertices_Tight2012"+ptCut+"/fit_eff_plots/tag_nVertices_PLOT_tag_IsoMu20_pass"+index_data);
+  TCanvas* cGblMuIdMC   = (TCanvas*) tnpGblMuIdMC  ->Get("tpTree/pt_"+MCMuonType+ptCut+"/fit_eff_plots/pt_PLOT_tag_IsoMu20_pass"+index_mc);
+  TCanvas* cGblMuIdDATA = (TCanvas*) tnpGblMuIdDATA->Get("tpTree/pt_"+MuonType+ptCut+"/fit_eff_plots/pt_PLOT_tag_IsoMu20_pass"+index_data);
+  TCanvas* cGblMuIdMC_eta   = (TCanvas*) tnpGblMuIdMC  ->Get("tpTree/eta_"+MCMuonType+ptCut+"/fit_eff_plots/eta_PLOT_tag_IsoMu20_pass"+index_mc);
+  TCanvas* cGblMuIdDATA_eta = (TCanvas*) tnpGblMuIdDATA->Get("tpTree/eta_"+MuonType+ptCut+"/fit_eff_plots/eta_PLOT_tag_IsoMu20_pass"+index_data);
+  TCanvas* cGblMuIdMC_phi   = (TCanvas*) tnpGblMuIdMC  ->Get("tpTree/phi_"+MCMuonType+ptCut+"/fit_eff_plots/phi_PLOT_tag_IsoMu20_pass"+index_mc);
+  TCanvas* cGblMuIdDATA_phi = (TCanvas*) tnpGblMuIdDATA->Get("tpTree/phi_"+MuonType+ptCut+"/fit_eff_plots/phi_PLOT_tag_IsoMu20_pass"+index_data);
+  TCanvas* cGblMuIdMC_tag_nVertices   = (TCanvas*) tnpGblMuIdMC  ->Get("tpTree/tag_nVertices_"+MCMuonType+ptCut+"/fit_eff_plots/tag_nVertices_PLOT_tag_IsoMu20_pass"+index_mc);
+  TCanvas* cGblMuIdDATA_tag_nVertices = (TCanvas*) tnpGblMuIdDATA->Get("tpTree/tag_nVertices_"+MuonType+ptCut+"/fit_eff_plots/tag_nVertices_PLOT_tag_IsoMu20_pass"+index_data);
 
   //TCanvas* cGblMuIdMC_IsoMu20_pt   = (TCanvas*) tnpGblMuIdMC    ->Get("tpTree/IsoMu20_pt_Tight2012"+ptCut+"/fit_eff_plots/pt_PLOT_Tight2012_pass_&_tag_IsoMu20_pass"+index_mc);
   //TCanvas* cGblMuIdDATA_IsoMu20_pt = (TCanvas*) tnpGblMuIdDATA  ->Get("tpTree/IsoMu20_pt_Tight2012"+ptCut+"/fit_eff_plots/pt_PLOT_Tight2012_pass_&_tag_IsoMu20_pass"+index_data);
-  TCanvas* cGblMuIdMC_IsoMu20_pt   = (TCanvas*) tnpGblMuIdMC    ->Get("tpTree/IsoMu20_pt_Tight2012/fit_eff_plots/pt_PLOT_Tight2012_pass_&_tag_IsoMu20_pass"+index_mc);
-  TCanvas* cGblMuIdDATA_IsoMu20_pt = (TCanvas*) tnpGblMuIdDATA  ->Get("tpTree/IsoMu20_pt_Tight2012/fit_eff_plots/pt_PLOT_Tight2012_pass_&_tag_IsoMu20_pass"+index_data);
-  TCanvas* cGblMuIdMC_IsoMu20_eta   = (TCanvas*) tnpGblMuIdMC    ->Get("tpTree/IsoMu20_abseta_Tight2012/fit_eff_plots/abseta_PLOT_Tight2012_pass_&_tag_IsoMu20_pass"+index_mc);
-  TCanvas* cGblMuIdDATA_IsoMu20_eta = (TCanvas*) tnpGblMuIdDATA  ->Get("tpTree/IsoMu20_abseta_Tight2012/fit_eff_plots/abseta_PLOT_Tight2012_pass_&_tag_IsoMu20_pass"+index_data);
-  TCanvas* cGblMuIdMC_IsoMu20_phi   = (TCanvas*) tnpGblMuIdMC    ->Get("tpTree/IsoMu20_phi_Tight2012/fit_eff_plots/phi_PLOT_Tight2012_pass_&_tag_IsoMu20_pass"+index_mc);
-  TCanvas* cGblMuIdDATA_IsoMu20_phi = (TCanvas*) tnpGblMuIdDATA  ->Get("tpTree/IsoMu20_phi_Tight2012/fit_eff_plots/phi_PLOT_Tight2012_pass_&_tag_IsoMu20_pass"+index_data);
-  TCanvas* cGblMuIdMC_IsoMu20_tag_nVertices   = (TCanvas*) tnpGblMuIdMC    ->Get("tpTree/IsoMu20_tag_nVertices_Tight2012/fit_eff_plots/tag_nVertices_PLOT_Tight2012_pass_&_tag_IsoMu20_pass"+index_mc);
-  TCanvas* cGblMuIdDATA_IsoMu20_tag_nVertices = (TCanvas*) tnpGblMuIdDATA  ->Get("tpTree/IsoMu20_tag_nVertices_Tight2012/fit_eff_plots/tag_nVertices_PLOT_Tight2012_pass_&_tag_IsoMu20_pass"+index_data);
+  TCanvas* cGblMuIdMC_IsoMu20_pt   = (TCanvas*) tnpGblMuIdMC    ->Get("tpTree/IsoMu20_pt_"+MCMuonType+"/fit_eff_plots/pt_PLOT_"+MCMuonType+"_pass_&_tag_IsoMu20_pass"+index_mc);
+  TCanvas* cGblMuIdDATA_IsoMu20_pt = (TCanvas*) tnpGblMuIdDATA  ->Get("tpTree/IsoMu20_pt_"+MuonType+"/fit_eff_plots/pt_PLOT_"+MuonType+"_pass_&_tag_IsoMu20_pass"+index_data);
+  TCanvas* cGblMuIdMC_IsoMu20_eta   = (TCanvas*) tnpGblMuIdMC    ->Get("tpTree/IsoMu20_eta_"+MCMuonType+"/fit_eff_plots/eta_PLOT_"+MCMuonType+"_pass_&_tag_IsoMu20_pass"+index_mc);
+  TCanvas* cGblMuIdDATA_IsoMu20_eta = (TCanvas*) tnpGblMuIdDATA  ->Get("tpTree/IsoMu20_eta_"+MuonType+"/fit_eff_plots/eta_PLOT_"+MuonType+"_pass_&_tag_IsoMu20_pass"+index_data);
+  TCanvas* cGblMuIdMC_IsoMu20_phi   = (TCanvas*) tnpGblMuIdMC    ->Get("tpTree/IsoMu20_phi_"+MCMuonType+"/fit_eff_plots/phi_PLOT_"+MCMuonType+"_pass_&_tag_IsoMu20_pass"+index_mc);
+  TCanvas* cGblMuIdDATA_IsoMu20_phi = (TCanvas*) tnpGblMuIdDATA  ->Get("tpTree/IsoMu20_phi_"+MuonType+"/fit_eff_plots/phi_PLOT_"+MuonType+"_pass_&_tag_IsoMu20_pass"+index_data);
+  TCanvas* cGblMuIdMC_IsoMu20_tag_nVertices   = (TCanvas*) tnpGblMuIdMC    ->Get("tpTree/IsoMu20_tag_nVertices_"+MCMuonType+"/fit_eff_plots/tag_nVertices_PLOT_"+MCMuonType+"_pass_&_tag_IsoMu20_pass"+index_mc);
+  TCanvas* cGblMuIdDATA_IsoMu20_tag_nVertices = (TCanvas*) tnpGblMuIdDATA  ->Get("tpTree/IsoMu20_tag_nVertices_"+MuonType+"/fit_eff_plots/tag_nVertices_PLOT_"+MuonType+"_pass_&_tag_IsoMu20_pass"+index_data);
 
 
   //TCanvas* cGblMuIdMC_eta   = (TCanvas*) tnpGblMuIdMC  ->Get(EffType+"/eta_pt45/fit_eff_plots/eta_PLOT_pt_bin0"+index_mc);
@@ -159,7 +181,9 @@ void tnp_plots( bool isSave = true ) {
 
   TGraphAsymmErrors* gGblMuIdMC   = (TGraphAsymmErrors*) cGblMuIdMC   -> GetListOfPrimitives()->At(1);
   TGraphAsymmErrors* gGblMuIdDATA = (TGraphAsymmErrors*) cGblMuIdDATA -> GetListOfPrimitives()->At(1);
+  std::cout << "Test 2 " << std::endl;
   TGraphAsymmErrors* gGblMuIdMC_eta   = (TGraphAsymmErrors*) cGblMuIdMC_eta   -> GetListOfPrimitives()->At(1);
+  std::cout << "Test 1 " << std::endl;
   TGraphAsymmErrors* gGblMuIdDATA_eta = (TGraphAsymmErrors*) cGblMuIdDATA_eta -> GetListOfPrimitives()->At(1);
   TGraphAsymmErrors* gGblMuIdMC_phi   = (TGraphAsymmErrors*) cGblMuIdMC_phi   -> GetListOfPrimitives()->At(1);
   TGraphAsymmErrors* gGblMuIdDATA_phi = (TGraphAsymmErrors*) cGblMuIdDATA_phi -> GetListOfPrimitives()->At(1);
@@ -214,18 +238,21 @@ void tnp_plots( bool isSave = true ) {
   // Iso DATA2011AB Tight MC_DY Tight
   // Tracker DATA2011AB vs MC-DY
   if(Comparison == 2 || Comparison == 3 || Comparison == 22 || Comparison == 31){
-     tl->AddEntry(gGblMuIdMC, "Drell-Yan Spring15, 50 ns, is "+MCMuonType+" #mu"     ,"lp");
+     //tl->AddEntry(gGblMuIdMC, "#sqrt{s} = 13 TeV with PU reweight"     ,"");
      tl->AddEntry(gGblMuIdMC, "#sqrt{s} = 13 TeV"     ,"");
-     tl->AddEntry(gGblMuIdDATA, "DATA 2015B, is "+MuonType+" #mu"     ,"lp");
-     tl->AddEntry(gGblMuIdDATA, "#int L=40 pb^{-1}, #sqrt{s} = 13 TeV"     ,"");
-     tl_IsoMu20 ->AddEntry(gGblMuIdMC, "Drell-Yan Spring15, 50 ns, isIsoMu20 #mu"     ,"lp");
+     tl->AddEntry(gGblMuIdMC, "DY Madgraph Spring15, "+Bunch+", is "+MCMuonType+" #mu"     ,"lp");
+     tl->AddEntry(gGblMuIdDATA, DataType+", is "+MuonType+" #mu"     ,"lp");
+     //tl->AddEntry(gGblMuIdDATA, "#int L=40 pb^{-1}, #sqrt{s} = 13 TeV"     ,"");
+     //tl_IsoMu20->AddEntry(gGblMuIdMC, "#sqrt{s} = 13 TeV with PU reweight"     ,"");
      tl_IsoMu20->AddEntry(gGblMuIdMC, "#sqrt{s} = 13 TeV"     ,"");
-     tl_IsoMu20->AddEntry(gGblMuIdDATA, "DATA 2015B, is isIsoMu20 #mu"     ,"lp");
-     tl_IsoMu20->AddEntry(gGblMuIdDATA, "#int L=40 pb^{-1}, #sqrt{s} = 13 TeV"     ,"");
-     tl_IsoTkMu20 ->AddEntry(gGblMuIdMC, "Drell-Yan Spring15, 50 ns, isIsoMu20 #mu"     ,"lp");
+     tl_IsoMu20 ->AddEntry(gGblMuIdMC, "DY Madgraph Spring15, "+Bunch+", isIsoMu20 #mu"     ,"lp");
+     tl_IsoMu20->AddEntry(gGblMuIdDATA, DataType+", is isIsoMu20 #mu"     ,"lp");
+     //tl_IsoMu20->AddEntry(gGblMuIdDATA, "#int L=40 pb^{-1}, #sqrt{s} = 13 TeV"     ,"");
+     tl_IsoTkMu20 ->AddEntry(gGblMuIdMC, "DY Madgraph Spring15, "+Bunch+", isIsoMu20 #mu"     ,"lp");
+     //tl_IsoTkMu20->AddEntry(gGblMuIdMC, "#sqrt{s} = 13 TeV with PU reweight"     ,"");
      tl_IsoTkMu20->AddEntry(gGblMuIdMC, "#sqrt{s} = 13 TeV"     ,"");
-     tl_IsoTkMu20->AddEntry(gGblMuIdDATA, "DATA 2015B, is isIsoMu20 #mu"     ,"lp");
-     tl_IsoTkMu20->AddEntry(gGblMuIdDATA, "#int L=40 pb^{-1}, #sqrt{s} = 13 TeV"     ,"");
+     tl_IsoTkMu20->AddEntry(gGblMuIdDATA, DataType+", is isIsoMu20 #mu"     ,"lp");
+     //tl_IsoTkMu20->AddEntry(gGblMuIdDATA, "#int L=40 pb^{-1}, #sqrt{s} = 13 TeV"     ,"");
 
   }
   // MuonID MC_DY Tight vs MC_D_TagMedium Tight
@@ -458,7 +485,7 @@ void tnp_plots( bool isSave = true ) {
   gGblMuIdMC_IsoMu20_eta -> SetMaximum(xmax);
   gGblMuIdMC_IsoMu20_eta -> GetYaxis()-> SetTitleOffset(1.7);
   cGblMuIdvs_IsoMu20_eta->SetLeftMargin(0.15);
-  gGblMuIdMC_IsoMu20_eta ->GetXaxis() -> SetRangeUser(0., 2.4);
+  gGblMuIdMC_IsoMu20_eta ->GetXaxis() -> SetRangeUser(-2.4, 2.4);
 
   gGblMuIdMC_IsoMu20_eta -> SetFillColor(629);
   gGblMuIdMC_IsoMu20_eta -> SetLineColor(629);
@@ -554,7 +581,7 @@ void tnp_plots( bool isSave = true ) {
 
   // print pictures
   cGblMuIdvsPt  -> SaveAs(png+EffType+"_"+sample_data+"_"+sample_mc+"_pt"+ptCut+".png"); 
-  cGblMuIdvs_eta  -> SaveAs(png+EffType+"_"+sample_data+"_"+sample_mc+"_abseta"+ptCut+".png"); 
+  cGblMuIdvs_eta  -> SaveAs(png+EffType+"_"+sample_data+"_"+sample_mc+"_eta"+ptCut+".png"); 
   cGblMuIdvs_phi  -> SaveAs(png+EffType+"_"+sample_data+"_"+sample_mc+"_phi"+ptCut+".png"); 
   cGblMuIdvs_tag_nVertices  -> SaveAs(png+EffType+"_"+sample_data+"_"+sample_mc+"_nVertices"+ptCut+".png"); 
   cGblMuIdvs_IsoMu20_pt  -> SaveAs(png+EffType+"_"+sample_data+"_"+sample_mc+"_IsoMu20_pt"+ptCut+".png"); 
@@ -568,7 +595,7 @@ void tnp_plots( bool isSave = true ) {
   // print root files
 
   cGblMuIdvsPt  -> SaveAs(rootPlot+EffType+"_"+sample_data+"_"+sample_mc+"_pt"+ptCut+".root"); 
-  cGblMuIdvs_eta  -> SaveAs(rootPlot+EffType+"_"+sample_data+"_"+sample_mc+"_abseta"+ptCut+".root"); 
+  cGblMuIdvs_eta  -> SaveAs(rootPlot+EffType+"_"+sample_data+"_"+sample_mc+"_eta"+ptCut+".root"); 
   cGblMuIdvs_phi  -> SaveAs(rootPlot+EffType+"_"+sample_data+"_"+sample_mc+"_phi"+ptCut+".root"); 
   cGblMuIdvs_tag_nVertices  -> SaveAs(rootPlot+EffType+"_"+sample_data+"_"+sample_mc+"_nVertices"+ptCut+".root"); 
   cGblMuIdvs_IsoMu20_pt  -> SaveAs(rootPlot+EffType+"_"+sample_data+"_"+sample_mc+"_IsoMu20_pt"+ptCut+".root"); 

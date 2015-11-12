@@ -54,8 +54,8 @@ void tnp_nVer( bool isSave = true ) {
   TString pathAnna="/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_4_14/src/TagAndProbeLepton/Muons/eff_tnp/";
 
 
-  //TString PU = "noPU";//for Data
-  TString PU = "withPU";//for Data
+  TString PU = "noPU";//for Data
+  //TString PU = "withPU";//for Data
 
   //TString Bunch = "50ns";
   TString Bunch = "25ns";
@@ -81,7 +81,7 @@ void tnp_nVer( bool isSave = true ) {
    hMC_nVer->Sumw2();
    TH1F *hData_nVer = new TH1F("hData_nVer","Data #Vertices",50,-0.5,49.5);
    hData_nVer->Sumw2();
-   TH1F *hData_pt = new TH1F("hData_pt","Data probe pt",100,-0.5,99.5);
+   TH1F *hData_pt = new TH1F("hData_pt","Data probe pt",100,-0.5,199.5);
    hData_pt->Sumw2();
 
 
