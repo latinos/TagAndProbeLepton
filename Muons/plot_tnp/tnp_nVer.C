@@ -93,7 +93,7 @@ void tnp_nVer( bool isSave = true ) {
    if(PU== "withPU")tMC.Draw("tag_nVertices>>hMC_nVer","weight*(tag_IsoMu20>0 && pt>10)");
    tData.Draw("tag_nVertices>>hData_nVer","tag_IsoMu20>0 && pt>10");
 
-   tData.Draw("pt>>hData_pt","tag_IsoMu20>0");
+   tData.Draw("pt>>hData_pt","tag_IsoMu20>0 && tag_pt>22 && Medium");
 
 
    hMC_nVer->Scale(1.0/hMC_nVer->Integral());

@@ -87,6 +87,7 @@ void tnp_plots( bool isSave = true ) {
   TString MCType = "DY"; 
 
   TString Title = "Tag #mu: is Tight, Probe #mu: "; 
+  TString Title_ISO = "Tag #mu: match to trigger, Probe #mu: Medium & "; 
   TString Title_trigger = "Tag #mu: match to trigger, Probe #mu: MuonID+ISO &"; 
   TString ptCut= ""; 
      // 
@@ -136,6 +137,9 @@ void tnp_plots( bool isSave = true ) {
   TFile* tnpGblMuIdMC   = TFile::Open(pathAnna+"TnP_"+EffType+"_"+MCType+Bunch+"Like"+DataType+"_"+Bunch+".root" );
   TFile* tnpGblMuIdDATA   = TFile::Open(pathAnna+"TnP_"+EffType+"_"+DataType+"_"+Bunch+".root" );
 
+  TFile* tnpGblMuIdMC_ISO   = TFile::Open(pathAnna+"TnP_ISO_"+EffType+"_"+MCType+Bunch+"Like"+DataType+"_"+Bunch+".root" );
+  TFile* tnpGblMuIdDATA_ISO   = TFile::Open(pathAnna+"TnP_ISO_"+EffType+"_"+DataType+"_"+Bunch+".root" );
+
 
   std::cout << std::endl;
   std::cout<<" * GBLMUID MC   ="<<tnpGblMuIdMC  ->GetName()<<" >> "<<tnpGblMuIdMC  <<std::endl;
@@ -155,6 +159,10 @@ void tnp_plots( bool isSave = true ) {
   TCanvas* cGblMuIdDATA_phi = (TCanvas*) tnpGblMuIdDATA->Get("tpTree/phi_"+MuonType+ptCut+"/fit_eff_plots/phi_PLOT_tag_IsoMu20_pass"+index_data);
   TCanvas* cGblMuIdMC_tag_nVertices   = (TCanvas*) tnpGblMuIdMC  ->Get("tpTree/tag_nVertices_"+MCMuonType+ptCut+"/fit_eff_plots/tag_nVertices_PLOT_tag_IsoMu20_pass"+index_mc);
   TCanvas* cGblMuIdDATA_tag_nVertices = (TCanvas*) tnpGblMuIdDATA->Get("tpTree/tag_nVertices_"+MuonType+ptCut+"/fit_eff_plots/tag_nVertices_PLOT_tag_IsoMu20_pass"+index_data);
+
+  TCanvas* cGblMuIdDATA_noCut = (TCanvas*) tnpGblMuIdDATA->Get("tpTree/pt_"+MuonType+"/fit_eff_plots/pt_PLOT_tag_IsoMu20_pass");
+  TCanvas* cGblMuIdDATA_ptLt20 = (TCanvas*) tnpGblMuIdDATA->Get("tpTree/pt_"+MuonType+"_ptLt20/fit_eff_plots/pt_PLOT_tag_IsoMu20_pass");
+  TCanvas* cGblMuIdDATA_ptGt20 = (TCanvas*) tnpGblMuIdDATA->Get("tpTree/pt_"+MuonType+"_ptGt20/fit_eff_plots/pt_PLOT_tag_IsoMu20_pass");
 
   //TCanvas* cGblMuIdMC_IsoMu20_pt   = (TCanvas*) tnpGblMuIdMC    ->Get("tpTree/IsoMu20_pt_Tight2012"+ptCut+"/fit_eff_plots/pt_PLOT_Tight2012_pass_&_tag_IsoMu20_pass"+index_mc);
   //TCanvas* cGblMuIdDATA_IsoMu20_pt = (TCanvas*) tnpGblMuIdDATA  ->Get("tpTree/IsoMu20_pt_Tight2012"+ptCut+"/fit_eff_plots/pt_PLOT_Tight2012_pass_&_tag_IsoMu20_pass"+index_data);
@@ -177,6 +185,18 @@ void tnp_plots( bool isSave = true ) {
   //TCanvas* cGblMuIdMC_tag_nVertices   = (TCanvas*) tnpGblMuIdMC  ->Get(EffType+"/tag_nVertices_pt45/fit_eff_plots/tag_nVertices_PLOT_eta_bin0_&_pt_bin0"+index_mc);
   //TCanvas* cGblMuIdDATA_tag_nVertices   = (TCanvas*) tnpGblMuIdDATA  ->Get(EffType+"/tag_nVertices_pt45/fit_eff_plots/tag_nVertices_PLOT_eta_bin0_&_pt_bin0"+index_data);
 
+
+  //Isolation
+  TCanvas* cGblMuIdMC_ISO_tight   = (TCanvas*) tnpGblMuIdMC_ISO  ->Get("tpTree/Iso_pt_tight/fit_eff_plots/pt_PLOT_"+MCMuonType+"_pass_&_tag_IsoMu20_pass"+index_mc);
+  TCanvas* cGblMuIdDATA_ISO_tight = (TCanvas*) tnpGblMuIdDATA_ISO->Get("tpTree/Iso_pt_tight/fit_eff_plots/pt_PLOT_"+MuonType+"_pass_&_tag_IsoMu20_pass"+index_data);
+  TCanvas* cGblMuIdMC_ISO_tight_tag_nVertices   = (TCanvas*) tnpGblMuIdMC_ISO  ->Get("tpTree/Iso_vtx_tight/fit_eff_plots/tag_nVertices_PLOT_"+MCMuonType+"_pass_&_tag_IsoMu20_pass"+index_mc);
+  TCanvas* cGblMuIdDATA_ISO_tight_tag_nVertices = (TCanvas*) tnpGblMuIdDATA_ISO->Get("tpTree/Iso_vtx_tight/fit_eff_plots/tag_nVertices_PLOT_"+MuonType+"_pass_&_tag_IsoMu20_pass"+index_data);
+
+  TCanvas* cGblMuIdMC_ISO_loose   = (TCanvas*) tnpGblMuIdMC_ISO  ->Get("tpTree/Iso_pt_loose/fit_eff_plots/pt_PLOT_"+MCMuonType+"_pass_&_tag_IsoMu20_pass"+index_mc);
+  TCanvas* cGblMuIdDATA_ISO_loose = (TCanvas*) tnpGblMuIdDATA_ISO->Get("tpTree/Iso_pt_loose/fit_eff_plots/pt_PLOT_"+MuonType+"_pass_&_tag_IsoMu20_pass"+index_data);
+
+
+
   // and the graph afterwards
 
   TGraphAsymmErrors* gGblMuIdMC   = (TGraphAsymmErrors*) cGblMuIdMC   -> GetListOfPrimitives()->At(1);
@@ -191,6 +211,12 @@ void tnp_plots( bool isSave = true ) {
   //TGraphAsymmErrors* gGblMuIdDATA_pair_deltaR   = (TGraphAsymmErrors*) cGblMuIdDATA_pair_deltaR   -> GetListOfPrimitives()->At(1);
   TGraphAsymmErrors* gGblMuIdMC_tag_nVertices   = (TGraphAsymmErrors*) cGblMuIdMC_tag_nVertices   -> GetListOfPrimitives()->At(1);
   TGraphAsymmErrors* gGblMuIdDATA_tag_nVertices   = (TGraphAsymmErrors*) cGblMuIdDATA_tag_nVertices   -> GetListOfPrimitives()->At(1);
+
+  TGraphAsymmErrors* gGblMuIdDATA_noCut = (TGraphAsymmErrors*) cGblMuIdDATA_noCut -> GetListOfPrimitives()->At(1);
+  TGraphAsymmErrors* gGblMuIdDATA_ptLt20 = (TGraphAsymmErrors*) cGblMuIdDATA_ptLt20 -> GetListOfPrimitives()->At(1);
+  TGraphAsymmErrors* gGblMuIdDATA_ptGt20 = (TGraphAsymmErrors*) cGblMuIdDATA_ptGt20 -> GetListOfPrimitives()->At(1);
+
+  //Trigger
   TGraphAsymmErrors* gGblMuIdMC_IsoMu20_pt   = (TGraphAsymmErrors*) cGblMuIdMC_IsoMu20_pt   -> GetListOfPrimitives()->At(1);
   TGraphAsymmErrors* gGblMuIdDATA_IsoMu20_pt   = (TGraphAsymmErrors*) cGblMuIdDATA_IsoMu20_pt   -> GetListOfPrimitives()->At(1);
   TGraphAsymmErrors* gGblMuIdMC_IsoMu20_eta   = (TGraphAsymmErrors*) cGblMuIdMC_IsoMu20_eta   -> GetListOfPrimitives()->At(1);
@@ -199,6 +225,14 @@ void tnp_plots( bool isSave = true ) {
   TGraphAsymmErrors* gGblMuIdDATA_IsoMu20_phi   = (TGraphAsymmErrors*) cGblMuIdDATA_IsoMu20_phi   -> GetListOfPrimitives()->At(1);
   TGraphAsymmErrors* gGblMuIdMC_IsoMu20_tag_nVertices   = (TGraphAsymmErrors*) cGblMuIdMC_IsoMu20_tag_nVertices   -> GetListOfPrimitives()->At(1);
   TGraphAsymmErrors* gGblMuIdDATA_IsoMu20_tag_nVertices   = (TGraphAsymmErrors*) cGblMuIdDATA_IsoMu20_tag_nVertices   -> GetListOfPrimitives()->At(1);
+  // Isolation
+  TGraphAsymmErrors* gGblMuIdMC_ISO_tight   = (TGraphAsymmErrors*) cGblMuIdMC_ISO_tight   -> GetListOfPrimitives()->At(1);
+  TGraphAsymmErrors* gGblMuIdDATA_ISO_tight = (TGraphAsymmErrors*) cGblMuIdDATA_ISO_tight -> GetListOfPrimitives()->At(1);
+  TGraphAsymmErrors* gGblMuIdMC_ISO_tight_tag_nVertices   = (TGraphAsymmErrors*) cGblMuIdMC_ISO_tight_tag_nVertices   -> GetListOfPrimitives()->At(1);
+  TGraphAsymmErrors* gGblMuIdDATA_ISO_tight_tag_nVertices = (TGraphAsymmErrors*) cGblMuIdDATA_ISO_tight_tag_nVertices -> GetListOfPrimitives()->At(1);
+  TGraphAsymmErrors* gGblMuIdMC_ISO_loose   = (TGraphAsymmErrors*) cGblMuIdMC_ISO_loose   -> GetListOfPrimitives()->At(1);
+  TGraphAsymmErrors* gGblMuIdDATA_ISO_loose = (TGraphAsymmErrors*) cGblMuIdDATA_ISO_loose -> GetListOfPrimitives()->At(1);
+
   std::cout <<"test1"<< std::endl;
   ErrorCheck(gGblMuIdMC);
   ErrorCheck(gGblMuIdDATA);
@@ -210,6 +244,13 @@ void tnp_plots( bool isSave = true ) {
   //ErrorCheck(gGblMuIdDATA_pair_deltaR);
   ErrorCheck(gGblMuIdMC_tag_nVertices);
   ErrorCheck(gGblMuIdDATA_tag_nVertices);
+
+  ErrorCheck(gGblMuIdDATA_noCut);
+  ErrorCheck(gGblMuIdDATA_ptLt20);
+  ErrorCheck(gGblMuIdDATA_ptGt20);
+
+
+  // Trigger
   ErrorCheck(gGblMuIdMC_IsoMu20_pt);
   ErrorCheck(gGblMuIdDATA_IsoMu20_pt);
   ErrorCheck(gGblMuIdMC_IsoMu20_eta);
@@ -218,13 +259,23 @@ void tnp_plots( bool isSave = true ) {
   ErrorCheck(gGblMuIdDATA_IsoMu20_phi);
   ErrorCheck(gGblMuIdMC_IsoMu20_tag_nVertices);
   ErrorCheck(gGblMuIdDATA_IsoMu20_tag_nVertices);
+  //Isolation
+  ErrorCheck(gGblMuIdMC_ISO_tight);
+  ErrorCheck(gGblMuIdDATA_ISO_tight);
+  ErrorCheck(gGblMuIdMC_ISO_tight_tag_nVertices);
+  ErrorCheck(gGblMuIdDATA_ISO_tight_tag_nVertices);
+  ErrorCheck(gGblMuIdMC_ISO_loose);
+  ErrorCheck(gGblMuIdDATA_ISO_loose);
 
   // ------------------------------------------------------------------------------
 
   //TLegend* tl = SetLegend(0.27, 0.12, 0.54, 0.36);
   TLegend* tl = SetLegend(0.2, 0.15, 0.47, 0.39);
+  TLegend* tl_Cut = SetLegend(0.15, 0.15, 0.47, 0.39);
   TLegend* tl_IsoMu20 = SetLegend(0.2, 0.15, 0.47, 0.39);
   TLegend* tl_IsoTkMu20 = SetLegend(0.2, 0.15, 0.47, 0.39);
+  TLegend* tl_ISO_tight = SetLegend(0.2, 0.15, 0.47, 0.39);
+  TLegend* tl_ISO_loose = SetLegend(0.2, 0.15, 0.47, 0.39);
   // MuonID DATA2011AB Tight vs Medium
   // Iso DATA2011AB Tight vs Medium
   if(Comparison == 1 || Comparison == 21){ 
@@ -243,6 +294,12 @@ void tnp_plots( bool isSave = true ) {
      tl->AddEntry(gGblMuIdMC, "DY Madgraph Spring15, "+Bunch+", is "+MCMuonType+" #mu"     ,"lp");
      tl->AddEntry(gGblMuIdDATA, DataType+", is "+MuonType+" #mu"     ,"lp");
      //tl->AddEntry(gGblMuIdDATA, "#int L=40 pb^{-1}, #sqrt{s} = 13 TeV"     ,"");
+
+     tl_Cut->AddEntry(gGblMuIdDATA_noCut, "#sqrt{s} = 13 TeV"     ,"");
+     tl_Cut->AddEntry(gGblMuIdDATA_noCut, DataType+", is "+MuonType+" #mu"     ,"lp");
+     tl_Cut->AddEntry(gGblMuIdDATA_ptLt20, DataType+", is "+MuonType+" #mu & |dZ|<0.1 & |dB|< 0.01"     ,"lp");
+     tl_Cut->AddEntry(gGblMuIdDATA_ptGt20, DataType+", is "+MuonType+" #mu & |dZ|<0.1 & |dB|< 0.02"     ,"lp");
+
      //tl_IsoMu20->AddEntry(gGblMuIdMC, "#sqrt{s} = 13 TeV with PU reweight"     ,"");
      tl_IsoMu20->AddEntry(gGblMuIdMC, "#sqrt{s} = 13 TeV"     ,"");
      tl_IsoMu20 ->AddEntry(gGblMuIdMC, "DY Madgraph Spring15, "+Bunch+", isIsoMu20 #mu"     ,"lp");
@@ -253,7 +310,16 @@ void tnp_plots( bool isSave = true ) {
      tl_IsoTkMu20->AddEntry(gGblMuIdMC, "#sqrt{s} = 13 TeV"     ,"");
      tl_IsoTkMu20->AddEntry(gGblMuIdDATA, DataType+", is isIsoMu20 #mu"     ,"lp");
      //tl_IsoTkMu20->AddEntry(gGblMuIdDATA, "#int L=40 pb^{-1}, #sqrt{s} = 13 TeV"     ,"");
+     //Isolation
+     tl_ISO_tight->AddEntry(gGblMuIdMC, "#sqrt{s} = 13 TeV"     ,"");
+     tl_ISO_tight->AddEntry(gGblMuIdMC, "DY Madgraph Spring15, "+Bunch+", is ISO tight #mu"     ,"lp");
+     tl_ISO_tight->AddEntry(gGblMuIdDATA, DataType+", is ISO tight #mu"     ,"lp");
+     //tl_ISO_tight->AddEntry(gGblMuIdDATA, "#int L=40 pb^{-1}, #sqrt{s} = 13 TeV"     ,"");
 
+     tl_ISO_loose->AddEntry(gGblMuIdMC, "#sqrt{s} = 13 TeV"     ,"");
+     tl_ISO_loose->AddEntry(gGblMuIdMC, "DY Madgraph Spring15, "+Bunch+", is ISO loose #mu"     ,"lp");
+     tl_ISO_loose->AddEntry(gGblMuIdDATA, DataType+", is ISO loose #mu"     ,"lp");
+     //tl_ISO_loose->AddEntry(gGblMuIdDATA, "#int L=40 pb^{-1}, #sqrt{s} = 13 TeV"     ,"");
   }
   // MuonID MC_DY Tight vs MC_D_TagMedium Tight
   if(Comparison == 4){
@@ -304,6 +370,43 @@ void tnp_plots( bool isSave = true ) {
   else if ( ptCut== "_ptLt20") PrintIt(cGblMuIdvsPt, Title+"|#eta| < 2.4 && 10 < p_T < 20 GeV");
   else PrintIt(cGblMuIdvsPt, Title+"|#eta| < 2.4 && p_T > 10 GeV");
  
+//////////////////////////////
+
+
+  TCanvas* cGblMuIdvsPt_Cut = new TCanvas("cGblMuIdvsPt_Cut", "", 650, 0, 600, 600);
+  gGblMuIdDATA_noCut -> SetMinimum(0.9);
+  gGblMuIdDATA_noCut -> SetMaximum(xmax);
+  gGblMuIdDATA_noCut -> GetYaxis()-> SetTitleOffset(1.7);
+  cGblMuIdvsPt_Cut->SetLeftMargin(0.15);
+  gGblMuIdDATA_noCut ->GetXaxis() -> SetRangeUser(10., 100.);
+
+  gGblMuIdDATA_noCut -> SetFillColor(629);
+  gGblMuIdDATA_noCut -> SetLineColor(629);
+
+  gGblMuIdDATA_noCut -> GetXaxis()-> SetTitle("Probe P_{T} [GeV]");
+  gGblMuIdDATA_noCut -> GetYaxis()-> SetTitle("Efficiency");
+
+  gGblMuIdDATA_noCut -> GetXaxis()-> SetNdivisions(509);
+  gGblMuIdDATA_noCut -> GetYaxis()-> SetNdivisions(514);
+
+
+  cGblMuIdvsPt_Cut->SetGridx();
+  cGblMuIdvsPt_Cut->SetGridy();
+
+  gGblMuIdDATA_noCut   -> SetMarkerStyle(21);
+  gGblMuIdDATA_noCut   -> SetMarkerColor(kRed);
+  gGblMuIdDATA_noCut   -> Draw(MCPlot);
+  gGblMuIdDATA_ptLt20 -> Draw("P");
+
+  gGblMuIdDATA_ptGt20   -> SetMarkerStyle(22);
+  gGblMuIdDATA_ptGt20   -> SetMarkerColor(kBlue);
+  gGblMuIdDATA_ptGt20 -> SetLineColor(kBlue);
+  gGblMuIdDATA_ptGt20 -> Draw("P");
+
+  tl_Cut->Draw("same");
+  PrintIt(cGblMuIdvsPt, Title+"|#eta| < 2.4 && p_T > 10 GeV");
+
+
 //////////////////////////////
  // eta pt45 GBL + Muon ID
   TCanvas* cGblMuIdvs_eta = new TCanvas("cGblMuIdvs_eta", "", 650, 0, 600, 600);
@@ -573,14 +676,118 @@ void tnp_plots( bool isSave = true ) {
   else PrintIt(cGblMuIdvs_IsoMu20_tag_nVertices, Title_trigger+"|#eta| < 2.4 && p_T > 22 GeV");
 
 ////////////////////////////////
+////////////////////////////////
+////// Isolation ///////////////
+////////////////////////////////
 
 
+  TCanvas* cGblMuIdvsPt_ISO_tight = new TCanvas("cGblMuIdvsPt_ISO_tight", "", 650, 0, 600, 600);
+  //gGblMuIdMC_ISO_tight -> SetMinimum(xmin);
+  gGblMuIdMC_ISO_tight -> SetMinimum(0.5);
+  gGblMuIdMC_ISO_tight -> SetMaximum(xmax);
+  gGblMuIdMC_ISO_tight -> GetYaxis()-> SetTitleOffset(1.7);
+  cGblMuIdvsPt_ISO_tight->SetLeftMargin(0.15);
+  gGblMuIdMC_ISO_tight ->GetXaxis() -> SetRangeUser(10., 100.);
+
+  gGblMuIdMC_ISO_tight -> SetFillColor(629);
+  gGblMuIdMC_ISO_tight -> SetLineColor(629);
+
+  gGblMuIdMC_ISO_tight -> GetXaxis()-> SetTitle("Probe P_{T} [GeV]");
+  gGblMuIdMC_ISO_tight -> GetYaxis()-> SetTitle("Efficiency");
+
+  gGblMuIdMC_ISO_tight -> GetXaxis()-> SetNdivisions(509);
+  gGblMuIdMC_ISO_tight -> GetYaxis()-> SetNdivisions(514);
+
+
+  cGblMuIdvsPt_ISO_tight->SetGridx();
+  cGblMuIdvsPt_ISO_tight->SetGridy();
+
+  gGblMuIdMC_ISO_tight   -> SetMarkerStyle(21);
+  gGblMuIdMC_ISO_tight   -> SetMarkerColor(kRed);
+  gGblMuIdMC_ISO_tight   -> Draw(MCPlot);
+  gGblMuIdDATA_ISO_tight -> Draw("P");
+
+  tl_ISO_tight->Draw("same");
+  if ( ptCut== "_ptGt20") PrintIt(cGblMuIdvsPt_ISO_tight, Title_ISO+"|#eta| < 2.4 && p_T > 20 GeV");
+  else if ( ptCut== "_ptLt20") PrintIt(cGblMuIdvsPt_ISO_tight, Title_ISO+"|#eta| < 2.4 && 10 < p_T < 20 GeV");
+  else PrintIt(cGblMuIdvsPt_ISO_tight, Title_ISO+"|#eta| < 2.4 && p_T > 10 GeV");
+
+
+////////////////////////////////
+  TCanvas* cGblMuIdvsPt_ISO_tight_tag_nVertices = new TCanvas("cGblMuIdvsPt_ISO_tight_tag_nVertices", "", 650, 0, 600, 600);
+  gGblMuIdMC_ISO_tight_tag_nVertices -> SetMinimum(xmin);
+  //gGblMuIdMC_ISO_tight_tag_nVertices -> SetMinimum(0.5);
+  gGblMuIdMC_ISO_tight_tag_nVertices -> SetMaximum(xmax);
+  gGblMuIdMC_ISO_tight_tag_nVertices -> GetYaxis()-> SetTitleOffset(1.7);
+  cGblMuIdvsPt_ISO_tight_tag_nVertices->SetLeftMargin(0.15);
+  gGblMuIdMC_ISO_tight_tag_nVertices ->GetXaxis() -> SetRangeUser(0.5, 25.5);
+
+  gGblMuIdMC_ISO_tight_tag_nVertices -> SetFillColor(629);
+  gGblMuIdMC_ISO_tight_tag_nVertices -> SetLineColor(629);
+
+  gGblMuIdMC_ISO_tight_tag_nVertices -> GetXaxis()-> SetTitle("# Vertices");
+  gGblMuIdMC_ISO_tight_tag_nVertices -> GetYaxis()-> SetTitle("Efficiency");
+
+  gGblMuIdMC_ISO_tight_tag_nVertices -> GetXaxis()-> SetNdivisions(509);
+  gGblMuIdMC_ISO_tight_tag_nVertices -> GetYaxis()-> SetNdivisions(514);
+
+
+  cGblMuIdvsPt_ISO_tight_tag_nVertices->SetGridx();
+  cGblMuIdvsPt_ISO_tight_tag_nVertices->SetGridy();
+
+  gGblMuIdMC_ISO_tight_tag_nVertices   -> SetMarkerStyle(21);
+  gGblMuIdMC_ISO_tight_tag_nVertices   -> SetMarkerColor(kRed);
+  gGblMuIdMC_ISO_tight_tag_nVertices   -> Draw(MCPlot);
+  gGblMuIdDATA_ISO_tight_tag_nVertices -> Draw("P");
+
+  tl_ISO_tight->Draw("same");
+  if ( ptCut== "_ptGt20") PrintIt(cGblMuIdvsPt_ISO_tight_tag_nVertices, Title_ISO+"|#eta| < 2.4 && p_T > 20 GeV");
+  else if ( ptCut== "_ptLt20") PrintIt(cGblMuIdvsPt_ISO_tight_tag_nVertices, Title_ISO+"|#eta| < 2.4 && 10 < p_T < 20 GeV");
+  else PrintIt(cGblMuIdvsPt_ISO_tight_tag_nVertices, Title_ISO+"|#eta| < 2.4 && p_T > 10 GeV");
+
+
+////////////////////////////////
+
+  TCanvas* cGblMuIdvsPt_ISO_loose = new TCanvas("cGblMuIdvsPt_ISO_loose", "", 650, 0, 600, 600);
+  //gGblMuIdMC_ISO_loose -> SetMinimum(xmin);
+  gGblMuIdMC_ISO_loose -> SetMinimum(0.5);
+  gGblMuIdMC_ISO_loose -> SetMaximum(xmax);
+  gGblMuIdMC_ISO_loose -> GetYaxis()-> SetTitleOffset(1.7);
+  cGblMuIdvsPt_ISO_loose->SetLeftMargin(0.15);
+  gGblMuIdMC_ISO_loose ->GetXaxis() -> SetRangeUser(10., 100.);
+
+  gGblMuIdMC_ISO_loose -> SetFillColor(629);
+  gGblMuIdMC_ISO_loose -> SetLineColor(629);
+
+  gGblMuIdMC_ISO_loose -> GetXaxis()-> SetTitle("Probe P_{T} [GeV]");
+  gGblMuIdMC_ISO_loose -> GetYaxis()-> SetTitle("Efficiency");
+
+  gGblMuIdMC_ISO_loose -> GetXaxis()-> SetNdivisions(509);
+  gGblMuIdMC_ISO_loose -> GetYaxis()-> SetNdivisions(514);
+
+
+  cGblMuIdvsPt_ISO_loose->SetGridx();
+  cGblMuIdvsPt_ISO_loose->SetGridy();
+
+  gGblMuIdMC_ISO_loose   -> SetMarkerStyle(21);
+  gGblMuIdMC_ISO_loose   -> SetMarkerColor(kRed);
+  gGblMuIdMC_ISO_loose   -> Draw(MCPlot);
+  gGblMuIdDATA_ISO_loose -> Draw("P");
+
+  tl_ISO_loose->Draw("same");
+  if ( ptCut== "_ptGt20") PrintIt(cGblMuIdvsPt_ISO_loose, Title_ISO+"|#eta| < 2.4 && p_T > 20 GeV");
+  else if ( ptCut== "_ptLt20") PrintIt(cGblMuIdvsPt_ISO_loose, Title_ISO+"|#eta| < 2.4 && 10 < p_T < 20 GeV");
+  else PrintIt(cGblMuIdvsPt_ISO_loose, Title_ISO+"|#eta| < 2.4 && p_T > 10 GeV");
+
+
+////////////////////////////////
 
 
   if (!isSave) return;
 
   // print pictures
   cGblMuIdvsPt  -> SaveAs(png+EffType+"_"+sample_data+"_"+sample_mc+"_pt"+ptCut+".png"); 
+  cGblMuIdvsPt_Cut  -> SaveAs(png+EffType+"_"+sample_data+"_"+sample_mc+"_pt_CutTest.png"); 
   cGblMuIdvs_eta  -> SaveAs(png+EffType+"_"+sample_data+"_"+sample_mc+"_eta"+ptCut+".png"); 
   cGblMuIdvs_phi  -> SaveAs(png+EffType+"_"+sample_data+"_"+sample_mc+"_phi"+ptCut+".png"); 
   cGblMuIdvs_tag_nVertices  -> SaveAs(png+EffType+"_"+sample_data+"_"+sample_mc+"_nVertices"+ptCut+".png"); 
@@ -592,9 +799,15 @@ void tnp_plots( bool isSave = true ) {
   //cGblMuIdvs_phi  -> SaveAs(png+sample_data+"_"+sample_mc+"_phi.png"); 
   //cGblMuIdvs_tag_nVertices  -> SaveAs(png+sample_data+"_"+sample_mc+"_nVertices.png"); 
   //cGblMuIdvs_pair_deltaR  -> SaveAs(png+sample_data+"_"+sample_mc+"_deltaR.png"); 
+  // Isolation
+  cGblMuIdvsPt_ISO_tight  -> SaveAs(png+EffType+"_"+sample_data+"_"+sample_mc+"ISO_tight_pt"+ptCut+".png");  
+  cGblMuIdvsPt_ISO_tight_tag_nVertices  -> SaveAs(png+EffType+"_"+sample_data+"_"+sample_mc+"ISO_tight_tag_nVertices"+ptCut+".png");  
+  cGblMuIdvsPt_ISO_loose  -> SaveAs(png+EffType+"_"+sample_data+"_"+sample_mc+"ISO_loose_pt"+ptCut+".png");  
+
   // print root files
 
   cGblMuIdvsPt  -> SaveAs(rootPlot+EffType+"_"+sample_data+"_"+sample_mc+"_pt"+ptCut+".root"); 
+  cGblMuIdvsPt_Cut  -> SaveAs(rootPlot+EffType+"_"+sample_data+"_"+sample_mc+"_pt_CutTest.root"); 
   cGblMuIdvs_eta  -> SaveAs(rootPlot+EffType+"_"+sample_data+"_"+sample_mc+"_eta"+ptCut+".root"); 
   cGblMuIdvs_phi  -> SaveAs(rootPlot+EffType+"_"+sample_data+"_"+sample_mc+"_phi"+ptCut+".root"); 
   cGblMuIdvs_tag_nVertices  -> SaveAs(rootPlot+EffType+"_"+sample_data+"_"+sample_mc+"_nVertices"+ptCut+".root"); 
@@ -602,10 +815,15 @@ void tnp_plots( bool isSave = true ) {
   cGblMuIdvs_IsoMu20_eta  -> SaveAs(rootPlot+EffType+"_"+sample_data+"_"+sample_mc+"_IsoMu20_eta"+ptCut+".root"); 
   cGblMuIdvs_IsoMu20_phi  -> SaveAs(rootPlot+EffType+"_"+sample_data+"_"+sample_mc+"_IsoMu20_phi"+ptCut+".root"); 
   cGblMuIdvs_IsoMu20_tag_nVertices  -> SaveAs(rootPlot+EffType+"_"+sample_data+"_"+sample_mc+"_IsoMu20_tag_nVertices"+ptCut+".root"); 
+  //Isolation
+  cGblMuIdvsPt_ISO_tight  -> SaveAs(rootPlot+EffType+"_"+sample_data+"_"+sample_mc+"ISO_tight_pt"+ptCut+".root");  
+  cGblMuIdvsPt_ISO_tight_tag_nVertices  -> SaveAs(rootPlot+EffType+"_"+sample_data+"_"+sample_mc+"ISO_tight_tag_nVertices"+ptCut+".root");  
+  cGblMuIdvsPt_ISO_loose  -> SaveAs(rootPlot+EffType+"_"+sample_data+"_"+sample_mc+"ISO_loose_pt"+ptCut+".root");  
   //cGblMuIdvs_eta  -> SaveAs(rootPlot+sample_data+"_"+sample_mc+"_eta.root"); 
   //cGblMuIdvs_phi  -> SaveAs(rootPlot+sample_data+"_"+sample_mc+"_phi.root"); 
   //cGblMuIdvs_tag_nVertices  -> SaveAs(rootPlot+sample_data+"_"+sample_mc+"_nVertices.root"); 
   //cGblMuIdvs_pair_deltaR  -> SaveAs(rootPlot+sample_data+"_"+sample_mc+"_deltaR.root"); 
+
 }
 
 //////////////////////////////////////////

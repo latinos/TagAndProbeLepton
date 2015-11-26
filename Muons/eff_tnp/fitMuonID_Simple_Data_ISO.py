@@ -6,14 +6,14 @@ FitFunction = "vpvPlusExpo"
 #isMuonSel = 'Tight2012'
 isMuonSel = 'Medium'
 
-DataOpen ="0"; # 1 - Open data; 0 - Open MC
+DataOpen ="1"; # 1 - Open data; 0 - Open MC
 #MCType = "DY";
 MCType = "DY_madgraph";
 
-Bunch = "50ns";
+#Bunch = "50ns";
 #DataType = "Run2015B";
 
-#Bunch = "25ns";
+Bunch = "25ns";
 DataType = "Run2015D";
 
 
@@ -105,372 +105,20 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
         IsoTkMu20 = cms.vstring("IsoTkMu20 probe Muon", "dummy[pass=1,fail=0]"),
         tag_IsoTkMu20 = cms.vstring("tag_IsoTkMu20 tag Muon", "dummy[pass=1,fail=0]"),
     ),
-    ## What to fit
+    ## PDF for signal and background (double voigtian + exponential background)
+    PDFs = cms.PSet(
+        vpvPlusExpo = cms.vstring(
+            "Voigtian::signal1(mass, mean1[90,80,100], width[2.495], sigma1[2,1,3])",
+            "Voigtian::signal2(mass, mean2[90,80,100], width,        sigma2[4,2,10])",
+            "SUM::signal(vFrac[0.8,0,1]*signal1, signal2)",
+            "Exponential::backgroundPass(mass, lp[-0.1,-1,0.1])",
+            "Exponential::backgroundFail(mass, lf[-0.1,-1,0.1])",
+            "efficiency[0.9,0,1]",
+            "signalFractionInPassing[0.9]"
+        ),
+    ),
+
     Efficiencies = cms.PSet(
-    #    PF_pt_eta = cms.PSet(
-    #        UnbinnedVariables = cms.vstring("mass"),
-    #        EfficiencyCategoryAndState = cms.vstring("PF", "pass"), ## Numerator definition
-    #        BinnedVariables = cms.PSet(
-    #            ## Binning in continuous variables
-    #            pt     = cms.vdouble( 10, 20, 30, 40, 60, 100 ),
-    #            abseta = cms.vdouble( 0.0, 1.2, 2.4),
-    #            ## flags and conditions required at the denominator, 
-    #            tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-    #            pair_dz = cms.vdouble(-1.,1.)             ## and for which -1.0 < dz < 1.0
-    #        ),
-    #        BinToPDFmap = cms.vstring("vpvPlusExpo"), ## PDF to use, as defined below
-    #    ),
-
-
-########
-        IsoMu20_ptVSeta_Medium = cms.PSet(
-            UnbinnedVariables = cms.vstring("mass"),
-            EfficiencyCategoryAndState = cms.vstring("IsoMu20", "pass"), ## Numerator definition
-            #EfficiencyCategoryAndState = cms.vstring("PF", "pass"), ## Numerator definition
-            BinnedVariables = cms.PSet(
-                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(22, 5000.),
-                Medium = cms.vstring("pass"), ## probe muon is tight
-                dB = cms.vdouble(0., 0.02),
-                dzPV = cms.vdouble(-0.1, 0.1),
-                combRelIsoPF04dBeta = cms.vdouble(0., 0.12),
-                #tag_Tight2012 = cms.vstring("pass"),
-                eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.0, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
-                #pt = cms.vdouble(10, 20, 22, 30, 40, 60, 100),
-                pt = cms.vdouble(10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
-
-
-########
-        IsoMu20_pt_Medium = cms.PSet(
-            UnbinnedVariables = cms.vstring("mass"),
-            EfficiencyCategoryAndState = cms.vstring("IsoMu20", "pass"), ## Numerator definition
-            #EfficiencyCategoryAndState = cms.vstring("PF", "pass"), ## Numerator definition
-            BinnedVariables = cms.PSet(
-                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(22, 5000.),
-                Medium = cms.vstring("pass"), ## probe muon is tight
-                dB = cms.vdouble(0., 0.02),
-                dzPV = cms.vdouble(-0.1, 0.1),
-                combRelIsoPF04dBeta = cms.vdouble(0., 0.12),
-                #tag_Tight2012 = cms.vstring("pass"),
-                eta = cms.vdouble(-2.4, 2.4),
-                #pt = cms.vdouble(10, 20, 22, 30, 40, 60, 100),
-                pt = cms.vdouble(10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
-
-########
-        IsoMu20_eta_Medium = cms.PSet(
-            UnbinnedVariables = cms.vstring("mass"),
-            EfficiencyCategoryAndState = cms.vstring("IsoMu20", "pass"), ## Numerator definition
-            BinnedVariables = cms.PSet(
-                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(22, 5000.),
-                Medium = cms.vstring("pass"), ## probe muon is tight
-                dB = cms.vdouble(0., 0.02),
-                dzPV = cms.vdouble(-0.1, 0.1),
-                combRelIsoPF04dBeta = cms.vdouble(0., 0.12),
-                eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.0, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
-                pt = cms.vdouble(22, 1000),
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
-########
-        IsoMu20_phi_Medium = cms.PSet(
-           EfficiencyCategoryAndState = cms.vstring("IsoMu20", "pass"),
-            UnbinnedVariables = cms.vstring("mass"),
-            BinnedVariables = cms.PSet(
-                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(22, 5000.),
-                Medium = cms.vstring("pass"), ## probe muon is tight
-                dB = cms.vdouble(0., 0.02),
-                dzPV = cms.vdouble(-0.1, 0.1),
-                combRelIsoPF04dBeta = cms.vdouble(0., 0.12),
-                eta = cms.vdouble(-2.4, 2.4),
-                pt = cms.vdouble(22, 1000),
-                #phi = cms.vdouble(-3.142, -1.5, 0., 1.5, 3.142), # for GI or CI MC only
-                phi = cms.vdouble(-3.142, -2.8, -2.4, -2.0, -1.6, -1.2, -0.8, -0.4, 0., 0.4, 0.8, 1.2, 1.6, 2.0, 2.4, 2.8, 3.142), # for GI or CI MC only
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
-########
-        IsoMu20_tag_nVertices_Medium = cms.PSet(
-           EfficiencyCategoryAndState = cms.vstring("IsoMu20", "pass"),
-            UnbinnedVariables = cms.vstring("mass"),
-            BinnedVariables = cms.PSet(
-                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(22, 5000.),
-                Medium = cms.vstring("pass"), ## probe muon is tight
-                dB = cms.vdouble(0., 0.02),
-                dzPV = cms.vdouble(-0.1, 0.1),
-                combRelIsoPF04dBeta = cms.vdouble(0., 0.12),
-                eta = cms.vdouble(-2.4, 2.4),
-                pt = cms.vdouble(22, 1000),
-                tag_nVertices = cms.vdouble(0., 5., 8., 10., 12., 14., 16., 20.), # for GI or CI MC only
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
-########
-########################
-########
-        IsoTkMu20_ptVSeta_Medium = cms.PSet(
-            UnbinnedVariables = cms.vstring("mass"),
-            EfficiencyCategoryAndState = cms.vstring("IsoTkMu20", "pass"), ## Numerator definition
-            #EfficiencyCategoryAndState = cms.vstring("PF", "pass"), ## Numerator definition
-            BinnedVariables = cms.PSet(
-                tag_IsoTkMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(22, 5000.),
-                Medium = cms.vstring("pass"), ## probe muon is tight
-                dB = cms.vdouble(0., 0.02),
-                dzPV = cms.vdouble(-0.1, 0.1),
-                combRelIsoPF04dBeta = cms.vdouble(0., 0.12),
-                #tag_Medium = cms.vstring("pass"),
-                eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.0, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
-                pt = cms.vdouble(10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
-
-
-########
-        IsoTkMu20_pt_Medium = cms.PSet(
-            UnbinnedVariables = cms.vstring("mass"),
-            EfficiencyCategoryAndState = cms.vstring("IsoTkMu20", "pass"), ## Numerator definition
-            #EfficiencyCategoryAndState = cms.vstring("PF", "pass"), ## Numerator definition
-            BinnedVariables = cms.PSet(
-                tag_IsoTkMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(22, 5000.),
-                Medium = cms.vstring("pass"), ## probe muon is tight
-                dB = cms.vdouble(0., 0.02),
-                dzPV = cms.vdouble(-0.1, 0.1),
-                combRelIsoPF04dBeta = cms.vdouble(0., 0.12),
-                #tag_Medium = cms.vstring("pass"),
-                eta = cms.vdouble(-2.4, 2.4),
-                pt = cms.vdouble(10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
-########
-        IsoTkMu20_eta_Medium = cms.PSet(
-            UnbinnedVariables = cms.vstring("mass"),
-            EfficiencyCategoryAndState = cms.vstring("IsoTkMu20", "pass"), ## Numerator definition
-            BinnedVariables = cms.PSet(
-               tag_IsoTkMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(22, 5000.),
-                Medium = cms.vstring("pass"), ## probe muon is tight
-                dB = cms.vdouble(0., 0.02),
-                dzPV = cms.vdouble(-0.1, 0.1),
-                combRelIsoPF04dBeta = cms.vdouble(0., 0.12),
-                eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.0, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
-                pt = cms.vdouble(22, 1000),
-           ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
-########
-        IsoTkMu20_phi_Medium = cms.PSet(
-           EfficiencyCategoryAndState = cms.vstring("IsoTkMu20", "pass"),
-            UnbinnedVariables = cms.vstring("mass"),
-            BinnedVariables = cms.PSet(
-                tag_IsoTkMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(22, 5000.),
-                Medium = cms.vstring("pass"), ## probe muon is tight
-                dB = cms.vdouble(0., 0.02),
-                dzPV = cms.vdouble(-0.1, 0.1),
-                combRelIsoPF04dBeta = cms.vdouble(0., 0.12),
-                eta = cms.vdouble(-2.4, 2.4),
-                pt = cms.vdouble(22, 1000),
-                phi = cms.vdouble(-3.142, -2.8, -2.4, -2.0, -1.6, -1.2, -0.8, -0.4, 0., 0.4, 0.8, 1.2, 1.6, 2.0, 2.4, 2.8, 3.142), # for GI or CI MC only
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
-########
-        IsoTkMu20_tag_nVertices_Medium = cms.PSet(
-           EfficiencyCategoryAndState = cms.vstring("IsoTkMu20", "pass"),
-            UnbinnedVariables = cms.vstring("mass"),
-            BinnedVariables = cms.PSet(
-                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(22, 5000.),
-                Medium = cms.vstring("pass"), ## probe muon is tight
-                dB = cms.vdouble(0., 0.02),
-                dzPV = cms.vdouble(-0.1, 0.1),
-                combRelIsoPF04dBeta = cms.vdouble(0., 0.12),
-                eta = cms.vdouble(-2.4, 2.4),
-                pt = cms.vdouble(22, 1000),
-                tag_nVertices = cms.vdouble(0., 5., 8., 10., 12., 14., 16., 20.), # for GI or CI MC only
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
-########
-################################
-        pt_Medium = cms.PSet(
-            UnbinnedVariables = cms.vstring("mass"),
-            EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"), ## Numerator definition
-            #EfficiencyCategoryAndState = cms.vstring("PF", "pass"), ## Numerator definition
-            BinnedVariables = cms.PSet(
-                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(22, 5000.),
-                #tag_Tight2012 = cms.vstring("pass"),
-                eta = cms.vdouble(-2.4, 2.4),
-                pt = cms.vdouble(10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
-                #pt = cms.vdouble(10, 20, 30, 40, 60, 100),
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
-########
-        pt_Medium_ptLt20 = cms.PSet(
-            UnbinnedVariables = cms.vstring("mass"),
-            EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"), ## Numerator definition
-            #EfficiencyCategoryAndState = cms.vstring("PF", "pass"), ## Numerator definition
-            BinnedVariables = cms.PSet(
-                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(22, 5000.),
-                #tag_Tight2012 = cms.vstring("pass"),
-                eta = cms.vdouble(-2.4, 2.4),
-                dB = cms.vdouble(0., 0.01),
-                dzPV = cms.vdouble(-0.1, 0.1),
-                pt = cms.vdouble(10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
-########
-        pt_Medium_ptGt20 = cms.PSet(
-            UnbinnedVariables = cms.vstring("mass"),
-            EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"), ## Numerator definition
-            #EfficiencyCategoryAndState = cms.vstring("PF", "pass"), ## Numerator definition
-            BinnedVariables = cms.PSet(
-                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(22, 5000.),
-                #tag_Tight2012 = cms.vstring("pass"),
-                eta = cms.vdouble(-2.4, 2.4),
-                dB = cms.vdouble(0., 0.02),
-                dzPV = cms.vdouble(-0.1, 0.1),
-                pt = cms.vdouble(10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
-########
-########
-
-        eta_Medium = cms.PSet(
-            UnbinnedVariables = cms.vstring("mass"),
-            EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"), ## Numerator definition
-            BinnedVariables = cms.PSet(
-                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(22, 5000.),
-                eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.0, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
-                pt = cms.vdouble(10, 1000),
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
-########
-        eta_Medium_ptLt20 = cms.PSet(
-            UnbinnedVariables = cms.vstring("mass"),
-            EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"), ## Numerator definition
-            BinnedVariables = cms.PSet(
-                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(22, 5000.),
-                eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.0, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
-                dB = cms.vdouble(0., 0.01),
-                dzPV = cms.vdouble(-0.1, 0.1),
-                pt = cms.vdouble(10, 20),
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
-########
-        eta_Medium_ptGt20 = cms.PSet(
-            UnbinnedVariables = cms.vstring("mass"),
-            EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"), ## Numerator definition
-            BinnedVariables = cms.PSet(
-                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(22, 5000.),
-                eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.0, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
-                dB = cms.vdouble(0., 0.02),
-                dzPV = cms.vdouble(-0.1, 0.1),
-                pt = cms.vdouble(20, 1000),
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
-########
-########
-
-        phi_Medium = cms.PSet(
-           EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"),
-            UnbinnedVariables = cms.vstring("mass"),
-            BinnedVariables = cms.PSet(
-                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(22, 5000.),
-                eta = cms.vdouble(-2.4, 2.4),
-                pt = cms.vdouble(10, 1000),
-                phi = cms.vdouble(-3.142, -2.8, -2.4, -2.0, -1.6, -1.2, -0.8, -0.4, 0., 0.4, 0.8, 1.2, 1.6, 2.0, 2.4, 2.8, 3.142), # for GI or CI MC only
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
-########
-        phi_Medium_ptLt20 = cms.PSet(
-           EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"),
-            UnbinnedVariables = cms.vstring("mass"),
-            BinnedVariables = cms.PSet(
-                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(22, 5000.),
-                eta = cms.vdouble(-2.4, 2.4),
-                pt = cms.vdouble(10, 20),
-                dB = cms.vdouble(0., 0.01),
-                dzPV = cms.vdouble(-0.1, 0.1),
-                phi = cms.vdouble(-3.142, -2.8, -2.4, -2.0, -1.6, -1.2, -0.8, -0.4, 0., 0.4, 0.8, 1.2, 1.6, 2.0, 2.4, 2.8, 3.142), # for GI or CI MC only
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
-########
-        phi_Medium_ptGt20 = cms.PSet(
-           EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"),
-            UnbinnedVariables = cms.vstring("mass"),
-            BinnedVariables = cms.PSet(
-                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(22, 5000.),
-                eta = cms.vdouble(-2.4, 2.4),
-                pt = cms.vdouble(20, 1000),
-                dB = cms.vdouble(0., 0.02),
-                dzPV = cms.vdouble(-0.1, 0.1),
-                phi = cms.vdouble(-3.142, -2.8, -2.4, -2.0, -1.6, -1.2, -0.8, -0.4, 0., 0.4, 0.8, 1.2, 1.6, 2.0, 2.4, 2.8, 3.142), # for GI or CI MC only
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
-########
-########
-
-        #if filename == 'Data':
-        ########
-        tag_nVertices_Medium = cms.PSet(
-           EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"),
-            UnbinnedVariables = cms.vstring("mass"),
-            BinnedVariables = cms.PSet(
-                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(22, 5000.),
-                eta = cms.vdouble(-2.4, 2.4),
-                pt = cms.vdouble(10, 1000),
-                tag_nVertices = cms.vdouble(0., 5., 8., 10., 12., 14., 16., 20.), # for GI or CI MC only
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
-        ########
-        tag_nVertices_Medium_ptLt20 = cms.PSet(
-           EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"),
-            UnbinnedVariables = cms.vstring("mass"),
-            BinnedVariables = cms.PSet(
-                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(22, 5000.),
-                eta = cms.vdouble(-2.4, 2.4),
-                pt = cms.vdouble(10, 20),
-                dB = cms.vdouble(0., 0.01),
-                dzPV = cms.vdouble(-0.1, 0.1),
-                tag_nVertices = cms.vdouble(0., 5., 8., 10., 12., 14., 16., 20.), # for GI or CI MC only
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
         ########
         tag_nVertices_Medium_ptGt20 = cms.PSet(
            EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"),
@@ -489,18 +137,6 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
         ########
 ########
 
-    ),
-    ## PDF for signal and background (double voigtian + exponential background)
-    PDFs = cms.PSet(
-        vpvPlusExpo = cms.vstring(
-            "Voigtian::signal1(mass, mean1[90,80,100], width[2.495], sigma1[2,1,3])",
-            "Voigtian::signal2(mass, mean2[90,80,100], width,        sigma2[4,2,10])",
-            "SUM::signal(vFrac[0.8,0,1]*signal1, signal2)",
-            "Exponential::backgroundPass(mass, lp[-0.1,-1,0.1])",
-            "Exponential::backgroundFail(mass, lf[-0.1,-1,0.1])",
-            "efficiency[0.9,0,1]",
-            "signalFractionInPassing[0.9]"
-        ),
     ),
     ## How to do the fit
     binnedFit = cms.bool(True),
