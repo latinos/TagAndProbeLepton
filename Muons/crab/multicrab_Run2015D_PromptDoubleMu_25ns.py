@@ -23,7 +23,7 @@ config.Data.unitsPerJob   = 50 # number of files, lumi sec. or events depending 
 config.Data.splitting     = 'LumiBased'
 #config.Data.totalUnits    = 10 # total number of files, lumi sec. or events depending of "splitting"
 #config.Data.outLFNDirBase = '/store/group/phys_higgs/cmshww/amassiro/RunII/test/'
-config.Data.outLFNDirBase = '/store/group/phys_higgs/cmshww/kropiv/TnP_Muons/SingleMuon'
+config.Data.outLFNDirBase = '/store/group/phys_higgs/cmshww/kropiv/TnP_Muons/DoubleMu'
 config.Data.lumiMask = 'https://cms-service-dqm.web.cern.ch/cms-service-dqm/CAF/certification/Collisions15/13TeV/Cert_246908-258750_13TeV_PromptReco_Collisions15_25ns_JSON.txt'
 config.section_('Site')
 config.Site.storageSite = 'T2_CH_CERN'

@@ -12,6 +12,12 @@ options.register ('globalTag',
                    VarParsing.multiplicity.singleton,
                    VarParsing.varType.string,
                   'GlobalTag')
+options.register ('TriggerSet',
+                  'SingleMu', # SingleMu or DoubleMu
+                   VarParsing.multiplicity.singleton,
+                   VarParsing.varType.string,
+                  'TirggerSet')
+
 
 #-------------------------------------------------------------------------------
 # defaults
@@ -28,7 +34,9 @@ options.parseArguments()
 #label = options.label
 #globalTag = options.globalTag + "::All"
 globalTag = options.globalTag
+TriggerSet = options.TriggerSet
 print " globalTag = ",globalTag
+print " TriggerSet = ", TriggerSet
 
 process = cms.Process("TagProbe")
 
@@ -61,7 +69,8 @@ if "CMSSW_7_4_" in os.environ['CMSSW_VERSION']:
 else: raise RuntimeError, "Unknown CMSSW version %s" % os.environ['CMSSW_VERSION']
 
 ## SELECT WHAT DATASET YOU'RE RUNNING ON
-TRIGGER="SingleMu"
+TRIGGER=TriggerSet
+#TRIGGER="SingleMu"
 #TRIGGER="DoubleMu"
 
 ## ==== Fast Filters ====
@@ -196,6 +205,8 @@ process.tpTree = cms.EDAnalyzer("TagProbeFitTreeProducer",
        MuonIDFlags,
        HighPtTriggerFlags,
        HighPtTriggerFlagsDebug,
+       #Medium_lt20 = cms.string(MuonIDFlags.Medium.value()+" && abs(dB)<0.01 && abs(dzPV)<0.1"),
+       #Medium_gt20 = cms.string(MuonIDFlags.Medium.value()+" && abs(dB)<0.02 && abs(dzPV)<0.1"),
     ),
     tagVariables = cms.PSet(
      #   TriggerVariables, 

@@ -83,6 +83,8 @@ void tnp_nVer( bool isSave = true ) {
    hData_nVer->Sumw2();
    TH1F *hData_pt = new TH1F("hData_pt","Data probe pt",100,-0.5,199.5);
    hData_pt->Sumw2();
+   TH1F *hData_dzPV = new TH1F("hData_dzPV","Data probe pt",100,-0.5,0.5);
+   hData_pt->Sumw2();
 
 
    //if(PU == "noPU")tMC.Draw("tag_nVertices>>hMC_nVer");
@@ -94,6 +96,7 @@ void tnp_nVer( bool isSave = true ) {
    tData.Draw("tag_nVertices>>hData_nVer","tag_IsoMu20>0 && pt>10");
 
    tData.Draw("pt>>hData_pt","tag_IsoMu20>0 && tag_pt>22 && Medium");
+   tData.Draw("dzPV>>hData_dzPV","tag_IsoMu20>0 && tag_pt>22 && Medium");
 
 
    hMC_nVer->Scale(1.0/hMC_nVer->Integral());

@@ -2,8 +2,8 @@
 ########
 # Run2015D: 25 ns DATA:
 ########
- 
-samples['Run2015D_PromptReco_25ns_SingleMuon']        = ['/SingleMuon/Run2015D-PromptReco-v4/AOD',  ['globalTag=74X_dataRun2_Prompt_v4']] #CMSSW_7_4_14 and CMSSW_7_4_15
+samples['Run2015D_PromptReco_v3_25ns_SingleMuon']        = ['/SingleMuon/Run2015D-PromptReco-v3/AOD',  ['globalTag=74X_dataRun2_Prompt_v2','TriggerSet=DoubleMu']] #CMSSW_7_4_14 and CMSSW_7_4_15 
+samples['Run2015D_PromptReco_v4_25ns_SingleMuon']        = ['/SingleMuon/Run2015D-PromptReco-v4/AOD',  ['globalTag=74X_dataRun2_Prompt_v4','TriggerSet=DoubleMu']] #CMSSW_7_4_14 and CMSSW_7_4_15
 
 
 ########
