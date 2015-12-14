@@ -25,5 +25,5 @@ eosumount eos eos #don't forget to unmount
 
 Example to add weights for pile up:
 
-root.exe -b -l -q tnp_25nsDY_v3_part.root tnp_50nsDY_v3_PUlikeRun2015C_25ns.root addNVtxWeight.cxx+
+root.exe -b -l -q tnp_25nsDY_madgraph.root tnp_Run2015D_PromptReco_25ns_SingleMu_v3.root tnp_Run2015D_PromptReco_25ns_SingleMu_v4.root addNVtxWeight.cxx+
 
