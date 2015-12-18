@@ -1,6 +1,6 @@
-*****************************
-Tag and Probe efficiency:
+#Tag and Probe efficiency
 
+*****************************
 muonID+ISO for HWW:
 
 for muon ID:
@@ -27,7 +27,7 @@ HLT_Mu8_TrkIsoVVL_Ele17_CaloIdL_TrackIdL_IsoVL_v
 HLT_Mu17_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_v
 
 *****************************
-muonID+ISO efficiency from Tracker muon:
+#muonID+ISO efficiency from Tracker muon:
 
 
 from DATA: TnP_MediumIDandISO_Run2015D_25ns_PTvsETA_binBig_HWW.txt
@@ -35,7 +35,7 @@ from DATA: TnP_MediumIDandISO_Run2015D_25ns_PTvsETA_binBig_HWW.txt
 from MC (pile up reweight to DATA): TnP_MediumIDandISO_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_binBig_HWW.txt
 
 *****************************
-Trigger efficiency from muonID+ISO selections using DATA only:
+#Trigger efficiency from muonID+ISO selections using DATA only:
 
 HLT_IsoMu18: TnP_IsoMu18_Run2015D_25ns_PTvsETA_binSmall_HWW.txt
 
