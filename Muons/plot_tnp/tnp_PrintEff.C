@@ -65,7 +65,11 @@ void tnp_PrintEff( bool isSave = true ) {
   // ---- open the MC files ----
   TString pathAnna="/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_4_14/src/TagAndProbeLepton/Muons/eff_tnp/";
 
-  TString sample_data = "TnP_MediumIDandISO_Run2015D_25ns_PTvsETA_binBig";
+  //TString sample_data = "TnP_MediumIDandISO_Run2015D_25ns_PTvsETA_binBig";
+  TString sample_data = "TnP_MediumIDandISO_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_binBig";
+
+  TString Tag_trig = "_&_tag_IsoMu18_pass";
+  if (sample_data == "TnP_MediumIDandISO_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_binBig") Tag_trig = "";
 
   TFile* DATA   = TFile::Open(pathAnna+sample_data+".root" );
 
@@ -98,21 +102,24 @@ void tnp_PrintEff( bool isSave = true ) {
 ////////////////////////////////
   for (int ipt=0; ipt<BinPtSize-1; ipt++){
 
-     TCanvas* tDATA = (TCanvas*) DATA->Get(Form("tpTree/Medium_ISO_ptVSeta/fit_eff_plots/eta_PLOT_pt_bin%d_&_tag_IsoMu18_pass",ipt));
+     //TCanvas* tDATA = (TCanvas*) DATA->Get(Form("tpTree/Medium_ISO_ptVSeta/fit_eff_plots/eta_PLOT_pt_bin%d_&_tag_IsoMu18_pass",ipt));
+     TCanvas* tDATA = (TCanvas*) DATA->Get(Form("tpTree/Medium_ISO_ptVSeta/fit_eff_plots/eta_PLOT_pt_bin%d%s",ipt,Tag_trig.Data() ));
      TGraphAsymmErrors* grDATA = (TGraphAsymmErrors*) tDATA -> GetListOfPrimitives()->At(1);
      ErrorCheck(grDATA);
      Double_t *eff       = grDATA->GetY();
      Double_t *deff_high = grDATA->GetEYhigh();
      Double_t *deff_low  = grDATA->GetEYlow();
 
-     TCanvas* tDATA_ptGt20 = (TCanvas*) DATA->Get(Form("tpTree/Medium_ISO_ptVSeta_ptGt20/fit_eff_plots/eta_PLOT_pt_bin%d_&_tag_IsoMu18_pass",ipt));
+     //TCanvas* tDATA_ptGt20 = (TCanvas*) DATA->Get(Form("tpTree/Medium_ISO_ptVSeta_ptGt20/fit_eff_plots/eta_PLOT_pt_bin%d_&_tag_IsoMu18_pass",ipt));
+     TCanvas* tDATA_ptGt20 = (TCanvas*) DATA->Get(Form("tpTree/Medium_ISO_ptVSeta_ptGt20/fit_eff_plots/eta_PLOT_pt_bin%d%s",ipt,Tag_trig.Data() ));
      TGraphAsymmErrors* grDATA_ptGt20 = (TGraphAsymmErrors*) tDATA_ptGt20 -> GetListOfPrimitives()->At(1);
      ErrorCheck(grDATA_ptGt20);
      Double_t *eff_ptGt20       = grDATA_ptGt20->GetY();
      Double_t *deff_high_ptGt20 = grDATA_ptGt20->GetEYhigh();
      Double_t *deff_low_ptGt20  = grDATA_ptGt20->GetEYlow();
 
-     TCanvas* tDATA_ptLt20 = (TCanvas*) DATA->Get(Form("tpTree/Medium_ISO_ptVSeta_ptLt20/fit_eff_plots/eta_PLOT_pt_bin%d_&_tag_IsoMu18_pass",ipt));
+     //TCanvas* tDATA_ptLt20 = (TCanvas*) DATA->Get(Form("tpTree/Medium_ISO_ptVSeta_ptLt20/fit_eff_plots/eta_PLOT_pt_bin%d_&_tag_IsoMu18_pass",ipt));
+     TCanvas* tDATA_ptLt20 = (TCanvas*) DATA->Get(Form("tpTree/Medium_ISO_ptVSeta_ptLt20/fit_eff_plots/eta_PLOT_pt_bin%d%s",ipt,Tag_trig.Data() ));
      TGraphAsymmErrors* grDATA_ptLt20 = (TGraphAsymmErrors*) tDATA_ptLt20 -> GetListOfPrimitives()->At(1);
      ErrorCheck(grDATA_ptLt20);
      Double_t *eff_ptLt20       = grDATA_ptLt20->GetY();
