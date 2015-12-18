@@ -6,8 +6,8 @@ FitFunction = "vpvPlusExpo"
 #isMuonSel = 'Tight2012'
 isMuonSel = 'Medium'
 
-isTrigger = 'IsoMu18'
-#isTrigger = 'IsoTkMu18'
+#isTrigger = 'IsoMu18'
+isTrigger = 'IsoTkMu18'
 
 DataOpen ="1"; # 1 - Open data; 0 - Open MC
 #MCType = "DY";
