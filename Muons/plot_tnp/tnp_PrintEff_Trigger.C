@@ -96,15 +96,33 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
   myfile_HWW.open (sample_data+"_HWW.txt");
   myfile_HWW << "etamin\tetamax\tptmin\tptmax\teff\tdeff_high\tdeff_low\n";
 
+
+
 ////////////////////////////////
-  
+  ofstream myfile_HWW_tex;
+  myfile_HWW_tex.open (sample_data+"_HWW_tex.txt");
+  myfile_HWW_tex << "\\begin{sidewaystable}\n";
 
+  if (sample_data == "TnP_IsoMu18_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_IsoMu18}\n";
+  if (sample_data == "TnP_IsoMu18_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_IsoMu18}\n";
+  if (sample_data == "TnP_IsoTkMu18_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_IsoTkMu18}\n";
+  if (sample_data == "TnP_IsoTkMu18_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_IsoTkMu18}\n";
+  if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu17\\_TrkIsoVVL}\n";
+  if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu17_TrkIsoVVL}\n";
+  if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu8\\_TrkIsoVVL}\n";
+  if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu8_TrkIsoVVL}\n";
+  if (sample_data == "TnP_DoubleIsoMu17TkMu8_TkMu8leg_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_TkMu8\\_TrkIsoVVL}\n";
+  if (sample_data == "TnP_DoubleIsoMu17TkMu8_TkMu8leg_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_TkMu8_TrkIsoVVL}\n";
 
+  myfile_HWW_tex << "\\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}\n";
+  myfile_HWW_tex << "\\hline\n";
 
-
-  // and the graph afterwards
-
-
+  for (int ieta=0; ieta<BinEtaSize-1; ieta++){
+      if(ieta == 0)              myfile_HWW_tex <<"$p_{T}/\\eta$ & " << BinEta[ieta] << ":" << BinEta[ieta+1];
+      if(ieta > 0)               myfile_HWW_tex <<             " & " << BinEta[ieta] << ":" << BinEta[ieta+1]; 
+      if(ieta == (BinEtaSize-2)) myfile_HWW_tex <<"\\\\ \n\\hline\n";
+  }
+  //end 1 tex file:
 ////////////////////////////////
   for (int ipt=0; ipt<BinPtSize-1; ipt++){
 
@@ -139,19 +157,22 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
         Double_t Eff = eff[ieta];
         Double_t dEff_high = deff_high[ieta];
         Double_t dEff_low = deff_low[ieta];
-        if (Eff < 0.005) {Eff = 0.; dEff_high = 0.; dEff_low =0.;}
+        //if (Eff < 0.005) {Eff = 0.; dEff_high = 0.; dEff_low =0.;}
+        if (Eff < 0.01) {Eff = 0.; dEff_high = 0.; dEff_low =0.;}
         if (Eff > 0.5 && dEff_high > 3*dEff_low) dEff_high = dEff_low;
 
         Double_t Eff_ptGt20 = eff_ptGt20[ieta];
         Double_t dEff_high_ptGt20 = deff_high_ptGt20[ieta];
         Double_t dEff_low_ptGt20 = deff_low_ptGt20[ieta];
-        if (Eff_ptGt20 < 0.005) {Eff_ptGt20 = 0.; dEff_high_ptGt20 = 0.; dEff_low_ptGt20 =0.;}
+        //if (Eff_ptGt20 < 0.005) {Eff_ptGt20 = 0.; dEff_high_ptGt20 = 0.; dEff_low_ptGt20 =0.;}
+        if (Eff_ptGt20 < 0.01) {Eff_ptGt20 = 0.; dEff_high_ptGt20 = 0.; dEff_low_ptGt20 =0.;}
         if (Eff_ptGt20 > 0.5 && dEff_high_ptGt20 > 3*dEff_low_ptGt20) dEff_high_ptGt20 = dEff_low_ptGt20;
 
         Double_t Eff_ptLt20 = eff_ptLt20[ieta];
         Double_t dEff_high_ptLt20 = deff_high_ptLt20[ieta];
         Double_t dEff_low_ptLt20 = deff_low_ptLt20[ieta];
-        if (Eff_ptLt20 < 0.005) {Eff_ptLt20 = 0.; dEff_high_ptLt20 = 0.; dEff_low_ptLt20 =0.;}
+        //if (Eff_ptLt20 < 0.005) {Eff_ptLt20 = 0.; dEff_high_ptLt20 = 0.; dEff_low_ptLt20 =0.;}
+        if (Eff_ptLt20 < 0.01) {Eff_ptLt20 = 0.; dEff_high_ptLt20 = 0.; dEff_low_ptLt20 =0.;}
         if (Eff_ptLt20 > 0.5 && dEff_high_ptLt20 > 3*dEff_low_ptLt20) dEff_high_ptLt20 = dEff_low_ptLt20;
  
         myfile 
@@ -179,10 +200,36 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
                   << BinPt[ipt]   << "\t" << BinPt[ipt+1]   << "\t"
                   << Eff_ptGt20    << "\t" << dEff_high_ptGt20      << "\t " << dEff_low_ptGt20 <<"\n";
         }
-
+        //start tex file:
+        if(ieta == 0)  myfile_HWW_tex << setprecision(4) << BinPt[ipt]   << ":" << BinPt[ipt+1];
+        if (BinPt[ipt+1] < 20.001) {
+           myfile_HWW_tex << " & ";  
+           if(Eff_ptLt20 > 0.95) myfile_HWW_tex << "\\cellcolor{red} ";
+           if(Eff_ptLt20 > 0.90 && Eff_ptLt20 <= 0.95) myfile_HWW_tex << "\\cellcolor{Maroon!80} ";
+           if(Eff_ptLt20 > 0.80 && Eff_ptLt20 <= 0.90) myfile_HWW_tex << "\\cellcolor{Orange} ";
+           if(Eff_ptLt20 > 0.70 && Eff_ptLt20 <= 0.80) myfile_HWW_tex << "\\cellcolor{Yellow} ";
+           if(Eff_ptLt20 > 0.50 && Eff_ptLt20 <= 0.70) myfile_HWW_tex << "\\cellcolor{YellowGreen} ";
+           if(Eff_ptLt20 > 0.01 && Eff_ptLt20 <= 0.50) myfile_HWW_tex << "\\cellcolor{SkyBlue} ";
+           if (Eff_ptLt20 < 0.10)myfile_HWW_tex << setprecision(2) <<  Eff_ptLt20;  
+           else myfile_HWW_tex << setprecision(3) <<  Eff_ptLt20;  
+        }
+        else {
+           myfile_HWW_tex << " & ";  
+           if(Eff_ptGt20 > 0.95) myfile_HWW_tex << "\\cellcolor{red} ";
+           if(Eff_ptGt20 > 0.90 && Eff_ptGt20 <= 0.95) myfile_HWW_tex << "\\cellcolor{Maroon!80} ";
+           if(Eff_ptGt20 > 0.80 && Eff_ptGt20 <= 0.90) myfile_HWW_tex << "\\cellcolor{Orange} ";
+           if(Eff_ptGt20 > 0.70 && Eff_ptGt20 <= 0.80) myfile_HWW_tex << "\\cellcolor{Yellow} ";
+           if(Eff_ptGt20 > 0.50 && Eff_ptGt20 <= 0.70) myfile_HWW_tex << "\\cellcolor{YellowGreen} ";
+           if(Eff_ptGt20 > 0.01 && Eff_ptGt20 <= 0.50) myfile_HWW_tex << "\\cellcolor{SkyBlue} ";
+           if (Eff_ptGt20 < 0.10) myfile_HWW_tex << setprecision(2) << Eff_ptGt20;  
+           else myfile_HWW_tex << setprecision(3) << Eff_ptGt20;  
+        }
+        if (ieta == (BinEtaSize-2)) myfile_HWW_tex <<" \\\\ \n\\hline\n";
+        //end tex file:
 
      }
   }
+  myfile_HWW_tex << "\\end{tabular}\n\\end{sidewaystable}\n"; 
 
   myfile.close();
 ////////////////////////////////
