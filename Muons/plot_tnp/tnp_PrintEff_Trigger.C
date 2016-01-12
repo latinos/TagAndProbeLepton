@@ -232,6 +232,10 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
   myfile_HWW_tex << "\\end{tabular}\n\\end{sidewaystable}\n"; 
 
   myfile.close();
+  myfile_ptGt20.close();
+  myfile_ptLt20.close();
+  myfile_HWW.close();
+  myfile_HWW_tex.close();
 ////////////////////////////////
 //  if (!isSave) return;
 

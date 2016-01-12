@@ -65,8 +65,8 @@ void tnp_PrintEff( bool isSave = true ) {
   // ---- open the MC files ----
   TString pathAnna="/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_4_14/src/TagAndProbeLepton/Muons/eff_tnp/";
 
-  //TString sample_data = "TnP_MediumIDandISO_Run2015D_25ns_PTvsETA_binBig";
-  TString sample_data = "TnP_MediumIDandISO_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_binBig";
+  TString sample_data = "TnP_MediumIDandISO_Run2015D_25ns_PTvsETA_binBig";
+  //TString sample_data = "TnP_MediumIDandISO_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_binBig";
 
   TString Tag_trig = "_&_tag_IsoMu18_pass";
   if (sample_data == "TnP_MediumIDandISO_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_binBig") Tag_trig = "";
@@ -89,6 +89,22 @@ void tnp_PrintEff( bool isSave = true ) {
   ofstream myfile_HWW;
   myfile_HWW.open (sample_data+"_HWW.txt");
   myfile_HWW << "etamin\tetamax\tptmin\tptmax\teff\tdeff_high\tdeff_low\n";
+
+
+  ofstream myfile_HWW_tex;
+  myfile_HWW_tex.open (sample_data+"_HWW_tex.txt");
+  myfile_HWW_tex << "\\begin{sidewaystable}\n";
+  if (sample_data == "TnP_MediumIDandISO_Run2015D_25ns_PTvsETA_binBig") myfile_HWW_tex << "\\caption{Muon ID (\"MediumHWW\" $+$ Isolation) Efficiency for DATA}\n";
+  if (sample_data == "TnP_MediumIDandISO_Run2015D_25ns_PTvsETA_binBig") myfile_HWW_tex << "\\label{table:MuonID:DATA}\n";
+  if (sample_data == "TnP_MediumIDandISO_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_binBig") myfile_HWW_tex << "\\caption{Muon ID (\"MediumHWW\" $+$ Isolation) Efficiency for Madgraph MC}\n";
+  if (sample_data == "TnP_MediumIDandISO_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_binBig") myfile_HWW_tex << "\\label{table:MuonID:MC}\n";
+  myfile_HWW_tex << "\\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|}\n";
+  myfile_HWW_tex << "\\hline\n";
+  for (int ieta=0; ieta<BinEtaSize-1; ieta++){
+      if(ieta == 0)              myfile_HWW_tex <<"$p_{T}/\\eta$ & " << BinEta[ieta] << ":" << BinEta[ieta+1];
+      if(ieta > 0)               myfile_HWW_tex <<             " & " << BinEta[ieta] << ":" << BinEta[ieta+1];
+      if(ieta == (BinEtaSize-2)) myfile_HWW_tex <<"\\\\ \n\\hline\n";
+  }
 
 ////////////////////////////////
   
@@ -155,11 +171,40 @@ void tnp_PrintEff( bool isSave = true ) {
                   << eff_ptGt20[ieta]    << "\t" << deff_high_ptGt20[ieta]      << "\t " << deff_low_ptGt20[ieta] <<"\n"; //write to file
         }
 
+        if(ieta == 0)  myfile_HWW_tex << setprecision(4) << BinPt[ipt]   << ":" << BinPt[ipt+1];
+        if (BinPt[ipt+1] < 20.001) {
+           myfile_HWW_tex << " & ";
+           if(eff_ptLt20[ieta] > 0.95) myfile_HWW_tex << "\\cellcolor{red} ";
+           if(eff_ptLt20[ieta] > 0.90 && eff_ptLt20[ieta] <= 0.95) myfile_HWW_tex << "\\cellcolor{Maroon!80} ";
+           if(eff_ptLt20[ieta] > 0.80 && eff_ptLt20[ieta] <= 0.90) myfile_HWW_tex << "\\cellcolor{Orange} ";
+           if(eff_ptLt20[ieta] > 0.70 && eff_ptLt20[ieta] <= 0.80) myfile_HWW_tex << "\\cellcolor{Yellow} ";
+           if(eff_ptLt20[ieta] > 0.50 && eff_ptLt20[ieta] <= 0.70) myfile_HWW_tex << "\\cellcolor{YellowGreen} ";
+           if(eff_ptLt20[ieta] > 0.01 && eff_ptLt20[ieta] <= 0.50) myfile_HWW_tex << "\\cellcolor{SkyBlue} ";
+           if (eff_ptLt20[ieta] < 0.10)myfile_HWW_tex << setprecision(2) <<  eff_ptLt20[ieta];
+           else myfile_HWW_tex << setprecision(3) <<  eff_ptLt20[ieta];
+        }
+        else {
+           myfile_HWW_tex << " & ";
+           if(eff_ptGt20[ieta] > 0.95) myfile_HWW_tex << "\\cellcolor{red} ";
+           if(eff_ptGt20[ieta] > 0.90 && eff_ptGt20[ieta] <= 0.95) myfile_HWW_tex << "\\cellcolor{Maroon!80} ";
+           if(eff_ptGt20[ieta] > 0.80 && eff_ptGt20[ieta] <= 0.90) myfile_HWW_tex << "\\cellcolor{Orange} ";
+           if(eff_ptGt20[ieta] > 0.70 && eff_ptGt20[ieta] <= 0.80) myfile_HWW_tex << "\\cellcolor{Yellow} ";
+           if(eff_ptGt20[ieta] > 0.50 && eff_ptGt20[ieta] <= 0.70) myfile_HWW_tex << "\\cellcolor{YellowGreen} ";
+           if(eff_ptGt20[ieta] > 0.01 && eff_ptGt20[ieta] <= 0.50) myfile_HWW_tex << "\\cellcolor{SkyBlue} ";
+           if (eff_ptGt20[ieta] < 0.10) myfile_HWW_tex << setprecision(2) << eff_ptGt20[ieta];
+           else myfile_HWW_tex << setprecision(3) << eff_ptGt20[ieta];
+        }
+        if (ieta == (BinEtaSize-2)) myfile_HWW_tex <<" \\\\ \n\\hline\n";
 
      }
   }
+  myfile_HWW_tex << "\\end{tabular}\n\\end{sidewaystable}\n";
 
   myfile.close();
+  myfile_ptGt20.close();
+  myfile_ptLt20.close();
+  myfile_HWW.close();
+  myfile_HWW_tex.close();
 ////////////////////////////////
   if (!isSave) return;
 

@@ -1,0 +1,56 @@
+\begin{sidewaystable}
+\caption{Efficiency of HLT\_Mu17\_TrkIsoVVL}
+\label{table:TriggerMuon:HLT_Mu17_TrkIsoVVL}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+$p_{T}/\eta$ & -2.4:-2.1 & -2.1:-1.6 & -1.6:-1.2 & -1.2:-0.8 & -0.8:-0.3 & -0.3:-0.2 & -0.2:0 & 0:0.2 & 0.2:0.3 & 0.3:0.8 & 0.8:1.2 & 1.2:1.6 & 1.6:2.1 & 2.1:2.4\\ 
+10:11 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+\hline
+11:12 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+\hline
+12:13 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+\hline
+13:14 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+\hline
+14:15 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+\hline
+15:16 & \cellcolor{SkyBlue} 0.019 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \cellcolor{SkyBlue} 0.016 \\ 
+\hline
+16:17 & \cellcolor{SkyBlue} 0.063 & \cellcolor{SkyBlue} 0.08 & \cellcolor{SkyBlue} 0.053 & \cellcolor{SkyBlue} 0.047 & \cellcolor{SkyBlue} 0.04 & \cellcolor{SkyBlue} 0.013 & \cellcolor{SkyBlue} 0.031 & 0 & \cellcolor{SkyBlue} 0.016 & \cellcolor{SkyBlue} 0.024 & \cellcolor{SkyBlue} 0.037 & \cellcolor{SkyBlue} 0.043 & \cellcolor{SkyBlue} 0.056 & \cellcolor{SkyBlue} 0.092 \\ 
+\hline
+17:18 & \cellcolor{YellowGreen} 0.67 & \cellcolor{Orange} 0.813 & \cellcolor{Orange} 0.896 & \cellcolor{Maroon!80} 0.903 & \cellcolor{Maroon!80} 0.934 & \cellcolor{Yellow} 0.797 & \cellcolor{Maroon!80} 0.922 & \cellcolor{Maroon!80} 0.928 & \cellcolor{Orange} 0.811 & \cellcolor{Maroon!80} 0.94 & \cellcolor{Maroon!80} 0.901 & \cellcolor{Orange} 0.897 & \cellcolor{Orange} 0.804 & \cellcolor{YellowGreen} 0.681 \\ 
+\hline
+18:19 & \cellcolor{Orange} 0.818 & \cellcolor{Maroon!80} 0.913 & \cellcolor{red} 0.974 & \cellcolor{red} 0.952 & \cellcolor{red} 0.976 & \cellcolor{Orange} 0.889 & \cellcolor{red} 0.957 & \cellcolor{red} 0.982 & \cellcolor{Orange} 0.878 & \cellcolor{red} 0.964 & \cellcolor{Maroon!80} 0.949 & \cellcolor{red} 0.963 & \cellcolor{Maroon!80} 0.941 & \cellcolor{Orange} 0.807 \\ 
+\hline
+19:20 & \cellcolor{Yellow} 0.8 & \cellcolor{Maroon!80} 0.941 & \cellcolor{red} 0.971 & \cellcolor{red} 0.958 & \cellcolor{red} 0.971 & \cellcolor{Orange} 0.859 & \cellcolor{red} 0.988 & \cellcolor{red} 0.964 & \cellcolor{Orange} 0.884 & \cellcolor{red} 0.979 & \cellcolor{red} 0.952 & \cellcolor{red} 0.962 & \cellcolor{Maroon!80} 0.936 & \cellcolor{Orange} 0.859 \\ 
+\hline
+20:21 & \cellcolor{Orange} 0.849 & \cellcolor{Maroon!80} 0.929 & \cellcolor{red} 0.971 & \cellcolor{red} 0.96 & \cellcolor{red} 0.986 & \cellcolor{Orange} 0.88 & \cellcolor{red} 0.975 & \cellcolor{red} 0.975 & \cellcolor{Orange} 0.879 & \cellcolor{red} 0.973 & \cellcolor{red} 0.96 & \cellcolor{red} 0.971 & \cellcolor{Maroon!80} 0.943 & \cellcolor{Orange} 0.849 \\ 
+\hline
+21:22 & \cellcolor{Orange} 0.85 & \cellcolor{Maroon!80} 0.937 & \cellcolor{red} 0.985 & \cellcolor{red} 0.959 & \cellcolor{red} 0.977 & \cellcolor{Maroon!80} 0.916 & \cellcolor{red} 0.971 & \cellcolor{red} 0.98 & \cellcolor{Orange} 0.885 & \cellcolor{red} 0.976 & \cellcolor{red} 0.958 & \cellcolor{red} 0.978 & \cellcolor{Maroon!80} 0.944 & \cellcolor{Orange} 0.839 \\ 
+\hline
+22:23 & \cellcolor{Orange} 0.83 & \cellcolor{Maroon!80} 0.926 & \cellcolor{red} 0.985 & \cellcolor{red} 0.961 & \cellcolor{red} 0.979 & \cellcolor{Orange} 0.878 & \cellcolor{red} 0.981 & \cellcolor{red} 0.962 & \cellcolor{Orange} 0.899 & \cellcolor{red} 0.978 & \cellcolor{Maroon!80} 0.95 & \cellcolor{red} 0.983 & \cellcolor{Maroon!80} 0.947 & \cellcolor{Orange} 0.86 \\ 
+\hline
+23:24 & \cellcolor{Orange} 0.85 & \cellcolor{Maroon!80} 0.921 & \cellcolor{red} 0.986 & \cellcolor{red} 0.955 & \cellcolor{red} 0.982 & \cellcolor{Maroon!80} 0.924 & \cellcolor{red} 0.983 & \cellcolor{red} 0.973 & \cellcolor{Orange} 0.89 & \cellcolor{red} 0.979 & \cellcolor{red} 0.956 & \cellcolor{red} 0.973 & \cellcolor{Maroon!80} 0.936 & \cellcolor{Orange} 0.871 \\ 
+\hline
+24:25 & \cellcolor{Orange} 0.852 & \cellcolor{Maroon!80} 0.932 & \cellcolor{red} 0.976 & \cellcolor{red} 0.962 & \cellcolor{red} 0.983 & \cellcolor{Orange} 0.896 & \cellcolor{red} 0.979 & \cellcolor{red} 0.964 & \cellcolor{Maroon!80} 0.923 & \cellcolor{red} 0.978 & \cellcolor{red} 0.96 & \cellcolor{red} 0.976 & \cellcolor{Maroon!80} 0.938 & \cellcolor{Orange} 0.855 \\ 
+\hline
+25:26 & \cellcolor{Orange} 0.883 & \cellcolor{Maroon!80} 0.93 & \cellcolor{red} 0.978 & \cellcolor{red} 0.963 & \cellcolor{red} 0.98 & \cellcolor{Orange} 0.899 & \cellcolor{red} 0.978 & \cellcolor{red} 0.983 & \cellcolor{Orange} 0.897 & \cellcolor{red} 0.98 & \cellcolor{red} 0.954 & \cellcolor{red} 0.976 & \cellcolor{red} 0.951 & \cellcolor{Orange} 0.88 \\ 
+\hline
+26:30 & \cellcolor{Orange} 0.874 & \cellcolor{Maroon!80} 0.926 & \cellcolor{red} 0.977 & \cellcolor{red} 0.952 & \cellcolor{red} 0.964 & \cellcolor{Orange} 0.874 & \cellcolor{red} 0.955 & \cellcolor{red} 0.951 & \cellcolor{Orange} 0.869 & \cellcolor{red} 0.96 & \cellcolor{Maroon!80} 0.948 & \cellcolor{red} 0.975 & \cellcolor{Maroon!80} 0.935 & \cellcolor{Orange} 0.87 \\ 
+\hline
+30:35 & \cellcolor{Orange} 0.882 & \cellcolor{Maroon!80} 0.922 & \cellcolor{red} 0.976 & \cellcolor{Maroon!80} 0.944 & \cellcolor{red} 0.961 & \cellcolor{Orange} 0.87 & \cellcolor{red} 0.957 & \cellcolor{red} 0.952 & \cellcolor{Orange} 0.87 & \cellcolor{red} 0.961 & \cellcolor{Maroon!80} 0.938 & \cellcolor{red} 0.973 & \cellcolor{Maroon!80} 0.932 & \cellcolor{Orange} 0.888 \\ 
+\hline
+35:40 & \cellcolor{Orange} 0.883 & \cellcolor{Maroon!80} 0.915 & \cellcolor{red} 0.97 & \cellcolor{Maroon!80} 0.937 & \cellcolor{red} 0.964 & \cellcolor{Orange} 0.869 & \cellcolor{red} 0.968 & \cellcolor{red} 0.967 & \cellcolor{Orange} 0.871 & \cellcolor{red} 0.967 & \cellcolor{Maroon!80} 0.934 & \cellcolor{red} 0.968 & \cellcolor{Maroon!80} 0.925 & \cellcolor{Orange} 0.89 \\ 
+\hline
+40:50 & \cellcolor{Orange} 0.887 & \cellcolor{Maroon!80} 0.906 & \cellcolor{red} 0.965 & \cellcolor{Maroon!80} 0.94 & \cellcolor{red} 0.973 & \cellcolor{Orange} 0.872 & \cellcolor{red} 0.973 & \cellcolor{red} 0.973 & \cellcolor{Orange} 0.867 & \cellcolor{red} 0.975 & \cellcolor{Maroon!80} 0.938 & \cellcolor{red} 0.964 & \cellcolor{Maroon!80} 0.916 & \cellcolor{Orange} 0.89 \\ 
+\hline
+50:60 & \cellcolor{Orange} 0.898 & \cellcolor{Maroon!80} 0.912 & \cellcolor{red} 0.967 & \cellcolor{Maroon!80} 0.945 & \cellcolor{red} 0.974 & \cellcolor{Orange} 0.87 & \cellcolor{red} 0.973 & \cellcolor{red} 0.972 & \cellcolor{Orange} 0.868 & \cellcolor{red} 0.974 & \cellcolor{Maroon!80} 0.94 & \cellcolor{red} 0.97 & \cellcolor{Maroon!80} 0.92 & \cellcolor{Orange} 0.892 \\ 
+\hline
+60:80 & \cellcolor{Maroon!80} 0.904 & \cellcolor{Maroon!80} 0.923 & \cellcolor{red} 0.964 & \cellcolor{Maroon!80} 0.947 & \cellcolor{red} 0.976 & \cellcolor{Orange} 0.879 & \cellcolor{red} 0.971 & \cellcolor{red} 0.974 & \cellcolor{Orange} 0.889 & \cellcolor{red} 0.976 & \cellcolor{Maroon!80} 0.944 & \cellcolor{red} 0.972 & \cellcolor{Maroon!80} 0.931 & \cellcolor{Maroon!80} 0.917 \\ 
+\hline
+80:120 & \cellcolor{Maroon!80} 0.933 & \cellcolor{Maroon!80} 0.927 & \cellcolor{red} 0.971 & \cellcolor{Maroon!80} 0.943 & \cellcolor{red} 0.972 & \cellcolor{Orange} 0.886 & \cellcolor{red} 0.974 & \cellcolor{red} 0.974 & \cellcolor{Maroon!80} 0.911 & \cellcolor{red} 0.972 & \cellcolor{red} 0.95 & \cellcolor{red} 0.966 & \cellcolor{Maroon!80} 0.933 & \cellcolor{Maroon!80} 0.923 \\ 
+\hline
+120:200 & \cellcolor{Maroon!80} 0.9 & \cellcolor{Maroon!80} 0.923 & \cellcolor{red} 0.964 & \cellcolor{Maroon!80} 0.949 & \cellcolor{red} 0.958 & \cellcolor{Orange} 0.893 & \cellcolor{red} 0.986 & \cellcolor{red} 0.984 & \cellcolor{Maroon!80} 0.907 & \cellcolor{red} 0.975 & \cellcolor{Maroon!80} 0.948 & \cellcolor{red} 0.963 & \cellcolor{Maroon!80} 0.938 & \cellcolor{red} 0.971 \\ 
+\hline
+\end{tabular}
+\end{sidewaystable}
