@@ -67,10 +67,11 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
 
   //change only name of file
   //TString sample_data = "TnP_IsoMu18_Run2015D_25ns_PTvsETA_binSmall";
+  TString sample_data = "TnP_IsoTkMu20_Run2015D_25ns_PTvsETA_binSmall";
   //TString sample_data = "TnP_IsoTkMu18_Run2015D_25ns_PTvsETA_binSmall";
   //TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_binSmall";
   //TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2015D_25ns_PTvsETA_binSmall";
-  TString sample_data = "TnP_DoubleIsoMu17TkMu8_TkMu8leg_Run2015D_25ns_PTvsETA_binSmall";
+  //TString sample_data = "TnP_DoubleIsoMu17TkMu8_TkMu8leg_Run2015D_25ns_PTvsETA_binSmall";
 
   TString Tag_trig = "_&_tag_IsoMu18_pass";
   if(sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_binSmall") Tag_trig = "_&_tag_Mu8_IsoTkrVVL_pass";
@@ -107,6 +108,8 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
   if (sample_data == "TnP_IsoMu18_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_IsoMu18}\n";
   if (sample_data == "TnP_IsoTkMu18_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_IsoTkMu18}\n";
   if (sample_data == "TnP_IsoTkMu18_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_IsoTkMu18}\n";
+  if (sample_data == "TnP_IsoTkMu20_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_IsoTkMu20}\n";
+  if (sample_data == "TnP_IsoTkMu20_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_IsoTkMu20}\n";
   if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu17\\_TrkIsoVVL}\n";
   if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu17_TrkIsoVVL}\n";
   if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu8\\_TrkIsoVVL}\n";

@@ -7,7 +7,7 @@ FitFunction = "vpvPlusExpo"
 isMuonSel = 'Medium'
 
 #isTrigger = 'IsoMu18'
-isTrigger = 'IsoTkMu18'
+isTrigger = 'IsoTkMu20'
 
 DataOpen ="1"; # 1 - Open data; 0 - Open MC
 #MCType = "DY";
@@ -109,7 +109,7 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
         Medium = cms.vstring("Medium Muon", "dummy[pass=1,fail=0]"),
         tag_IsoMu18 = cms.vstring("tag_IsoMu18 tag Muon", "dummy[pass=1,fail=0]"),
         IsoMu18 = cms.vstring("IsoMu18  probe Muon", "dummy[pass=1,fail=0]"),
-        IsoTkMu18 = cms.vstring("IsoTkMu18 probe Muon", "dummy[pass=1,fail=0]"),
+        IsoTkMu20 = cms.vstring("IsoTkMu20 probe Muon", "dummy[pass=1,fail=0]"),
         tag_IsoTkMu18 = cms.vstring("tag_IsoTkMu18 tag Muon", "dummy[pass=1,fail=0]"),
     ),
     ## PDF for signal and background (double voigtian + exponential background)
