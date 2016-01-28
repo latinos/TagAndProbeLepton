@@ -119,8 +119,8 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
         DoubleIsoMu17Mu8_IsoMu8leg = cms.vstring("DoubleIsoMu17Mu8_IsoMu8leg Muon", "dummy[pass=1,fail=0]"),
         DoubleIsoMu17TkMu8_TkMu8leg = cms.vstring("DoubleIsoMu17TkMu8_TkMu8leg Muon", "dummy[pass=1,fail=0]"),
         DoubleIsoMu17TkMu8_IsoMu8leg = cms.vstring("DoubleIsoMu17TkMu8_IsoMu8leg Muon", "dummy[pass=1,fail=0]"),
-        tag_Mu17_IsoTkrVVL = cms.vstring("tag_Mu17_IsoTkrVVL tag Muon", "dummy[pass=1,fail=0]"),
-        tag_Mu8_IsoTkrVVL = cms.vstring("tag_Mu8_IsoTkrVVL tag Muon", "dummy[pass=1,fail=0]"),
+        tag_Mu17_IsoTrkVVL = cms.vstring("tag_Mu17_IsoTrkVVL tag Muon", "dummy[pass=1,fail=0]"),
+        tag_Mu8_IsoTrkVVL = cms.vstring("tag_Mu8_IsoTrkVVL tag Muon", "dummy[pass=1,fail=0]"),
     ),
     ## PDF for signal and background (double voigtian + exponential background)
     PDFs = cms.PSet(
@@ -164,9 +164,9 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
                 #eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
                 Medium = cms.vstring("pass"),
                 combRelIsoPF04dBeta = cms.vdouble(0., 0.15),
-                #tag_Mu8_IsoTkrVVL = cms.vstring("pass"), ## tag trigger matched
+                #tag_Mu8_IsoTrkVVL = cms.vstring("pass"), ## tag trigger matched
                 #tag_pt = cms.vdouble(9, 5000.),
-                tag_Mu17_IsoTkrVVL = cms.vstring("pass"), ## tag trigger matched
+                tag_Mu17_IsoTrkVVL = cms.vstring("pass"), ## tag trigger matched
                 tag_pt = cms.vdouble(18, 5000.),
             ),
             BinToPDFmap = cms.vstring("vpvPlusExpo"), ## PDF to use, as defined below
@@ -182,9 +182,9 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
                 combRelIsoPF04dBeta = cms.vdouble(0., 0.15),
                 dB = cms.vdouble(0., 0.01),
                 dzPV = cms.vdouble(-0.1, 0.1),
-                #tag_Mu8_IsoTkrVVL = cms.vstring("pass"), ## tag trigger matched
+                #tag_Mu8_IsoTrkVVL = cms.vstring("pass"), ## tag trigger matched
                 #tag_pt = cms.vdouble(9, 5000.),
-                tag_Mu17_IsoTkrVVL = cms.vstring("pass"), ## tag trigger matched
+                tag_Mu17_IsoTrkVVL = cms.vstring("pass"), ## tag trigger matched
                 tag_pt = cms.vdouble(18, 5000.),
             ),
             BinToPDFmap = cms.vstring("vpvPlusExpo"), ## PDF to use, as defined below
@@ -200,9 +200,9 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
                 combRelIsoPF04dBeta = cms.vdouble(0., 0.15),
                 dB = cms.vdouble(0., 0.02),
                 dzPV = cms.vdouble(-0.1, 0.1),
-                #tag_Mu8_IsoTkrVVL = cms.vstring("pass"), ## tag trigger matched
+                #tag_Mu8_IsoTrkVVL = cms.vstring("pass"), ## tag trigger matched
                 #tag_pt = cms.vdouble(9, 5000.),
-                tag_Mu17_IsoTkrVVL = cms.vstring("pass"), ## tag trigger matched
+                tag_Mu17_IsoTrkVVL = cms.vstring("pass"), ## tag trigger matched
                 tag_pt = cms.vdouble(18, 5000.),
             ),
             BinToPDFmap = cms.vstring("vpvPlusExpo"), ## PDF to use, as defined below
