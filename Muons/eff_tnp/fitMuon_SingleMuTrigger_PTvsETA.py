@@ -7,7 +7,8 @@ FitFunction = "vpvPlusExpo"
 isMuonSel = 'Medium'
 
 #isTrigger = 'IsoMu18'
-isTrigger = 'IsoTkMu20'
+#isTrigger = 'IsoTkMu20'
+isTrigger = 'IsoMu18orIsoTkMu20' ## you have to change efficiency input yourself for this mode
 
 DataOpen ="1"; # 1 - Open data; 0 - Open MC
 #MCType = "DY";
@@ -107,7 +108,7 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
         Tight2012 = cms.vstring("Tight2012 Muon", "dummy[pass=1,fail=0]"),
         #tag_Tight2012 = cms.vstring("Tight 2012 tag Muon", "dummy[pass=1,fail=0]"), #this variable is not included in tag muon
         Medium = cms.vstring("Medium Muon", "dummy[pass=1,fail=0]"),
-        tag_IsoMu18 = cms.vstring("tag_IsoMu18 tag Muon", "dummy[pass=1,fail=0]"),
+        tag_IsoTkMu20 = cms.vstring("tag_IsoTkMu20 tag Muon", "dummy[pass=1,fail=0]"),
         IsoMu18 = cms.vstring("IsoMu18  probe Muon", "dummy[pass=1,fail=0]"),
         IsoTkMu20 = cms.vstring("IsoTkMu20 probe Muon", "dummy[pass=1,fail=0]"),
         tag_IsoTkMu18 = cms.vstring("tag_IsoTkMu18 tag Muon", "dummy[pass=1,fail=0]"),
@@ -126,7 +127,7 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
     ),
 
     Expressions = cms.PSet(
-
+        Trigger_IsoMu18orIsoTkMu20_Var = cms.vstring ("Trigger_IsoMu18orIsoTkMu20_Var", "IsoMu18==1 || IsoTkMu20==1", "IsoMu18", "IsoTkMu20"),
         MediumISO_gt20Var = cms.vstring ("MediumISO_gt20Var", "Medium==1 && abs(dB)<0.02 && abs(dzPV)<0.1 && combRelIsoPF04dBeta<0.15", "Medium", "dB","dzPV","combRelIsoPF04dBeta"),
         MediumISO_lt20Var = cms.vstring ("MediumISO_lt20Var", "Medium==1 && abs(dB)<0.01 && abs(dzPV)<0.1 && combRelIsoPF04dBeta<0.15", "Medium", "dB","dzPV","combRelIsoPF04dBeta"),
         MediumISO_Var = cms.vstring ("MediumISO_Var", "Medium==1 && combRelIsoPF04dBeta<0.15", "Medium", "combRelIsoPF04dBeta")
@@ -136,6 +137,7 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
         MediumISO_gt20 = cms.vstring("MediumISO_gt20", "MediumISO_gt20Var", "0.5"),
         MediumISO_lt20 = cms.vstring("MediumISO_lt20", "MediumISO_lt20Var", "0.5"),
         MediumISO = cms.vstring("MediumISO", "MediumISO_Var", "0.5"),
+        Trigger_IsoMu18orIsoTkMu20 = cms.vstring("Trigger_IsoMu18orIsoTkMu20", "Trigger_IsoMu18orIsoTkMu20_Var", "0.5"),
     ),
     ## What to fit
     Efficiencies = cms.PSet(
@@ -143,7 +145,8 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
         ##############
         Trigger_ptVSeta = cms.PSet(
             UnbinnedVariables = cms.vstring("mass"),
-            EfficiencyCategoryAndState = cms.vstring(isTrigger, "pass"), ## variable is above cut value 
+            EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu18orIsoTkMu20", "above"), ## variable is above cut value 
+            #EfficiencyCategoryAndState = cms.vstring(isTrigger, "pass"), ## variable is above cut value 
             BinnedVariables = cms.PSet(
                 #pt = cms.vdouble(10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
                 # (binSmall) detailed bins -> not enought stat.
@@ -154,7 +157,7 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
                 #eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
                 Medium = cms.vstring("pass"),
                 combRelIsoPF04dBeta = cms.vdouble(0., 0.15),
-                tag_IsoMu18 = cms.vstring("pass"), ## tag trigger matched
+                tag_IsoTkMu20 = cms.vstring("pass"), ## tag trigger matched
                 tag_pt = cms.vdouble(20, 5000.),
             ),
             BinToPDFmap = cms.vstring("vpvPlusExpo"), ## PDF to use, as defined below
@@ -162,7 +165,8 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
 
         Trigger_ptVSeta_ptLt20 = cms.PSet(
             UnbinnedVariables = cms.vstring("mass"),
-            EfficiencyCategoryAndState = cms.vstring(isTrigger, "pass"), ## variable is above cut value 
+            EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu18orIsoTkMu20", "above"), ## variable is above cut value 
+            #EfficiencyCategoryAndState = cms.vstring(isTrigger, "pass"), ## variable is above cut value 
             BinnedVariables = cms.PSet(
                 pt = cms.vdouble(10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 30, 35, 40, 50, 60, 80, 120, 200),
                 eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.0, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
@@ -170,7 +174,7 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
                 combRelIsoPF04dBeta = cms.vdouble(0., 0.15),
                 dB = cms.vdouble(0., 0.01),
                 dzPV = cms.vdouble(-0.1, 0.1),
-                tag_IsoMu18 = cms.vstring("pass"), ## tag trigger matched
+                tag_IsoTkMu20 = cms.vstring("pass"), ## tag trigger matched
                 tag_pt = cms.vdouble(20, 5000.),
             ),
             BinToPDFmap = cms.vstring("vpvPlusExpo"), ## PDF to use, as defined below
@@ -178,7 +182,8 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
 
         Trigger_ptVSeta_ptGt20 = cms.PSet(
             UnbinnedVariables = cms.vstring("mass"),
-            EfficiencyCategoryAndState = cms.vstring(isTrigger, "pass"), ## variable is above cut value 
+            EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu18orIsoTkMu20", "above"), ## variable is above cut value 
+            #EfficiencyCategoryAndState = cms.vstring(isTrigger, "pass"), ## variable is above cut value 
             BinnedVariables = cms.PSet(
                 pt = cms.vdouble(10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 30, 35, 40, 50, 60, 80, 120, 200),
                 eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.0, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
@@ -186,7 +191,7 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
                 combRelIsoPF04dBeta = cms.vdouble(0., 0.15),
                 dB = cms.vdouble(0., 0.02),
                 dzPV = cms.vdouble(-0.1, 0.1),
-                tag_IsoMu18 = cms.vstring("pass"), ## tag trigger matched
+                tag_IsoTkMu20 = cms.vstring("pass"), ## tag trigger matched
                 tag_pt = cms.vdouble(20, 5000.),
             ),
             BinToPDFmap = cms.vstring("vpvPlusExpo"), ## PDF to use, as defined below
@@ -202,7 +207,7 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
 #           EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"),
 #            UnbinnedVariables = cms.vstring("mass"),
 #            BinnedVariables = cms.PSet(
-#                tag_IsoMu18 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+#                tag_IsoTkMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
 #                tag_pt = cms.vdouble(20, 5000.),
 #                eta = cms.vdouble(-2.4, 2.4),
 #                pt = cms.vdouble(20, 1000),
