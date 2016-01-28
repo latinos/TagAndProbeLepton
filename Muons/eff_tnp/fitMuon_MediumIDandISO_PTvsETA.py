@@ -108,7 +108,7 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
         Tight2012 = cms.vstring("Tight2012 Muon", "dummy[pass=1,fail=0]"),
         #tag_Tight2012 = cms.vstring("Tight 2012 tag Muon", "dummy[pass=1,fail=0]"), #this variable is not included in tag muon
         Medium = cms.vstring("Medium Muon", "dummy[pass=1,fail=0]"),
-        tag_IsoMu18 = cms.vstring("tag_IsoMu18 tag Muon", "dummy[pass=1,fail=0]"),
+        tag_IsoMuTk20 = cms.vstring("tag_IsoTkMu20 tag Muon", "dummy[pass=1,fail=0]"),
         IsoMu18 = cms.vstring("IsoMu18  probe Muon", "dummy[pass=1,fail=0]"),
         IsoTkMu20 = cms.vstring("IsoTkMu20 probe Muon", "dummy[pass=1,fail=0]"),
         tag_IsoTkMu20 = cms.vstring("tag_IsoTkMu20 tag Muon", "dummy[pass=1,fail=0]"),
@@ -132,7 +132,7 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
            EfficiencyCategoryAndState = cms.vstring(isMuonSel, "pass"),
             UnbinnedVariables = cms.vstring("mass"),
             BinnedVariables = cms.PSet(
-                tag_IsoMu18 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+                tag_IsoTkMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
                 tag_pt = cms.vdouble(20, 5000.),
                 eta = cms.vdouble(-2.4, 2.4),
                 pt = cms.vdouble(20, 1000),
@@ -200,7 +200,7 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
                 pt = cms.vdouble(10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 60, 100, 200),
                 eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
                 #Medium = cms.vstring("pass"),
-                tag_IsoMu18 = cms.vstring("pass"), ## tag trigger matched
+                tag_IsoTkMu20 = cms.vstring("pass"), ## tag trigger matched
                 tag_pt = cms.vdouble(20, 5000.),
             ),
             BinToPDFmap = cms.vstring("vpvPlusExpo"), ## PDF to use, as defined below
@@ -213,7 +213,7 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
                 pt = cms.vdouble(10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 60, 100, 200),
                 eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
                 #Medium = cms.vstring("pass"),
-                tag_IsoMu18 = cms.vstring("pass"), ## tag trigger matched
+                tag_IsoTkMu20 = cms.vstring("pass"), ## tag trigger matched
                 tag_pt = cms.vdouble(20, 5000.),
             ),
             BinToPDFmap = cms.vstring("vpvPlusExpo"), ## PDF to use, as defined below
@@ -226,7 +226,7 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
                 pt = cms.vdouble(10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 60, 100, 200),
                 eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
                 #Medium = cms.vstring("pass"),
-                tag_IsoMu18 = cms.vstring("pass"), ## tag trigger matched
+                tag_IsoTkMu20 = cms.vstring("pass"), ## tag trigger matched
                 tag_pt = cms.vdouble(20, 5000.),
             ),
             BinToPDFmap = cms.vstring("vpvPlusExpo"), ## PDF to use, as defined below
