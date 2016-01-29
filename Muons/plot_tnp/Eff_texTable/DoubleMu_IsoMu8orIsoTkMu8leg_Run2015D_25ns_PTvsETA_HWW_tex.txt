@@ -1,0 +1,23 @@
+\begin{sidewaystable}
+\caption{Efficiency of HLT\_Mu8\_TrkIsoVVL or HLT\_TkMu8\_TrkIsoVVL}
+\label{table:TriggerMuon:HLT_Mu8orTkMu8_TrkIsoVVL}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+$p_{T}/\eta$ & -2.4:-2.1 & -2.1:-1.6 & -1.6:-1.2 & -1.2:-0.8 & -0.8:-0.3 & -0.3:-0.2 & -0.2:0.2 & 0.2:0.3 & 0.3:0.8 & 0.8:1.2 & 1.2:1.6 & 1.6:2.1 & 2.1:2.4\\ 
+\hline
+10:13 & \cellcolor{red} 0.967 & \cellcolor{Orange} 0.87 & \cellcolor{red} 1 & \cellcolor{red} 0.986 & \cellcolor{red} 1 & \cellcolor{Orange} 0.803 & \cellcolor{red} 1 & \cellcolor{red} 1 & \cellcolor{red} 0.956 & \cellcolor{red} 1 & \cellcolor{red} 1 & \cellcolor{red} 0.952 & \cellcolor{red} 0.953 \\ 
+\hline
+13:16 & \cellcolor{red} 0.962 & \cellcolor{Maroon!80} 0.939 & \cellcolor{red} 0.975 & \cellcolor{red} 0.983 & \cellcolor{red} 1 & \cellcolor{red} 1 & \cellcolor{red} 0.971 & \cellcolor{Orange} 0.82 & \cellcolor{red} 0.964 & \cellcolor{Maroon!80} 0.949 & \cellcolor{red} 0.992 & \cellcolor{Orange} 0.898 & \cellcolor{red} 0.96 \\ 
+\hline
+16:20 & \cellcolor{red} 0.96 & \cellcolor{Maroon!80} 0.949 & \cellcolor{red} 1 & \cellcolor{red} 0.959 & \cellcolor{red} 0.982 & \cellcolor{red} 0.958 & \cellcolor{red} 0.988 & \cellcolor{Orange} 0.879 & \cellcolor{red} 0.997 & \cellcolor{red} 0.962 & \cellcolor{red} 0.99 & \cellcolor{red} 0.955 & \cellcolor{red} 0.954 \\ 
+\hline
+20:25 & \cellcolor{red} 0.954 & \cellcolor{red} 0.95 & \cellcolor{red} 0.997 & \cellcolor{red} 0.963 & \cellcolor{red} 0.992 & \cellcolor{Maroon!80} 0.915 & \cellcolor{red} 0.972 & \cellcolor{Orange} 0.844 & \cellcolor{red} 0.98 & \cellcolor{red} 0.964 & \cellcolor{red} 0.988 & \cellcolor{red} 0.963 & \cellcolor{red} 0.954 \\ 
+\hline
+25:30 & \cellcolor{Maroon!80} 0.948 & \cellcolor{red} 0.952 & \cellcolor{red} 0.988 & \cellcolor{red} 0.963 & \cellcolor{red} 0.985 & \cellcolor{Maroon!80} 0.9 & \cellcolor{red} 0.984 & \cellcolor{Orange} 0.859 & \cellcolor{red} 0.989 & \cellcolor{red} 0.959 & \cellcolor{red} 0.992 & \cellcolor{red} 0.958 & \cellcolor{red} 0.955 \\ 
+\hline
+30:50 & \cellcolor{red} 0.954 & \cellcolor{Maroon!80} 0.936 & \cellcolor{red} 0.995 & \cellcolor{red} 0.96 & \cellcolor{red} 0.988 & \cellcolor{Orange} 0.876 & \cellcolor{red} 0.98 & \cellcolor{Orange} 0.872 & \cellcolor{red} 0.986 & \cellcolor{red} 0.963 & \cellcolor{red} 0.991 & \cellcolor{Maroon!80} 0.949 & \cellcolor{Maroon!80} 0.949 \\ 
+\hline
+50:200 & \cellcolor{red} 0.96 & \cellcolor{Maroon!80} 0.942 & \cellcolor{red} 0.994 & \cellcolor{red} 0.953 & \cellcolor{red} 0.987 & \cellcolor{Orange} 0.854 & \cellcolor{red} 0.984 & \cellcolor{Orange} 0.87 & \cellcolor{red} 0.988 & \cellcolor{red} 0.959 & \cellcolor{red} 0.993 & \cellcolor{red} 0.952 & \cellcolor{red} 0.954 \\ 
+\hline
+\end{tabular}
+\end{sidewaystable}
