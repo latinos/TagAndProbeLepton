@@ -65,10 +65,11 @@ void tnp_PrintEff( bool isSave = true ) {
   // ---- open the MC files ----
   TString pathAnna="/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_4_14/src/TagAndProbeLepton/Muons/eff_tnp/";
 
-  TString sample_data = "TnP_MediumIDandISO_Run2015D_25ns_PTvsETA_binBig";
-  //TString sample_data = "TnP_MediumIDandISO_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_binBig";
+  //TString sample_data = "TnP_MediumIDandISO_Run2015D_25ns_PTvsETA_binBig";
+  TString sample_data = "TnP_MediumIDandISO_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_binBig";
 
-  TString Tag_trig = "_&_tag_IsoMu18_pass";
+  //TString Tag_trig = "_&_tag_IsoMu18_pass";
+  TString Tag_trig = "_&_tag_IsoTkMu20_pass";
   if (sample_data == "TnP_MediumIDandISO_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_binBig") Tag_trig = "";
 
   TFile* DATA   = TFile::Open(pathAnna+sample_data+".root" );
