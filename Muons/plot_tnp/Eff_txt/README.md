@@ -14,9 +14,7 @@ PF Combined Relative Iso < 0.15 (combRelIsoPF04dBeta < 0.15)
 *****************************
 Triggers used for HWW:
 
-HLT_IsoMu18_v
-
-HLT_IsoTkMu18_v (bad, need to be replaced by HLT_IsoTkMu20_v, under discussion)
+HLT_IsoMu18_v||HLT_IsoTkMu20_v (HLT_IsoTkMu18_v was not active in the beginning of Run2015D) 
 
 HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_v
 
@@ -29,23 +27,34 @@ HLT_Mu17_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_v
 *****************************
 #muonID+ISO efficiency from Tracker muon:
 
+from DATA: MediumIDandISO_Run2015D_25ns_PTvsETA_HWW.txt
 
-from DATA: TnP_MediumIDandISO_Run2015D_25ns_PTvsETA_binBig_HWW.txt
-
-from MC (pile up reweight to DATA): TnP_MediumIDandISO_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_binBig_HWW.txt
-
-*****************************
-#Trigger efficiency from muonID+ISO selections using DATA only:
-
-HLT_IsoMu18: TnP_IsoMu18_Run2015D_25ns_PTvsETA_binSmall_HWW.txt
-
-HLT_IsoTkMu18 (broken bad trigger to use for v3 and good after run 257968): TnP_IsoTkMu18_Run2015D_25ns_PTvsETA_binSmall_HWW.txt
+from MC (pile up reweight to DATA): MediumIDandISO_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_HWW.txt
 
 *****************************
-Trigger efficiecny for Double Mu trigger looks reasonable, but should be confirmed (good for 1st iteration):
+#Trigger efficiency after passing muonID+ISO selections using DATA only:
 
-IsoMu17leg  : TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_binBig_HWW.txt
+#SingleMu trigger:
 
-IsoMu8leg   : TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2015D_25ns_PTvsETA_binSmall_HWW.txt
+HLT_IsoMu18||HLT_IsoTkMu20: SingleMu_IsoMu18orIsoTkMu20_Run2015D_25ns_PTvsETA_HWW.txt
 
-IsoTkMu8 leg: TnP_DoubleIsoMu17TkMu8_TkMu8leg_Run2015D_25ns_PTvsETA_binSmall_HWW.txt
+For comparison:
+
+HLT_IsoMu18: SingleMu_IsoMu18_Run2015D_25ns_PTvsETA_HWW.txt
+
+HLT_IsoTkMu20: SingleMu_IsoTkMu20_Run2015D_25ns_PTvsETA_HWW.txt
+
+HLT_IsoTkMu18 (broken bad trigger to use for v3 and good after run 257968, don't use it): SingleMu_IsoTkMu18_Run2015D_25ns_PTvsETA_HWW.txt
+
+*****************************
+# Trigger leg efficiecny for DoubleMu triggers:
+
+IsoMu17leg  : DoubleMu_IsoMu17leg_Run2015D_25ns_PTvsETA_HWW.txt
+
+IsoMu8leg   : DoubleMu_IsoMu8leg_Run2015D_25ns_PTvsETA_HWW.txt
+
+IsoMu8||IsoTkMu8leg: DoubleMu_IsoMu8orIsoTkMu8leg_Run2015D_25ns_PTvsETA_HWW.txt
+
+For comparison:
+
+IsoTkMu8 leg: DoubleMu_IsoTkMu8leg_Run2015D_25ns_PTvsETA_HWW.txt
