@@ -1,6 +1,8 @@
 CRAB3
 ====
 
+We use crab only for PromptReco Run2015. For Re-reco we are using standard Muon POG trees.
+
 See details here:
 
     https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookCRAB3Tutorial#CRAB_configuration_parameters

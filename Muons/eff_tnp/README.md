@@ -1,9 +1,8 @@
 contact: Anna
 
-t&p trees are located at:
+t&p trees for Re-Reco Run2015D and MC are located at:
 
-/store/group/phys_higgs/cmshww/kropiv/TnP_Muons/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/crab_50ns_DY_Spring15/50ns_DY_Spring15.root
-/store/group/phys_higgs/cmshww/kropiv/TnP_Muons/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/crab_25ns_DY_Spring15/25ns_DY_Spring15.root
+/store/group/phys_muon/TagAndProbe/76XtreeProduction
 
 Example to open i root directly:
 
