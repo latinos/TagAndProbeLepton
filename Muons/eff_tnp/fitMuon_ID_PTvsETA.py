@@ -4,7 +4,7 @@ import FWCore.ParameterSet.Config as cms
 FitFunction = "vpvPlusExpo"
 
 #isMuonSel = 'Tight2012'
-isMuonSel = 'Medium'
+isMuonSel = 'Medium';
 
 DataOpen ="1"; # 1 - Open data; 0 - Open MC
 #MCType = "DY";
@@ -23,10 +23,10 @@ if MCType == "DY_madgraph":
   FileNameOpenMC1 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_DYLL_M50_MadGraphMLM_part1.root";
   FileNameOpenMC2 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_DYLL_M50_MadGraphMLM_part2.root";
 
-FileNameOpenData1 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_RunD_part1.root"
-FileNameOpenData2 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_RunD_part2.root"
-FileNameOpenData3 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_RunD_part3.root"
-FileNameOpenData4 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_RunD_part4.root"
+FileNameOpenData1 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_RunD_part1.root";
+FileNameOpenData2 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_RunD_part2.root";
+FileNameOpenData3 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_RunD_part3.root";
+FileNameOpenData4 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_RunD_part4.root";
 
 FileNameOpen1 = FileNameOpenData1;
 FileNameOpen2 = FileNameOpenData2;
@@ -36,8 +36,8 @@ if DataOpen == "0":
    FileNameOpen1 = FileNameOpenMC1;
    FileNameOpen2 = FileNameOpenMC2;
 
-FileNameOutMC = "TnP_"+isMuonSel+"_"+MCType+Bunch+"Like"+DataType+"_"+Bunch+"_RAW.root";
-FileNameOutData = "TnP_"+isMuonSel+"_"+DataType+"_"+Bunch+"_RAW.root";
+FileNameOutMC = "TnP_"+isMuonSel+"_"+MCType+Bunch+"Like"+DataType+"_"+Bunch+"_PTvsETA_RAW.root";
+FileNameOutData = "TnP_"+isMuonSel+"_"+DataType+"_"+Bunch+"_PTvsETA_RAW.root";
  
 FileNameOut = FileNameOutData;
 if DataOpen == "0": 
@@ -70,7 +70,6 @@ process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(1) )
 process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
     ## Input, output 
     InputFileNames = cms.vstring(
-                                 #"file:../crab/crab_projects_tnp/crab_50ns_DY_Spring15/results/tnp_MC.root",  
                                  "file:"+FileNameOpen1,  
                                  "file:"+FileNameOpen2,  
                                  "file:"+FileNameOpen3, # only for Data  
@@ -120,7 +119,6 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
         ),
     ),
     Expressions = cms.PSet(
-
         ID_Medium_gt20Var = cms.vstring ("ID_Medium_gt20Var", "Medium==1 && abs(dB)<0.02 && abs(dzPV)<0.1", "Medium", "dB","dzPV"),
         ID_Medium_lt20Var = cms.vstring ("ID_Medium_lt20Var", "Medium==1 && abs(dB)<0.01 && abs(dzPV)<0.1", "Medium", "dB","dzPV"),
         ID_Medium_Var = cms.vstring ("ID_Medium_Var", "Medium==1", "Medium"),
@@ -134,68 +132,61 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
     ## What to fit
     Efficiencies = cms.PSet(
         ########
-        tag_nVertices_Medium = cms.PSet(
-           EfficiencyCategoryAndState = cms.vstring("ID_Medium", "above"),
-            UnbinnedVariables = cms.vstring("mass"),
-            BinnedVariables = cms.PSet(
-                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(20, 5000.),
-                eta = cms.vdouble(-2.4, 2.4),
-                pt = cms.vdouble(3, 10, 20, 5000),
-                tag_nVertices = cms.vdouble(0., 5., 8., 10., 12., 14., 16., 20., 30), # for GI or CI MC only
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
+     #   tag_nVertices_Medium = cms.PSet(
+     #      EfficiencyCategoryAndState = cms.vstring("ID_Medium", "above"),
+     #       UnbinnedVariables = cms.vstring("mass"),
+     #       BinnedVariables = cms.PSet(
+     #           tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+     #           tag_pt = cms.vdouble(20, 5000.),
+     #           eta = cms.vdouble(-2.4, 2.4),
+     #           pt = cms.vdouble(20, 5000),
+     #           tag_nVertices = cms.vdouble(0., 10., 15., 20., 30), # for GI or CI MC only
+     #       ),
+     #       BinToPDFmap = cms.vstring(FitFunction)
+     #   ),
         ##############
 
-        Medium_ISO_ptVSeta = cms.PSet(
-            UnbinnedVariables = cms.vstring("mass"),
-            EfficiencyCategoryAndState = cms.vstring("ID_Medium", "above"), ## variable is above cut value 
-            BinnedVariables = cms.PSet(
-                # detailed bins -> not enought stat. for MuonID
-                #pt = cms.vdouble(3, 5, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 30, 35, 40, 50, 60, 80, 120, 200),
-                #eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.0, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
-                #less detailed binning
-                pt = cms.vdouble(3, 6, 10, 13, 16, 20, 25, 30, 35, 40, 60, 100, 200),
-                eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
-                Medium = cms.vstring("pass"),
-                tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
-                tag_pt = cms.vdouble(20, 5000.),
-            ),
-            BinToPDFmap = cms.vstring("vpvPlusExpo"), ## PDF to use, as defined below
-        ),
+     #   Medium_ID_ptVSeta = cms.PSet(
+     #       UnbinnedVariables = cms.vstring("mass"),
+     #       EfficiencyCategoryAndState = cms.vstring("ID_Medium", "above"), ## variable is above cut value 
+     #       BinnedVariables = cms.PSet(
+     #           # detailed bins -> not enought stat. for MuonID
+     #           #pt = cms.vdouble(3, 5, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 30, 35, 40, 50, 60, 80, 120, 200),
+     #           #eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.0, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
+     #           #less detailed binning
+     #           pt = cms.vdouble(5, 8, 10, 13, 16, 20, 25, 30, 35, 40, 60, 100, 200),
+     #           eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
+     #           tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
+     #           tag_pt = cms.vdouble(20, 5000.),
+     #       ),
+     #       BinToPDFmap = cms.vstring(FitFunction), ## PDF to use, as defined below
+     #   ),
 
-        Medium_ISO_ptVSeta_ptLt20 = cms.PSet(
-            UnbinnedVariables = cms.vstring("mass"),
-            EfficiencyCategoryAndState = cms.vstring("ID_Medium_ptLt20", "above"), ## variable is above cut value 
-            BinnedVariables = cms.PSet(
-                pt = cms.vdouble(3, 6, 10, 13, 16, 20, 25, 30, 35, 40, 60, 100, 200),
-                eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
-                Medium = cms.vstring("pass"),
-                dB = cms.vdouble(0., 0.01),
-                dzPV = cms.vdouble(-0.1, 0.1),
-                tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
-                tag_pt = cms.vdouble(20, 5000.),
-            ),
-            BinToPDFmap = cms.vstring("vpvPlusExpo"), ## PDF to use, as defined below
-        ),
+     #   Medium_ID_ptVSeta_ptLt20 = cms.PSet(
+     #       UnbinnedVariables = cms.vstring("mass"),
+     #       EfficiencyCategoryAndState = cms.vstring("ID_Medium_lt20", "above"), ## variable is above cut value 
+     #       BinnedVariables = cms.PSet(
+     #           pt = cms.vdouble(5, 8, 10, 13, 16, 20, 25, 30, 35, 40, 60, 100, 200),
+     #           eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
+     #           tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
+     #           tag_pt = cms.vdouble(20, 5000.),
+     #       ),
+     #       BinToPDFmap = cms.vstring(FitFunction), ## PDF to use, as defined below
+     #   ),
 
-        Medium_ISO_ptVSeta_ptGt20 = cms.PSet(
+        Medium_ID_ptVSeta_ptGt20 = cms.PSet(
             UnbinnedVariables = cms.vstring("mass"),
-            EfficiencyCategoryAndState = cms.vstring("ID_Medium_ptGt20", "above"), ## variable is above cut value 
+            EfficiencyCategoryAndState = cms.vstring("ID_Medium_gt20", "above"), ## variable is above cut value 
             BinnedVariables = cms.PSet(
-                pt = cms.vdouble(3, 6, 10, 13, 16, 20, 25, 30, 35, 40, 60, 100, 200),
+                pt = cms.vdouble(5, 8, 10, 13, 16, 20, 25, 30, 35, 40, 60, 100, 200),
                 eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
-                Medium = cms.vstring("pass"),
-                dB = cms.vdouble(0., 0.02),
-                dzPV = cms.vdouble(-0.1, 0.1),
                 tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
                 tag_pt = cms.vdouble(20, 5000.),
             ),
-            BinToPDFmap = cms.vstring("vpvPlusExpo"), ## PDF to use, as defined below
+            BinToPDFmap = cms.vstring(FitFunction), ## PDF to use, as defined below
         ),
         ########
-########
+        ########
 
     ),
     ## How to do the fit
@@ -213,12 +204,20 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
     ## More variables
     Variables = process.TnP_Muon_ID.Variables.clone(
         combRelIsoPF04dBeta = cms.vstring("PF Combined Relative Iso", "-100", "99999", ""),
-        tag_nVertices       = cms.vstring("N(vertices)", "0", "99", "")
+        tag_nVertices       = cms.vstring("N(vertices)", "0", "99", ""),
         #dB     = cms.vstring("dxy muon", "0", "2", "cm"),
         #dzPV     = cms.vstring("dz PV muon", "-5", "5", "cm"),
-
     ),
-    
+    ## Flags you want to use to define numerator and possibly denominator
+    Categories = cms.PSet(
+        PF = cms.vstring("PF Muon", "dummy[pass=1,fail=0]"),
+        Tight2012 = cms.vstring("Tight2012 Muon", "dummy[pass=1,fail=0]"),
+        #tag_Tight2012 = cms.vstring("Tight 2012 tag Muon", "dummy[pass=1,fail=0]"), #this variable is not included in tag muon
+        Medium = cms.vstring("Medium Muon", "dummy[pass=1,fail=0]"),
+        tag_IsoMu20 = cms.vstring("tag_IsoMu20 tag Muon", "dummy[pass=1,fail=0]"),
+        IsoMu18 = cms.vstring("IsoMu18  probe Muon", "dummy[pass=1,fail=0]"),
+        IsoMu20 = cms.vstring("IsoMu20 probe Muon", "dummy[pass=1,fail=0]"),
+    ),    
     Expressions = cms.PSet(
 
         MediumISO_gt20Var = cms.vstring ("MediumISO_gt20Var", "Medium==1 && abs(dB)<0.02 && abs(dzPV)<0.1 && combRelIsoPF04dBeta<0.15", "Medium", "dB","dzPV","combRelIsoPF04dBeta"),
@@ -256,7 +255,7 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
                 tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
                 tag_pt = cms.vdouble(20, 5000.),
             ),
-            BinToPDFmap = cms.vstring("vpvPlusExpo"), ## PDF to use, as defined below
+            BinToPDFmap = cms.vstring(FitFunction), ## PDF to use, as defined below
         ),
 
         Medium_ISO_ptVSeta_ptLt20 = cms.PSet(
@@ -271,7 +270,7 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
                 tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
                 tag_pt = cms.vdouble(20, 5000.),
             ),
-            BinToPDFmap = cms.vstring("vpvPlusExpo"), ## PDF to use, as defined below
+            BinToPDFmap = cms.vstring(FitFunction), ## PDF to use, as defined below
         ),
 
         Medium_ISO_ptVSeta_ptGt20 = cms.PSet(
@@ -286,7 +285,7 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
                 tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
                 tag_pt = cms.vdouble(20, 5000.),
             ),
-            BinToPDFmap = cms.vstring("vpvPlusExpo"), ## PDF to use, as defined below
+            BinToPDFmap = cms.vstring(FitFunction), ## PDF to use, as defined below
         ),
 
         ##############
