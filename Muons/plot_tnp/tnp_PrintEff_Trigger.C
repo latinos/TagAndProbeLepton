@@ -67,13 +67,13 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
   //change only name of file, check that you use correct pt and eta binning: 
 
   // for 76X
-  TString sample_data = "TnP_IsoMu18orIsoTkMu20_Run2015D_25ns_PTvsETA_part3";
+  //TString sample_data = "TnP_IsoMu18orIsoTkMu20_Run2015D_25ns_PTvsETA_part3";
+  TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_part3";
 
   //TString sample_data = "TnP_IsoMu18_Run2015D_25ns_PTvsETA_binSmall";
   //TString sample_data = "TnP_IsoTkMu20_Run2015D_25ns_PTvsETA_binSmall";
   //TString sample_data = "TnP_IsoTkMu18_Run2015D_25ns_PTvsETA_binSmall";
 
-  //TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_binVeryBig";
   //TString sample_data = "TnP_Mu17_IsoTrkVVL_Run2015D_25ns_PTvsETA_binVeryBig";
 
   //TString sample_data = "TnP_IsoMu8orIsoTkMu8leg_Run2015D_25ns_PTvsETA_binVeryBig";
@@ -129,8 +129,8 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
 
   if (sample_data == "TnP_Mu17_IsoTrkVVL_Run2015D_25ns_PTvsETA_binVeryBig") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu17\\_TrkIsoVVL}\n";
   if (sample_data == "TnP_Mu17_IsoTrkVVL_Run2015D_25ns_PTvsETA_binVeryBig") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu17_TrkIsoVVL}\n";
-  if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_binVeryBig") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu17\\_TrkIsoVVL}\n";
-  if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_binVeryBig") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu17_TrkIsoVVL}\n";
+  if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu17\\_TrkIsoVVL}\n";
+  if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu17_TrkIsoVVL}\n";
   if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu17\\_TrkIsoVVL}\n";
   if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu17_TrkIsoVVL}\n";
 
