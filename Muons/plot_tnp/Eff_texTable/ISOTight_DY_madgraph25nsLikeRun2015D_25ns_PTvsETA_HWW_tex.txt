@@ -1,0 +1,39 @@
+\begin{sidewaystable}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+$p_{T}/\eta$ & -2.4:-2.1 & -2.1:-1.6 & -1.6:-1.2 & -1.2:-0.8 & -0.8:-0.3 & -0.3:0.3 & 0.3:0.8 & 0.8:1.2 & 1.2:1.6 & 1.6:2.1 & 2.1:2.4\\ 
+\hline
+10:12 & \cellcolor{Yellow} 0.734 & \cellcolor{Yellow} 0.758 & \cellcolor{Yellow} 0.769 & \cellcolor{YellowGreen} 0.656 & \cellcolor{YellowGreen} 0.65 & \cellcolor{YellowGreen} 0.599 & \cellcolor{YellowGreen} 0.674 & \cellcolor{Yellow} 0.7 & \cellcolor{Yellow} 0.714 & \cellcolor{Yellow} 0.773 & \cellcolor{Yellow} 0.741 \\ 
+\hline
+12:14 & \cellcolor{Orange} 0.814 & \cellcolor{Yellow} 0.797 & \cellcolor{Yellow} 0.767 & \cellcolor{Yellow} 0.762 & \cellcolor{Yellow} 0.716 & \cellcolor{YellowGreen} 0.681 & \cellcolor{YellowGreen} 0.688 & \cellcolor{Yellow} 0.725 & \cellcolor{Yellow} 0.786 & \cellcolor{Orange} 0.805 & \cellcolor{Yellow} 0.775 \\ 
+\hline
+14:16 & \cellcolor{Orange} 0.828 & \cellcolor{Orange} 0.837 & \cellcolor{Orange} 0.815 & \cellcolor{Yellow} 0.781 & \cellcolor{Yellow} 0.731 & \cellcolor{YellowGreen} 0.688 & \cellcolor{Yellow} 0.732 & \cellcolor{Yellow} 0.787 & \cellcolor{Orange} 0.818 & \cellcolor{Orange} 0.834 & \cellcolor{Orange} 0.847 \\ 
+\hline
+16:18 & \cellcolor{Orange} 0.859 & \cellcolor{Orange} 0.843 & \cellcolor{Orange} 0.836 & \cellcolor{Orange} 0.803 & \cellcolor{Yellow} 0.755 & \cellcolor{YellowGreen} 0.698 & \cellcolor{Yellow} 0.781 & \cellcolor{Yellow} 0.79 & \cellcolor{Orange} 0.828 & \cellcolor{Orange} 0.857 & \cellcolor{Orange} 0.852 \\ 
+\hline
+18:20 & \cellcolor{Orange} 0.87 & \cellcolor{Orange} 0.881 & \cellcolor{Orange} 0.865 & \cellcolor{Orange} 0.843 & \cellcolor{Orange} 0.807 & \cellcolor{Yellow} 0.774 & \cellcolor{Yellow} 0.784 & \cellcolor{Orange} 0.819 & \cellcolor{Orange} 0.848 & \cellcolor{Orange} 0.891 & \cellcolor{Orange} 0.873 \\ 
+\hline
+20:22 & \cellcolor{Orange} 0.893 & \cellcolor{Orange} 0.894 & \cellcolor{Orange} 0.889 & \cellcolor{Orange} 0.85 & \cellcolor{Orange} 0.826 & \cellcolor{Yellow} 0.798 & \cellcolor{Orange} 0.826 & \cellcolor{Orange} 0.835 & \cellcolor{Orange} 0.88 & \cellcolor{Maroon!80} 0.901 & \cellcolor{Maroon!80} 0.907 \\ 
+\hline
+22:24 & \cellcolor{Maroon!80} 0.903 & \cellcolor{Maroon!80} 0.905 & \cellcolor{Orange} 0.889 & \cellcolor{Orange} 0.871 & \cellcolor{Orange} 0.855 & \cellcolor{Orange} 0.84 & \cellcolor{Orange} 0.846 & \cellcolor{Orange} 0.862 & \cellcolor{Orange} 0.893 & \cellcolor{Maroon!80} 0.914 & \cellcolor{Orange} 0.896 \\ 
+\hline
+24:26 & \cellcolor{Maroon!80} 0.93 & \cellcolor{Maroon!80} 0.918 & \cellcolor{Maroon!80} 0.907 & \cellcolor{Orange} 0.887 & \cellcolor{Orange} 0.869 & \cellcolor{Orange} 0.865 & \cellcolor{Orange} 0.876 & \cellcolor{Orange} 0.884 & \cellcolor{Maroon!80} 0.903 & \cellcolor{Maroon!80} 0.922 & \cellcolor{Maroon!80} 0.922 \\ 
+\hline
+26:30 & \cellcolor{Maroon!80} 0.935 & \cellcolor{Maroon!80} 0.935 & \cellcolor{Maroon!80} 0.925 & \cellcolor{Maroon!80} 0.902 & \cellcolor{Orange} 0.899 & \cellcolor{Orange} 0.893 & \cellcolor{Maroon!80} 0.9 & \cellcolor{Maroon!80} 0.909 & \cellcolor{Maroon!80} 0.923 & \cellcolor{Maroon!80} 0.934 & \cellcolor{Maroon!80} 0.94 \\ 
+\hline
+30:35 & \cellcolor{red} 0.954 & \cellcolor{red} 0.951 & \cellcolor{Maroon!80} 0.944 & \cellcolor{Maroon!80} 0.934 & \cellcolor{Maroon!80} 0.925 & \cellcolor{Maroon!80} 0.926 & \cellcolor{Maroon!80} 0.928 & \cellcolor{Maroon!80} 0.932 & \cellcolor{Maroon!80} 0.946 & \cellcolor{red} 0.955 & \cellcolor{red} 0.957 \\ 
+\hline
+35:40 & \cellcolor{red} 0.971 & \cellcolor{red} 0.971 & \cellcolor{red} 0.964 & \cellcolor{red} 0.957 & \cellcolor{red} 0.953 & \cellcolor{red} 0.952 & \cellcolor{red} 0.955 & \cellcolor{red} 0.959 & \cellcolor{red} 0.964 & \cellcolor{red} 0.97 & \cellcolor{red} 0.97 \\ 
+\hline
+40:50 & \cellcolor{red} 0.986 & \cellcolor{red} 0.987 & \cellcolor{red} 0.985 & \cellcolor{red} 0.98 & \cellcolor{red} 0.976 & \cellcolor{red} 0.975 & \cellcolor{red} 0.977 & \cellcolor{red} 0.979 & \cellcolor{red} 0.984 & \cellcolor{red} 0.986 & \cellcolor{red} 0.984 \\ 
+\hline
+50:60 & \cellcolor{red} 0.99 & \cellcolor{red} 0.992 & \cellcolor{red} 0.991 & \cellcolor{red} 0.986 & \cellcolor{red} 0.985 & \cellcolor{red} 0.984 & \cellcolor{red} 0.986 & \cellcolor{red} 0.988 & \cellcolor{red} 0.99 & \cellcolor{red} 0.993 & \cellcolor{red} 0.992 \\ 
+\hline
+60:80 & \cellcolor{red} 0.991 & \cellcolor{red} 0.991 & \cellcolor{red} 0.991 & \cellcolor{red} 0.989 & \cellcolor{red} 0.986 & \cellcolor{red} 0.988 & \cellcolor{red} 0.988 & \cellcolor{red} 0.993 & \cellcolor{red} 0.99 & \cellcolor{red} 0.988 & \cellcolor{red} 0.99 \\ 
+\hline
+80:120 & \cellcolor{red} 1 & \cellcolor{red} 0.995 & \cellcolor{red} 0.991 & \cellcolor{red} 0.992 & \cellcolor{red} 0.991 & \cellcolor{red} 0.988 & \cellcolor{red} 0.988 & \cellcolor{red} 0.989 & \cellcolor{red} 0.988 & \cellcolor{red} 0.991 & \cellcolor{red} 0.993 \\ 
+\hline
+120:200 & \cellcolor{red} 1 & \cellcolor{red} 0.99 & \cellcolor{red} 0.992 & \cellcolor{red} 0.977 & \cellcolor{red} 0.986 & \cellcolor{red} 0.986 & \cellcolor{red} 0.988 & \cellcolor{red} 0.993 & \cellcolor{red} 0.998 & \cellcolor{red} 0.986 & \cellcolor{red} 1 \\ 
+\hline
+\end{tabular}
+\end{sidewaystable}
