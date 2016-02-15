@@ -70,10 +70,10 @@ process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(1) )
 process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
     ## Input, output 
     InputFileNames = cms.vstring(
-                                 "file:"+FileNameOpen1,  
-                                 "file:"+FileNameOpen2,  
+                                 #"file:"+FileNameOpen1,  
+                                 #"file:"+FileNameOpen2,  
                                  "file:"+FileNameOpen3, # only for Data  
-                                 "file:"+FileNameOpen4, # only for Data 
+                                 #"file:"+FileNameOpen4, # only for Data 
                                  #"root://eoscms//eos/cms/store/group/phys_higgs/cmshww/kropiv/TnP_Muons/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/crab_25ns_DY_Spring15/150707_143420/0000/tnp_MC_100.root",
                                  ), ## can put more than one
     ## copy locally to be faster: xrdcp root://eoscms//eos/cms/store/cmst3/user/botta/TnPtrees/tnpZ_Data.190456-193557.root $PWD/tnpZ_Data.190456-193557.root

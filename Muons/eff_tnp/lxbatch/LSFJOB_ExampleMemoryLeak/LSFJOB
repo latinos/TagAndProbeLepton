@@ -1,0 +1,32 @@
+#! /bin/sh
+
+$LSB_TRAPSIGS
+$LSB_RCP1
+$LSB_RCP2
+$LSB_RCP3
+# LSBATCH: User input
+( cat <<_USER_\SCRIPT_
+#!/bin/sh
+
+REMOTEDIR=/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_6_3_patch2/src/TagAndProbeLepton/Muons/eff_tnp
+
+cd $REMOTEDIR
+eval `scram runtime -sh`
+#cd -
+rm out_fitMuon_ISO_PTvsETA.txt
+cmsRun $REMOTEDIR/fitMuon_ISO_PTvsETA.py > out_fitMuon_ISO_PTvsETA.txt
+
+
+_USER_SCRIPT_
+) > $LSB_CHKFILENAME.shell
+chmod u+x $LSB_CHKFILENAME.shell
+/usr/local/lsf/etc/job_starter '$LSB_JOBFILENAME.shell'
+saveExit=$?
+/bin/rm -f $LSB_JOBFILENAME.shell
+(exit $saveExit)
+
+ExitStat=$?
+wait
+# LSBATCH: End user input
+true
+exit `expr $? "|" $ExitStat`

@@ -74,10 +74,10 @@ process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(1) )
 process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
     ## Input, output 
     InputFileNames = cms.vstring(
-                                 "file:"+FileNameOpen1,
-                                 "file:"+FileNameOpen2,
+                                 #"file:"+FileNameOpen1,
+                                 #"file:"+FileNameOpen2,
                                  "file:"+FileNameOpen3, # only for Data  
-                                 "file:"+FileNameOpen4, # only for Data 
+                                 #"file:"+FileNameOpen4, # only for Data 
                                  #"root://eoscms//eos/cms/store/group/phys_higgs/cmshww/kropiv/TnP_Muons/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/crab_25ns_DY_Spring15/150707_143420/0000/tnp_MC_100.root",
                                  ), ## can put more than one
     ## copy locally to be faster: xrdcp root://eoscms//eos/cms/store/cmst3/user/botta/TnPtrees/tnpZ_Data.190456-193557.root $PWD/tnpZ_Data.190456-193557.root
@@ -150,25 +150,25 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
     Efficiencies = cms.PSet(
         ##############
         ##############
-   #     Trigger_ptVSeta = cms.PSet(
-   #         UnbinnedVariables = cms.vstring("mass"),
-   #         EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu18orIsoTkMu20", "above"), ## variable is above cut value 
-   #         #EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu8orIsoTkMu8", "above"), ## variable is above cut value 
-   #         #EfficiencyCategoryAndState = cms.vstring(isTrigger, "pass"), ## variable is above cut value 
-   #         BinnedVariables = cms.PSet(
-   #             # binning for Mu17, Mu18, Mu20 
-   #             pt = cms.vdouble(10, 15, 16, 17, 18, 19, 20, 21, 22,  24,  26, 30, 35, 40, 60, 100, 200),
-   #             eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
-   #             # binning for Mu8 
-   #             #pt = cms.vdouble(10, 12, 14, 16, 18, 20, 25, 30, 35, 40, 60, 100, 200),
-   #             #eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
-   #             Medium = cms.vstring("pass"),
-   #             combRelIsoPF04dBeta = cms.vdouble(0., 0.15),
-   #             tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
-   #             tag_pt = cms.vdouble(20, 5000.),
-   #         ),
-   #         BinToPDFmap = cms.vstring("vpvPlusExpo"), ## PDF to use, as defined below
-   #     ),
+        Trigger_ptVSeta = cms.PSet(
+            UnbinnedVariables = cms.vstring("mass"),
+            EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu18orIsoTkMu20", "above"), ## variable is above cut value 
+            #EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu8orIsoTkMu8", "above"), ## variable is above cut value 
+            #EfficiencyCategoryAndState = cms.vstring(isTrigger, "pass"), ## variable is above cut value 
+            BinnedVariables = cms.PSet(
+                # binning for Mu17, Mu18, Mu20 
+                pt = cms.vdouble(10, 15, 16, 17, 18, 19, 20, 21, 22,  24,  26, 30, 35, 40, 60, 100, 200),
+                eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
+                # binning for Mu8 
+                #pt = cms.vdouble(10, 12, 14, 16, 18, 20, 25, 30, 35, 40, 60, 100, 200),
+                #eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
+                Medium = cms.vstring("pass"),
+                combRelIsoPF04dBeta = cms.vdouble(0., 0.15),
+                tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
+                tag_pt = cms.vdouble(20, 5000.),
+            ),
+            BinToPDFmap = cms.vstring("vpvPlusExpo"), ## PDF to use, as defined below
+        ),
 
         Trigger_ptVSeta_ptLt20 = cms.PSet(
             UnbinnedVariables = cms.vstring("mass"),
@@ -192,27 +192,27 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
             BinToPDFmap = cms.vstring("vpvPlusExpo"), ## PDF to use, as defined below
         ),
 
-    #    Trigger_ptVSeta_ptGt20 = cms.PSet(
-    #        UnbinnedVariables = cms.vstring("mass"),
-    #        EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu18orIsoTkMu20", "above"), ## variable is above cut value 
-    #        #EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu8orIsoTkMu8", "above"), ## variable is above cut value 
-    #        #EfficiencyCategoryAndState = cms.vstring(isTrigger, "pass"), ## variable is above cut value 
-    #        BinnedVariables = cms.PSet(
-    #            # binning for Mu17, Mu18, Mu20 
-    #            pt = cms.vdouble(10, 15, 16, 17, 18, 19, 20, 21, 22,  24,  26, 30, 35, 40, 60, 100, 200),
-    #            eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
-    #            # binning for Mu8 
-    #            #pt = cms.vdouble(10, 12, 14, 16, 18, 20, 25, 30, 35, 40, 60, 100, 200),
-    #            #eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
-    #            Medium = cms.vstring("pass"),
-    #            combRelIsoPF04dBeta = cms.vdouble(0., 0.15),
-    #            dB = cms.vdouble(0., 0.02),
-    #            dzPV = cms.vdouble(-0.1, 0.1),
-    #            tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
-    #            tag_pt = cms.vdouble(20, 5000.),
-    #        ),
-    #        BinToPDFmap = cms.vstring("vpvPlusExpo"), ## PDF to use, as defined below
-    #    ),
+        Trigger_ptVSeta_ptGt20 = cms.PSet(
+            UnbinnedVariables = cms.vstring("mass"),
+            EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu18orIsoTkMu20", "above"), ## variable is above cut value 
+            #EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu8orIsoTkMu8", "above"), ## variable is above cut value 
+            #EfficiencyCategoryAndState = cms.vstring(isTrigger, "pass"), ## variable is above cut value 
+            BinnedVariables = cms.PSet(
+                # binning for Mu17, Mu18, Mu20 
+                pt = cms.vdouble(10, 15, 16, 17, 18, 19, 20, 21, 22,  24,  26, 30, 35, 40, 60, 100, 200),
+                eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
+                # binning for Mu8 
+                #pt = cms.vdouble(10, 12, 14, 16, 18, 20, 25, 30, 35, 40, 60, 100, 200),
+                #eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
+               Medium = cms.vstring("pass"),
+                combRelIsoPF04dBeta = cms.vdouble(0., 0.15),
+                dB = cms.vdouble(0., 0.02),
+                dzPV = cms.vdouble(-0.1, 0.1),
+                tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
+                tag_pt = cms.vdouble(20, 5000.),
+            ),
+            BinToPDFmap = cms.vstring("vpvPlusExpo"), ## PDF to use, as defined below
+        ),
 
 
         ##############

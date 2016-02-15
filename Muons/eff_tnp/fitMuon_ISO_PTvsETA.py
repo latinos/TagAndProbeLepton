@@ -68,14 +68,18 @@ process.source = cms.Source("EmptySource")
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(1) )
 #process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(1000) )
 
+#from ROOT import  RooFit, RooRealVar, RooGaussian, RooChebychev, RooAddPdf, RooArgList, RooArgSet, RooDataSet, RooCategory, RooPlot
+#from ROOT import RooFit, RooRealVar, RooGaussian, RooChebychev, RooAddPdf, RooArgList, RooArgSet, RooDataSet, RooCategory, RooPlot, TCanvas, gPad, RooSimultaneous, kDashed
+
+
 process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
     ## Input, output 
     InputFileNames = cms.vstring(
                                  #"file:../crab/crab_projects_tnp/crab_50ns_DY_Spring15/results/tnp_MC.root",  
-                                 "file:"+FileNameOpen1,  
-                                 "file:"+FileNameOpen2,  
+                                 #"file:"+FileNameOpen1,  
+                                 #"file:"+FileNameOpen2,  
                                  "file:"+FileNameOpen3, # only for Data  
-                                 "file:"+FileNameOpen4, # only for Data 
+                                 #"file:"+FileNameOpen4, # only for Data 
                                  #"root://eoscms//eos/cms/store/group/phys_higgs/cmshww/kropiv/TnP_Muons/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/crab_25ns_DY_Spring15/150707_143420/0000/tnp_MC_100.root",
                                  ), ## can put more than one
     ## copy locally to be faster: xrdcp root://eoscms//eos/cms/store/cmst3/user/botta/TnPtrees/tnpZ_Data.190456-193557.root $PWD/tnpZ_Data.190456-193557.root
@@ -123,8 +127,10 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
             "Gaussian::signal1(mass, mean1[90,80,100], sigma1[2.495])",
             "Gaussian::signal2(mass, mean1[90,80,100], sigma2[0.5,0.02,5])",# the same mean1 as in signal1
             "SUM::signal(vFrac[0.8,0,1]*signal1, signal2)",
-            "Chebychev::backgroundPass(mass, cPass1[0,-1,1],cPass2[0,-1,1])",
-            "Chebychev::backgroundFail(mass, cFail1[0,-1,1],cFail2[0,-1,1])",
+            #"RooChebychev::backgroundPass(mass, cPass1[0,-1,1],cPass2[0,-1,1])",
+            #"RooChebychev::backgroundFail(mass, cFail1[0,-1,1],cFail2[0,-1,1])",
+            "Chebychev::backgroundPass(mass, {cPass1[0,-1,1],cPass2[0,-1,1]})",
+            "Chebychev::backgroundFail(mass, {cFail1[0,-1,1],cFail2[0,-1,1]})",
             "efficiency[0.9,0,1]",
             "signalFractionInPassing[0.9]"
         ),
@@ -205,35 +211,35 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
             BinToPDFmap = cms.vstring(FitFunction), ## PDF to use, as defined below
         ),
 
-#        Medium_ISO_ptVSeta_ptLt20 = cms.PSet(
-#            UnbinnedVariables = cms.vstring("mass"),
-#            EfficiencyCategoryAndState = cms.vstring("ISOTight", "above"), ## variable is above cut value 
-#            BinnedVariables = cms.PSet(
-#                pt = cms.vdouble(5, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
-#                eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
-#                Medium = cms.vstring("pass"),
-#                dB = cms.vdouble(0., 0.01),
-#                dzPV = cms.vdouble(-0.1, 0.1),
-#                tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
-#                tag_pt = cms.vdouble(20, 5000.),
-#            ),
-#            BinToPDFmap = cms.vstring(FitFunction), ## PDF to use, as defined below
-#        ),
-#
-#        Medium_ISO_ptVSeta_ptGt20 = cms.PSet(
-#            UnbinnedVariables = cms.vstring("mass"),
-#            EfficiencyCategoryAndState = cms.vstring("ISOTight", "above"), ## variable is above cut value 
-#            BinnedVariables = cms.PSet(
-#                pt = cms.vdouble(5, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
-#                eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
-#                Medium = cms.vstring("pass"),
-#                dB = cms.vdouble(0., 0.02),
-#                dzPV = cms.vdouble(-0.1, 0.1),
-#                tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
-#                tag_pt = cms.vdouble(20, 5000.),
-#            ),
-#            BinToPDFmap = cms.vstring(FitFunction), ## PDF to use, as defined below
-#        ),
+        Medium_ISO_ptVSeta_ptLt20 = cms.PSet(
+            UnbinnedVariables = cms.vstring("mass"),
+            EfficiencyCategoryAndState = cms.vstring("ISOTight", "above"), ## variable is above cut value 
+            BinnedVariables = cms.PSet(
+                pt = cms.vdouble(5, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
+                eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
+                Medium = cms.vstring("pass"),
+                dB = cms.vdouble(0., 0.01),
+                dzPV = cms.vdouble(-0.1, 0.1),
+                tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
+                tag_pt = cms.vdouble(20, 5000.),
+            ),
+            BinToPDFmap = cms.vstring(FitFunction), ## PDF to use, as defined below
+        ),
+
+        Medium_ISO_ptVSeta_ptGt20 = cms.PSet(
+            UnbinnedVariables = cms.vstring("mass"),
+            EfficiencyCategoryAndState = cms.vstring("ISOTight", "above"), ## variable is above cut value 
+            BinnedVariables = cms.PSet(
+                pt = cms.vdouble(5, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
+                eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
+                Medium = cms.vstring("pass"),
+                dB = cms.vdouble(0., 0.02),
+                dzPV = cms.vdouble(-0.1, 0.1),
+                tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
+                tag_pt = cms.vdouble(20, 5000.),
+            ),
+            BinToPDFmap = cms.vstring(FitFunction), ## PDF to use, as defined below
+        ),
 
         ##############
         ##############
