@@ -44,11 +44,10 @@ void tnp_PrintEff( bool isSave = true ) {
   gStyle->SetOptTitle(kFALSE);
 
   //detailed bins -> not enought stat. for MediumID + ISO 
-  //double BinPt[] = {10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 30, 35, 40, 50, 60, 80, 120, 200};
-  //double BinEta[] = {-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.0, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4}; 
-  // less detailed binning 
-  double BinPt[] = {10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 60, 100, 200};
-  double BinEta[] = {-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4}; 
+  // less detailed binning
+  double PTmax = 10.; // plot efficiency only from pT > PTmax  
+  double BinPt[] = {5, 8, 10, 13, 16, 20, 25, 30, 35, 40, 60, 100, 200};
+  double BinEta[] = {-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4};
 
   int BinPtSize = int(sizeof(BinPt)/sizeof(BinPt[0]));
   int BinEtaSize = int(sizeof(BinEta)/sizeof(BinEta[0]));
@@ -57,20 +56,19 @@ void tnp_PrintEff( bool isSave = true ) {
 
   // ---------------------------------------------------------------------------
   // general variables
-  TString png      = "/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_4_14/src/TagAndProbeLepton/Muons/plot_tnp/Plots/";
-  TString rootPlot = "/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_4_14/src/TagAndProbeLepton/Muons/plot_tnp/Plots/";
+  TString png      = "/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_6_3_patch2/src/TagAndProbeLepton/Muons/plot_tnp/Plots/";
+  TString rootPlot = "/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_6_3_patch2/src/TagAndProbeLepton/Muons/plot_tnp/Plots/";
   // ---------------------------------------------------------------------------
 
 
   // ---- open the MC files ----
-  TString pathAnna="/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_4_14/src/TagAndProbeLepton/Muons/eff_tnp/";
+  TString pathAnna="/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_6_3_patch2/src/TagAndProbeLepton/Muons/eff_tnp/";
 
-  //TString sample_data = "TnP_MediumIDandISO_Run2015D_25ns_PTvsETA_binBig";
-  TString sample_data = "TnP_MediumIDandISO_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_binBig";
+  //TString sample_data = "TnP_Medium_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA";
+  TString sample_data = "TnP_Medium_Run2015D_25ns_PTvsETA_part3";
 
-  //TString Tag_trig = "_&_tag_IsoMu18_pass";
-  TString Tag_trig = "_&_tag_IsoTkMu20_pass";
-  if (sample_data == "TnP_MediumIDandISO_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_binBig") Tag_trig = "";
+  TString Tag_trig = "_&_tag_IsoMu20_pass";
+  if (sample_data == "TnP_Medium_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA") Tag_trig = "";
 
   TFile* DATA   = TFile::Open(pathAnna+sample_data+".root" );
 
@@ -95,10 +93,10 @@ void tnp_PrintEff( bool isSave = true ) {
   ofstream myfile_HWW_tex;
   myfile_HWW_tex.open (sample_data+"_HWW_tex.txt");
   myfile_HWW_tex << "\\begin{sidewaystable}\n";
-  if (sample_data == "TnP_MediumIDandISO_Run2015D_25ns_PTvsETA_binBig") myfile_HWW_tex << "\\caption{Muon ID (\"MediumHWW\" $+$ Isolation) Efficiency for DATA}\n";
-  if (sample_data == "TnP_MediumIDandISO_Run2015D_25ns_PTvsETA_binBig") myfile_HWW_tex << "\\label{table:MuonID:DATA}\n";
-  if (sample_data == "TnP_MediumIDandISO_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_binBig") myfile_HWW_tex << "\\caption{Muon ID (\"MediumHWW\" $+$ Isolation) Efficiency for Madgraph MC}\n";
-  if (sample_data == "TnP_MediumIDandISO_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_binBig") myfile_HWW_tex << "\\label{table:MuonID:MC}\n";
+  if (sample_data == "TnP_Medium_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\caption{Muon ID (\"MediumHWW\") Efficiency for DATA}\n";
+  if (sample_data == "TnP_Medium_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\label{table:MuonID:DATA}\n";
+  if (sample_data == "TnP_Medium_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA") myfile_HWW_tex << "\\caption{Muon ID (\"MediumHWW\") Efficiency for Madgraph MC}\n";
+  if (sample_data == "TnP_Medium_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA") myfile_HWW_tex << "\\label{table:MuonID:MC}\n";
   myfile_HWW_tex << "\\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|}\n";
   myfile_HWW_tex << "\\hline\n";
   for (int ieta=0; ieta<BinEtaSize-1; ieta++){
@@ -118,25 +116,24 @@ void tnp_PrintEff( bool isSave = true ) {
 
 ////////////////////////////////
   for (int ipt=0; ipt<BinPtSize-1; ipt++){
-
-     //TCanvas* tDATA = (TCanvas*) DATA->Get(Form("tpTree/Medium_ISO_ptVSeta/fit_eff_plots/eta_PLOT_pt_bin%d_&_tag_IsoMu18_pass",ipt));
-     TCanvas* tDATA = (TCanvas*) DATA->Get(Form("tpTree/Medium_ISO_ptVSeta/fit_eff_plots/eta_PLOT_pt_bin%d%s",ipt,Tag_trig.Data() ));
+     if (BinPt[ipt] < PTmax-0.0001) continue; // plot efficiency only with pT > PTmax
+     TCanvas* tDATA = (TCanvas*) DATA->Get(Form("tpTree/Medium_ID_ptVSeta/fit_eff_plots/eta_PLOT_pt_bin%d%s",ipt,Tag_trig.Data() ));
      TGraphAsymmErrors* grDATA = (TGraphAsymmErrors*) tDATA -> GetListOfPrimitives()->At(1);
      ErrorCheck(grDATA);
      Double_t *eff       = grDATA->GetY();
      Double_t *deff_high = grDATA->GetEYhigh();
      Double_t *deff_low  = grDATA->GetEYlow();
 
-     //TCanvas* tDATA_ptGt20 = (TCanvas*) DATA->Get(Form("tpTree/Medium_ISO_ptVSeta_ptGt20/fit_eff_plots/eta_PLOT_pt_bin%d_&_tag_IsoMu18_pass",ipt));
-     TCanvas* tDATA_ptGt20 = (TCanvas*) DATA->Get(Form("tpTree/Medium_ISO_ptVSeta_ptGt20/fit_eff_plots/eta_PLOT_pt_bin%d%s",ipt,Tag_trig.Data() ));
+     //TCanvas* tDATA_ptGt20 = (TCanvas*) DATA->Get(Form("tpTree/Medium_ID_ptVSeta_ptGt20/fit_eff_plots/eta_PLOT_pt_bin%d_&_tag_IsoMu18_pass",ipt));
+     TCanvas* tDATA_ptGt20 = (TCanvas*) DATA->Get(Form("tpTree/Medium_ID_ptVSeta_ptGt20/fit_eff_plots/eta_PLOT_pt_bin%d%s",ipt,Tag_trig.Data() ));
      TGraphAsymmErrors* grDATA_ptGt20 = (TGraphAsymmErrors*) tDATA_ptGt20 -> GetListOfPrimitives()->At(1);
      ErrorCheck(grDATA_ptGt20);
      Double_t *eff_ptGt20       = grDATA_ptGt20->GetY();
      Double_t *deff_high_ptGt20 = grDATA_ptGt20->GetEYhigh();
      Double_t *deff_low_ptGt20  = grDATA_ptGt20->GetEYlow();
 
-     //TCanvas* tDATA_ptLt20 = (TCanvas*) DATA->Get(Form("tpTree/Medium_ISO_ptVSeta_ptLt20/fit_eff_plots/eta_PLOT_pt_bin%d_&_tag_IsoMu18_pass",ipt));
-     TCanvas* tDATA_ptLt20 = (TCanvas*) DATA->Get(Form("tpTree/Medium_ISO_ptVSeta_ptLt20/fit_eff_plots/eta_PLOT_pt_bin%d%s",ipt,Tag_trig.Data() ));
+     //TCanvas* tDATA_ptLt20 = (TCanvas*) DATA->Get(Form("tpTree/Medium_ID_ptVSeta_ptLt20/fit_eff_plots/eta_PLOT_pt_bin%d_&_tag_IsoMu18_pass",ipt));
+     TCanvas* tDATA_ptLt20 = (TCanvas*) DATA->Get(Form("tpTree/Medium_ID_ptVSeta_ptLt20/fit_eff_plots/eta_PLOT_pt_bin%d%s",ipt,Tag_trig.Data() ));
      TGraphAsymmErrors* grDATA_ptLt20 = (TGraphAsymmErrors*) tDATA_ptLt20 -> GetListOfPrimitives()->At(1);
      ErrorCheck(grDATA_ptLt20);
      Double_t *eff_ptLt20       = grDATA_ptLt20->GetY();
@@ -218,6 +215,8 @@ void ErrorCheck(TGraphAsymmErrors* histo){
   int nbin = histo -> GetN();
   for(int i = 0; i < nbin; i++){
      if( (histo -> GetErrorYhigh(i)) > 3.*(histo -> GetErrorYlow(i)) ) histo -> SetPointEYhigh(i,histo -> GetErrorYlow(i));
+     if ( (histo -> GetErrorYhigh(i)) < 0.000001) histo -> SetPointEYhigh(i,0 );// very small error set to 0
+     if ( (histo -> GetErrorYlow(i))  < 0.000001) histo -> SetPointEYlow(i,0 ); // very small error set to 0
   }
 
 }
