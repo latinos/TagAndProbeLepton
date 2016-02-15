@@ -1,0 +1,29 @@
+\begin{sidewaystable}
+\caption{Muon ID ("MediumHWW") Efficiency for Madgraph MC}
+\label{table:MuonID:MC}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+$p_{T}/\eta$ & -2.4:-2.1 & -2.1:-1.6 & -1.6:-1.2 & -1.2:-0.8 & -0.8:-0.3 & -0.3:0.3 & 0.3:0.8 & 0.8:1.2 & 1.2:1.6 & 1.6:2.1 & 2.1:2.4\\ 
+\hline
+10:13 & \cellcolor{red} 0.983 & \cellcolor{red} 0.993 & \cellcolor{red} 0.985 & \cellcolor{red} 1 & \cellcolor{red} 1 & \cellcolor{red} 1 & \cellcolor{Maroon!80} 0.912 & \cellcolor{red} 0.963 & \cellcolor{red} 0.983 & \cellcolor{red} 0.993 & \cellcolor{red} 0.959 \\ 
+\hline
+13:16 & \cellcolor{Maroon!80} 0.945 & \cellcolor{red} 1 & \cellcolor{red} 0.99 & \cellcolor{red} 0.995 & \cellcolor{red} 1 & \cellcolor{red} 0.957 & \cellcolor{red} 0.992 & \cellcolor{red} 0.985 & \cellcolor{red} 0.983 & \cellcolor{red} 0.99 & \cellcolor{red} 0.965 \\ 
+\hline
+16:20 & \cellcolor{red} 0.966 & \cellcolor{red} 0.991 & \cellcolor{red} 0.982 & \cellcolor{red} 0.992 & \cellcolor{red} 0.985 & \cellcolor{red} 0.983 & \cellcolor{red} 0.982 & \cellcolor{red} 0.991 & \cellcolor{red} 0.997 & \cellcolor{red} 0.987 & \cellcolor{red} 0.976 \\ 
+\hline
+20:25 & \cellcolor{red} 0.982 & \cellcolor{red} 0.997 & \cellcolor{red} 0.99 & \cellcolor{red} 0.99 & \cellcolor{red} 0.988 & \cellcolor{red} 0.981 & \cellcolor{red} 0.989 & \cellcolor{red} 0.989 & \cellcolor{red} 0.992 & \cellcolor{red} 0.991 & \cellcolor{red} 0.978 \\ 
+\hline
+25:30 & \cellcolor{red} 0.982 & \cellcolor{red} 0.994 & \cellcolor{red} 0.995 & \cellcolor{red} 0.994 & \cellcolor{red} 0.992 & \cellcolor{red} 0.985 & \cellcolor{red} 0.992 & \cellcolor{red} 0.992 & \cellcolor{red} 0.995 & \cellcolor{red} 0.995 & \cellcolor{red} 0.984 \\ 
+\hline
+30:35 & \cellcolor{red} 0.984 & \cellcolor{red} 0.995 & \cellcolor{red} 0.995 & \cellcolor{red} 0.994 & \cellcolor{red} 0.994 & \cellcolor{red} 0.985 & \cellcolor{red} 0.993 & \cellcolor{red} 0.993 & \cellcolor{red} 0.996 & \cellcolor{red} 0.996 & \cellcolor{red} 0.983 \\ 
+\hline
+35:40 & \cellcolor{red} 0.985 & \cellcolor{red} 0.996 & \cellcolor{red} 0.995 & \cellcolor{red} 0.992 & \cellcolor{red} 0.995 & \cellcolor{red} 0.986 & \cellcolor{red} 0.994 & \cellcolor{red} 0.992 & \cellcolor{red} 0.996 & \cellcolor{red} 0.996 & \cellcolor{red} 0.985 \\ 
+\hline
+40:60 & \cellcolor{red} 0.984 & \cellcolor{red} 0.997 & \cellcolor{red} 0.996 & \cellcolor{red} 0.993 & \cellcolor{red} 0.995 & \cellcolor{red} 0.986 & \cellcolor{red} 0.994 & \cellcolor{red} 0.994 & \cellcolor{red} 0.997 & \cellcolor{red} 0.997 & \cellcolor{red} 0.985 \\ 
+\hline
+60:100 & \cellcolor{red} 0.989 & \cellcolor{red} 0.996 & \cellcolor{red} 0.996 & \cellcolor{red} 0.993 & \cellcolor{red} 0.994 & \cellcolor{red} 0.987 & \cellcolor{red} 0.994 & \cellcolor{red} 0.992 & \cellcolor{red} 0.998 & \cellcolor{red} 0.996 & \cellcolor{red} 0.984 \\ 
+\hline
+100:200 & \cellcolor{red} 1 & \cellcolor{red} 1 & \cellcolor{red} 1 & \cellcolor{red} 1 & \cellcolor{red} 0.994 & \cellcolor{red} 0.996 & \cellcolor{red} 0.991 & \cellcolor{red} 0.988 & \cellcolor{red} 1 & \cellcolor{red} 0.991 & \cellcolor{red} 1 \\ 
+\hline
+\end{tabular}
+\end{sidewaystable}

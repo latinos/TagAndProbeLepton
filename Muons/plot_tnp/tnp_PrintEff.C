@@ -64,11 +64,11 @@ void tnp_PrintEff( bool isSave = true ) {
   // ---- open the MC files ----
   TString pathAnna="/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_6_3_patch2/src/TagAndProbeLepton/Muons/eff_tnp/";
 
-  //TString sample_data = "TnP_Medium_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA";
-  TString sample_data = "TnP_Medium_Run2015D_25ns_PTvsETA_part3";
+  TString sample_data = "TnP_Medium_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA";
+  //TString sample_data = "TnP_Medium_Run2015D_25ns_PTvsETA_part3";
 
   TString Tag_trig = "_&_tag_IsoMu20_pass";
-  if (sample_data == "TnP_Medium_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA") Tag_trig = "";
+  //if (sample_data == "TnP_Medium_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA") Tag_trig = ""; //we use IsoMu20 Trigger for MC too
 
   TFile* DATA   = TFile::Open(pathAnna+sample_data+".root" );
 
