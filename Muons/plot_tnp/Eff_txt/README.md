@@ -9,7 +9,15 @@ Medium && |dz_PV| < 0.1 && {dxy < 0.01 for pT < 20 GeV || dxy < 0.02 for pT > 20
 
 for ISO:
 
-PF Combined Relative Iso < 0.15 (combRelIsoPF04dBeta < 0.15)
+Tigt PF Combined Relative Iso < 0.15 (combRelIsoPF04dBeta < 0.15)
+
+
+Fake PF Combined Relative Iso < 0.40 (combRelIsoPF04dBeta < 0.40)
+
+For both Isolations above we should apply Tracker Relative Isolation: isolationR03().sumPt/pt < 0.4
+
+Currently all Iso and trigger efficiencies are calculated without Tracker Relative Isolation. 
+Should be redone correctly. 
 
 *****************************
 Triggers used for HWW:
