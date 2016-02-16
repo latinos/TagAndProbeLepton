@@ -1,4 +1,6 @@
 \begin{sidewaystable}
+\caption{Efficiency of tight PF Isolation for DATA}
+\label{table:MuonISO:DATA}
 \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|}
 \hline
 $p_{T}/\eta$ & -2.4:-2.1 & -2.1:-1.6 & -1.6:-1.2 & -1.2:-0.8 & -0.8:-0.3 & -0.3:0.3 & 0.3:0.8 & 0.8:1.2 & 1.2:1.6 & 1.6:2.1 & 2.1:2.4\\ 
