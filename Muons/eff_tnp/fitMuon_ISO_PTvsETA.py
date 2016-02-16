@@ -1,8 +1,11 @@
 import FWCore.ParameterSet.Config as cms
 
 
-#FitFunction = "vpvPlusExpo";
-FitFunction = "DoubleGaussPlusChebychev";
+FitFunction = "vpvPlusExpo";
+#FitFunction = "DoubleGaussPlusChebychev";
+
+#IsoType = "ISOTight";
+IsoType = "ISOFake";
 
 #isMuonSel = 'Tight2012'
 isMuonSel = 'Medium';
@@ -44,8 +47,8 @@ FileNameOut = FileNameOutData;
 if DataOpen == "0": 
    FileNameOut = FileNameOutMC;
 
-FileNameOutMCISO = "TnP_TightISO_"+MCType+Bunch+"Like"+DataType+"_"+Bunch+"_PTvsETA_RAW.root";
-FileNameOutDataISO = "TnP_TightISO_"+DataType+"_"+Bunch+"_PTvsETA_RAW.root";
+FileNameOutMCISO = "TnP_"+IsoType+"_"+MCType+Bunch+"Like"+DataType+"_"+Bunch+"_PTvsETA_RAW.root";
+FileNameOutDataISO = "TnP_"+IsoType+"_"+DataType+"_"+Bunch+"_PTvsETA_RAW.root";
  
 FileNameOutISO = FileNameOutDataISO;
 if DataOpen == "0": 
@@ -177,6 +180,8 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
         MediumISO_lt20Var = cms.vstring ("MediumISO_lt20Var", "Medium==1 && abs(dB)<0.01 && abs(dzPV)<0.1 && combRelIsoPF04dBeta<0.15", "Medium", "dB","dzPV","combRelIsoPF04dBeta"),
         MediumISO_Var = cms.vstring ("MediumISO_Var", "Medium==1 && combRelIsoPF04dBeta<0.15", "Medium", "combRelIsoPF04dBeta"),
         ISOTight_Var = cms.vstring ("ISOTight_Var", "combRelIsoPF04dBeta<0.15", "combRelIsoPF04dBeta"),
+        ISOFake_Var = cms.vstring ("ISOFake_Var", "combRelIsoPF04dBeta<0.4", "combRelIsoPF04dBeta"),
+        #ISOFakeTrk_Var = cms.vstring ("ISOFakeTrk_Var", "chargedHadIso03/pt<0.4", "chargedHadIso03"),
     ),
     ## Cuts: name, variable, cut threshold
     Cuts = cms.PSet(
@@ -188,6 +193,7 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
         MediumISO_lt20 = cms.vstring("MediumISO_lt20", "MediumISO_lt20Var", "0.5"),
         MediumISO = cms.vstring("MediumISO", "MediumISO_Var", "0.5"),
         ISOTight = cms.vstring("ISOTight", "ISOTight_Var", "0.5"),
+        ISOFake = cms.vstring("ISOFake", "ISOFake_Var", "0.5"),
     ),
     ## What to fit
     Efficiencies = cms.PSet(
@@ -196,7 +202,7 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
 
         Medium_ISO_ptVSeta = cms.PSet(
             UnbinnedVariables = cms.vstring("mass"),
-            EfficiencyCategoryAndState = cms.vstring("ISOTight", "above"), ## variable is above cut value 
+            EfficiencyCategoryAndState = cms.vstring(IsoType, "above"), ## variable is above cut value 
             BinnedVariables = cms.PSet(
                 # detailed bins -> not enought stat. for MuonID
                 pt = cms.vdouble(5, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
@@ -213,7 +219,7 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
 
         Medium_ISO_ptVSeta_ptLt20 = cms.PSet(
             UnbinnedVariables = cms.vstring("mass"),
-            EfficiencyCategoryAndState = cms.vstring("ISOTight", "above"), ## variable is above cut value 
+            EfficiencyCategoryAndState = cms.vstring(IsoType, "above"), ## variable is above cut value 
             BinnedVariables = cms.PSet(
                 pt = cms.vdouble(5, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
                 eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
@@ -228,7 +234,7 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
 
         Medium_ISO_ptVSeta_ptGt20 = cms.PSet(
             UnbinnedVariables = cms.vstring("mass"),
-            EfficiencyCategoryAndState = cms.vstring("ISOTight", "above"), ## variable is above cut value 
+            EfficiencyCategoryAndState = cms.vstring(IsoType, "above"), ## variable is above cut value 
             BinnedVariables = cms.PSet(
                 pt = cms.vdouble(5, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
                 eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),

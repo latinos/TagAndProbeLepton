@@ -74,14 +74,18 @@ void tnp_PrintEff( bool isSave = true ) {
 
   // for ISO
   //TString sample_data = "TnP_TightISO_Run2015D_25ns_PTvsETA";
-  TString sample_data = "TnP_TightISO_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA";
+  //TString sample_data = "TnP_TightISO_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA";
+  //TString sample_data = "TnP_ISOFake_Run2015D_25ns_PTvsETA_part3";
+  TString sample_data = "TnP_ISOFake_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_part3";
 
   TString Tag_trig = "_&_tag_IsoMu20_pass";
   //if (sample_data == "TnP_Medium_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA") Tag_trig = ""; //we use IsoMu20 Trigger for MC too
   TString MuonID   = "Medium_ID_ptVSeta";
 
   if (   sample_data == "TnP_TightISO_Run2015D_25ns_PTvsETA" 
-      || sample_data == "TnP_TightISO_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA" ){
+      || sample_data == "TnP_TightISO_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA"
+      || sample_data == "TnP_ISOFake_Run2015D_25ns_PTvsETA_part3"
+      || sample_data == "TnP_ISOFake_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_part3" ){
           MuonID   = "Medium_ISO_ptVSeta";
           Tag_trig = "_&_Medium_pass"+ Tag_trig;
   }
@@ -112,6 +116,15 @@ void tnp_PrintEff( bool isSave = true ) {
   if (sample_data == "TnP_Medium_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\label{table:MuonID:DATA}\n";
   if (sample_data == "TnP_Medium_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA") myfile_HWW_tex << "\\caption{Muon ID (\"MediumHWW\") Efficiency for Madgraph MC}\n";
   if (sample_data == "TnP_Medium_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA") myfile_HWW_tex << "\\label{table:MuonID:MC}\n";
+  //for ISO
+  if (sample_data == "TnP_TightISO_Run2015D_25ns_PTvsETA") myfile_HWW_tex << "\\caption{Efficiency of tight PF Isolation for DATA}\n";
+  if (sample_data == "TnP_TightISO_Run2015D_25ns_PTvsETA") myfile_HWW_tex << "\\label{table:MuonISO:DATA}\n";
+  if (sample_data == "TnP_TightISO_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA") myfile_HWW_tex << "\\caption{Efficiency of tight PF Isolation for Madgraph MC}\n";
+  if (sample_data == "TnP_TightISO_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA") myfile_HWW_tex << "\\label{table:MuonISO:MC}\n";
+  if (sample_data == "TnP_ISOFake_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\caption{Efficiency of PF Isolation for Fake study for DATA}\n";
+  if (sample_data == "TnP_ISOFake_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\label{table:MuonISO_FakePF:DATA}\n";
+  if (sample_data == "TnP_ISOFake_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\caption{Efficiency of PF Isolation for Fake study for MC}\n";
+  if (sample_data == "TnP_ISOFake_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\label{table:MuonISO_FakePF:MC}\n";
   myfile_HWW_tex << "\\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|}\n";
   myfile_HWW_tex << "\\hline\n";
   for (int ieta=0; ieta<BinEtaSize-1; ieta++){
