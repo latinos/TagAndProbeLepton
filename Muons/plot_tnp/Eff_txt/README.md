@@ -17,7 +17,15 @@ Fake PF Combined Relative Iso < 0.40 (combRelIsoPF04dBeta < 0.40)
 For both Isolations above we should apply Tracker Relative Isolation: isolationR03().sumPt/pt < 0.4
 
 Currently all Iso and trigger efficiencies are calculated without Tracker Relative Isolation. 
-Should be redone correctly. 
+
+We don't need to recalculate new efficiencies, because:
+
+    efficiency of isolationR03().sumPt/pt<0.4 is 99.96 % on top of rel. PF ISO < 0.15
+
+    efficiency of isolationR03().sumPt/pt<0.4 is 99.52 % on top of loose tail of 0.15 < rel. PF ISO < 0.4
+    
+    Look at https://github.com/latinos/TagAndProbeLepton/tree/master/Muons/plot_tnp/Plots_ISO 
+
 
 *****************************
 Triggers used for HWW:

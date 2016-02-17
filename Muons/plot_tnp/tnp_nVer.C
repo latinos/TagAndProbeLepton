@@ -123,6 +123,11 @@ void tnp_nVer( bool isSave = true ) {
     tData.Draw("combRelIsoPF04dBeta>>hData_IsoPF_Loose",       "tag_IsoMu20>0 && tag_pt>22 && Medium && pt>10 && combRelIsoPF04dBeta>=0.15 && combRelIsoPF04dBeta<0.4");
     tData.Draw("combRelIsoPF04dBeta>>hData_IsoPFandTrk_Loose", "tag_IsoMu20>0 && tag_pt>22 && Medium && pt>10 && combRelIsoPF04dBeta>=0.15 && combRelIsoPF04dBeta<0.4 && tkIso/pt<0.4");
     tData.Draw("combRelIsoPF04dBeta:tkIso/pt>>hData_IsoPFvsIsoTrk", "tag_IsoMu20>0 && tag_pt>22 && Medium && pt>10 && combRelIsoPF04dBeta>=0 && combRelIsoPF04dBeta<0.5");
+    //tData.Draw("combRelIsoPF04dBeta>>hData_IsoPF",       "tag_IsoMu20>0 && tag_pt>22 && Medium && pt>10 && pt<15 && combRelIsoPF04dBeta>=0 && combRelIsoPF04dBeta<0.15");
+    //tData.Draw("combRelIsoPF04dBeta>>hData_IsoPFandTrk", "tag_IsoMu20>0 && tag_pt>22 && Medium && pt>10 && pt<15 && combRelIsoPF04dBeta>=0 && combRelIsoPF04dBeta<0.15 && tkIso/pt<0.4");
+    //tData.Draw("combRelIsoPF04dBeta>>hData_IsoPF_Loose",       "tag_IsoMu20>0 && tag_pt>22 && Medium && pt>10 && pt<15 && combRelIsoPF04dBeta>=0.15 && combRelIsoPF04dBeta<0.4");
+    //tData.Draw("combRelIsoPF04dBeta>>hData_IsoPFandTrk_Loose", "tag_IsoMu20>0 && tag_pt>22 && Medium && pt>10 && pt<15 && combRelIsoPF04dBeta>=0.15 && combRelIsoPF04dBeta<0.4 && tkIso/pt<0.4");
+    //tData.Draw("combRelIsoPF04dBeta:tkIso/pt>>hData_IsoPFvsIsoTrk", "tag_IsoMu20>0 && tag_pt>22 && Medium && pt>10 && pt<15 && combRelIsoPF04dBeta>=0 && combRelIsoPF04dBeta<0.5");
 
   // ------------------------------------------------------------------------------
 
