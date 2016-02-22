@@ -200,23 +200,35 @@ void tnp_PrintEff( bool isSave = true ) {
         if(ieta == 0)  myfile_HWW_tex << setprecision(4) << BinPt[ipt]   << ":" << BinPt[ipt+1];
         if (BinPt[ipt+1] < 20.001) {
            myfile_HWW_tex << " & ";
-           if(eff_ptLt20[ieta] > 0.95) myfile_HWW_tex << "\\cellcolor{red} ";
-           if(eff_ptLt20[ieta] > 0.90 && eff_ptLt20[ieta] <= 0.95) myfile_HWW_tex << "\\cellcolor{Maroon!80} ";
-           if(eff_ptLt20[ieta] > 0.80 && eff_ptLt20[ieta] <= 0.90) myfile_HWW_tex << "\\cellcolor{Orange} ";
-           if(eff_ptLt20[ieta] > 0.70 && eff_ptLt20[ieta] <= 0.80) myfile_HWW_tex << "\\cellcolor{Yellow} ";
-           if(eff_ptLt20[ieta] > 0.50 && eff_ptLt20[ieta] <= 0.70) myfile_HWW_tex << "\\cellcolor{YellowGreen} ";
-           if(eff_ptLt20[ieta] > 0.01 && eff_ptLt20[ieta] <= 0.50) myfile_HWW_tex << "\\cellcolor{SkyBlue} ";
+           if(eff_ptGt20[ieta] > 0.95) myfile_HWW_tex << "\\cellcolor{Green} ";
+           if(eff_ptGt20[ieta] > 0.90 && eff_ptGt20[ieta] <= 0.95) myfile_HWW_tex << "\\cellcolor{YellowGreen} ";
+           if(eff_ptGt20[ieta] > 0.80 && eff_ptGt20[ieta] <= 0.90) myfile_HWW_tex << "\\cellcolor{SkyBlue} ";
+           if(eff_ptGt20[ieta] > 0.70 && eff_ptGt20[ieta] <= 0.80) myfile_HWW_tex << "\\cellcolor{Yellow} ";
+           if(eff_ptGt20[ieta] > 0.50 && eff_ptGt20[ieta] <= 0.70) myfile_HWW_tex << "\\cellcolor{Orange} ";
+           if(eff_ptGt20[ieta] >= 0.01 && eff_ptGt20[ieta] <= 0.50) myfile_HWW_tex << "\\cellcolor{Red} ";
+           //if(eff_ptLt20[ieta] > 0.95) myfile_HWW_tex << "\\cellcolor{red} ";
+           //if(eff_ptLt20[ieta] > 0.90 && eff_ptLt20[ieta] <= 0.95) myfile_HWW_tex << "\\cellcolor{Maroon!80} ";
+           //if(eff_ptLt20[ieta] > 0.80 && eff_ptLt20[ieta] <= 0.90) myfile_HWW_tex << "\\cellcolor{Orange} ";
+           //if(eff_ptLt20[ieta] > 0.70 && eff_ptLt20[ieta] <= 0.80) myfile_HWW_tex << "\\cellcolor{Yellow} ";
+           //if(eff_ptLt20[ieta] > 0.50 && eff_ptLt20[ieta] <= 0.70) myfile_HWW_tex << "\\cellcolor{YellowGreen} ";
+           //if(eff_ptLt20[ieta] > 0.01 && eff_ptLt20[ieta] <= 0.50) myfile_HWW_tex << "\\cellcolor{SkyBlue} ";
            if (eff_ptLt20[ieta] < 0.10)myfile_HWW_tex << setprecision(2) <<  eff_ptLt20[ieta];
            else myfile_HWW_tex << setprecision(3) <<  eff_ptLt20[ieta];
         }
         else {
            myfile_HWW_tex << " & ";
-           if(eff_ptGt20[ieta] > 0.95) myfile_HWW_tex << "\\cellcolor{red} ";
-           if(eff_ptGt20[ieta] > 0.90 && eff_ptGt20[ieta] <= 0.95) myfile_HWW_tex << "\\cellcolor{Maroon!80} ";
-           if(eff_ptGt20[ieta] > 0.80 && eff_ptGt20[ieta] <= 0.90) myfile_HWW_tex << "\\cellcolor{Orange} ";
+           if(eff_ptGt20[ieta] > 0.95) myfile_HWW_tex << "\\cellcolor{Green} ";
+           if(eff_ptGt20[ieta] > 0.90 && eff_ptGt20[ieta] <= 0.95) myfile_HWW_tex << "\\cellcolor{YellowGreen} ";
+           if(eff_ptGt20[ieta] > 0.80 && eff_ptGt20[ieta] <= 0.90) myfile_HWW_tex << "\\cellcolor{SkyBlue} ";
            if(eff_ptGt20[ieta] > 0.70 && eff_ptGt20[ieta] <= 0.80) myfile_HWW_tex << "\\cellcolor{Yellow} ";
-           if(eff_ptGt20[ieta] > 0.50 && eff_ptGt20[ieta] <= 0.70) myfile_HWW_tex << "\\cellcolor{YellowGreen} ";
-           if(eff_ptGt20[ieta] > 0.01 && eff_ptGt20[ieta] <= 0.50) myfile_HWW_tex << "\\cellcolor{SkyBlue} ";
+           if(eff_ptGt20[ieta] > 0.50 && eff_ptGt20[ieta] <= 0.70) myfile_HWW_tex << "\\cellcolor{Orange} ";
+           if(eff_ptGt20[ieta] >= 0.01 && eff_ptGt20[ieta] <= 0.50) myfile_HWW_tex << "\\cellcolor{Red} ";
+           //if(eff_ptGt20[ieta] > 0.95) myfile_HWW_tex << "\\cellcolor{red} ";
+           //if(eff_ptGt20[ieta] > 0.90 && eff_ptGt20[ieta] <= 0.95) myfile_HWW_tex << "\\cellcolor{Maroon!80} ";
+           //if(eff_ptGt20[ieta] > 0.80 && eff_ptGt20[ieta] <= 0.90) myfile_HWW_tex << "\\cellcolor{Orange} ";
+           //if(eff_ptGt20[ieta] > 0.70 && eff_ptGt20[ieta] <= 0.80) myfile_HWW_tex << "\\cellcolor{Yellow} ";
+           //if(eff_ptGt20[ieta] > 0.50 && eff_ptGt20[ieta] <= 0.70) myfile_HWW_tex << "\\cellcolor{YellowGreen} ";
+           //if(eff_ptGt20[ieta] > 0.01 && eff_ptGt20[ieta] <= 0.50) myfile_HWW_tex << "\\cellcolor{SkyBlue} ";
            if (eff_ptGt20[ieta] < 0.10) myfile_HWW_tex << setprecision(2) << eff_ptGt20[ieta];
            else myfile_HWW_tex << setprecision(3) << eff_ptGt20[ieta];
         }
