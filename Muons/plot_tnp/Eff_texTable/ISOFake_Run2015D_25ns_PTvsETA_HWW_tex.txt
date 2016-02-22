@@ -1,41 +1,42 @@
 \begin{sidewaystable}
 \caption{Efficiency of PF Isolation for Fake study for DATA}
 \label{table:MuonISO_FakePF:DATA}
-\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}
 \hline
-$p_{T}/\eta$ & -2.4:-2.1 & -2.1:-1.6 & -1.6:-1.2 & -1.2:-0.8 & -0.8:-0.3 & -0.3:0.3 & 0.3:0.8 & 0.8:1.2 & 1.2:1.6 & 1.6:2.1 & 2.1:2.4\\ 
+$p_{T}/\eta$ & -2.4:-2.1 & -2.1:-1.6 & -1.6:-1.2 & -1.2:-0.8 & -0.8:-0.3 & -0.3:0.3 & 0.3:0.8 & 0.8:1.2 & 1.2:1.6 & 1.6:2.1 & 2.1:2.4 & max rel. \\ 
+ & & & & & & & & & & & & st. error \\ 
 \hline
-10:12 & \cellcolor{YellowGreen} 0.922 & \cellcolor{YellowGreen} 0.912 & \cellcolor{SkyBlue} 0.899 & \cellcolor{SkyBlue} 0.88 & \cellcolor{SkyBlue} 0.884 & \cellcolor{SkyBlue} 0.856 & \cellcolor{SkyBlue} 0.854 & \cellcolor{SkyBlue} 0.874 & \cellcolor{YellowGreen} 0.905 & \cellcolor{YellowGreen} 0.961 & \cellcolor{YellowGreen} 0.948 \\ 
+10:12 & \cellcolor{YellowGreen} 0.922 & \cellcolor{YellowGreen} 0.912 & \cellcolor{SkyBlue} 0.899 & \cellcolor{SkyBlue} 0.88 & \cellcolor{SkyBlue} 0.884 & \cellcolor{SkyBlue} 0.856 & \cellcolor{SkyBlue} 0.854 & \cellcolor{SkyBlue} 0.874 & \cellcolor{YellowGreen} 0.905 & \cellcolor{YellowGreen} 0.961 & \cellcolor{YellowGreen} 0.948 & \cellcolor{SkyBlue} 0.044\\ 
 \hline
-12:14 & \cellcolor{Green} 0.947 & \cellcolor{Green} 0.958 & \cellcolor{Green} 0.956 & \cellcolor{YellowGreen} 0.946 & \cellcolor{SkyBlue} 0.902 & \cellcolor{SkyBlue} 0.828 & \cellcolor{SkyBlue} 0.881 & \cellcolor{YellowGreen} 0.923 & \cellcolor{YellowGreen} 0.926 & \cellcolor{YellowGreen} 0.939 & \cellcolor{YellowGreen} 0.932 \\ 
+12:14 & \cellcolor{Green} 0.947 & \cellcolor{Green} 0.958 & \cellcolor{Green} 0.956 & \cellcolor{YellowGreen} 0.946 & \cellcolor{SkyBlue} 0.902 & \cellcolor{SkyBlue} 0.828 & \cellcolor{SkyBlue} 0.881 & \cellcolor{YellowGreen} 0.923 & \cellcolor{YellowGreen} 0.926 & \cellcolor{YellowGreen} 0.939 & \cellcolor{YellowGreen} 0.932 & \cellcolor{SkyBlue} 0.03\\ 
 \hline
-14:16 & \cellcolor{Green} 0.971 & \cellcolor{Green} 0.96 & \cellcolor{Green} 0.956 & \cellcolor{YellowGreen} 0.935 & \cellcolor{YellowGreen} 0.927 & \cellcolor{SkyBlue} 0.874 & \cellcolor{SkyBlue} 0.896 & \cellcolor{Green} 0.954 & \cellcolor{YellowGreen} 0.943 & \cellcolor{Green} 0.959 & \cellcolor{Green} 0.971 \\ 
+14:16 & \cellcolor{Green} 0.971 & \cellcolor{Green} 0.96 & \cellcolor{Green} 0.956 & \cellcolor{YellowGreen} 0.935 & \cellcolor{YellowGreen} 0.927 & \cellcolor{SkyBlue} 0.874 & \cellcolor{SkyBlue} 0.896 & \cellcolor{Green} 0.954 & \cellcolor{YellowGreen} 0.943 & \cellcolor{Green} 0.959 & \cellcolor{Green} 0.971 & \cellcolor{YellowGreen} 0.02\\ 
 \hline
-16:18 & \cellcolor{Green} 0.982 & \cellcolor{Green} 0.961 & \cellcolor{YellowGreen} 0.943 & \cellcolor{Green} 0.949 & \cellcolor{YellowGreen} 0.912 & \cellcolor{SkyBlue} 0.896 & \cellcolor{YellowGreen} 0.903 & \cellcolor{Green} 0.956 & \cellcolor{Green} 0.953 & \cellcolor{Green} 0.969 & \cellcolor{Green} 0.971 \\ 
+16:18 & \cellcolor{Green} 0.982 & \cellcolor{Green} 0.961 & \cellcolor{YellowGreen} 0.943 & \cellcolor{Green} 0.949 & \cellcolor{YellowGreen} 0.912 & \cellcolor{SkyBlue} 0.896 & \cellcolor{YellowGreen} 0.903 & \cellcolor{Green} 0.956 & \cellcolor{Green} 0.953 & \cellcolor{Green} 0.969 & \cellcolor{Green} 0.971 & \cellcolor{YellowGreen} 0.015\\ 
 \hline
-18:20 & \cellcolor{Green} 0.988 & \cellcolor{Green} 0.972 & \cellcolor{Green} 0.971 & \cellcolor{Green} 0.972 & \cellcolor{YellowGreen} 0.94 & \cellcolor{YellowGreen} 0.912 & \cellcolor{YellowGreen} 0.945 & \cellcolor{YellowGreen} 0.947 & \cellcolor{Green} 0.963 & \cellcolor{Green} 0.969 & \cellcolor{Green} 0.964 \\ 
+18:20 & \cellcolor{Green} 0.988 & \cellcolor{Green} 0.972 & \cellcolor{Green} 0.971 & \cellcolor{Green} 0.972 & \cellcolor{YellowGreen} 0.94 & \cellcolor{YellowGreen} 0.912 & \cellcolor{YellowGreen} 0.945 & \cellcolor{YellowGreen} 0.947 & \cellcolor{Green} 0.963 & \cellcolor{Green} 0.969 & \cellcolor{Green} 0.964 & \cellcolor{YellowGreen} 0.011\\ 
 \hline
-20:22 & \cellcolor{Green} 0.983 & \cellcolor{Green} 0.98 & \cellcolor{Green} 0.975 & \cellcolor{Green} 0.963 & \cellcolor{Green} 0.957 & \cellcolor{YellowGreen} 0.928 & \cellcolor{Green} 0.959 & \cellcolor{Green} 0.977 & \cellcolor{Green} 0.979 & \cellcolor{Green} 0.98 & \cellcolor{Green} 0.98 \\ 
+20:22 & \cellcolor{Green} 0.983 & \cellcolor{Green} 0.98 & \cellcolor{Green} 0.975 & \cellcolor{Green} 0.963 & \cellcolor{Green} 0.957 & \cellcolor{YellowGreen} 0.928 & \cellcolor{Green} 0.959 & \cellcolor{Green} 0.977 & \cellcolor{Green} 0.979 & \cellcolor{Green} 0.98 & \cellcolor{Green} 0.98 & \cellcolor{Green} 0.009\\ 
 \hline
-22:24 & \cellcolor{Green} 0.988 & \cellcolor{Green} 0.973 & \cellcolor{Green} 0.969 & \cellcolor{Green} 0.971 & \cellcolor{Green} 0.97 & \cellcolor{Green} 0.958 & \cellcolor{Green} 0.959 & \cellcolor{Green} 0.961 & \cellcolor{Green} 0.973 & \cellcolor{Green} 0.987 & \cellcolor{Green} 0.982 \\ 
+22:24 & \cellcolor{Green} 0.988 & \cellcolor{Green} 0.973 & \cellcolor{Green} 0.969 & \cellcolor{Green} 0.971 & \cellcolor{Green} 0.97 & \cellcolor{Green} 0.958 & \cellcolor{Green} 0.959 & \cellcolor{Green} 0.961 & \cellcolor{Green} 0.973 & \cellcolor{Green} 0.987 & \cellcolor{Green} 0.982 & \cellcolor{Green} 0.006\\ 
 \hline
-24:26 & \cellcolor{Green} 0.993 & \cellcolor{Green} 0.982 & \cellcolor{Green} 0.98 & \cellcolor{Green} 0.976 & \cellcolor{Green} 0.972 & \cellcolor{Green} 0.971 & \cellcolor{Green} 0.974 & \cellcolor{Green} 0.973 & \cellcolor{Green} 0.98 & \cellcolor{Green} 0.982 & \cellcolor{Green} 0.987 \\ 
+24:26 & \cellcolor{Green} 0.993 & \cellcolor{Green} 0.982 & \cellcolor{Green} 0.98 & \cellcolor{Green} 0.976 & \cellcolor{Green} 0.972 & \cellcolor{Green} 0.971 & \cellcolor{Green} 0.974 & \cellcolor{Green} 0.973 & \cellcolor{Green} 0.98 & \cellcolor{Green} 0.982 & \cellcolor{Green} 0.987 & \cellcolor{Green} 0.004\\ 
 \hline
-26:30 & \cellcolor{Green} 0.989 & \cellcolor{Green} 0.988 & \cellcolor{Green} 0.986 & \cellcolor{Green} 0.977 & \cellcolor{Green} 0.978 & \cellcolor{Green} 0.981 & \cellcolor{Green} 0.978 & \cellcolor{Green} 0.983 & \cellcolor{Green} 0.982 & \cellcolor{Green} 0.99 & \cellcolor{Green} 0.99 \\ 
+26:30 & \cellcolor{Green} 0.989 & \cellcolor{Green} 0.988 & \cellcolor{Green} 0.986 & \cellcolor{Green} 0.977 & \cellcolor{Green} 0.978 & \cellcolor{Green} 0.981 & \cellcolor{Green} 0.978 & \cellcolor{Green} 0.983 & \cellcolor{Green} 0.982 & \cellcolor{Green} 0.99 & \cellcolor{Green} 0.99 & \cellcolor{Green} 0.003\\ 
 \hline
-30:35 & \cellcolor{Green} 0.995 & \cellcolor{Green} 0.992 & \cellcolor{Green} 0.992 & \cellcolor{Green} 0.99 & \cellcolor{Green} 0.989 & \cellcolor{Green} 0.989 & \cellcolor{Green} 0.989 & \cellcolor{Green} 0.989 & \cellcolor{Green} 0.99 & \cellcolor{Green} 0.994 & \cellcolor{Green} 0.993 \\ 
+30:35 & \cellcolor{Green} 0.995 & \cellcolor{Green} 0.992 & \cellcolor{Green} 0.992 & \cellcolor{Green} 0.99 & \cellcolor{Green} 0.989 & \cellcolor{Green} 0.989 & \cellcolor{Green} 0.989 & \cellcolor{Green} 0.989 & \cellcolor{Green} 0.99 & \cellcolor{Green} 0.994 & \cellcolor{Green} 0.993 & \cellcolor{Green} 0.001\\ 
 \hline
-35:40 & \cellcolor{Green} 0.997 & \cellcolor{Green} 0.997 & \cellcolor{Green} 0.997 & \cellcolor{Green} 0.994 & \cellcolor{Green} 0.996 & \cellcolor{Green} 0.996 & \cellcolor{Green} 0.996 & \cellcolor{Green} 0.997 & \cellcolor{Green} 0.997 & \cellcolor{Green} 0.996 & \cellcolor{Green} 0.998 \\ 
+35:40 & \cellcolor{Green} 0.997 & \cellcolor{Green} 0.997 & \cellcolor{Green} 0.997 & \cellcolor{Green} 0.994 & \cellcolor{Green} 0.996 & \cellcolor{Green} 0.996 & \cellcolor{Green} 0.996 & \cellcolor{Green} 0.997 & \cellcolor{Green} 0.997 & \cellcolor{Green} 0.996 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.0008\\ 
 \hline
-40:50 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.999 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.999 & \cellcolor{Green} 0.999 & \cellcolor{Green} 0.998 \\ 
+40:50 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.999 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.999 & \cellcolor{Green} 0.999 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.0005\\ 
 \hline
-50:60 & \cellcolor{Green} 0.999 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.999 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.999 & \cellcolor{Green} 0.999 & \cellcolor{Green} 0.998 \\ 
+50:60 & \cellcolor{Green} 0.999 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.999 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.999 & \cellcolor{Green} 0.999 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.0008\\ 
 \hline
-60:80 & \cellcolor{Green} 0.999 & \cellcolor{Green} 0.997 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.997 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.999 \\ 
+60:80 & \cellcolor{Green} 0.999 & \cellcolor{Green} 0.997 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.997 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.999 & \cellcolor{Green} 0.001\\ 
 \hline
-80:120 & \cellcolor{Green} 1 & \cellcolor{Green} 1 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.995 & \cellcolor{Green} 0.997 & \cellcolor{Green} 0.997 & \cellcolor{Green} 0.995 & \cellcolor{Green} 0.999 & \cellcolor{Green} 0.997 & \cellcolor{Green} 0.997 & \cellcolor{Green} 0.998 \\ 
+80:120 & \cellcolor{Green} 1 & \cellcolor{Green} 1 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.995 & \cellcolor{Green} 0.997 & \cellcolor{Green} 0.997 & \cellcolor{Green} 0.995 & \cellcolor{Green} 0.999 & \cellcolor{Green} 0.997 & \cellcolor{Green} 0.997 & \cellcolor{Green} 0.998 & \cellcolor{Green} 0.003\\ 
 \hline
-120:200 & \cellcolor{Green} 1 & \cellcolor{Green} 0.991 & \cellcolor{Green} 0.993 & \cellcolor{Green} 0.994 & \cellcolor{Green} 1 & \cellcolor{Green} 0.995 & \cellcolor{Green} 0.993 & \cellcolor{Green} 1 & \cellcolor{Green} 0.993 & \cellcolor{Green} 1 & \cellcolor{Green} 1 \\ 
+120:200 & \cellcolor{Green} 1 & \cellcolor{Green} 0.991 & \cellcolor{Green} 0.993 & \cellcolor{Green} 0.994 & \cellcolor{Green} 1 & \cellcolor{Green} 0.995 & \cellcolor{Green} 0.993 & \cellcolor{Green} 1 & \cellcolor{Green} 0.993 & \cellcolor{Green} 1 & \cellcolor{Green} 1 & \cellcolor{YellowGreen} 0.023\\ 
 \hline
 \end{tabular}
 \end{sidewaystable}

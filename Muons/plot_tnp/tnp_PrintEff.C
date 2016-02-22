@@ -125,13 +125,15 @@ void tnp_PrintEff( bool isSave = true ) {
   if (sample_data == "TnP_ISOFake_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\label{table:MuonISO_FakePF:DATA}\n";
   if (sample_data == "TnP_ISOFake_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\caption{Efficiency of PF Isolation for Fake study for MC}\n";
   if (sample_data == "TnP_ISOFake_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\label{table:MuonISO_FakePF:MC}\n";
-  myfile_HWW_tex << "\\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|}\n";
+  myfile_HWW_tex << "\\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}\n";
   myfile_HWW_tex << "\\hline\n";
   for (int ieta=0; ieta<BinEtaSize-1; ieta++){
       if(ieta == 0)              myfile_HWW_tex <<"$p_{T}/\\eta$ & " << BinEta[ieta] << ":" << BinEta[ieta+1];
       if(ieta > 0)               myfile_HWW_tex <<             " & " << BinEta[ieta] << ":" << BinEta[ieta+1];
-      if(ieta == (BinEtaSize-2)) myfile_HWW_tex <<"\\\\ \n\\hline\n";
+      //if(ieta == (BinEtaSize-2)) myfile_HWW_tex <<"\\\\ \n\\hline\n";
   }
+  myfile_HWW_tex << " & max rel. \\\\ \n"  ;
+  myfile_HWW_tex << " & & & & & & & & & & & & st. error \\\\ \n\\hline\n"  ;
 
 ////////////////////////////////
   
@@ -168,6 +170,7 @@ void tnp_PrintEff( bool isSave = true ) {
      Double_t *deff_high_ptLt20 = grDATA_ptLt20->GetEYhigh();
      Double_t *deff_low_ptLt20  = grDATA_ptLt20->GetEYlow();
 
+     Double_t Max_StError = 0.;
 
      for (int ieta=0; ieta<BinEtaSize-1; ieta++){
 
@@ -189,12 +192,20 @@ void tnp_PrintEff( bool isSave = true ) {
                   << BinEta[ieta] << "\t" << BinEta[ieta+1] << "\t"
                   << BinPt[ipt]   << "\t" << BinPt[ipt+1]   << "\t"
                   << eff_ptLt20[ieta]    << "\t" << deff_high_ptLt20[ieta]      << "\t " << deff_low_ptLt20[ieta] <<"\n"; //write to file
+           if(eff_ptLt20[ieta] >= 0.001){
+              if (Max_StError < deff_high_ptLt20[ieta]/eff_ptLt20[ieta]) Max_StError = deff_high_ptLt20[ieta]/eff_ptLt20[ieta];
+              if (Max_StError < deff_low_ptLt20[ieta]/eff_ptLt20[ieta]) Max_StError = deff_low_ptLt20[ieta]/eff_ptLt20[ieta];
+           }
         }
         else{
            myfile_HWW
                   << BinEta[ieta] << "\t" << BinEta[ieta+1] << "\t"
                   << BinPt[ipt]   << "\t" << BinPt[ipt+1]   << "\t"
                   << eff_ptGt20[ieta]    << "\t" << deff_high_ptGt20[ieta]      << "\t " << deff_low_ptGt20[ieta] <<"\n"; //write to file
+          if(eff_ptGt20[ieta] >= 0.001){
+              if (Max_StError < deff_high_ptGt20[ieta]/eff_ptGt20[ieta]) Max_StError = deff_high_ptGt20[ieta]/eff_ptGt20[ieta];
+              if (Max_StError < deff_low_ptGt20[ieta]/eff_ptGt20[ieta]) Max_StError = deff_low_ptGt20[ieta]/eff_ptGt20[ieta];
+          }
         }
 
         if(ieta == 0)  myfile_HWW_tex << setprecision(4) << BinPt[ipt]   << ":" << BinPt[ipt+1];
@@ -232,10 +243,18 @@ void tnp_PrintEff( bool isSave = true ) {
            if (eff_ptGt20[ieta] < 0.10) myfile_HWW_tex << setprecision(2) << eff_ptGt20[ieta];
            else myfile_HWW_tex << setprecision(3) << eff_ptGt20[ieta];
         }
-        if (ieta == (BinEtaSize-2)) myfile_HWW_tex <<" \\\\ \n\\hline\n";
 
-     }
-  }
+     }// end ieta
+     //myfile_HWW_tex <<" & test  \\\\ \n\\hline\n";
+     myfile_HWW_tex <<" & ";
+     if(Max_StError <=0.01) myfile_HWW_tex << "\\cellcolor{Green} ";
+     if(Max_StError > 0.01 && Max_StError <=0.03) myfile_HWW_tex << "\\cellcolor{YellowGreen} ";
+     if(Max_StError > 0.03 && Max_StError <=0.05) myfile_HWW_tex << "\\cellcolor{SkyBlue} ";
+     if(Max_StError > 0.05 && Max_StError <=0.1) myfile_HWW_tex << "\\cellcolor{Orange} ";
+     if(Max_StError >0.10) myfile_HWW_tex << "\\cellcolor{Red} ";
+     if(Max_StError >=0.01) myfile_HWW_tex << setprecision(2) << Max_StError << "\\\\ \n\\hline\n";
+     else{myfile_HWW_tex << setprecision(1) << Max_StError  << "\\\\ \n\\hline\n";}
+  }// end ipt
   myfile_HWW_tex << "\\end{tabular}\n\\end{sidewaystable}\n";
 
   myfile.close();
