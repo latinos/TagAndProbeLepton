@@ -150,8 +150,10 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
   for (int ieta=0; ieta<BinEtaSize-1; ieta++){
       if(ieta == 0)              myfile_HWW_tex <<"$p_{T}/\\eta$ & " << BinEta[ieta] << ":" << BinEta[ieta+1];
       if(ieta > 0)               myfile_HWW_tex <<             " & " << BinEta[ieta] << ":" << BinEta[ieta+1]; 
-      if(ieta == (BinEtaSize-2)) myfile_HWW_tex <<"\\\\ \n\\hline\n";
+      //if(ieta == (BinEtaSize-2)) myfile_HWW_tex <<"\\\\ \n\\hline\n";
   }
+  myfile_HWW_tex << " & max rel. \\\\ \n"  ;
+  myfile_HWW_tex << " & & & & & & & & & & & & & & st. error \\\\ \n\\hline\n"  ;
   //end 1 tex file:
 ////////////////////////////////
   for (int ipt=0; ipt<BinPtSize-1; ipt++){
@@ -181,6 +183,7 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
      Double_t *deff_high_ptLt20 = grDATA_ptLt20->GetEYhigh();
      Double_t *deff_low_ptLt20  = grDATA_ptLt20->GetEYlow();
 
+     Double_t Max_StError = 0.;
 
      for (int ieta=0; ieta<BinEtaSize-1; ieta++){
 
@@ -223,42 +226,75 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
                   << BinEta[ieta] << "\t" << BinEta[ieta+1] << "\t"
                   << BinPt[ipt]   << "\t" << BinPt[ipt+1]   << "\t"
                   << Eff_ptLt20    << "\t" << dEff_high_ptLt20      << "\t " << dEff_low_ptLt20 <<"\n"; 
+           if(Eff_ptLt20 >= 0.001  
+              && ( (BinEta[ieta] < -0.31) || (BinEta[ieta] > -0.21 && BinEta[ieta] < 0.19) || (BinEta[ieta] > 0.29) ) 
+             ){
+              if (Max_StError < dEff_high_ptLt20/Eff_ptLt20) Max_StError = dEff_high_ptLt20/Eff_ptLt20;
+              if (Max_StError < dEff_low_ptLt20/Eff_ptLt20) Max_StError = dEff_low_ptLt20/Eff_ptLt20;
+           }
         }
         else{
            myfile_HWW
                   << BinEta[ieta] << "\t" << BinEta[ieta+1] << "\t"
                   << BinPt[ipt]   << "\t" << BinPt[ipt+1]   << "\t"
                   << Eff_ptGt20    << "\t" << dEff_high_ptGt20      << "\t " << dEff_low_ptGt20 <<"\n";
+           if(Eff_ptGt20 >= 0.001
+              && ( (BinEta[ieta] < -0.31) || (BinEta[ieta] > -0.21 && BinEta[ieta] < 0.19) || (BinEta[ieta] > 0.29) ) 
+             ){
+              if (Max_StError < dEff_high_ptGt20/Eff_ptGt20) Max_StError = dEff_high_ptGt20/Eff_ptGt20;
+              if (Max_StError < dEff_low_ptGt20/Eff_ptGt20) Max_StError = dEff_low_ptGt20/Eff_ptGt20;
+           }
         }
         //start tex file:
         if(ieta == 0)  myfile_HWW_tex << setprecision(4) << BinPt[ipt]   << ":" << BinPt[ipt+1];
         if (BinPt[ipt+1] < 20.001) {
            myfile_HWW_tex << " & ";  
-           if(Eff_ptLt20 > 0.95) myfile_HWW_tex << "\\cellcolor{red} ";
-           if(Eff_ptLt20 > 0.90 && Eff_ptLt20 <= 0.95) myfile_HWW_tex << "\\cellcolor{Maroon!80} ";
-           if(Eff_ptLt20 > 0.80 && Eff_ptLt20 <= 0.90) myfile_HWW_tex << "\\cellcolor{Orange} ";
+           //if(Eff_ptLt20 > 0.95) myfile_HWW_tex << "\\cellcolor{red} ";
+           //if(Eff_ptLt20 > 0.90 && Eff_ptLt20 <= 0.95) myfile_HWW_tex << "\\cellcolor{Maroon!80} ";
+           //if(Eff_ptLt20 > 0.80 && Eff_ptLt20 <= 0.90) myfile_HWW_tex << "\\cellcolor{Orange} ";
+           //if(Eff_ptLt20 > 0.70 && Eff_ptLt20 <= 0.80) myfile_HWW_tex << "\\cellcolor{Yellow} ";
+           //if(Eff_ptLt20 > 0.50 && Eff_ptLt20 <= 0.70) myfile_HWW_tex << "\\cellcolor{YellowGreen} ";
+           //if(Eff_ptLt20 > 0.01 && Eff_ptLt20 <= 0.50) myfile_HWW_tex << "\\cellcolor{SkyBlue} ";
+           if(Eff_ptLt20 > 0.95) myfile_HWW_tex << "\\cellcolor{Green} ";
+           if(Eff_ptLt20 > 0.90 && Eff_ptLt20 <= 0.95) myfile_HWW_tex << "\\cellcolor{YellowGreen} ";
+           if(Eff_ptLt20 > 0.80 && Eff_ptLt20 <= 0.90) myfile_HWW_tex << "\\cellcolor{SkyBlue} ";
            if(Eff_ptLt20 > 0.70 && Eff_ptLt20 <= 0.80) myfile_HWW_tex << "\\cellcolor{Yellow} ";
-           if(Eff_ptLt20 > 0.50 && Eff_ptLt20 <= 0.70) myfile_HWW_tex << "\\cellcolor{YellowGreen} ";
-           if(Eff_ptLt20 > 0.01 && Eff_ptLt20 <= 0.50) myfile_HWW_tex << "\\cellcolor{SkyBlue} ";
+           if(Eff_ptLt20 > 0.50 && Eff_ptLt20 <= 0.70) myfile_HWW_tex << "\\cellcolor{Orange} ";
+           if(Eff_ptLt20 >= 0.01 && Eff_ptLt20 <= 0.50) myfile_HWW_tex << "\\cellcolor{Red} ";
            if (Eff_ptLt20 < 0.10)myfile_HWW_tex << setprecision(2) <<  Eff_ptLt20;  
            else myfile_HWW_tex << setprecision(3) <<  Eff_ptLt20;  
         }
         else {
            myfile_HWW_tex << " & ";  
-           if(Eff_ptGt20 > 0.95) myfile_HWW_tex << "\\cellcolor{red} ";
-           if(Eff_ptGt20 > 0.90 && Eff_ptGt20 <= 0.95) myfile_HWW_tex << "\\cellcolor{Maroon!80} ";
-           if(Eff_ptGt20 > 0.80 && Eff_ptGt20 <= 0.90) myfile_HWW_tex << "\\cellcolor{Orange} ";
+           //if(Eff_ptGt20 > 0.95) myfile_HWW_tex << "\\cellcolor{red} ";
+           //if(Eff_ptGt20 > 0.90 && Eff_ptGt20 <= 0.95) myfile_HWW_tex << "\\cellcolor{Maroon!80} ";
+           //if(Eff_ptGt20 > 0.80 && Eff_ptGt20 <= 0.90) myfile_HWW_tex << "\\cellcolor{Orange} ";
+           //if(Eff_ptGt20 > 0.70 && Eff_ptGt20 <= 0.80) myfile_HWW_tex << "\\cellcolor{Yellow} ";
+           //if(Eff_ptGt20 > 0.50 && Eff_ptGt20 <= 0.70) myfile_HWW_tex << "\\cellcolor{YellowGreen} ";
+           //if(Eff_ptGt20 > 0.01 && Eff_ptGt20 <= 0.50) myfile_HWW_tex << "\\cellcolor{SkyBlue} ";
+           if(Eff_ptGt20 > 0.95) myfile_HWW_tex << "\\cellcolor{Green} ";
+           if(Eff_ptGt20 > 0.90 && Eff_ptGt20 <= 0.95) myfile_HWW_tex << "\\cellcolor{YellowGreen} ";
+           if(Eff_ptGt20 > 0.80 && Eff_ptGt20 <= 0.90) myfile_HWW_tex << "\\cellcolor{SkyBlue} ";
            if(Eff_ptGt20 > 0.70 && Eff_ptGt20 <= 0.80) myfile_HWW_tex << "\\cellcolor{Yellow} ";
-           if(Eff_ptGt20 > 0.50 && Eff_ptGt20 <= 0.70) myfile_HWW_tex << "\\cellcolor{YellowGreen} ";
-           if(Eff_ptGt20 > 0.01 && Eff_ptGt20 <= 0.50) myfile_HWW_tex << "\\cellcolor{SkyBlue} ";
+           if(Eff_ptGt20 > 0.50 && Eff_ptGt20 <= 0.70) myfile_HWW_tex << "\\cellcolor{Orange} ";
+           if(Eff_ptGt20 >= 0.01 && Eff_ptGt20 <= 0.50) myfile_HWW_tex << "\\cellcolor{Red} ";
            if (Eff_ptGt20 < 0.10) myfile_HWW_tex << setprecision(2) << Eff_ptGt20;  
            else myfile_HWW_tex << setprecision(3) << Eff_ptGt20;  
         }
-        if (ieta == (BinEtaSize-2)) myfile_HWW_tex <<" \\\\ \n\\hline\n";
+        //if (ieta == (BinEtaSize-2)) myfile_HWW_tex <<" \\\\ \n\\hline\n";
         //end tex file:
 
-     }
-  }
+     } //end ieta
+     myfile_HWW_tex <<" & ";
+     if(Max_StError <=0.01 && Max_StError > 0.0000001) myfile_HWW_tex << "\\cellcolor{Green} ";
+     if(Max_StError > 0.01 && Max_StError <=0.03) myfile_HWW_tex << "\\cellcolor{YellowGreen} ";
+     if(Max_StError > 0.03 && Max_StError <=0.05) myfile_HWW_tex << "\\cellcolor{SkyBlue} ";
+     if(Max_StError > 0.05 && Max_StError <=0.1) myfile_HWW_tex << "\\cellcolor{Orange} ";
+     if(Max_StError >0.10) myfile_HWW_tex << "\\cellcolor{Red} ";
+     if(Max_StError >=0.01) myfile_HWW_tex << setprecision(2) << Max_StError << "\\\\ \n\\hline\n";
+     else{myfile_HWW_tex << setprecision(1) << Max_StError  << "\\\\ \n\\hline\n";}
+
+  } //end ipt
   myfile_HWW_tex << "\\end{tabular}\n\\end{sidewaystable}\n"; 
 
   myfile.close();
