@@ -1,29 +1,30 @@
 \begin{sidewaystable}
 \caption{Muon ID ("MediumHWW") Efficiency for DATA}
 \label{table:MuonID:DATA}
-\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}
 \hline
-$p_{T}/\eta$ & -2.4:-2.1 & -2.1:-1.6 & -1.6:-1.2 & -1.2:-0.8 & -0.8:-0.3 & -0.3:0.3 & 0.3:0.8 & 0.8:1.2 & 1.2:1.6 & 1.6:2.1 & 2.1:2.4\\ 
+$p_{T}/\eta$ & -2.4:-2.1 & -2.1:-1.6 & -1.6:-1.2 & -1.2:-0.8 & -0.8:-0.3 & -0.3:0.3 & 0.3:0.8 & 0.8:1.2 & 1.2:1.6 & 1.6:2.1 & 2.1:2.4 & max rel. \\ 
+ & & & & & & & & & & & & st. error \\ 
 \hline
-10:13 & \cellcolor{red} 1 & \cellcolor{red} 1 & \cellcolor{red} 1 & \cellcolor{Orange} 0.835 & \cellcolor{red} 0.965 & \cellcolor{red} 1 & \cellcolor{Maroon!80} 0.934 & \cellcolor{Orange} 0.856 & \cellcolor{Orange} 0.879 & \cellcolor{Orange} 0.854 & \cellcolor{red} 1 \\ 
+10:13 & \cellcolor{Green} 1 & \cellcolor{Green} 1 & \cellcolor{Green} 1 & \cellcolor{YellowGreen} 0.835 & \cellcolor{SkyBlue} 0.965 & \cellcolor{Green} 1 & \cellcolor{YellowGreen} 0.934 & \cellcolor{SkyBlue} 0.856 & \cellcolor{Green} 0.879 & \cellcolor{Green} 0.854 & \cellcolor{Green} 1 & \cellcolor{Orange} 0.083\\ 
 \hline
-13:16 & \cellcolor{red} 1 & \cellcolor{red} 0.994 & \cellcolor{red} 0.975 & \cellcolor{red} 1 & \cellcolor{Maroon!80} 0.934 & \cellcolor{red} 0.964 & \cellcolor{red} 0.978 & \cellcolor{Maroon!80} 0.906 & \cellcolor{red} 0.964 & \cellcolor{red} 0.991 & \cellcolor{red} 1 \\ 
+13:16 & \cellcolor{Green} 1 & \cellcolor{Green} 0.994 & \cellcolor{Green} 0.975 & \cellcolor{Green} 1 & \cellcolor{YellowGreen} 0.934 & \cellcolor{Green} 0.964 & \cellcolor{YellowGreen} 0.978 & \cellcolor{Green} 0.906 & \cellcolor{Green} 0.964 & \cellcolor{Green} 0.991 & \cellcolor{Green} 1 & \cellcolor{SkyBlue} 0.047\\ 
 \hline
-16:20 & \cellcolor{Maroon!80} 0.922 & \cellcolor{red} 0.982 & \cellcolor{red} 1 & \cellcolor{red} 0.961 & \cellcolor{Maroon!80} 0.929 & \cellcolor{Maroon!80} 0.934 & \cellcolor{red} 0.962 & \cellcolor{red} 0.951 & \cellcolor{red} 0.995 & \cellcolor{red} 0.993 & \cellcolor{Maroon!80} 0.945 \\ 
+16:20 & \cellcolor{YellowGreen} 0.922 & \cellcolor{Green} 0.982 & \cellcolor{Green} 1 & \cellcolor{YellowGreen} 0.961 & \cellcolor{YellowGreen} 0.929 & \cellcolor{YellowGreen} 0.934 & \cellcolor{Green} 0.962 & \cellcolor{YellowGreen} 0.951 & \cellcolor{Green} 0.995 & \cellcolor{Green} 0.993 & \cellcolor{Green} 0.945 & \cellcolor{YellowGreen} 0.018\\ 
 \hline
-20:25 & \cellcolor{Maroon!80} 0.931 & \cellcolor{red} 0.981 & \cellcolor{red} 0.992 & \cellcolor{red} 0.982 & \cellcolor{red} 0.981 & \cellcolor{red} 0.965 & \cellcolor{red} 0.986 & \cellcolor{red} 0.977 & \cellcolor{red} 0.998 & \cellcolor{red} 1 & \cellcolor{Maroon!80} 0.94 \\ 
+20:25 & \cellcolor{YellowGreen} 0.931 & \cellcolor{Green} 0.981 & \cellcolor{Green} 0.992 & \cellcolor{Green} 0.982 & \cellcolor{Green} 0.981 & \cellcolor{Green} 0.965 & \cellcolor{Green} 0.986 & \cellcolor{Green} 0.977 & \cellcolor{Green} 0.998 & \cellcolor{Green} 1 & \cellcolor{YellowGreen} 0.94 & \cellcolor{YellowGreen} 0.012\\ 
 \hline
-25:30 & \cellcolor{Maroon!80} 0.945 & \cellcolor{red} 0.985 & \cellcolor{red} 0.991 & \cellcolor{red} 0.976 & \cellcolor{red} 0.977 & \cellcolor{red} 0.97 & \cellcolor{red} 0.982 & \cellcolor{red} 0.98 & \cellcolor{red} 0.984 & \cellcolor{red} 0.984 & \cellcolor{red} 0.951 \\ 
+25:30 & \cellcolor{YellowGreen} 0.945 & \cellcolor{Green} 0.985 & \cellcolor{Green} 0.991 & \cellcolor{Green} 0.976 & \cellcolor{Green} 0.977 & \cellcolor{Green} 0.97 & \cellcolor{Green} 0.982 & \cellcolor{Green} 0.98 & \cellcolor{Green} 0.984 & \cellcolor{Green} 0.984 & \cellcolor{Green} 0.951 & \cellcolor{Green} 0.008\\ 
 \hline
-30:35 & \cellcolor{Maroon!80} 0.948 & \cellcolor{red} 0.983 & \cellcolor{red} 0.99 & \cellcolor{red} 0.983 & \cellcolor{red} 0.984 & \cellcolor{red} 0.971 & \cellcolor{red} 0.984 & \cellcolor{red} 0.982 & \cellcolor{red} 0.994 & \cellcolor{red} 0.989 & \cellcolor{Maroon!80} 0.943 \\ 
+30:35 & \cellcolor{YellowGreen} 0.948 & \cellcolor{Green} 0.983 & \cellcolor{Green} 0.99 & \cellcolor{Green} 0.983 & \cellcolor{Green} 0.984 & \cellcolor{Green} 0.971 & \cellcolor{Green} 0.984 & \cellcolor{Green} 0.982 & \cellcolor{Green} 0.994 & \cellcolor{Green} 0.989 & \cellcolor{YellowGreen} 0.943 & \cellcolor{Green} 0.005\\ 
 \hline
-35:40 & \cellcolor{Maroon!80} 0.95 & \cellcolor{red} 0.985 & \cellcolor{red} 0.994 & \cellcolor{red} 0.988 & \cellcolor{red} 0.983 & \cellcolor{red} 0.97 & \cellcolor{red} 0.984 & \cellcolor{red} 0.984 & \cellcolor{red} 0.994 & \cellcolor{red} 0.986 & \cellcolor{red} 0.951 \\ 
+35:40 & \cellcolor{YellowGreen} 0.95 & \cellcolor{Green} 0.985 & \cellcolor{Green} 0.994 & \cellcolor{Green} 0.988 & \cellcolor{Green} 0.983 & \cellcolor{Green} 0.97 & \cellcolor{Green} 0.984 & \cellcolor{Green} 0.984 & \cellcolor{Green} 0.994 & \cellcolor{Green} 0.986 & \cellcolor{Green} 0.951 & \cellcolor{Green} 0.004\\ 
 \hline
-40:60 & \cellcolor{Maroon!80} 0.944 & \cellcolor{red} 0.985 & \cellcolor{red} 0.992 & \cellcolor{red} 0.987 & \cellcolor{red} 0.984 & \cellcolor{red} 0.972 & \cellcolor{red} 0.987 & \cellcolor{red} 0.984 & \cellcolor{red} 0.992 & \cellcolor{red} 0.989 & \cellcolor{Maroon!80} 0.944 \\ 
+40:60 & \cellcolor{YellowGreen} 0.944 & \cellcolor{Green} 0.985 & \cellcolor{Green} 0.992 & \cellcolor{Green} 0.987 & \cellcolor{Green} 0.984 & \cellcolor{Green} 0.972 & \cellcolor{Green} 0.987 & \cellcolor{Green} 0.984 & \cellcolor{Green} 0.992 & \cellcolor{Green} 0.989 & \cellcolor{YellowGreen} 0.944 & \cellcolor{Green} 0.003\\ 
 \hline
-60:100 & \cellcolor{Maroon!80} 0.938 & \cellcolor{red} 0.982 & \cellcolor{red} 0.991 & \cellcolor{red} 0.98 & \cellcolor{red} 0.973 & \cellcolor{red} 0.966 & \cellcolor{red} 0.983 & \cellcolor{red} 0.982 & \cellcolor{red} 0.991 & \cellcolor{red} 0.986 & \cellcolor{Maroon!80} 0.948 \\ 
+60:100 & \cellcolor{YellowGreen} 0.938 & \cellcolor{Green} 0.982 & \cellcolor{Green} 0.991 & \cellcolor{Green} 0.98 & \cellcolor{Green} 0.973 & \cellcolor{Green} 0.966 & \cellcolor{Green} 0.983 & \cellcolor{Green} 0.982 & \cellcolor{Green} 0.991 & \cellcolor{Green} 0.986 & \cellcolor{YellowGreen} 0.948 & \cellcolor{YellowGreen} 0.013\\ 
 \hline
-100:200 & \cellcolor{red} 1 & \cellcolor{red} 1 & \cellcolor{red} 0.983 & \cellcolor{red} 0.973 & \cellcolor{red} 0.955 & \cellcolor{red} 0.962 & \cellcolor{red} 0.963 & \cellcolor{red} 0.967 & \cellcolor{red} 1 & \cellcolor{red} 0.982 & \cellcolor{red} 0.988 \\ 
+100:200 & \cellcolor{Green} 1 & \cellcolor{Green} 1 & \cellcolor{Green} 0.983 & \cellcolor{Green} 0.973 & \cellcolor{Green} 0.955 & \cellcolor{Green} 0.962 & \cellcolor{Green} 0.963 & \cellcolor{Green} 0.967 & \cellcolor{Green} 1 & \cellcolor{Green} 0.982 & \cellcolor{Green} 0.988 & \cellcolor{Orange} 0.075\\ 
 \hline
 \end{tabular}
 \end{sidewaystable}
