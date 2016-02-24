@@ -67,8 +67,8 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
   //change only name of file, check that you use correct pt and eta binning: 
 
   // for 76X
-  //TString sample_data = "TnP_IsoMu18orIsoTkMu20_Run2015D_25ns_PTvsETA_part3";
-  TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_part3";
+  TString sample_data = "TnP_IsoMu18orIsoTkMu20_Run2015D_25ns_PTvsETA_part3";
+  //TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_part3";
   //TString sample_data = "TnP_IsoMu8orIsoTkMu8leg_Run2015D_25ns_PTvsETA_part3";
   //TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2015D_25ns_PTvsETA_part3";
 
@@ -135,7 +135,8 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
   if (sample_data == "TnP_DoubleIsoMu17TkMu8_IsoMu8leg_Run2015D_25ns_PTvsETA_binVeryBig") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_TkMu8\\_TrkIsoVVL. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
   if (sample_data == "TnP_DoubleIsoMu17TkMu8_IsoMu8leg_Run2015D_25ns_PTvsETA_binVeryBig") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_TkMu8_TrkIsoVVL}\n";
 
-  myfile_HWW_tex << "\\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}\n";
+  //myfile_HWW_tex << "\\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}\n";
+  myfile_HWW_tex << "\\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l||l|}\n";
   myfile_HWW_tex << "\\hline\n";
 
   for (int ieta=0; ieta<BinEtaSize-1; ieta++){
