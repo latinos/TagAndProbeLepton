@@ -45,9 +45,9 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
 
   double BinEta[] = {-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4}; 
   // binning for Mu17, Mu18, Mu20 
-  //double BinPt[] = {10, 15, 16, 17, 18, 19, 20, 21, 22,  24,  26, 30, 35, 40, 60, 100, 200};
+  double BinPt[] = {10, 15, 16, 17, 18, 19, 20, 21, 22,  24,  26, 30, 35, 40, 60, 100, 200};
   // binning for Mu8
-  double BinPt[] = {10, 12, 14, 16, 18, 20, 25, 30, 35, 40, 60, 100, 200};
+  //double BinPt[] = {10, 12, 14, 16, 18, 20, 25, 30, 35, 40, 60, 100, 200};
 
   int BinPtSize = int(sizeof(BinPt)/sizeof(BinPt[0]));
   int BinEtaSize = int(sizeof(BinEta)/sizeof(BinEta[0]));
@@ -68,21 +68,18 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
 
   // for 76X
   //TString sample_data = "TnP_IsoMu18orIsoTkMu20_Run2015D_25ns_PTvsETA_part3";
-  //TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_part3";
+  TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_part3";
   //TString sample_data = "TnP_IsoMu8orIsoTkMu8leg_Run2015D_25ns_PTvsETA_part3";
-  TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2015D_25ns_PTvsETA_part3";
+  //TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2015D_25ns_PTvsETA_part3";
 
   //TString sample_data = "TnP_IsoMu18_Run2015D_25ns_PTvsETA_binSmall";
   //TString sample_data = "TnP_IsoTkMu20_Run2015D_25ns_PTvsETA_binSmall";
   //TString sample_data = "TnP_IsoTkMu18_Run2015D_25ns_PTvsETA_binSmall";
 
-  //TString sample_data = "TnP_Mu17_IsoTrkVVL_Run2015D_25ns_PTvsETA_binVeryBig";
 
   //TString sample_data = "TnP_Mu8_IsoTrkVVL_Run2015D_25ns_PTvsETA_binVeryBig";
   //TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2015D_25ns_PTvsETA_binVeryBig";
 
-  //TString sample_data = "TnP_IsoMu8orIsoTkMu8leg_Run2015D_25ns_PTvsETA_binSmall";
-  //TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_binSmall";
   //TString sample_data = "TnP_DoubleIsoMu17TkMu8_IsoMu8leg_Run2015D_25ns_PTvsETA_binVeryBig";
 
   TString Tag_trig = "_&_tag_IsoMu20_pass";
@@ -113,47 +110,41 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
   myfile_HWW_tex.open (sample_data+"_HWW_tex.txt");
   myfile_HWW_tex << "\\begin{sidewaystable}\n";
 
-  if (sample_data == "TnP_IsoMu18orIsoTkMu20_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_IsoMu18 or HLT\\_IsoTkMu20}\n";
+  if (sample_data == "TnP_IsoMu18orIsoTkMu20_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_IsoMu18 or HLT\\_IsoTkMu20. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
   if (sample_data == "TnP_IsoMu18orIsoTkMu20_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_IsoMu18orIsoTkMu20}\n";
-  if (sample_data == "TnP_IsoMu18_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_IsoMu18}\n";
+  if (sample_data == "TnP_IsoMu18_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_IsoMu18.From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
   if (sample_data == "TnP_IsoMu18_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_IsoMu18}\n";
-  if (sample_data == "TnP_IsoTkMu18_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_IsoTkMu18}\n";
+  if (sample_data == "TnP_IsoTkMu18_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_IsoTkMu18. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
   if (sample_data == "TnP_IsoTkMu18_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_IsoTkMu18}\n";
-  if (sample_data == "TnP_IsoTkMu20_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_IsoTkMu20}\n";
+  if (sample_data == "TnP_IsoTkMu20_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_IsoTkMu20. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
   if (sample_data == "TnP_IsoTkMu20_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_IsoTkMu20}\n";
 
-  if (sample_data == "TnP_IsoMu8orIsoTkMu8leg_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu8\\_TrkIsoVVL or HLT\\_TkMu8\\_TrkIsoVVL}\n";
+  if (sample_data == "TnP_IsoMu8orIsoTkMu8leg_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu8\\_TrkIsoVVL or HLT\\_TkMu8\\_TrkIsoVVL. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
   if (sample_data == "TnP_IsoMu8orIsoTkMu8leg_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu8orTkMu8_TrkIsoVVL}\n";
-  if (sample_data == "TnP_IsoMu8orIsoTkMu8leg_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu8\\_TrkIsoVVL or HLT\\_TkMu8\\_TrkIsoVVL}\n";
-  if (sample_data == "TnP_IsoMu8orIsoTkMu8leg_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu8orTkMu8_TrkIsoVVL}\n";
 
-  if (sample_data == "TnP_Mu17_IsoTrkVVL_Run2015D_25ns_PTvsETA_binVeryBig") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu17\\_TrkIsoVVL}\n";
-  if (sample_data == "TnP_Mu17_IsoTrkVVL_Run2015D_25ns_PTvsETA_binVeryBig") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu17_TrkIsoVVL}\n";
-  if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu17\\_TrkIsoVVL}\n";
+  if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu17\\_TrkIsoVVL. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
   if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu17_TrkIsoVVL}\n";
-  if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu17\\_TrkIsoVVL}\n";
-  if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu17_TrkIsoVVL}\n";
 
   if (sample_data == "TnP_Mu8_IsoTrkVVL_Run2015D_25ns_PTvsETA_binVeryBig") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu8\\_TrkIsoVVL}\n";
   if (sample_data == "TnP_Mu8_IsoTrkVVL_Run2015D_25ns_PTvsETA_binVeryBig") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu8_TrkIsoVVL}\n";
   if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2015D_25ns_PTvsETA_binVeryBig") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu8\\_TrkIsoVVL}\n";
   if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2015D_25ns_PTvsETA_binVeryBig") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu8_TrkIsoVVL}\n";
-  if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu8\\_TrkIsoVVL}\n";
+  if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu8\\_TrkIsoVVL. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
   if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu8_TrkIsoVVL}\n";
 
-  if (sample_data == "TnP_DoubleIsoMu17TkMu8_IsoMu8leg_Run2015D_25ns_PTvsETA_binVeryBig") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_TkMu8\\_TrkIsoVVL}\n";
+  if (sample_data == "TnP_DoubleIsoMu17TkMu8_IsoMu8leg_Run2015D_25ns_PTvsETA_binVeryBig") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_TkMu8\\_TrkIsoVVL. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
   if (sample_data == "TnP_DoubleIsoMu17TkMu8_IsoMu8leg_Run2015D_25ns_PTvsETA_binVeryBig") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_TkMu8_TrkIsoVVL}\n";
 
   myfile_HWW_tex << "\\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}\n";
   myfile_HWW_tex << "\\hline\n";
 
   for (int ieta=0; ieta<BinEtaSize-1; ieta++){
-      if(ieta == 0)              myfile_HWW_tex <<"$p_{T}/\\eta$ & " << BinEta[ieta] << ":" << BinEta[ieta+1];
-      if(ieta > 0)               myfile_HWW_tex <<             " & " << BinEta[ieta] << ":" << BinEta[ieta+1]; 
+      if(ieta == 0)              myfile_HWW_tex <<"$p_{T}/\\eta$ & \\small{" << BinEta[ieta] << ":" << BinEta[ieta+1] << "}";
+      if(ieta > 0)               myfile_HWW_tex <<             " & \\small{" << BinEta[ieta] << ":" << BinEta[ieta+1] << "}"; 
       //if(ieta == (BinEtaSize-2)) myfile_HWW_tex <<"\\\\ \n\\hline\n";
   }
-  myfile_HWW_tex << " & max rel. \\\\ \n"  ;
-  myfile_HWW_tex << " & & & & & & & & & & & & & & st. error \\\\ \n\\hline\n"  ;
+  myfile_HWW_tex << " & \\small{max rel.} \\\\ \n"  ;
+  myfile_HWW_tex << " & & & & & & & & & & & & & & \\small{st. error} \\\\ \n\\hline\n"  ;
   //end 1 tex file:
 ////////////////////////////////
   for (int ipt=0; ipt<BinPtSize-1; ipt++){
@@ -246,7 +237,7 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
            }
         }
         //start tex file:
-        if(ieta == 0)  myfile_HWW_tex << setprecision(4) << BinPt[ipt]   << ":" << BinPt[ipt+1];
+        if(ieta == 0)  myfile_HWW_tex << setprecision(4) << "\\small{" << BinPt[ipt] << ":" << BinPt[ipt+1] << "}";
         if (BinPt[ipt+1] < 20.001) {
            myfile_HWW_tex << " & ";  
            //if(Eff_ptLt20 > 0.95) myfile_HWW_tex << "\\cellcolor{red} ";
@@ -255,14 +246,15 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
            //if(Eff_ptLt20 > 0.70 && Eff_ptLt20 <= 0.80) myfile_HWW_tex << "\\cellcolor{Yellow} ";
            //if(Eff_ptLt20 > 0.50 && Eff_ptLt20 <= 0.70) myfile_HWW_tex << "\\cellcolor{YellowGreen} ";
            //if(Eff_ptLt20 > 0.01 && Eff_ptLt20 <= 0.50) myfile_HWW_tex << "\\cellcolor{SkyBlue} ";
-           if(Eff_ptLt20 > 0.95) myfile_HWW_tex << "\\cellcolor{Green} ";
-           if(Eff_ptLt20 > 0.90 && Eff_ptLt20 <= 0.95) myfile_HWW_tex << "\\cellcolor{YellowGreen} ";
-           if(Eff_ptLt20 > 0.80 && Eff_ptLt20 <= 0.90) myfile_HWW_tex << "\\cellcolor{SkyBlue} ";
-           if(Eff_ptLt20 > 0.70 && Eff_ptLt20 <= 0.80) myfile_HWW_tex << "\\cellcolor{Yellow} ";
-           if(Eff_ptLt20 > 0.50 && Eff_ptLt20 <= 0.70) myfile_HWW_tex << "\\cellcolor{Orange} ";
-           if(Eff_ptLt20 >= 0.01 && Eff_ptLt20 <= 0.50) myfile_HWW_tex << "\\cellcolor{Red} ";
-           if (Eff_ptLt20 < 0.10)myfile_HWW_tex << setprecision(2) <<  Eff_ptLt20;  
-           else myfile_HWW_tex << setprecision(3) <<  Eff_ptLt20;  
+           if(Eff_ptLt20 >= 0.945) myfile_HWW_tex << "\\cellcolor{Green} ";
+           if(Eff_ptLt20 >= 0.895 && Eff_ptLt20 < 0.945) myfile_HWW_tex << "\\cellcolor{YellowGreen} ";
+           if(Eff_ptLt20 >= 0.795 && Eff_ptLt20 < 0.895) myfile_HWW_tex << "\\cellcolor{SkyBlue} ";
+           if(Eff_ptLt20 >= 0.695 && Eff_ptLt20 < 0.795) myfile_HWW_tex << "\\cellcolor{Yellow} ";
+           if(Eff_ptLt20 >= 0.495 && Eff_ptLt20 < 0.695) myfile_HWW_tex << "\\cellcolor{Orange} ";
+           if(Eff_ptLt20 >= 0.01  && Eff_ptLt20 < 0.495) myfile_HWW_tex << "\\cellcolor{Red} ";
+           //if (Eff_ptLt20 < 0.10)myfile_HWW_tex << setprecision(2) <<  Eff_ptLt20;  
+           //else myfile_HWW_tex << setprecision(3) <<  Eff_ptLt20;  
+           myfile_HWW_tex << setprecision(2) <<  Eff_ptLt20;  
         }
         else {
            myfile_HWW_tex << " & ";  
@@ -272,14 +264,15 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
            //if(Eff_ptGt20 > 0.70 && Eff_ptGt20 <= 0.80) myfile_HWW_tex << "\\cellcolor{Yellow} ";
            //if(Eff_ptGt20 > 0.50 && Eff_ptGt20 <= 0.70) myfile_HWW_tex << "\\cellcolor{YellowGreen} ";
            //if(Eff_ptGt20 > 0.01 && Eff_ptGt20 <= 0.50) myfile_HWW_tex << "\\cellcolor{SkyBlue} ";
-           if(Eff_ptGt20 > 0.95) myfile_HWW_tex << "\\cellcolor{Green} ";
-           if(Eff_ptGt20 > 0.90 && Eff_ptGt20 <= 0.95) myfile_HWW_tex << "\\cellcolor{YellowGreen} ";
-           if(Eff_ptGt20 > 0.80 && Eff_ptGt20 <= 0.90) myfile_HWW_tex << "\\cellcolor{SkyBlue} ";
-           if(Eff_ptGt20 > 0.70 && Eff_ptGt20 <= 0.80) myfile_HWW_tex << "\\cellcolor{Yellow} ";
-           if(Eff_ptGt20 > 0.50 && Eff_ptGt20 <= 0.70) myfile_HWW_tex << "\\cellcolor{Orange} ";
-           if(Eff_ptGt20 >= 0.01 && Eff_ptGt20 <= 0.50) myfile_HWW_tex << "\\cellcolor{Red} ";
-           if (Eff_ptGt20 < 0.10) myfile_HWW_tex << setprecision(2) << Eff_ptGt20;  
-           else myfile_HWW_tex << setprecision(3) << Eff_ptGt20;  
+           if(Eff_ptGt20 >= 0.945) myfile_HWW_tex << "\\cellcolor{Green} ";
+           if(Eff_ptGt20 >= 0.895 && Eff_ptGt20 < 0.945) myfile_HWW_tex << "\\cellcolor{YellowGreen} ";
+           if(Eff_ptGt20 >= 0.795 && Eff_ptGt20 < 0.895) myfile_HWW_tex << "\\cellcolor{SkyBlue} ";
+           if(Eff_ptGt20 >= 0.695 && Eff_ptGt20 < 0.795) myfile_HWW_tex << "\\cellcolor{Yellow} ";
+           if(Eff_ptGt20 >= 0.495 && Eff_ptGt20 < 0.695) myfile_HWW_tex << "\\cellcolor{Orange} ";
+           if(Eff_ptGt20 >= 0.01  && Eff_ptGt20 < 0.495) myfile_HWW_tex << "\\cellcolor{Red} ";
+           //if (Eff_ptGt20 < 0.10) myfile_HWW_tex << setprecision(2) << Eff_ptGt20;  
+           //else myfile_HWW_tex << setprecision(3) << Eff_ptGt20;  
+           myfile_HWW_tex << setprecision(2) << Eff_ptGt20;  
         }
         //if (ieta == (BinEtaSize-2)) myfile_HWW_tex <<" \\\\ \n\\hline\n";
         //end tex file:
@@ -289,12 +282,21 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
      if(Max_StError <=0.01 && Max_StError > 0.0000001) myfile_HWW_tex << "\\cellcolor{Green} ";
      if(Max_StError > 0.01 && Max_StError <=0.03) myfile_HWW_tex << "\\cellcolor{YellowGreen} ";
      if(Max_StError > 0.03 && Max_StError <=0.05) myfile_HWW_tex << "\\cellcolor{SkyBlue} ";
-     if(Max_StError > 0.05 && Max_StError <=0.1) myfile_HWW_tex << "\\cellcolor{Orange} ";
+     if(Max_StError > 0.05 && Max_StError <=0.07) myfile_HWW_tex << "\\cellcolor{Yellow} ";
+     if(Max_StError > 0.07 && Max_StError <=0.1) myfile_HWW_tex << "\\cellcolor{Orange} ";
      if(Max_StError >0.10) myfile_HWW_tex << "\\cellcolor{Red} ";
      if(Max_StError >=0.01) myfile_HWW_tex << setprecision(2) << Max_StError << "\\\\ \n\\hline\n";
      else{myfile_HWW_tex << setprecision(1) << Max_StError  << "\\\\ \n\\hline\n";}
 
   } //end ipt
+  // set color defenition
+  //myfile_HWW_tex << "\\multicolumn{6}{|c|}{Color Definition} & \\multicolumn{9}{c|}{} \\\\ \n\\hline\n"; 
+  //myfile_HWW_tex << "\\multicolumn{3}{c|}{Efficiency} & \\multicolumn{3}{c|}{max rel. st. error} & \\multicolumn{9}{c|}{} \\\\ \n\\hline\n";
+  //myfile_HWW_tex << "\\multicolumn{3}{c|}{\\cellcolor{Green} 0.95-1.00} & \\multicolumn{3}{c|}{\\cellcolor{Green} 0.00-0.01} & \\multicolumn{9}{c|}{} \\\\ \n\\hline\n"; 
+  myfile_HWW_tex << "\\multicolumn{15}{|c|}{Color Definition} \\\\ \n\\hline\n"; 
+  myfile_HWW_tex << "\\multicolumn{3}{|c|}{Efficiency} & \\multicolumn{2}{c|}{\\cellcolor{Green} 0.95-1.00} &  \\multicolumn{2}{c|}{\\cellcolor{YellowGreen} 0.90-0.95} & \\multicolumn{2}{c|}{\\cellcolor{SkyBlue} 0.80-0.90} & \\multicolumn{2}{c|}{\\cellcolor{Yellow} 0.70-0.80} & \\multicolumn{2}{c|}{\\cellcolor{Orange} 0.50-0.70} & \\multicolumn{2}{c|}{\\cellcolor{Red} $<$ 0.50} \\\\ \n\\hline\n";
+  myfile_HWW_tex << "\\multicolumn{3}{|c|}{max rel. st. error} & \\multicolumn{2}{c|}{\\cellcolor{Green} 0.00-0.01} &  \\multicolumn{2}{c|}{\\cellcolor{YellowGreen} 0.01-0.03} & \\multicolumn{2}{c|}{\\cellcolor{SkyBlue} 0.03-0.05} & \\multicolumn{2}{c|}{\\cellcolor{Yellow} 0.05-0.07} & \\multicolumn{2}{c|}{\\cellcolor{Orange} 0.07-0.10} & \\multicolumn{2}{c|}{\\cellcolor{Red} $>$ 0.10} \\\\ \n\\hline\n";
+
   myfile_HWW_tex << "\\end{tabular}\n\\end{sidewaystable}\n"; 
 
   myfile.close();

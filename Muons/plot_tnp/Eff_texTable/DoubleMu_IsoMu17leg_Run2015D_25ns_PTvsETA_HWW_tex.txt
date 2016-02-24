@@ -1,42 +1,48 @@
 \begin{sidewaystable}
-\caption{Efficiency of HLT\_Mu17\_TrkIsoVVL}
+\caption{Efficiency of HLT\_Mu17\_TrkIsoVVL. From max relative statistic error calculation we have removed $0.2<|\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}
 \label{table:TriggerMuon:HLT_Mu17_TrkIsoVVL}
 \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
 \hline
-$p_{T}/\eta$ & -2.4:-2.1 & -2.1:-1.6 & -1.6:-1.2 & -1.2:-0.8 & -0.8:-0.3 & -0.3:-0.2 & -0.2:0.2 & 0.2:0.3 & 0.3:0.8 & 0.8:1.2 & 1.2:1.6 & 1.6:2.1 & 2.1:2.4 & max rel. \\ 
- & & & & & & & & & & & & & & st. error \\ 
+$p_{T}/\eta$ & \small{-2.4:-2.1} & \small{-2.1:-1.6} & \small{-1.6:-1.2} & \small{-1.2:-0.8} & \small{-0.8:-0.3} & \small{-0.3:-0.2} & \small{-0.2:0.2} & \small{0.2:0.3} & \small{0.3:0.8} & \small{0.8:1.2} & \small{1.2:1.6} & \small{1.6:2.1} & \small{2.1:2.4} & \small{max rel.} \\ 
+ & & & & & & & & & & & & & & \small{st. error} \\ 
 \hline
-10:15 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+\small{10:15} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
 \hline
-15:16 & \cellcolor{Red} 0.013 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \cellcolor{Red} 0.013 & 0 & 0 & \cellcolor{Red} 0.69\\ 
+\small{15:16} & \cellcolor{Red} 0.013 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \cellcolor{Red} 0.013 & 0 & 0 & \cellcolor{Red} 0.69\\ 
 \hline
-16:17 & \cellcolor{Red} 0.104 & \cellcolor{Red} 0.089 & \cellcolor{Red} 0.063 & \cellcolor{Red} 0.055 & \cellcolor{Red} 0.025 & \cellcolor{Red} 0.018 & \cellcolor{Red} 0.042 & \cellcolor{Red} 0.056 & \cellcolor{Red} 0.035 & \cellcolor{Red} 0.056 & \cellcolor{Red} 0.067 & \cellcolor{Red} 0.083 & \cellcolor{Red} 0.138 & \cellcolor{Red} 0.43\\ 
+\small{16:17} & \cellcolor{Red} 0.1 & \cellcolor{Red} 0.089 & \cellcolor{Red} 0.063 & \cellcolor{Red} 0.055 & \cellcolor{Red} 0.025 & \cellcolor{Red} 0.018 & \cellcolor{Red} 0.042 & \cellcolor{Red} 0.056 & \cellcolor{Red} 0.035 & \cellcolor{Red} 0.056 & \cellcolor{Red} 0.067 & \cellcolor{Red} 0.083 & \cellcolor{Red} 0.14 & \cellcolor{Red} 0.43\\ 
 \hline
-17:18 & \cellcolor{Orange} 0.573 & \cellcolor{Yellow} 0.752 & \cellcolor{SkyBlue} 0.857 & \cellcolor{SkyBlue} 0.851 & \cellcolor{YellowGreen} 0.919 & \cellcolor{SkyBlue} 0.802 & \cellcolor{SkyBlue} 0.886 & \cellcolor{Yellow} 0.771 & \cellcolor{YellowGreen} 0.913 & \cellcolor{SkyBlue} 0.849 & \cellcolor{SkyBlue} 0.875 & \cellcolor{Yellow} 0.784 & \cellcolor{Orange} 0.627 & \cellcolor{Orange} 0.058\\ 
+\small{17:18} & \cellcolor{Orange} 0.57 & \cellcolor{Yellow} 0.75 & \cellcolor{SkyBlue} 0.86 & \cellcolor{SkyBlue} 0.85 & \cellcolor{YellowGreen} 0.92 & \cellcolor{SkyBlue} 0.8 & \cellcolor{SkyBlue} 0.89 & \cellcolor{Yellow} 0.77 & \cellcolor{YellowGreen} 0.91 & \cellcolor{SkyBlue} 0.85 & \cellcolor{SkyBlue} 0.87 & \cellcolor{Yellow} 0.78 & \cellcolor{Orange} 0.63 & \cellcolor{Yellow} 0.058\\ 
 \hline
-18:19 & \cellcolor{Yellow} 0.746 & \cellcolor{SkyBlue} 0.867 & \cellcolor{Green} 0.962 & \cellcolor{YellowGreen} 0.92 & \cellcolor{Green} 0.974 & \cellcolor{SkyBlue} 0.863 & \cellcolor{Green} 0.952 & \cellcolor{SkyBlue} 0.848 & \cellcolor{Green} 0.963 & \cellcolor{YellowGreen} 0.924 & \cellcolor{YellowGreen} 0.948 & \cellcolor{SkyBlue} 0.855 & \cellcolor{Orange} 0.699 & \cellcolor{Orange} 0.052\\ 
+\small{18:19} & \cellcolor{Yellow} 0.75 & \cellcolor{SkyBlue} 0.87 & \cellcolor{Green} 0.96 & \cellcolor{YellowGreen} 0.92 & \cellcolor{Green} 0.97 & \cellcolor{SkyBlue} 0.86 & \cellcolor{Green} 0.95 & \cellcolor{SkyBlue} 0.85 & \cellcolor{Green} 0.96 & \cellcolor{YellowGreen} 0.92 & \cellcolor{Green} 0.95 & \cellcolor{SkyBlue} 0.85 & \cellcolor{Yellow} 0.7 & \cellcolor{Yellow} 0.052\\ 
 \hline
-19:20 & \cellcolor{Yellow} 0.74 & \cellcolor{SkyBlue} 0.894 & \cellcolor{Green} 0.966 & \cellcolor{YellowGreen} 0.934 & \cellcolor{Green} 0.975 & \cellcolor{SkyBlue} 0.859 & \cellcolor{Green} 0.953 & \cellcolor{SkyBlue} 0.888 & \cellcolor{Green} 0.965 & \cellcolor{YellowGreen} 0.93 & \cellcolor{Green} 0.975 & \cellcolor{SkyBlue} 0.883 & \cellcolor{Yellow} 0.769 & \cellcolor{SkyBlue} 0.033\\ 
+\small{19:20} & \cellcolor{Yellow} 0.74 & \cellcolor{SkyBlue} 0.89 & \cellcolor{Green} 0.97 & \cellcolor{YellowGreen} 0.93 & \cellcolor{Green} 0.98 & \cellcolor{SkyBlue} 0.86 & \cellcolor{Green} 0.95 & \cellcolor{SkyBlue} 0.89 & \cellcolor{Green} 0.96 & \cellcolor{YellowGreen} 0.93 & \cellcolor{Green} 0.97 & \cellcolor{SkyBlue} 0.88 & \cellcolor{Yellow} 0.77 & \cellcolor{SkyBlue} 0.033\\ 
 \hline
-20:21 & \cellcolor{Yellow} 0.759 & \cellcolor{SkyBlue} 0.894 & \cellcolor{Green} 0.967 & \cellcolor{YellowGreen} 0.924 & \cellcolor{Green} 0.976 & \cellcolor{SkyBlue} 0.812 & \cellcolor{Green} 0.957 & \cellcolor{SkyBlue} 0.816 & \cellcolor{Green} 0.971 & \cellcolor{YellowGreen} 0.938 & \cellcolor{Green} 0.959 & \cellcolor{SkyBlue} 0.89 & \cellcolor{SkyBlue} 0.808 & \cellcolor{YellowGreen} 0.028\\ 
+\small{20:21} & \cellcolor{Yellow} 0.76 & \cellcolor{SkyBlue} 0.89 & \cellcolor{Green} 0.97 & \cellcolor{YellowGreen} 0.92 & \cellcolor{Green} 0.98 & \cellcolor{SkyBlue} 0.81 & \cellcolor{Green} 0.96 & \cellcolor{SkyBlue} 0.82 & \cellcolor{Green} 0.97 & \cellcolor{YellowGreen} 0.94 & \cellcolor{Green} 0.96 & \cellcolor{SkyBlue} 0.89 & \cellcolor{SkyBlue} 0.81 & \cellcolor{YellowGreen} 0.028\\ 
 \hline
-21:22 & \cellcolor{SkyBlue} 0.826 & \cellcolor{YellowGreen} 0.9 & \cellcolor{Green} 0.962 & \cellcolor{YellowGreen} 0.933 & \cellcolor{Green} 0.973 & \cellcolor{SkyBlue} 0.834 & \cellcolor{Green} 0.966 & \cellcolor{SkyBlue} 0.857 & \cellcolor{Green} 0.985 & \cellcolor{YellowGreen} 0.92 & \cellcolor{Green} 0.969 & \cellcolor{SkyBlue} 0.89 & \cellcolor{SkyBlue} 0.819 & \cellcolor{YellowGreen} 0.026\\ 
+\small{21:22} & \cellcolor{SkyBlue} 0.83 & \cellcolor{YellowGreen} 0.9 & \cellcolor{Green} 0.96 & \cellcolor{YellowGreen} 0.93 & \cellcolor{Green} 0.97 & \cellcolor{SkyBlue} 0.83 & \cellcolor{Green} 0.97 & \cellcolor{SkyBlue} 0.86 & \cellcolor{Green} 0.99 & \cellcolor{YellowGreen} 0.92 & \cellcolor{Green} 0.97 & \cellcolor{SkyBlue} 0.89 & \cellcolor{SkyBlue} 0.82 & \cellcolor{YellowGreen} 0.026\\ 
 \hline
-22:24 & \cellcolor{SkyBlue} 0.806 & \cellcolor{SkyBlue} 0.893 & \cellcolor{Green} 0.966 & \cellcolor{YellowGreen} 0.936 & \cellcolor{Green} 0.972 & \cellcolor{SkyBlue} 0.858 & \cellcolor{Green} 0.966 & \cellcolor{SkyBlue} 0.875 & \cellcolor{Green} 0.983 & \cellcolor{YellowGreen} 0.936 & \cellcolor{Green} 0.966 & \cellcolor{SkyBlue} 0.888 & \cellcolor{SkyBlue} 0.822 & \cellcolor{YellowGreen} 0.017\\ 
+\small{22:24} & \cellcolor{SkyBlue} 0.81 & \cellcolor{SkyBlue} 0.89 & \cellcolor{Green} 0.97 & \cellcolor{YellowGreen} 0.94 & \cellcolor{Green} 0.97 & \cellcolor{SkyBlue} 0.86 & \cellcolor{Green} 0.97 & \cellcolor{SkyBlue} 0.87 & \cellcolor{Green} 0.98 & \cellcolor{YellowGreen} 0.94 & \cellcolor{Green} 0.97 & \cellcolor{SkyBlue} 0.89 & \cellcolor{SkyBlue} 0.82 & \cellcolor{YellowGreen} 0.017\\ 
 \hline
-24:26 & \cellcolor{SkyBlue} 0.826 & \cellcolor{SkyBlue} 0.894 & \cellcolor{Green} 0.981 & \cellcolor{YellowGreen} 0.936 & \cellcolor{Green} 0.973 & \cellcolor{SkyBlue} 0.849 & \cellcolor{Green} 0.966 & \cellcolor{SkyBlue} 0.843 & \cellcolor{Green} 0.981 & \cellcolor{YellowGreen} 0.94 & \cellcolor{Green} 0.977 & \cellcolor{YellowGreen} 0.912 & \cellcolor{SkyBlue} 0.815 & \cellcolor{YellowGreen} 0.013\\ 
+\small{24:26} & \cellcolor{SkyBlue} 0.83 & \cellcolor{SkyBlue} 0.89 & \cellcolor{Green} 0.98 & \cellcolor{YellowGreen} 0.94 & \cellcolor{Green} 0.97 & \cellcolor{SkyBlue} 0.85 & \cellcolor{Green} 0.97 & \cellcolor{SkyBlue} 0.84 & \cellcolor{Green} 0.98 & \cellcolor{YellowGreen} 0.94 & \cellcolor{Green} 0.98 & \cellcolor{YellowGreen} 0.91 & \cellcolor{SkyBlue} 0.82 & \cellcolor{YellowGreen} 0.013\\ 
 \hline
-26:30 & \cellcolor{SkyBlue} 0.834 & \cellcolor{YellowGreen} 0.907 & \cellcolor{Green} 0.976 & \cellcolor{YellowGreen} 0.937 & \cellcolor{Green} 0.972 & \cellcolor{SkyBlue} 0.846 & \cellcolor{Green} 0.969 & \cellcolor{SkyBlue} 0.828 & \cellcolor{Green} 0.977 & \cellcolor{YellowGreen} 0.937 & \cellcolor{Green} 0.968 & \cellcolor{YellowGreen} 0.908 & \cellcolor{SkyBlue} 0.848 & \cellcolor{Green} 0.008\\ 
+\small{26:30} & \cellcolor{SkyBlue} 0.83 & \cellcolor{YellowGreen} 0.91 & \cellcolor{Green} 0.98 & \cellcolor{YellowGreen} 0.94 & \cellcolor{Green} 0.97 & \cellcolor{SkyBlue} 0.85 & \cellcolor{Green} 0.97 & \cellcolor{SkyBlue} 0.83 & \cellcolor{Green} 0.98 & \cellcolor{YellowGreen} 0.94 & \cellcolor{Green} 0.97 & \cellcolor{YellowGreen} 0.91 & \cellcolor{SkyBlue} 0.85 & \cellcolor{Green} 0.008\\ 
 \hline
-30:35 & \cellcolor{SkyBlue} 0.872 & \cellcolor{YellowGreen} 0.91 & \cellcolor{Green} 0.976 & \cellcolor{YellowGreen} 0.932 & \cellcolor{Green} 0.971 & \cellcolor{SkyBlue} 0.839 & \cellcolor{Green} 0.965 & \cellcolor{SkyBlue} 0.825 & \cellcolor{Green} 0.974 & \cellcolor{YellowGreen} 0.934 & \cellcolor{Green} 0.977 & \cellcolor{YellowGreen} 0.912 & \cellcolor{SkyBlue} 0.857 & \cellcolor{Green} 0.006\\ 
+\small{30:35} & \cellcolor{SkyBlue} 0.87 & \cellcolor{YellowGreen} 0.91 & \cellcolor{Green} 0.98 & \cellcolor{YellowGreen} 0.93 & \cellcolor{Green} 0.97 & \cellcolor{SkyBlue} 0.84 & \cellcolor{Green} 0.97 & \cellcolor{SkyBlue} 0.83 & \cellcolor{Green} 0.97 & \cellcolor{YellowGreen} 0.93 & \cellcolor{Green} 0.98 & \cellcolor{YellowGreen} 0.91 & \cellcolor{SkyBlue} 0.86 & \cellcolor{Green} 0.006\\ 
 \hline
-35:40 & \cellcolor{SkyBlue} 0.876 & \cellcolor{YellowGreen} 0.908 & \cellcolor{Green} 0.979 & \cellcolor{YellowGreen} 0.936 & \cellcolor{Green} 0.973 & \cellcolor{SkyBlue} 0.833 & \cellcolor{Green} 0.965 & \cellcolor{SkyBlue} 0.836 & \cellcolor{Green} 0.978 & \cellcolor{YellowGreen} 0.937 & \cellcolor{Green} 0.976 & \cellcolor{YellowGreen} 0.912 & \cellcolor{SkyBlue} 0.873 & \cellcolor{Green} 0.005\\ 
+\small{35:40} & \cellcolor{SkyBlue} 0.88 & \cellcolor{YellowGreen} 0.91 & \cellcolor{Green} 0.98 & \cellcolor{YellowGreen} 0.94 & \cellcolor{Green} 0.97 & \cellcolor{SkyBlue} 0.83 & \cellcolor{Green} 0.97 & \cellcolor{SkyBlue} 0.84 & \cellcolor{Green} 0.98 & \cellcolor{YellowGreen} 0.94 & \cellcolor{Green} 0.98 & \cellcolor{YellowGreen} 0.91 & \cellcolor{SkyBlue} 0.87 & \cellcolor{Green} 0.005\\ 
 \hline
-40:60 & \cellcolor{SkyBlue} 0.893 & \cellcolor{YellowGreen} 0.912 & \cellcolor{Green} 0.98 & \cellcolor{YellowGreen} 0.934 & \cellcolor{Green} 0.973 & \cellcolor{SkyBlue} 0.836 & \cellcolor{Green} 0.964 & \cellcolor{SkyBlue} 0.832 & \cellcolor{Green} 0.975 & \cellcolor{YellowGreen} 0.936 & \cellcolor{Green} 0.978 & \cellcolor{YellowGreen} 0.916 & \cellcolor{SkyBlue} 0.896 & \cellcolor{Green} 0.003\\ 
+\small{40:60} & \cellcolor{SkyBlue} 0.89 & \cellcolor{YellowGreen} 0.91 & \cellcolor{Green} 0.98 & \cellcolor{YellowGreen} 0.93 & \cellcolor{Green} 0.97 & \cellcolor{SkyBlue} 0.84 & \cellcolor{Green} 0.96 & \cellcolor{SkyBlue} 0.83 & \cellcolor{Green} 0.98 & \cellcolor{YellowGreen} 0.94 & \cellcolor{Green} 0.98 & \cellcolor{YellowGreen} 0.92 & \cellcolor{YellowGreen} 0.9 & \cellcolor{Green} 0.003\\ 
 \hline
-60:100 & \cellcolor{YellowGreen} 0.902 & \cellcolor{YellowGreen} 0.916 & \cellcolor{Green} 0.981 & \cellcolor{YellowGreen} 0.926 & \cellcolor{Green} 0.977 & \cellcolor{SkyBlue} 0.812 & \cellcolor{Green} 0.962 & \cellcolor{SkyBlue} 0.816 & \cellcolor{Green} 0.978 & \cellcolor{YellowGreen} 0.932 & \cellcolor{Green} 0.969 & \cellcolor{YellowGreen} 0.919 & \cellcolor{SkyBlue} 0.893 & \cellcolor{Green} 0.009\\ 
+\small{60:100} & \cellcolor{YellowGreen} 0.9 & \cellcolor{YellowGreen} 0.92 & \cellcolor{Green} 0.98 & \cellcolor{YellowGreen} 0.93 & \cellcolor{Green} 0.98 & \cellcolor{SkyBlue} 0.81 & \cellcolor{Green} 0.96 & \cellcolor{SkyBlue} 0.82 & \cellcolor{Green} 0.98 & \cellcolor{YellowGreen} 0.93 & \cellcolor{Green} 0.97 & \cellcolor{YellowGreen} 0.92 & \cellcolor{SkyBlue} 0.89 & \cellcolor{Green} 0.009\\ 
 \hline
-100:200 & \cellcolor{SkyBlue} 0.88 & \cellcolor{SkyBlue} 0.895 & \cellcolor{Green} 0.978 & \cellcolor{YellowGreen} 0.938 & \cellcolor{Green} 0.966 & \cellcolor{Yellow} 0.769 & \cellcolor{Green} 0.962 & \cellcolor{Yellow} 0.789 & \cellcolor{Green} 0.978 & \cellcolor{YellowGreen} 0.932 & \cellcolor{Green} 0.975 & \cellcolor{YellowGreen} 0.924 & \cellcolor{YellowGreen} 0.921 & \cellcolor{SkyBlue} 0.031\\ 
+\small{100:200} & \cellcolor{SkyBlue} 0.88 & \cellcolor{YellowGreen} 0.9 & \cellcolor{Green} 0.98 & \cellcolor{YellowGreen} 0.94 & \cellcolor{Green} 0.97 & \cellcolor{Yellow} 0.77 & \cellcolor{Green} 0.96 & \cellcolor{Yellow} 0.79 & \cellcolor{Green} 0.98 & \cellcolor{YellowGreen} 0.93 & \cellcolor{Green} 0.98 & \cellcolor{YellowGreen} 0.92 & \cellcolor{YellowGreen} 0.92 & \cellcolor{SkyBlue} 0.031\\ 
+\hline
+\multicolumn{15}{|c|}{Color Definition} \\ 
+\hline
+\multicolumn{3}{|c|}{Efficiency} & \multicolumn{2}{c|}{\cellcolor{Green} 0.95-1.00} &  \multicolumn{2}{c|}{\cellcolor{YellowGreen} 0.90-0.95} & \multicolumn{2}{c|}{\cellcolor{SkyBlue} 0.80-0.90} & \multicolumn{2}{c|}{\cellcolor{Yellow} 0.70-0.80} & \multicolumn{2}{c|}{\cellcolor{Orange} 0.50-0.70} & \multicolumn{2}{c|}{\cellcolor{Red} $<$ 0.50} \\ 
+\hline
+\multicolumn{3}{|c|}{max rel. st. error} & \multicolumn{2}{c|}{\cellcolor{Green} 0.00-0.01} &  \multicolumn{2}{c|}{\cellcolor{YellowGreen} 0.01-0.03} & \multicolumn{2}{c|}{\cellcolor{SkyBlue} 0.03-0.05} & \multicolumn{2}{c|}{\cellcolor{Yellow} 0.05-0.07} & \multicolumn{2}{c|}{\cellcolor{Orange} 0.07-0.10} & \multicolumn{2}{c|}{\cellcolor{Red} $>$ 0.10} \\ 
 \hline
 \end{tabular}
 \end{sidewaystable}
