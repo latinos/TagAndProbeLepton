@@ -12,7 +12,7 @@ https://twiki.cern.ch/twiki/bin/viewauth/CMS/MuonTagAndProbeTreesRun2
 
 
 ----- 
-For Prompt Reco 2015B Data
+### For Prompt Reco 2015B Data
 
     export SCRAM_ARCH=slc6_amd64_gcc530
     cmsrel CMSSW_8_0_7_patch2
@@ -36,7 +36,7 @@ Tag and Probe trees for Prompt reco Run2016B, produced by Muon POG, are located 
     /store/group/phys_muon/TagAndProbe/Run2016/80X_v1/data/
 
 -----
-For Re-reco 2015D data
+### For Re-reco 2015D data
 
 Do not forget to set correct architecture before cmsenv, if not compiled well:
 
