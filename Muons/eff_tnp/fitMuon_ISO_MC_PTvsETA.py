@@ -4,8 +4,8 @@ import FWCore.ParameterSet.Config as cms
 FitFunction = "vpvPlusExpo"; #default
 #FitFunction = "DoubleGaussPlusChebychev"; #for systematic
 
-#IsoType = "ISOTight";
-IsoType = "ISOFake";
+IsoType = "ISOTight";
+#IsoType = "ISOFake";
 
 #isMuonSel = 'Tight2012'
 isMuonSel = 'Medium';
