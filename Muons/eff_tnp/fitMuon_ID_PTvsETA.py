@@ -20,18 +20,11 @@ DataType = "Run2015D";
 
 FileNameOpenMC1 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_DYLL_M50_MadGraphMLM_LikeRun2015D.root";
 
-FileNameOpenData1 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_RunD_part1.root";
-FileNameOpenData2 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_RunD_part2.root";
-FileNameOpenData3 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_RunD_part3.root";
-FileNameOpenData4 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_RunD_part4.root";
+FileNameOpenData1 = "../filterTree/subTree_80X_Run2016B_DCSOnly_Run273423_273450_IdStudy.root";
 
 FileNameOpen1 = FileNameOpenData1;
-FileNameOpen2 = FileNameOpenData2;
-FileNameOpen3 = FileNameOpenData3;
-FileNameOpen4 = FileNameOpenData4;
 if DataOpen == "0": 
    FileNameOpen1 = FileNameOpenMC1;
-   FileNameOpen2 = FileNameOpenMC2;
 
 FileNameOutMC = "TnP_"+isMuonSel+"_"+MCType+Bunch+"Like"+DataType+"_"+Bunch+"_PTvsETA_"+FitFunction+"_M_RAW.root";
 FileNameOutData = "TnP_"+isMuonSel+"_"+DataType+"_"+Bunch+"_PTvsETA_"+FitFunction+"_M_RAW.root";
@@ -49,9 +42,6 @@ if DataOpen == "0":
 
 print '***********************************'
 print 'FileNameOpen1   = , %s.' % FileNameOpen1
-print 'FileNameOpen2   = , %s.' % FileNameOpen2
-print 'FileNameOpen3   = , %s.' % FileNameOpen3
-print 'FileNameOpen4   = , %s.' % FileNameOpen4
 print 'FileNameOut    = , %s.' % FileNameOut
 print 'FileNameOutISO = , %s.' % FileNameOutISO
 print 'Check that for Run2015D you open 2 files and for MC 1 file'
@@ -67,10 +57,7 @@ process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(1) )
 process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
     ## Input, output 
     InputFileNames = cms.vstring(
-                                 #"file:"+FileNameOpen1,  
-                                 #"file:"+FileNameOpen2,  
-                                 "file:"+FileNameOpen3, # only for Data  
-                                 #"file:"+FileNameOpen4, # only for Data 
+                                 "file:"+FileNameOpen1,  
                                  #"root://eoscms//eos/cms/store/group/phys_higgs/cmshww/kropiv/TnP_Muons/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/crab_25ns_DY_Spring15/150707_143420/0000/tnp_MC_100.root",
                                  ), ## can put more than one
     ## copy locally to be faster: xrdcp root://eoscms//eos/cms/store/cmst3/user/botta/TnPtrees/tnpZ_Data.190456-193557.root $PWD/tnpZ_Data.190456-193557.root
@@ -165,7 +152,8 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
                 #eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.0, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
                 #less detailed binning
                 #pt = cms.vdouble(5, 8, 10, 13, 16),#test
-                pt = cms.vdouble(5, 8, 10, 13, 16, 20, 25, 30, 35, 40, 60, 100, 200),
+                #pt = cms.vdouble(5, 8, 10, 13, 16, 20, 25, 30, 35, 40, 60, 100, 200),
+                pt = cms.vdouble(10, 20, 30, 50, 200),
                 eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
                 tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
                 tag_pt = cms.vdouble(20, 5000.),
@@ -177,7 +165,9 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
            UnbinnedVariables = cms.vstring("mass"),
             EfficiencyCategoryAndState = cms.vstring("ID_Medium_lt20", "above"), ## variable is above cut value 
             BinnedVariables = cms.PSet(
-                pt = cms.vdouble(5, 8, 10, 13, 16, 20, 25, 30, 35, 40, 60, 100, 200),
+                #pt = cms.vdouble(5, 8, 10, 13, 16, 20, 25, 30, 35, 40, 60, 100, 200),
+                #eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
+                pt = cms.vdouble(10, 20, 30, 50, 200),
                 eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
                 tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
                 tag_pt = cms.vdouble(20, 5000.),
@@ -189,7 +179,9 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
             UnbinnedVariables = cms.vstring("mass"),
             EfficiencyCategoryAndState = cms.vstring("ID_Medium_gt20", "above"), ## variable is above cut value 
             BinnedVariables = cms.PSet(
-                pt = cms.vdouble(5, 8, 10, 13, 16, 20, 25, 30, 35, 40, 60, 100, 200),
+                #pt = cms.vdouble(5, 8, 10, 13, 16, 20, 25, 30, 35, 40, 60, 100, 200),
+                #eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
+                pt = cms.vdouble(10, 20, 30, 50, 200),
                 eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
                 tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
                 tag_pt = cms.vdouble(20, 5000.),
@@ -202,8 +194,8 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
     ),
     ## How to do the fit
     binnedFit = cms.bool(True),
-    #binsForFit = cms.uint32(40),
-    binsForFit = cms.uint32(50),
+    binsForFit = cms.uint32(40),
+    #binsForFit = cms.uint32(50),
     saveDistributionsPlot = cms.bool(False),
     NumCPU = cms.uint32(1), ## leave to 1 for now, RooFit gives funny results otherwise
     SaveWorkspace = cms.bool(False),

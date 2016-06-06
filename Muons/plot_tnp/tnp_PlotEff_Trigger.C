@@ -43,11 +43,15 @@ void tnp_PlotEff_Trigger( bool isSave = true ) {
   //gStyle->SetFillColor(0);
   gStyle->SetOptTitle(kFALSE);
 
-  double BinEta[] = {-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4}; 
-  // binning for Mu17, Mu18, Mu20 
-  //double BinPt[] = {10, 15, 16, 17, 18, 19, 20, 21, 22,  24,  26, 30, 35, 40, 60, 100, 200};
-  // binning for Mu8
-  double BinPt[] = {10, 12, 14, 16, 18, 20, 25, 30, 35, 40, 60, 100, 200};
+  //double BinEta[] = {-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4}; 
+  //// binning for Mu17, Mu18, Mu20 
+  ////double BinPt[] = {10, 15, 16, 17, 18, 19, 20, 21, 22,  24,  26, 30, 35, 40, 60, 100, 200};
+  //// binning for Mu8
+  //double BinPt[] = {10, 12, 14, 16, 18, 20, 25, 30, 35, 40, 60, 100, 200};
+
+  double BinPt[] = {10, 20, 30, 50, 200};
+  double BinEta[] = {-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4};
+
 
   int BinPtSize = int(sizeof(BinPt)/sizeof(BinPt[0]));
   int BinEtaSize = int(sizeof(BinEta)/sizeof(BinEta[0]));
@@ -56,21 +60,26 @@ void tnp_PlotEff_Trigger( bool isSave = true ) {
 
   // ---------------------------------------------------------------------------
   // general variables
-  TString png      = "/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_6_3_patch2/src/TagAndProbeLepton/Muons/plot_tnp/Plots/";
-  TString rootPlot = "/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_6_3_patch2/src/TagAndProbeLepton/Muons/plot_tnp/Plots/";
+  TString png      = "/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_7_patch2/src/TagAndProbeLepton/Muons/plot_tnp/Plots/";
+  TString rootPlot = "/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_7_patch2/src/TagAndProbeLepton/Muons/plot_tnp/Plots/";
   // ---------------------------------------------------------------------------
 
 
   // ---- open the MC files ----
-  TString pathAnna="/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_7_6_3_patch2/src/TagAndProbeLepton/Muons/eff_tnp/";
+  TString pathAnna="/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_7_patch2/src/TagAndProbeLepton/Muons/eff_tnp/";
 
   //change only name of file, check that you use correct pt and eta binning: 
+
+  // for Run2016B:
+  TString sample_data = "TnP_IsoMu18orIsoTkMu18_Run2016B_PTvsETA"; 
+  //TString sample_data = "TnP_IsoMu20orIsoTkMu20_Run2016B_PTvsETA"; 
+
 
   // for 76X
   //TString sample_data = "TnP_IsoMu18orIsoTkMu20_Run2015D_25ns_PTvsETA_part3";
   //TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_part3";
   //TString sample_data = "TnP_IsoMu8orIsoTkMu8leg_Run2015D_25ns_PTvsETA_part3";
-  TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2015D_25ns_PTvsETA_part3";
+  //TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2015D_25ns_PTvsETA_part3";
 
   //TString sample_data = "TnP_IsoMu18_Run2015D_25ns_PTvsETA_binSmall";
   //TString sample_data = "TnP_IsoTkMu20_Run2015D_25ns_PTvsETA_binSmall";
@@ -85,7 +94,7 @@ void tnp_PlotEff_Trigger( bool isSave = true ) {
   //TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_binSmall";
   //TString sample_data = "TnP_DoubleIsoMu17TkMu8_IsoMu8leg_Run2015D_25ns_PTvsETA_binVeryBig";
 
-  TString Tag_trig = "_&_tag_IsoMu20_pass";
+  TString Tag_trig = "_&_tag_IsoTkMu20_pass";
 
   TFile* DATA   = TFile::Open(pathAnna+sample_data+".root" );
 
@@ -186,12 +195,17 @@ void tnp_PlotEff_Trigger( bool isSave = true ) {
              tl->AddEntry(grDATA, "Run 2015D"            ,"lp");
              tl->AddEntry(grDATA, "IsoMu17 leg eff."     ,"");
          }
-         else if (sample_data == "TnP_IsoMu18orIsoTkMu20_Run2015D_25ns_PTvsETA_part3"){
-             PicName = "SingleMu_IsoMu18orIsoTkMu20_Run2015D_25ns_PTvsETA";
-             tl->AddEntry(grDATA, "Run 2015D "                          ,"lp");
-             tl->AddEntry(grDATA, "HLT_IsoMu18||HLT_IsoTkMu20 eff."     ,"");
+         else if (sample_data == "TnP_IsoMu20orIsoTkMu20_Run2016B_PTvsETA"){
+             PicName = "SingleMu_IsoMu20orIsoTkMu20_Run2015D_25ns_PTvsETA";
+             tl->AddEntry(grDATA, "Run 2016B, run>=273423"                          ,"lp");
+             tl->AddEntry(grDATA, "HLT_IsoMu20||HLT_IsoTkMu20 eff."     ,"");
          }
-         else {tl->AddEntry(grDATA, "Run 2015D, Trigger eff."     ,"lp");}
+         else if (sample_data == "TnP_IsoMu18orIsoTkMu18_Run2016B_PTvsETA"){
+             PicName = "SingleMu_IsoMu18orIsoTkMu18_Run2015D_25ns_PTvsETA";
+             tl->AddEntry(grDATA, "Run 2016B, run>=273423"                          ,"lp");
+             tl->AddEntry(grDATA, "HLT_IsoMu18||HLT_IsoTkMu18 eff."     ,"");
+         }
+         else {tl->AddEntry(grDATA, "Run 2016B, Trigger eff."     ,"lp");}
 
          tl->AddEntry(grDATA, Form("%2.1f<#eta<%2.1f",BinEta[ieta],BinEta[ieta+1])     ,"");
       
@@ -201,7 +215,7 @@ void tnp_PlotEff_Trigger( bool isSave = true ) {
   }
 
 ////////////////////////////////
-//  if (!isSave) return;
+  if (!isSave) return;
 
 }
 

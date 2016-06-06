@@ -20,17 +20,14 @@ MCType = "DY_madgraph";
 Bunch = "25ns";
 DataType = "Run2015D";
 
-FileNameOpenMC1 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_DYLL_M50_MadGraphMLM_LikeRun2015D.root";
+#without PU reweighting
+#FileNameOpenMC1 = "../filterTree/subTree_80X_MadGraph_IdStudy.root"
+# with PU reweighting line in Run2016B
+FileNameOpenMC1 = "../filterTree/subTree_80X_MadGraphLikeRun2016B_IdStudy.root"
 
 FileNameOpenData1 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_RunD_part1.root"
-FileNameOpenData2 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_RunD_part2.root"
-FileNameOpenData3 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_RunD_part3.root"
-FileNameOpenData4 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_RunD_part4.root"
 
 FileNameOpen1 = FileNameOpenData1;
-FileNameOpen2 = FileNameOpenData2;
-FileNameOpen3 = FileNameOpenData3;
-FileNameOpen4 = FileNameOpenData4;
 if DataOpen == "0": 
    FileNameOpen1 = FileNameOpenMC1;
 
@@ -50,9 +47,6 @@ if DataOpen == "0":
 
 print '***********************************'
 print 'FileNameOpen1   = , %s.' % FileNameOpen1
-print 'FileNameOpen2   = , %s.' % FileNameOpen2
-print 'FileNameOpen3   = , %s.' % FileNameOpen3
-print 'FileNameOpen4   = , %s.' % FileNameOpen4
 print 'FileNameOut    = , %s.' % FileNameOut
 print 'FileNameOutISO = , %s.' % FileNameOutISO
 print 'Check that for Run2015D you open 4 files and for MC 1 file'
@@ -70,9 +64,6 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
     InputFileNames = cms.vstring(
                                  #"file:../crab/crab_projects_tnp/crab_50ns_DY_Spring15/results/tnp_MC.root",  
                                  "file:"+FileNameOpen1,  
-                                 #"file:"+FileNameOpen2, # only for Data    
-                                 #"file:"+FileNameOpen3, # only for Data  
-                                 #"file:"+FileNameOpen4, # only for Data 
                                  #"root://eoscms//eos/cms/store/group/phys_higgs/cmshww/kropiv/TnP_Muons/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/crab_25ns_DY_Spring15/150707_143420/0000/tnp_MC_100.root",
                                  ), ## can put more than one
     ## copy locally to be faster: xrdcp root://eoscms//eos/cms/store/cmst3/user/botta/TnPtrees/tnpZ_Data.190456-193557.root $PWD/tnpZ_Data.190456-193557.root
@@ -195,7 +186,8 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
             EfficiencyCategoryAndState = cms.vstring(IsoType, "above"), ## variable is above cut value 
             BinnedVariables = cms.PSet(
                 # detailed bins -> not enought stat. for MuonID
-                pt = cms.vdouble(5, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
+                #pt = cms.vdouble(5, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
+                pt = cms.vdouble(10, 20, 30, 50, 200),
                 eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
                 # too small for ISO in barrel, was run only for test mode
                 #pt = cms.vdouble(3, 5, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 30, 35, 40, 50, 60, 80, 120, 200),
@@ -211,7 +203,8 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
             UnbinnedVariables = cms.vstring("mass", "weight"),
             EfficiencyCategoryAndState = cms.vstring(IsoType, "above"), ## variable is above cut value 
             BinnedVariables = cms.PSet(
-                pt = cms.vdouble(5, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
+                #pt = cms.vdouble(5, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
+                pt = cms.vdouble(10, 20, 30, 50, 200),
                 eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
                 Medium = cms.vstring("pass"),
                 dB = cms.vdouble(0., 0.01),
@@ -226,7 +219,8 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
             UnbinnedVariables = cms.vstring("mass", "weight"),
             EfficiencyCategoryAndState = cms.vstring(IsoType, "above"), ## variable is above cut value 
             BinnedVariables = cms.PSet(
-                pt = cms.vdouble(5, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
+                #pt = cms.vdouble(5, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
+                pt = cms.vdouble(10, 20, 30, 50, 200),
                 eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
                 Medium = cms.vstring("pass"),
                 dB = cms.vdouble(0., 0.02),
