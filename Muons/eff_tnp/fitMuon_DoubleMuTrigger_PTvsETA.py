@@ -31,11 +31,12 @@ if MCType == "DY_madgraph":
   FileNameOpenMC = "tnp_"+Bunch+MCType+"_v3_part.root";
 
 #FileNameOpenData = "tnp_"+DataType+"_PromptReco_"+Bunch+"_v3.root";  
-FileNameOpenData = "tnp_"+DataType+"_PromptReco_"+Bunch+"_SingleMu_v3.root";  
-FileNameOpenData2 = "tnp_"+DataType+"_PromptReco_"+Bunch+"_SingleMu_v4.root";  
+#FileNameOpenData = "tnp_"+DataType+"_PromptReco_"+Bunch+"_SingleMu_v3.root";  
+#FileNameOpenData2 = "tnp_"+DataType+"_PromptReco_"+Bunch+"_SingleMu_v4.root";  
+
+FileNameOpenData = "../filterTree/subTree_80X_Run2016B_DCSOnly_Run273423_273450_ISOandTrigStudy.root";
 
 FileNameOpen = FileNameOpenData;
-FileNameOpen2 = FileNameOpenData2;
 if DataOpen == "0": 
    FileNameOpen = FileNameOpenMC;
 
@@ -71,18 +72,6 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
     InputFileNames = cms.vstring(
                                  #"file:../crab/crab_projects_tnp/crab_50ns_DY_Spring15/results/tnp_MC.root",  
                                  "file:"+FileNameOpen,  
-                                 "file:"+FileNameOpen2,  
-                                 #DY 
-                                 #"file:tnp_Run2015B_PromptReco_v2.root",  
-                                 #"file:tnp_50nsDY_v3_PUlikeRun2015B_50ns.root",  
-                                 #"file:tnp_50nsDY_v3_PUlikeRun2015C_50ns.root",  
-                                 #"file:tnp_25nsDY_v3_PUlikeRun2015C_25ns.root",  
-                                 #"file:tnp_25nsDY_v3_PUlikeRun2015D_25ns.root",  
-                                 #DATA: 
-                                 #"file:tnp_Run2015B_PromptReco_50ns_v3.root",  
-                                 #"file:tnp_Run2015C_PromptReco_50ns_v3.root",  
-                                 #"file:tnp_Run2015C_PromptReco_25ns_v3.root",  
-                                 #"file:tnp_Run2015D_PromptReco_25ns_v3.root",
                                  #"root://eoscms//eos/cms/store/group/phys_higgs/cmshww/kropiv/TnP_Muons/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/crab_25ns_DY_Spring15/150707_143420/0000/tnp_MC_100.root",
                                  ), ## can put more than one
     ## copy locally to be faster: xrdcp root://eoscms//eos/cms/store/cmst3/user/botta/TnPtrees/tnpZ_Data.190456-193557.root $PWD/tnpZ_Data.190456-193557.root
