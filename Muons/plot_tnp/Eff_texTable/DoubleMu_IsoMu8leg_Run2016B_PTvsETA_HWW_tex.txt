@@ -1,0 +1,24 @@
+\begin{sidewaystable}
+\caption{Efficiency of HLT\_Mu8\_TrkIsoVVL}
+\label{table:TriggerMuon:HLT_Mu8_TrkIsoVVL}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l||l|}
+\hline
+$p_{T}/\eta$ & \small{-2.4:-2.1} & \small{-2.1:-1.6} & \small{-1.6:-1.2} & \small{-1.2:-0.8} & \small{-0.8:-0.3} & \small{-0.3:0.3} & \small{0.3:0.8} & \small{0.8:1.2} & \small{1.2:1.6} & \small{1.6:2.1} & \small{2.1:2.4} & \small{max rel.} \\ 
+ & & & & & & & & & & & & & & \small{st. error} \\ 
+\hline
+\small{10:20} & \cellcolor{YellowGreen} 0.91 & \cellcolor{YellowGreen} 0.93 & \cellcolor{Green} 0.96 & \cellcolor{SkyBlue} 0.81 & \cellcolor{Green} 0.99 & \cellcolor{YellowGreen} 0.91 & \cellcolor{YellowGreen} 0.94 & \cellcolor{SkyBlue} 0.81 & \cellcolor{Green} 0.96 & \cellcolor{YellowGreen} 0.93 & \cellcolor{YellowGreen} 0.91 & \cellcolor{YellowGreen} 0.03\\ 
+\hline
+\small{20:30} & \cellcolor{Green} 0.96 & \cellcolor{Green} 0.96 & \cellcolor{Green} 0.96 & \cellcolor{SkyBlue} 0.8 & \cellcolor{Green} 0.97 & \cellcolor{SkyBlue} 0.88 & \cellcolor{Green} 0.95 & \cellcolor{Yellow} 0.78 & \cellcolor{Green} 0.95 & \cellcolor{YellowGreen} 0.94 & \cellcolor{YellowGreen} 0.94 & \cellcolor{YellowGreen} 0.014\\ 
+\hline
+\small{30:50} & \cellcolor{Green} 0.95 & \cellcolor{Green} 0.95 & \cellcolor{Green} 0.96 & \cellcolor{SkyBlue} 0.8 & \cellcolor{Green} 0.96 & \cellcolor{SkyBlue} 0.89 & \cellcolor{Green} 0.96 & \cellcolor{Yellow} 0.78 & \cellcolor{Green} 0.95 & \cellcolor{Green} 0.95 & \cellcolor{YellowGreen} 0.94 & \cellcolor{Green} 0.006\\ 
+\hline
+\small{50:200} & \cellcolor{Green} 0.96 & \cellcolor{Green} 0.95 & \cellcolor{Green} 0.96 & \cellcolor{Yellow} 0.77 & \cellcolor{Green} 0.96 & \cellcolor{SkyBlue} 0.89 & \cellcolor{Green} 0.96 & \cellcolor{Yellow} 0.77 & \cellcolor{Green} 0.95 & \cellcolor{YellowGreen} 0.93 & \cellcolor{Green} 0.95 & \cellcolor{YellowGreen} 0.014\\ 
+\hline
+\multicolumn{15}{|c|}{Color Definition} \\ 
+\hline
+\multicolumn{3}{|c|}{Efficiency} & \multicolumn{2}{c|}{\cellcolor{Green} 0.95-1.00} &  \multicolumn{2}{c|}{\cellcolor{YellowGreen} 0.90-0.95} & \multicolumn{2}{c|}{\cellcolor{SkyBlue} 0.80-0.90} & \multicolumn{2}{c|}{\cellcolor{Yellow} 0.70-0.80} & \multicolumn{2}{c|}{\cellcolor{Orange} 0.50-0.70} & \multicolumn{2}{c|}{\cellcolor{Red} $<$ 0.50} \\ 
+\hline
+\multicolumn{3}{|c|}{max rel. st. error} & \multicolumn{2}{c|}{\cellcolor{Green} 0.00-0.01} &  \multicolumn{2}{c|}{\cellcolor{YellowGreen} 0.01-0.03} & \multicolumn{2}{c|}{\cellcolor{SkyBlue} 0.03-0.05} & \multicolumn{2}{c|}{\cellcolor{Yellow} 0.05-0.07} & \multicolumn{2}{c|}{\cellcolor{Orange} 0.07-0.10} & \multicolumn{2}{c|}{\cellcolor{Red} $>$ 0.10} \\ 
+\hline
+\end{tabular}
+\end{sidewaystable}
