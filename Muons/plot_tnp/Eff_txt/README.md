@@ -1,7 +1,7 @@
 #Tag and Probe efficiency
 
 ******
-muonID+ISO for HWW:
+#muonID+ISO for HWW:
 
 for muon ID:
 
@@ -28,7 +28,7 @@ Look at https://github.com/latinos/TagAndProbeLepton/tree/master/Muons/plot_tnp/
 
 
 ******
-Triggers used for HWW for Run2016B:
+#Triggers used for HWW for Run2016B:
 
     HLT_IsoMu20_v||HLT_IsoTkMu20_v 
 
@@ -41,36 +41,39 @@ Triggers used for HWW for Run2016B:
     HLT_Mu17_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_v
 
 ******
-muonID+ISO efficiency from Tracker muon:
+#muonID efficiency from Tracker muon:
 
-#from DATA: 
+from DATA: 
 
      MediumID_Run2016B_PTvsETA_HWW.txt
 
-#from MC (pile up reweight to DATA): 
+from MC (pile up reweight to DATA): 
 
      MediumID_DY_madgraph25nsLikeRun2016B_PTvsETA_HWW.txt
 
 ******
-Trigger efficiency after passing muonID+ISO selections using DATA only:
+#Trigger efficiency after passing muonID+ISO selections using DATA only:
 
-#SingleMu trigger HLT_IsoMu20||HLT_IsoTkMu20: 
+#SingleMu trigger 
+
+HLT_IsoMu20||HLT_IsoTkMu20: 
 
     SingleMu_IsoMu20orIsoTkMu20_Run2016B_PTvsETA_HWW.txt
 
+#Trigger leg efficiecny for DoubleMu triggers:
 
-******
- Trigger leg efficiecny for DoubleMu triggers:
-
-#IsoMu17leg: 
+IsoMu17leg: 
  
     DoubleMu_IsoMu17leg_Run2016B_PTvsETA_HWW.txt
 
-#IsoMu8leg:
+IsoMu8leg:
 
     DoubleMu_IsoMu8leg_Run2016B_PTvsETA_HWW.txt
 
-#IsoMu8||IsoTkMu8leg: 
+IsoMu8||IsoTkMu8leg: 
 
     DoubleMu_IsoMu8orIsoTkMu8leg_Run2016B_PTvsETA_HWW.txt
 
+IsoTkMu17leg:
+
+    DoubleMu_IsoTkMu8leg_Run2016B_PTvsETA_HWW.txt
