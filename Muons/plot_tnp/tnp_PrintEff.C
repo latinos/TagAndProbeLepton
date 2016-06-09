@@ -50,9 +50,10 @@ void tnp_PrintEff( bool isSave = true ) {
   double BinEta[] = {-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4};
   // for Muon ID
   //double BinPt[] = {5, 8, 10, 13, 16, 20, 25, 30, 35, 40, 60, 100, 200};
+  //double BinPt[] = {10, 20, 30, 50, 200};
   // for ISO
-  double BinPt[] = {10, 20, 30, 50, 200};
   //double BinPt[] = {5, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200};
+  double BinPt[] = {10, 14, 17, 20, 22, 30, 50, 80, 200};
 
   int BinPtSize = int(sizeof(BinPt)/sizeof(BinPt[0]));
   int BinEtaSize = int(sizeof(BinEta)/sizeof(BinEta[0]));
@@ -91,6 +92,9 @@ void tnp_PrintEff( bool isSave = true ) {
           Tag_trig = "_&_Medium_pass"+ Tag_trig;
   }
   TFile* DATA   = TFile::Open(pathAnna+sample_data+".root" );
+
+  //cout << "File is opened successfully"  << endl;
+
 
 ////////////////////////////////
   ofstream myfile;
@@ -138,9 +142,6 @@ void tnp_PrintEff( bool isSave = true ) {
   myfile_HWW_tex << " & & & & & & & & & & & & st. error \\\\ \n\\hline\n"  ;
 
 ////////////////////////////////
-  
-
-
 
 
   // and the graph afterwards
@@ -150,6 +151,7 @@ void tnp_PrintEff( bool isSave = true ) {
   for (int ipt=0; ipt<BinPtSize-1; ipt++){
      if (BinPt[ipt] < PTmax-0.0001) continue; // plot efficiency only with pT > PTmax
      TCanvas* tDATA = (TCanvas*) DATA->Get(Form("tpTree/%s/fit_eff_plots/eta_PLOT_pt_bin%d%s",MuonID.Data(),ipt,Tag_trig.Data() ));
+     if(tDATA == 0)cout << "check code: ERROR Canvas = " << tDATA << " ipt = " << ipt << endl;
      TGraphAsymmErrors* grDATA = (TGraphAsymmErrors*) tDATA -> GetListOfPrimitives()->At(1);
      ErrorCheck(grDATA);
      Double_t *eff       = grDATA->GetY();

@@ -47,7 +47,7 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
   double BinEta[] = {-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4};
   // binning for Mu17, Mu18, Mu20 
   //double BinPt[] = {10, 15, 16, 17, 18, 19, 20, 21, 22,  24,  26, 30, 35, 40, 60, 100, 200};
-  double BinPt[] = {10, 20, 30, 50, 200};
+  double BinPt[] = {10, 14, 17, 20, 22, 30, 50, 80, 200};
   // binning for Mu8
   //double BinPt[] = {10, 12, 14, 16, 18, 20, 25, 30, 35, 40, 60, 100, 200};
 
@@ -72,7 +72,8 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
   //TString sample_data = "TnP_IsoMu20orIsoTkMu20_Run2016B_PTvsETA";
   //TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2016B_PTvsETA";
   //TString sample_data = "TnP_IsoMu8orIsoTkMu8leg_Run2016B_PTvsETA";
-  TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2016B_PTvsETA";
+  //TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2016B_PTvsETA";
+  TString sample_data = "TnP_DoubleIsoMu17TkMu8_IsoMu8leg_Run2016B_PTvsETA";
 
   TString Tag_trig = "_&_tag_IsoMu20_pass";
 
@@ -114,6 +115,9 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
 
   if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2016B_PTvsETA") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu8\\_TrkIsoVVL}\n";
   if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2016B_PTvsETA") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu8_TrkIsoVVL}\n";
+
+  if (sample_data == "TnP_DoubleIsoMu17TkMu8_IsoMu8leg_Run2016B_PTvsETA") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_TkMu8\\_TrkIsoVVL}\n";
+  if (sample_data == "TnP_DoubleIsoMu17TkMu8_IsoMu8leg_Run2016B_PTvsETA") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_TkMu8_TrkIsoVVL}\n";
 
   //myfile_HWW_tex << "\\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}\n";
   myfile_HWW_tex << "\\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l||l|}\n";

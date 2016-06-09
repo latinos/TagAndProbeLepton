@@ -6,13 +6,21 @@
 $p_{T}/\eta$ & \small{-2.4:-2.1} & \small{-2.1:-1.6} & \small{-1.6:-1.2} & \small{-1.2:-0.8} & \small{-0.8:-0.3} & \small{-0.3:0.3} & \small{0.3:0.8} & \small{0.8:1.2} & \small{1.2:1.6} & \small{1.6:2.1} & \small{2.1:2.4} & \small{max rel.} \\ 
  & & & & & & & & & & & & & & \small{st. error} \\ 
 \hline
-\small{10:20} & \cellcolor{YellowGreen} 0.91 & \cellcolor{YellowGreen} 0.93 & \cellcolor{Green} 0.96 & \cellcolor{SkyBlue} 0.81 & \cellcolor{Green} 0.99 & \cellcolor{YellowGreen} 0.91 & \cellcolor{YellowGreen} 0.94 & \cellcolor{SkyBlue} 0.81 & \cellcolor{Green} 0.96 & \cellcolor{YellowGreen} 0.93 & \cellcolor{YellowGreen} 0.91 & \cellcolor{YellowGreen} 0.03\\ 
+\small{10:14} & \cellcolor{YellowGreen} 0.93 & \cellcolor{YellowGreen} 0.92 & \cellcolor{Green} 0.98 & \cellcolor{SkyBlue} 0.88 & \cellcolor{Green} 1 & \cellcolor{SkyBlue} 0.89 & \cellcolor{SkyBlue} 0.89 & \cellcolor{Yellow} 0.75 & \cellcolor{YellowGreen} 0.93 & \cellcolor{YellowGreen} 0.93 & \cellcolor{YellowGreen} 0.94 & \cellcolor{Yellow} 0.065\\ 
 \hline
-\small{20:30} & \cellcolor{Green} 0.96 & \cellcolor{Green} 0.96 & \cellcolor{Green} 0.96 & \cellcolor{SkyBlue} 0.8 & \cellcolor{Green} 0.97 & \cellcolor{SkyBlue} 0.88 & \cellcolor{Green} 0.95 & \cellcolor{Yellow} 0.78 & \cellcolor{Green} 0.95 & \cellcolor{YellowGreen} 0.94 & \cellcolor{YellowGreen} 0.94 & \cellcolor{YellowGreen} 0.014\\ 
+\small{14:17} & \cellcolor{YellowGreen} 0.9 & \cellcolor{Green} 0.96 & \cellcolor{Green} 0.98 & \cellcolor{Yellow} 0.74 & \cellcolor{Green} 0.98 & \cellcolor{YellowGreen} 0.93 & \cellcolor{YellowGreen} 0.91 & \cellcolor{SkyBlue} 0.85 & \cellcolor{Green} 0.96 & \cellcolor{YellowGreen} 0.92 & \cellcolor{Green} 0.95 & \cellcolor{Yellow} 0.058\\ 
+\hline
+\small{17:20} & \cellcolor{YellowGreen} 0.9 & \cellcolor{YellowGreen} 0.92 & \cellcolor{YellowGreen} 0.94 & \cellcolor{SkyBlue} 0.83 & \cellcolor{Green} 0.99 & \cellcolor{YellowGreen} 0.9 & \cellcolor{Green} 0.96 & \cellcolor{Yellow} 0.78 & \cellcolor{Green} 0.98 & \cellcolor{YellowGreen} 0.93 & \cellcolor{SkyBlue} 0.87 & \cellcolor{SkyBlue} 0.039\\ 
+\hline
+\small{20:22} & \cellcolor{Green} 0.95 & \cellcolor{Green} 0.96 & \cellcolor{Green} 0.97 & \cellcolor{SkyBlue} 0.82 & \cellcolor{Green} 0.97 & \cellcolor{SkyBlue} 0.88 & \cellcolor{YellowGreen} 0.94 & \cellcolor{Yellow} 0.75 & \cellcolor{Green} 0.97 & \cellcolor{YellowGreen} 0.93 & \cellcolor{Green} 0.97 & \cellcolor{SkyBlue} 0.045\\ 
+\hline
+\small{22:30} & \cellcolor{Green} 0.96 & \cellcolor{Green} 0.96 & \cellcolor{Green} 0.96 & \cellcolor{SkyBlue} 0.8 & \cellcolor{Green} 0.97 & \cellcolor{SkyBlue} 0.88 & \cellcolor{Green} 0.96 & \cellcolor{Yellow} 0.79 & \cellcolor{Green} 0.95 & \cellcolor{YellowGreen} 0.94 & \cellcolor{YellowGreen} 0.93 & \cellcolor{YellowGreen} 0.015\\ 
 \hline
 \small{30:50} & \cellcolor{Green} 0.95 & \cellcolor{Green} 0.95 & \cellcolor{Green} 0.96 & \cellcolor{SkyBlue} 0.8 & \cellcolor{Green} 0.96 & \cellcolor{SkyBlue} 0.89 & \cellcolor{Green} 0.96 & \cellcolor{Yellow} 0.78 & \cellcolor{Green} 0.95 & \cellcolor{Green} 0.95 & \cellcolor{YellowGreen} 0.94 & \cellcolor{Green} 0.006\\ 
 \hline
-\small{50:200} & \cellcolor{Green} 0.96 & \cellcolor{Green} 0.95 & \cellcolor{Green} 0.96 & \cellcolor{Yellow} 0.77 & \cellcolor{Green} 0.96 & \cellcolor{SkyBlue} 0.89 & \cellcolor{Green} 0.96 & \cellcolor{Yellow} 0.77 & \cellcolor{Green} 0.95 & \cellcolor{YellowGreen} 0.93 & \cellcolor{Green} 0.95 & \cellcolor{YellowGreen} 0.014\\ 
+\small{50:80} & \cellcolor{Green} 0.96 & \cellcolor{Green} 0.95 & \cellcolor{Green} 0.96 & \cellcolor{Yellow} 0.75 & \cellcolor{Green} 0.95 & \cellcolor{SkyBlue} 0.89 & \cellcolor{Green} 0.96 & \cellcolor{Yellow} 0.77 & \cellcolor{Green} 0.95 & \cellcolor{YellowGreen} 0.93 & \cellcolor{YellowGreen} 0.94 & \cellcolor{YellowGreen} 0.015\\ 
+\hline
+\small{80:200} & \cellcolor{YellowGreen} 0.92 & \cellcolor{YellowGreen} 0.94 & \cellcolor{Green} 0.96 & \cellcolor{SkyBlue} 0.84 & \cellcolor{Green} 0.97 & \cellcolor{SkyBlue} 0.89 & \cellcolor{Green} 0.95 & \cellcolor{Yellow} 0.74 & \cellcolor{YellowGreen} 0.92 & \cellcolor{YellowGreen} 0.93 & \cellcolor{Green} 0.96 & \cellcolor{SkyBlue} 0.043\\ 
 \hline
 \multicolumn{15}{|c|}{Color Definition} \\ 
 \hline
