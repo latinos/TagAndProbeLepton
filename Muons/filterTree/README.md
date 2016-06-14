@@ -6,45 +6,44 @@ Modify subTree.C and run it in root
 
 It is better to copy analysed file localy and run, because speed increase more then by 10 times.
 
-Summary for Run2016B DCSonly json for ID Study:
 
-     /store/group/phys_muon/TagAndProbe/Run2016/80X_v1/data/TnPTree_80X_Run2016B_v1_DCSOnly.root
-     INPUT TREE (492014 ENTRIES)
-     OUTPUT TREE (141122 ENTRIES)
-     OUTPUT TREE (0 ENTRIES) for run>=273423
+Example of copy for eos:
+     eos cp /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v1/data/TnPTree_80X_Run2016B_v2_GoldenJSON_Run271036to273730_NotCompleted.root ./
 
-     /store/group/phys_muon/TagAndProbe/Run2016/80X_v1/data/TnPTree_80X_Run2016B_v2_DCSOnly_UptoRun273450.root
-     INPUT TREE (1869408 ENTRIES)
-     OUTPUT TREE (547377 ENTRIES)
-     OUTPUT TREE (281970 ENTRIES) for run>=273423
 
-Summary for Run2016B DCSonly json for ISO or Trigger Study:
+Run2016B Golden json file Run 271036 - 274421:
 
-     /store/group/phys_muon/TagAndProbe/Run2016/80X_v1/data/TnPTree_80X_Run2016B_v1_DCSOnly.root
-     INPUT TREE (492014 ENTRIES)
-     OUTPUT TREE (75544 ENTRIES)
-     OUTPUT TREE (0 ENTRIES) for run>=273423
+     /store/group/phys_muon/TagAndProbe/Run2016/80X_v1/data/TnPTree_80X_Run2016B_v2_GoldenJSON_Run271036to273730_NotCompleted.root
+     /store/group/phys_muon/TagAndProbe/Run2016/80X_v1/data/TnPTree_80X_Run2016B_v2_GoldenJSON_Run273731_to_274240_IncludingMissingLumi_Completed.root
+     /store/group/phys_muon/TagAndProbe/Run2016/80X_v1/data/TnPTree_80X_Run2016B_v2_GoldenJSON_Run274241to274421.root
 
-     /store/group/phys_muon/TagAndProbe/Run2016/80X_v1/data/TnPTree_80X_Run2016B_v2_DCSOnly_UptoRun273450.root
-     INPUT TREE (1869408 ENTRIES)
-     OUTPUT TREE (299359 ENTRIES)
-     OUTPUT TREE (154291 ENTRIES) for run>=273423
+Mergered file is:
 
-INFO:
+     TnPTree_80X_Run2016B_v2_GoldenJSON_Run271036to274421.root 
 
-     Run < 273423 (190 /pb)
-     Run >= 273423 (122 /pb)
+Summary for Run2016B Golden json for ID Study Run 271036 - 274421:
+
+     INPUT TREE (16928466 ENTRIES)
+     OUTPUT TREE (5007938 ENTRIES) : subTree_80X_Run2016B_v2_GoldenJSON_Run271036to274421_IdStudy.root
+
+Summary for Run2016B Golden json for Trigger Study for Run < 274421 (use file after ID selection):
+
+     INPUT TREE (5007938 ENTRIES)
+     OUTPUT TREE (764768 ENTRIES) : subTree_80X_Run2016B_v2_GoldenJSON_Run271036to274093_TrigStudy.root
+
+Summary for Run2016B Golden json for Trigger Study for Run >= 274421 (use file after ID selection):
+
+     INPUT TREE  (5007938 ENTRIES)
+     OUTPUT TREE (1897714 ENTRIES) : subTree_80X_Run2016B_v2_GoldenJSON_Run274094to274421_TrigStudy.root
+
+Summary for Run2016B Golden json for ISO (merge 2 trigger files) Run 271036 - 274421:
+
+     subTree_80X_Run2016B_v2_GoldenJSON_Run271036to274421_IsoStudy.root
 
 For for run<273423 we have low efficiency in barrel, see slide 13:
     
 https://indico.cern.ch/event/535947/contributions/2177911/attachments/1278346/1897723/2016.05.24_MuonHLT_TrigEff_80X_KPLee_v2.pdf
 
-Compbinned version of Run2016B v1 and v2 for ID study:
+Finally all drop in efficiency was fixed only in Run 274094. So we skip Trigger efficiency before and after this run. 
+ID and ISO efficinecies are the same in all run period.
 
-    subTree_80X_Run2016B_DCSOnly_UptoRun273450_IdStudy.root
-    for run>=273423
-
-Compbinned version of Run2016B v1 and v2 for ISO and Triger study:
-
-    subTree_80X_Run2016B_DCSOnly_UptoRun273450_ISOandTrigStudy.root
-    subTree_80X_Run2016B_DCSOnly_Run273423_273450_ISOandTrigStudy.root for run>=273423
