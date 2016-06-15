@@ -25,7 +25,7 @@ FileNameOpenMC = "tnp_"+Bunch+MCType+"_PUlike"+DataType+"_"+Bunch+".root";
 if MCType == "DY_madgraph":
   FileNameOpenMC1 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_DYLL_M50_MadGraphMLM_part1.root";
 
-FileNameOpenData1 = "../filterTree/subTree_80X_Run2016B_DCSOnly_Run273423_273450_ISOandTrigStudy.root"
+FileNameOpenData1 = "../filterTree/subTree_80X_Run2016B_v2_GoldenJSON_Run271036to274421_IsoStudy.root";
 
 FileNameOpen1 = FileNameOpenData1;
 if DataOpen == "0": 
@@ -190,9 +190,7 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
             EfficiencyCategoryAndState = cms.vstring(IsoType, "above"), ## variable is above cut value 
             BinnedVariables = cms.PSet(
                 # detailed bins -> not enought stat. for MuonID
-                #pt = cms.vdouble(5, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
-                #pt = cms.vdouble(10, 20, 30, 50, 200),
-                pt = cms.vdouble(10, 14, 17, 20, 22, 30, 50, 80, 200),
+                pt = cms.vdouble(10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
                 eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
                 # too small for ISO in barrel, was run only for test mode
                 #pt = cms.vdouble(3, 5, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 30, 35, 40, 50, 60, 80, 120, 200),
@@ -208,9 +206,7 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
             UnbinnedVariables = cms.vstring("mass"),
             EfficiencyCategoryAndState = cms.vstring(IsoType, "above"), ## variable is above cut value 
             BinnedVariables = cms.PSet(
-                #pt = cms.vdouble(5, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
-                #pt = cms.vdouble(10, 20, 30, 50, 200),
-                pt = cms.vdouble(10, 14, 17, 20, 22, 30, 50, 80, 200),
+                pt = cms.vdouble(10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
                 eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
                 Medium = cms.vstring("pass"),
                 dB = cms.vdouble(0., 0.01),
@@ -225,9 +221,7 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
             UnbinnedVariables = cms.vstring("mass"),
             EfficiencyCategoryAndState = cms.vstring(IsoType, "above"), ## variable is above cut value 
             BinnedVariables = cms.PSet(
-                #pt = cms.vdouble(5, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
-                #pt = cms.vdouble(10, 20, 30, 50, 200),
-                pt = cms.vdouble(10, 14, 17, 20, 22, 30, 50, 80, 200),
+                pt = cms.vdouble(10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200),
                 eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
                 Medium = cms.vstring("pass"),
                 dB = cms.vdouble(0., 0.02),

@@ -28,4 +28,4 @@ Example to add weights for pile up:
 
 for Run2016B:
 
-     root.exe -b -l -q ../filterTree/subTree_80X_MadGraph_IdStudy.root ../filterTree/subTree_80X_Run2016B_DCSOnly_Run273423_273450_IdStudy.root addNVtxWeight.cxx+
+     root.exe -b -l -q ../filterTree/subTree_80X_MadGraph_IdStudy.root ../filterTree/subTree_80X_Run2016B_v2_GoldenJSON_Run271036to274421_IdStudy.root addNVtxWeight.cxx+
