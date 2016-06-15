@@ -23,7 +23,7 @@ DataType = "Run2015D";
 #without PU reweighting
 #FileNameOpenMC1 = "../filterTree/subTree_80X_MadGraph_IdStudy.root"
 # with PU reweighting line in Run2016B
-FileNameOpenMC1 = "../filterTree/subTree_80X_Run2016B_v2_GoldenJSON_Run271036to274421_IsoStudy.root";
+FileNameOpenMC1 = "../filterTree/subTree_80X_MadGraphLikeRun2016B_IdStudy.root";
 
 FileNameOpenData1 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_RunD_part1.root"
 
