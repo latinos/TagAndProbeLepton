@@ -9,9 +9,9 @@ isMuonSel = 'Medium'
 ## Tag muon is always matched to tag_IsoMu20
 #isTrigger = 'IsoMu18'
 #isTrigger = 'IsoTkMu20'
-#isTrigger = 'DoubleIsoMu17Mu8_IsoMu17leg'
+isTrigger = 'DoubleIsoMu17Mu8_IsoMu17leg'
 #isTrigger = 'DoubleIsoMu17Mu8_IsoMu8leg'
-isTrigger = 'DoubleIsoMu17TkMu8_IsoMu8leg'# this is correct for IsoTkMu8leg
+#isTrigger = 'DoubleIsoMu17TkMu8_IsoMu8leg'# this is correct for IsoTkMu8leg
 
 #isTrigger = 'IsoMu18orIsoTkMu18' ## you have to change efficiency input yourself for this mode
 #isTrigger = 'IsoMu20orIsoTkMu20' ## you have to change efficiency input yourself for this mode
@@ -29,7 +29,8 @@ DataType = "Run2016B";
 
 FileNameOpenMC1 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_DYLL_M50_MadGraphMLM_LikeRun2015D.root";
 
-FileNameOpenData1 = "../filterTree/subTree_80X_Run2016B_DCSOnly_Run273423_273450_ISOandTrigStudy.root";
+#FileNameOpenData1 = "../filterTree/subTree_80X_Run2016B_v2_GoldenJSON_Run271036to274093_TrigStudy.root";
+FileNameOpenData1 = "../filterTree/subTree_80X_Run2016B_v2_GoldenJSON_Run274094to274421_TrigStudy.root";
 
 FileNameOpen1 = FileNameOpenData1;
 if DataOpen == "0":
@@ -151,11 +152,10 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
             EfficiencyCategoryAndState = cms.vstring(isTrigger, "pass"), ## variable is above cut value 
             BinnedVariables = cms.PSet(
                 # binning for Mu17, Mu18, Mu20 
-                #pt = cms.vdouble(10, 15, 16, 17, 18, 19, 20, 21, 22,  24,  26, 30, 35, 40, 60, 100, 200),
-                #eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
-                #pt = cms.vdouble(10, 20, 30, 50, 200),
-                pt = cms.vdouble(10, 14, 17, 20, 22, 30, 50, 80, 200),
-                eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
+                pt = cms.vdouble(10, 15, 16, 17, 18, 19, 20, 21, 22,  24,  26, 30, 35, 40, 60, 100, 200),
+                eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
+                #pt = cms.vdouble(10, 14, 17, 20, 22, 30, 50, 80, 200),
+                #eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
                 # binning for Mu8 
                 #pt = cms.vdouble(10, 12, 14, 16, 18, 20, 25, 30, 35, 40, 60, 100, 200),
                 #eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
@@ -175,11 +175,10 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
             EfficiencyCategoryAndState = cms.vstring(isTrigger, "pass"), ## variable is above cut value 
             BinnedVariables = cms.PSet(
                 # binning for Mu17, Mu18, Mu20 
-                #pt = cms.vdouble(10, 15, 16, 17, 18, 19, 20, 21, 22,  24,  26, 30, 35, 40, 60, 100, 200),
-                #eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
-                #pt = cms.vdouble(10, 20, 30, 50, 200),
-                pt = cms.vdouble(10, 14, 17, 20, 22, 30, 50, 80, 200),
-                eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
+                pt = cms.vdouble(10, 15, 16, 17, 18, 19, 20, 21, 22,  24,  26, 30, 35, 40, 60, 100, 200),
+                eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
+                #pt = cms.vdouble(10, 14, 17, 20, 22, 30, 50, 80, 200),
+                #eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
                 # binning for Mu8 
                 #pt = cms.vdouble(10, 12, 14, 16, 18, 20, 25, 30, 35, 40, 60, 100, 200),
                 #eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
@@ -201,15 +200,14 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
             EfficiencyCategoryAndState = cms.vstring(isTrigger, "pass"), ## variable is above cut value 
             BinnedVariables = cms.PSet(
                 # binning for Mu17, Mu18, Mu20 
-                #pt = cms.vdouble(10, 15, 16, 17, 18, 19, 20, 21, 22,  24,  26, 30, 35, 40, 60, 100, 200),
-                #eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
-                #pt = cms.vdouble(10, 20, 30, 50, 200),
-                pt = cms.vdouble(10, 14, 17, 20, 22, 30, 50, 80, 200),
-                eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
+                pt = cms.vdouble(10, 15, 16, 17, 18, 19, 20, 21, 22,  24,  26, 30, 35, 40, 60, 100, 200),
+                eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
+                #pt = cms.vdouble(10, 14, 17, 20, 22, 30, 50, 80, 200),
+                #eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
                 # binning for Mu8 
                 #pt = cms.vdouble(10, 12, 14, 16, 18, 20, 25, 30, 35, 40, 60, 100, 200),
                 #eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
-               Medium = cms.vstring("pass"),
+                Medium = cms.vstring("pass"),
                 combRelIsoPF04dBeta = cms.vdouble(0., 0.15),
                 dB = cms.vdouble(0., 0.02),
                 dzPV = cms.vdouble(-0.1, 0.1),

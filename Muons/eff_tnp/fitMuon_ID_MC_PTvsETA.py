@@ -98,7 +98,7 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
     PDFs = cms.PSet(
         vpvPlusExpo = cms.vstring(
             "Voigtian::signal1(mass, mean1[90,80,100], width[2.495], sigma1[2,1,3])",
-            "Voigtian::signal2(mass, mean2[90,80,100], width,        sigma2[4,2,10])",
+            "Voigtian::signal2(mass, mean1[90,80,100], width,        sigma2[4,2,10])",
             "SUM::signal(vFrac[0.8,0,1]*signal1, signal2)",
             "Exponential::backgroundPass(mass, lp[-0.1,-1,0.1])",
             "Exponential::backgroundFail(mass, lf[-0.1,-1,0.1])",
@@ -143,7 +143,8 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
                 #eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.0, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
                 #less detailed binning
                 #pt = cms.vdouble(5, 8, 10, 13, 16, 20, 25, 30, 35, 40, 60, 100, 200),
-                pt = cms.vdouble(10, 20, 30, 50, 200),
+                #pt = cms.vdouble(10, 20, 30, 50, 200),
+                pt = cms.vdouble(10, 13, 16, 20, 25, 30, 35, 40, 60, 100, 200),
                 eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
                 tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
                 tag_pt = cms.vdouble(20, 5000.),
@@ -156,7 +157,8 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
             EfficiencyCategoryAndState = cms.vstring("ID_Medium_lt20", "above"), ## variable is above cut value 
             BinnedVariables = cms.PSet(
                 #pt = cms.vdouble(5, 8, 10, 13, 16, 20, 25, 30, 35, 40, 60, 100, 200),
-                pt = cms.vdouble(10, 20, 30, 50, 200),
+                #pt = cms.vdouble(10, 20, 30, 50, 200),
+                pt = cms.vdouble(10, 13, 16, 20, 25, 30, 35, 40, 60, 100, 200),
                 eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
                 tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
                 tag_pt = cms.vdouble(20, 5000.),
@@ -169,7 +171,8 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
             EfficiencyCategoryAndState = cms.vstring("ID_Medium_gt20", "above"), ## variable is above cut value 
             BinnedVariables = cms.PSet(
                 #pt = cms.vdouble(5, 8, 10, 13, 16, 20, 25, 30, 35, 40, 60, 100, 200),
-                pt = cms.vdouble(10, 20, 30, 50, 200),
+                #pt = cms.vdouble(10, 20, 30, 50, 200),
+                pt = cms.vdouble(10, 13, 16, 20, 25, 30, 35, 40, 60, 100, 200),
                 eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
                 tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
                 tag_pt = cms.vdouble(20, 5000.),
