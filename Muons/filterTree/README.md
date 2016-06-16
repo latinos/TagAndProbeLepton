@@ -11,6 +11,11 @@ Example of copy for eos:
      eos cp /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v1/data/TnPTree_80X_Run2016B_v2_GoldenJSON_Run271036to273730_NotCompleted.root ./
 
 
+MadGraph MC weighted to Data (probe is Global or Tracker Muon):
+
+     INPUT TREE (2836056 ENTRIES)
+     OUTPUT TREE (1614495 ENTRIES): subTree_80X_MadGraphLikeRun2016B_IdStudy.root
+
 Run2016B Golden json file Run 271036 - 274421:
 
      /store/group/phys_muon/TagAndProbe/Run2016/80X_v1/data/TnPTree_80X_Run2016B_v2_GoldenJSON_Run271036to273730_NotCompleted.root
@@ -21,10 +26,15 @@ Mergered file is:
 
      TnPTree_80X_Run2016B_v2_GoldenJSON_Run271036to274421.root 
 
-Summary for Run2016B Golden json for ID Study Run 271036 - 274421:
+Summary for Run2016B Golden json for ID Study Run 271036 - 274421 (probe is Global or Tracker Muon):
 
      INPUT TREE (16928466 ENTRIES)
-     OUTPUT TREE (5007938 ENTRIES) : subTree_80X_Run2016B_v2_GoldenJSON_Run271036to274421_IdStudy.root
+     OUTPUT TREE (2798542 ENTRIES): subTree_80X_Run2016B_v2_GoldenJSON_Run271036to274421_IdStudy.root
+
+Summary for Run2016B Golden json for ID Study Run 271036 - 274421 (probe is Track, a lot of BackGround, bad to us):
+
+     INPUT TREE (16928466 ENTRIES)
+     OUTPUT TREE (5007938 ENTRIES) : subTree_80X_Run2016B_v2_GoldenJSON_Run271036to274421_IdStudy_Track.root
 
 Summary for Run2016B Golden json for Trigger Study for Run < 274421 (use file after ID selection):
 
