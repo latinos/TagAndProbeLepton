@@ -29,8 +29,8 @@ DataType = "Run2016B";
 
 FileNameOpenMC1 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_DYLL_M50_MadGraphMLM_LikeRun2015D.root";
 
-#FileNameOpenData1 = "../filterTree/subTree_80X_Run2016B_v2_GoldenJSON_Run271036to274093_TrigStudy.root";
-FileNameOpenData1 = "../filterTree/subTree_80X_Run2016B_v2_GoldenJSON_Run274094to274421_TrigStudy.root";
+FileNameOpenData1 = "../filterTree/subTree_80X_Run2016B_v2_GoldenJSON_Run271036to274093_TrigStudy.root";
+#FileNameOpenData1 = "../filterTree/subTree_80X_Run2016B_v2_GoldenJSON_Run274094to274421_TrigStudy.root";
 
 FileNameOpen1 = FileNameOpenData1;
 if DataOpen == "0":
