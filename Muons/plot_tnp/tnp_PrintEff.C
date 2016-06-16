@@ -49,11 +49,9 @@ void tnp_PrintEff( bool isSave = true ) {
 
   double BinEta[] = {-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4};
   // for Muon ID
-  //double BinPt[] = {5, 8, 10, 13, 16, 20, 25, 30, 35, 40, 60, 100, 200};
-  //double BinPt[] = {10, 20, 30, 50, 200};
+  double BinPt[] = {10, 13, 16, 20, 25, 30, 35, 40, 60, 100, 200};
   // for ISO
-  //double BinPt[] = {5, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200};
-  double BinPt[] = {10, 14, 17, 20, 22, 30, 50, 80, 200};
+  //double BinPt[] = {10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200};
 
   int BinPtSize = int(sizeof(BinPt)/sizeof(BinPt[0]));
   int BinEtaSize = int(sizeof(BinEta)/sizeof(BinEta[0]));
@@ -72,11 +70,11 @@ void tnp_PrintEff( bool isSave = true ) {
 
   //for muon ID
   //TString sample_data = "TnP_Medium_DY_madgraphLikeRun2016B_PTvsETA";
-  //TString sample_data = "TnP_Medium_Run2016B_PTvsETA";
+  TString sample_data = "TnP_Medium_Run2016B_PTvsETA";
 
   // for ISO
   //TString sample_data = "TnP_ISOTight_Run2016B_PTvsETA";
-  TString sample_data = "TnP_ISOTight_DY_madgraphLikeRun2016B_PTvsETA";
+  //TString sample_data = "TnP_ISOTight_DY_madgraphLikeRun2016B_PTvsETA";
   //TString sample_data = "TnP_ISOFake_Run2015D_25ns_PTvsETA_part3";
   //TString sample_data = "TnP_ISOFake_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_part3";
 
