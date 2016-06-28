@@ -1,5 +1,5 @@
 \begin{sidewaystable}
-\caption{Efficiency of HLT\_Mu17\_TrkIsoVVL for Runs $\lt 274094$. From max relative statistic error calculation we have removed $0.2<|\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}
+\caption{Efficiency of HLT\_Mu17\_TrkIsoVVL for Runs $< 274094$. From max relative statistic error calculation we have removed $0.2<|\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}
 \label{table:TriggerMuon:HLT_Mu17_TrkIsoVVL_Lt274094}
 \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l||l|}
 \hline

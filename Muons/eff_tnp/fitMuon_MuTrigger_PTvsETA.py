@@ -9,12 +9,14 @@ isMuonSel = 'Medium'
 ## Tag muon is always matched to tag_IsoMu20
 #isTrigger = 'IsoMu18'
 #isTrigger = 'IsoTkMu20'
-isTrigger = 'DoubleIsoMu17Mu8_IsoMu17leg'
+#isTrigger = 'DoubleIsoMu17Mu8_IsoMu17leg'
 #isTrigger = 'DoubleIsoMu17Mu8_IsoMu8leg'
 #isTrigger = 'DoubleIsoMu17TkMu8_IsoMu8leg'# this is correct for IsoTkMu8leg
 
 #isTrigger = 'IsoMu18orIsoTkMu18' ## you have to change efficiency input yourself for this mode
 #isTrigger = 'IsoMu20orIsoTkMu20' ## you have to change efficiency input yourself for this mode
+isTrigger = 'IsoMu22orIsoTkMu22' ## you have to change efficiency input yourself for this mode
+#isTrigger = 'IsoMu24orIsoTkMu24' ## you have to change efficiency input yourself for this mode
 #isTrigger = 'IsoMu8orIsoTkMu8leg'  ## you have to change efficiency input yourself for this mode
 
 DataOpen ="1"; # 1 - Open data; 0 - Open MC
@@ -29,8 +31,8 @@ DataType = "Run2016B";
 
 FileNameOpenMC1 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_DYLL_M50_MadGraphMLM_LikeRun2015D.root";
 
-FileNameOpenData1 = "../filterTree/subTree_80X_Run2016B_v2_GoldenJSON_Run271036to274093_TrigStudy.root";
-#FileNameOpenData1 = "../filterTree/subTree_80X_Run2016B_v2_GoldenJSON_Run274094to274421_TrigStudy.root";
+#FileNameOpenData1 = "../filterTree/subTree_80X_Run2016B_v2_GoldenJSON_Run271036to274093_TrigStudy.root";
+FileNameOpenData1 = "../filterTree/subTree_80X_Run2016B_v2_GoldenJSON_Run274094to274421_TrigStudy.root";
 
 FileNameOpen1 = FileNameOpenData1;
 if DataOpen == "0":
@@ -103,6 +105,10 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
         IsoTkMu18 = cms.vstring("IsoTkMu18  probe Muon", "dummy[pass=1,fail=0]"),
         IsoMu20 = cms.vstring("IsoMu20 probe Muon", "dummy[pass=1,fail=0]"),
         IsoTkMu20 = cms.vstring("IsoTkMu20 probe Muon", "dummy[pass=1,fail=0]"),
+        IsoMu22 = cms.vstring("IsoMu22 probe Muon", "dummy[pass=1,fail=0]"),
+        IsoTkMu22 = cms.vstring("IsoTkMu22 probe Muon", "dummy[pass=1,fail=0]"),
+        IsoMu24 = cms.vstring("IsoMu24 probe Muon", "dummy[pass=1,fail=0]"),
+        IsoTkMu24 = cms.vstring("IsoTkMu24 probe Muon", "dummy[pass=1,fail=0]"),
         tag_IsoTkMu18 = cms.vstring("tag_IsoTkMu18 tag Muon", "dummy[pass=1,fail=0]"),
         tag_IsoMu20 = cms.vstring("tag_IsoMu20 tag Muon", "dummy[pass=1,fail=0]"),
         #Double Trigger Info
@@ -125,6 +131,8 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
 
     Expressions = cms.PSet(
         Trigger_IsoMu20orIsoTkMu20_Var = cms.vstring ("Trigger_IsoMu20orIsoTkMu20_Var", "IsoMu20==1 || IsoTkMu20==1", "IsoMu20", "IsoTkMu20"),
+        Trigger_IsoMu22orIsoTkMu22_Var = cms.vstring ("Trigger_IsoMu22orIsoTkMu22_Var", "IsoMu22==1 || IsoTkMu22==1", "IsoMu22", "IsoTkMu22"),
+        Trigger_IsoMu24orIsoTkMu24_Var = cms.vstring ("Trigger_IsoMu24orIsoTkMu24_Var", "IsoMu24==1 || IsoTkMu24==1", "IsoMu24", "IsoTkMu24"),
         Trigger_IsoMu18orIsoTkMu18_Var = cms.vstring ("Trigger_IsoMu18orIsoTkMu18_Var", "IsoMu18==1 || IsoTkMu18==1", "IsoMu18", "IsoTkMu18"),
         Trigger_IsoMu8orIsoTkMu8_Var = cms.vstring ("Trigger_IsoMu8orIsoTkMu8_Var", "DoubleIsoMu17Mu8_IsoMu8leg==1 || DoubleIsoMu17TkMu8_IsoMu8leg==1", "DoubleIsoMu17Mu8_IsoMu8leg", "DoubleIsoMu17TkMu8_IsoMu8leg"),
         MediumISO_gt20Var = cms.vstring ("MediumISO_gt20Var", "Medium==1 && abs(dB)<0.02 && abs(dzPV)<0.1 && combRelIsoPF04dBeta<0.15", "Medium", "dB","dzPV","combRelIsoPF04dBeta"),
@@ -137,6 +145,8 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
         MediumISO_lt20 = cms.vstring("MediumISO_lt20", "MediumISO_lt20Var", "0.5"),
         MediumISO = cms.vstring("MediumISO", "MediumISO_Var", "0.5"),
         Trigger_IsoMu20orIsoTkMu20 = cms.vstring("Trigger_IsoMu20orIsoTkMu20", "Trigger_IsoMu20orIsoTkMu20_Var", "0.5"),
+        Trigger_IsoMu22orIsoTkMu22 = cms.vstring("Trigger_IsoMu22orIsoTkMu22", "Trigger_IsoMu22orIsoTkMu22_Var", "0.5"),
+        Trigger_IsoMu24orIsoTkMu24 = cms.vstring("Trigger_IsoMu24orIsoTkMu24", "Trigger_IsoMu24orIsoTkMu24_Var", "0.5"),
         Trigger_IsoMu18orIsoTkMu18 = cms.vstring("Trigger_IsoMu18orIsoTkMu18", "Trigger_IsoMu18orIsoTkMu18_Var", "0.5"),
         Trigger_IsoMu8orIsoTkMu8 = cms.vstring("Trigger_IsoMu8orIsoTkMu8", "Trigger_IsoMu8orIsoTkMu8_Var", "0.5"),
     ),
@@ -147,9 +157,11 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
         Trigger_ptVSeta = cms.PSet(
             UnbinnedVariables = cms.vstring("mass"),
             #EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu20orIsoTkMu20", "above"), ## variable is above cut value 
+            EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu22orIsoTkMu22", "above"), ## variable is above cut value 
+            #EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu24orIsoTkMu24", "above"), ## variable is above cut value 
             #EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu18orIsoTkMu18", "above"), ## variable is above cut value 
             #EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu8orIsoTkMu8", "above"), ## variable is above cut value 
-            EfficiencyCategoryAndState = cms.vstring(isTrigger, "pass"), ## variable is above cut value 
+            #EfficiencyCategoryAndState = cms.vstring(isTrigger, "pass"), ## variable is above cut value 
             BinnedVariables = cms.PSet(
                 # binning for Mu17, Mu18, Mu20 
                 pt = cms.vdouble(10, 15, 16, 17, 18, 19, 20, 21, 22,  24,  26, 30, 35, 40, 60, 100, 200),
@@ -170,9 +182,11 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
         Trigger_ptVSeta_ptLt20 = cms.PSet(
             UnbinnedVariables = cms.vstring("mass"),
             #EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu20orIsoTkMu20", "above"), ## variable is above cut value 
+            EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu22orIsoTkMu22", "above"), ## variable is above cut value 
+            #EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu24orIsoTkMu24", "above"), ## variable is above cut value 
             #EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu18orIsoTkMu18", "above"), ## variable is above cut value 
             #EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu8orIsoTkMu8", "above"), ## variable is above cut value 
-            EfficiencyCategoryAndState = cms.vstring(isTrigger, "pass"), ## variable is above cut value 
+            #EfficiencyCategoryAndState = cms.vstring(isTrigger, "pass"), ## variable is above cut value 
             BinnedVariables = cms.PSet(
                 # binning for Mu17, Mu18, Mu20 
                 pt = cms.vdouble(10, 15, 16, 17, 18, 19, 20, 21, 22,  24,  26, 30, 35, 40, 60, 100, 200),
@@ -195,9 +209,11 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
         Trigger_ptVSeta_ptGt20 = cms.PSet(
             UnbinnedVariables = cms.vstring("mass"),
             #EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu20orIsoTkMu20", "above"), ## variable is above cut value 
+            EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu22orIsoTkMu22", "above"), ## variable is above cut value 
+            #EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu24orIsoTkMu24", "above"), ## variable is above cut value 
             #EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu18orIsoTkMu18", "above"), ## variable is above cut value 
             #EfficiencyCategoryAndState = cms.vstring("Trigger_IsoMu8orIsoTkMu8", "above"), ## variable is above cut value 
-            EfficiencyCategoryAndState = cms.vstring(isTrigger, "pass"), ## variable is above cut value 
+            #EfficiencyCategoryAndState = cms.vstring(isTrigger, "pass"), ## variable is above cut value 
             BinnedVariables = cms.PSet(
                 # binning for Mu17, Mu18, Mu20 
                 pt = cms.vdouble(10, 15, 16, 17, 18, 19, 20, 21, 22,  24,  26, 30, 35, 40, 60, 100, 200),

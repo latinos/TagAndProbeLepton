@@ -73,9 +73,10 @@ void tnp_PlotEff_Trigger( bool isSave = true ) {
   // for Run2016B:
   //TString sample_data = "TnP_IsoMu18orIsoTkMu18_Run2016B_PTvsETA"; 
   //TString sample_data = "TnP_IsoMu20orIsoTkMu20_Run2016B_PTvsETA"; 
+  TString sample_data = "TnP_IsoMu22orIsoTkMu22_Run2016B_PTvsETA"; 
   //TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2016B_PTvsETA";
   //TString sample_data = "TnP_IsoMu8orIsoTkMu8leg_Run2016B_PTvsETA";
-  TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2016B_PTvsETA";
+  //TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2016B_PTvsETA";
 
 
   // for 76X
@@ -196,6 +197,11 @@ void tnp_PlotEff_Trigger( bool isSave = true ) {
          }
          else if (sample_data == "TnP_IsoMu20orIsoTkMu20_Run2016B_PTvsETA"){
              PicName = "SingleMu_IsoMu20orIsoTkMu20_Run2016B_PTvsETA";
+             tl->AddEntry(grDATA, "Run 2016B, run>=273423, 120 /pb"                          ,"lp");
+             tl->AddEntry(grDATA, "HLT_IsoMu20||HLT_IsoTkMu20 eff."     ,"");
+         }
+         else if (sample_data == "TnP_IsoMu22orIsoTkMu22_Run2016B_PTvsETA"){
+             PicName = "SingleMu_IsoMu22orIsoTkMu22_Run2016B_PTvsETA";
              tl->AddEntry(grDATA, "Run 2016B, run>=273423, 120 /pb"                          ,"lp");
              tl->AddEntry(grDATA, "HLT_IsoMu20||HLT_IsoTkMu20 eff."     ,"");
          }
