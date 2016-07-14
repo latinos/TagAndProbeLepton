@@ -1,6 +1,6 @@
 # TagAndProbe for Muons
 
-*****************************
+******
 
 Results are documented at following twiki:
 
@@ -11,6 +11,21 @@ To install tag and probe follow instructions (current V4.1):
 https://twiki.cern.ch/twiki/bin/viewauth/CMS/MuonTagAndProbeTreesRun2
 
 
+----
+
+### Test new memory suppression tool
+In CMSSW_8_0_12/src:
+ 
+     git cms-addpkg PhysicsTools/TagAndProbe
+
+To have good code from Manuel:
+     cp ~mcbs/public/forAnnaTnP/TagAndProbe/src/TagProbeFitter.cc /afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_12/src/PhysicsTools/TagAndProbe/src
+     cp ~mcbs/public/forAnnaTnP/TagAndProbe/interface/TagProbeFitter.h /afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_12/src/PhysicsTools/TagAndProbe/interface/
+
+Compile in CMSSW/src:
+     scramv1 b -v
+
+Check 2nd time that everything is compiled
 ----- 
 ### For Prompt Reco 2015B Data
 
@@ -56,13 +71,13 @@ Privite link to PromtReco Run2015D:
 
     /eos/cms/store/group/phys_higgs/cmshww
 
-*****************************
+******
 
 ### Triggers and Selections are listed here:
 
 https://github.com/latinos/LatinoTrees/blob/master/AnalysisStep/python/skimEventProducer_cfi.py
 
-*****************************
+******
 
 ### Check HLT menue:
 
@@ -72,4 +87,4 @@ or if it is down:
 
 http://testserver1.cern.ch/
 
-*****************************
+******

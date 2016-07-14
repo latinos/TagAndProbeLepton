@@ -10,7 +10,7 @@
 
 //void addNVtxWeight(TString treeName="tpTree", TString cut = "") { //, TString cut="(tag_IsoMu24_eta2p1 || tag_IsoMu24) && tag_combRelIso < 0.15") {
 //void addNVtxWeight(TString treeName="tpTree", TString cut = "pt>10") { //, TString cut="(tag_IsoMu24_eta2p1 || tag_IsoMu24) && tag_combRelIso < 0.15") {
-void addNVtxWeight(TString treeName="tpTree", TString cut = "pt>10 && combRelIsoPF04dBeta < 0.15 && (tag_IsoMu20 || tag_IsoTkMu20) && tag_pt>22") { //, TString cut="(tag_IsoMu24_eta2p1 || tag_IsoMu24) && tag_combRelIso < 0.15") {
+void addNVtxWeight(TString treeName="tpTree", TString cut = "pt>10 && combRelIsoPF04dBeta < 0.15 && (tag_IsoMu22 || tag_IsoTkMu22) && tag_pt>22") { //, TString cut="(tag_IsoMu24_eta2p1 || tag_IsoMu24) && tag_combRelIso < 0.15") {
     if (gROOT->GetListOfFiles()->GetSize() < 2) {
         std::cerr << "USAGE: root.exe -b -l -q mcFile.root dataFile.root [more data files...] addNVtxWeight.cxx+" << std::endl;
         return;

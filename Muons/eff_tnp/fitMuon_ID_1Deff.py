@@ -21,7 +21,8 @@ DataType = "Run2015D";
 FileNameOpenMC1 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_DYLL_M50_MadGraphMLM_LikeRun2015D.root";
 
 #FileNameOpenData1 = "../filterTree/subTree_80X_Run2016B_DCSOnly_Run273423_273450_IdStudy.root";
-FileNameOpenData1 = "../filterTree/subTree_80X_Run2016B_v2_GoldenJSON_Run271036to274421_IdStudy.root";
+#FileNameOpenData1 = "../filterTree/subTree_80X_Run2016B_v2_GoldenJSON_Run271036to274421_IdStudy.root";
+FileNameOpenData1 = "../filterTree/subTree_80X_Run2016_Run271036to273730_NotCompleted.root";
 
 FileNameOpen1 = FileNameOpenData1;
 if DataOpen == "0": 
@@ -145,78 +146,80 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
                 tag_pt = cms.vdouble(20, 5000.),
                 eta = cms.vdouble(-2.4, 2.4),
                 pt = cms.vdouble(20, 5000),
-                tag_nVertices = cms.vdouble(0., 5., 10., 15., 20., 25., 30., 35., 40., 50.), # for GI or CI MC only
+                tag_nVertices = cms.vdouble(0., 5., 10., 15., 20., 30.), # for GI or CI MC only
+                #tag_nVertices = cms.vdouble(0., 5., 10., 15., 20., 25., 30., 35., 40., 50.), # for GI or CI MC only
             ),
             BinToPDFmap = cms.vstring(FitFunction)
         ),
         ##############
 
-        tag_nVertices_Medium_ptGt20 = cms.PSet(
-           EfficiencyCategoryAndState = cms.vstring("ID_Medium_gt20", "above"),
-            UnbinnedVariables = cms.vstring("mass"),
-            BinnedVariables = cms.PSet(
-                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(20, 5000.),
-                eta = cms.vdouble(-2.4, 2.4),
-                pt = cms.vdouble(20, 5000),
-                tag_nVertices = cms.vdouble(0., 5., 10., 15., 20., 25., 30., 35., 40., 50.), # for GI or CI MC only
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
-        tag_nVertices_Medium_ptLt20 = cms.PSet(
-           EfficiencyCategoryAndState = cms.vstring("ID_Medium_lt20", "above"),
-            UnbinnedVariables = cms.vstring("mass"),
-            BinnedVariables = cms.PSet(
-                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(20, 5000.),
-                eta = cms.vdouble(-2.4, 2.4),
-                pt = cms.vdouble(10, 20),
-                tag_nVertices = cms.vdouble(0., 5., 10., 15., 20., 25., 30., 35., 40., 50.), # for GI or CI MC only
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
-
-
-        ########
-        tag_nVertices_Tight = cms.PSet(
-           EfficiencyCategoryAndState = cms.vstring("ID_Tight", "above"),
-            UnbinnedVariables = cms.vstring("mass"),
-            BinnedVariables = cms.PSet(
-                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(20, 5000.),
-                eta = cms.vdouble(-2.4, 2.4),
-                pt = cms.vdouble(20, 5000),
-                tag_nVertices = cms.vdouble(0., 5., 10., 15., 20., 25., 30., 35., 40., 50.), # for GI or CI MC only
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
-        ##############
-
-        tag_nVertices_Tight_ptGt20 = cms.PSet(
-           EfficiencyCategoryAndState = cms.vstring("ID_Tight_gt20", "above"),
-            UnbinnedVariables = cms.vstring("mass"),
-            BinnedVariables = cms.PSet(
-                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(20, 5000.),
-                eta = cms.vdouble(-2.4, 2.4),
-                pt = cms.vdouble(20, 5000),
-                tag_nVertices = cms.vdouble(0., 5., 10., 15., 20., 25., 30., 35., 40., 50.), # for GI or CI MC only
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
-        tag_nVertices_Tight_ptLt20 = cms.PSet(
-           EfficiencyCategoryAndState = cms.vstring("ID_Tight_lt20", "above"),
-            UnbinnedVariables = cms.vstring("mass"),
-            BinnedVariables = cms.PSet(
-                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
-                tag_pt = cms.vdouble(20, 5000.),
-                eta = cms.vdouble(-2.4, 2.4),
-                pt = cms.vdouble(10, 20),
-                tag_nVertices = cms.vdouble(0., 5., 10., 15., 20., 25., 30., 35., 40., 50.), # for GI or CI MC only
-            ),
-            BinToPDFmap = cms.vstring(FitFunction)
-        ),
-
+#        tag_nVertices_Medium_ptGt20 = cms.PSet(
+#           EfficiencyCategoryAndState = cms.vstring("ID_Medium_gt20", "above"),
+#            UnbinnedVariables = cms.vstring("mass"),
+#            BinnedVariables = cms.PSet(
+#                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+#                tag_pt = cms.vdouble(20, 5000.),
+#                eta = cms.vdouble(-2.4, 2.4),
+#                pt = cms.vdouble(20, 5000),
+#                #tag_nVertices = cms.vdouble(0., 5., 10., 15., 20., 25., 30., 35., 40., 50.), # for GI or CI MC only
+#                tag_nVertices = cms.vdouble(0., 5., 10., 15., 20., 30.), # for GI or CI MC only
+#            ),
+#            BinToPDFmap = cms.vstring(FitFunction)
+#        ),
+#        tag_nVertices_Medium_ptLt20 = cms.PSet(
+#           EfficiencyCategoryAndState = cms.vstring("ID_Medium_lt20", "above"),
+#            UnbinnedVariables = cms.vstring("mass"),
+#            BinnedVariables = cms.PSet(
+#                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+#                tag_pt = cms.vdouble(20, 5000.),
+#                eta = cms.vdouble(-2.4, 2.4),
+#                pt = cms.vdouble(10, 20),
+#                tag_nVertices = cms.vdouble(0., 5., 10., 15., 20., 25., 30., 35., 40., 50.), # for GI or CI MC only
+#            ),
+#            BinToPDFmap = cms.vstring(FitFunction)
+#        ),
+#
+#
+#        ########
+#        tag_nVertices_Tight = cms.PSet(
+#           EfficiencyCategoryAndState = cms.vstring("ID_Tight", "above"),
+#            UnbinnedVariables = cms.vstring("mass"),
+#            BinnedVariables = cms.PSet(
+#                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+#                tag_pt = cms.vdouble(20, 5000.),
+#                eta = cms.vdouble(-2.4, 2.4),
+#                pt = cms.vdouble(20, 5000),
+#                tag_nVertices = cms.vdouble(0., 5., 10., 15., 20., 25., 30., 35., 40., 50.), # for GI or CI MC only
+#            ),
+#            BinToPDFmap = cms.vstring(FitFunction)
+#        ),
+#        ##############
+#
+#        tag_nVertices_Tight_ptGt20 = cms.PSet(
+#           EfficiencyCategoryAndState = cms.vstring("ID_Tight_gt20", "above"),
+#            UnbinnedVariables = cms.vstring("mass"),
+#            BinnedVariables = cms.PSet(
+#                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+#                tag_pt = cms.vdouble(20, 5000.),
+#                eta = cms.vdouble(-2.4, 2.4),
+#                pt = cms.vdouble(20, 5000),
+#                tag_nVertices = cms.vdouble(0., 5., 10., 15., 20., 25., 30., 35., 40., 50.), # for GI or CI MC only
+#            ),
+#            BinToPDFmap = cms.vstring(FitFunction)
+#        ),
+#        tag_nVertices_Tight_ptLt20 = cms.PSet(
+#           EfficiencyCategoryAndState = cms.vstring("ID_Tight_lt20", "above"),
+#            UnbinnedVariables = cms.vstring("mass"),
+#            BinnedVariables = cms.PSet(
+#                tag_IsoMu20 = cms.vstring("pass"), ## i.e. use only events for which this flag is true
+#                tag_pt = cms.vdouble(20, 5000.),
+#                eta = cms.vdouble(-2.4, 2.4),
+#                pt = cms.vdouble(10, 20),
+#                tag_nVertices = cms.vdouble(0., 5., 10., 15., 20., 25., 30., 35., 40., 50.), # for GI or CI MC only
+#            ),
+#            BinToPDFmap = cms.vstring(FitFunction)
+#        ),
+#
         ########
         ########
 
