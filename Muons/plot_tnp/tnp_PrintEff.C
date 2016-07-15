@@ -43,15 +43,13 @@ void tnp_PrintEff( bool isSave = true ) {
   //gStyle->SetFillColor(0);
   gStyle->SetOptTitle(kFALSE);
 
-  //detailed bins -> not enought stat. for MediumID + ISO 
+  //detailed bins -> not enought stat. for TightID + ISO 
   // less detailed binning
-  double PTmax = 10.; // plot efficiency only from pT > PTmax  
+  double PTmin = 10.; // plot efficiency only from pT > PTmin  
 
-  double BinEta[] = {-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4};
-  // for Muon ID
-  double BinPt[] = {10, 13, 16, 20, 25, 30, 35, 40, 60, 100, 200};
-  // for ISO
-  //double BinPt[] = {10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 50, 60, 80, 120, 200};
+  double BinEta[] = {-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4};
+  // for Muon ID or ISO
+  double BinPt[] = {10, 13, 16, 20, 25, 30, 40, 60, 100, 200};
 
   int BinPtSize = int(sizeof(BinPt)/sizeof(BinPt[0]));
   int BinEtaSize = int(sizeof(BinEta)/sizeof(BinEta[0]));
@@ -60,35 +58,39 @@ void tnp_PrintEff( bool isSave = true ) {
 
   // ---------------------------------------------------------------------------
   // general variables
-  TString png      = "/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_7_patch2/src/TagAndProbeLepton/Muons/plot_tnp/Plots/";
-  TString rootPlot = "/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_7_patch2/src/TagAndProbeLepton/Muons/plot_tnp/Plots/";
+  TString png      = "/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_12/src/TagAndProbeLepton/Muons/plot_tnp/Plots/";
+  TString rootPlot = "/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_12/src/TagAndProbeLepton/Muons/plot_tnp/Plots/";
   // ---------------------------------------------------------------------------
 
 
   // ---- open the MC files ----
-  TString pathAnna="/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_7_patch2/src/TagAndProbeLepton/Muons/eff_tnp/";
+  TString pathAnna="/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_12/src/TagAndProbeLepton/Muons/eff_tnp/";
 
   //for muon ID
-  //TString sample_data = "TnP_Medium_DY_madgraphLikeRun2016B_PTvsETA";
-  TString sample_data = "TnP_Medium_Run2016B_PTvsETA";
+  //TString sample_data = "TightID_DY_madgraphLikeRun2016_PTvsETA";
+  //TString sample_data = "TightID_Run2016_PTvsETA";
 
   // for ISO
-  //TString sample_data = "TnP_ISOTight_Run2016B_PTvsETA";
-  //TString sample_data = "TnP_ISOTight_DY_madgraphLikeRun2016B_PTvsETA";
+  //TString sample_data = "ISOTight_Run2016_PTvsETA";
+  TString sample_data = "ISOTight_DY_madgraphLikeRun2016_PTvsETA";
   //TString sample_data = "TnP_ISOFake_Run2015D_25ns_PTvsETA_part3";
   //TString sample_data = "TnP_ISOFake_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_part3";
 
-  TString Tag_trig = "_&_tag_IsoMu20_pass";
-  //if (sample_data == "TnP_Medium_DY_madgraphLikeRun2016B_PTvsETA") Tag_trig = ""; //we use IsoMu20 Trigger for MC too
-  TString MuonID   = "Medium_ID_ptVSeta";
+  //TString Tag_trig = "_&_tag_IsoMu20_pass";
+  TString Tag_trig = "";
+  //if (sample_data == "TightID_DY_madgraphLikeRun2016_PTvsETA") Tag_trig = ""; //we use IsoMu20 Trigger for MC too
+  TString MuonID   = "Tight_ID_ptVSeta";
 
-  if (   sample_data == "TnP_ISOTight_Run2016B_PTvsETA" 
-      || sample_data == "TnP_ISOTight_DY_madgraphLikeRun2016B_PTvsETA"
+  if (   sample_data == "ISOTight_Run2016_PTvsETA" 
+      || sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA"
       || sample_data == "TnP_ISOFake_Run2015D_25ns_PTvsETA_part3"
       || sample_data == "TnP_ISOFake_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_part3" ){
-          MuonID   = "Medium_ISO_ptVSeta";
-          Tag_trig = "_&_Medium_pass"+ Tag_trig;
+          MuonID   = "Tight_ISO_ptVSeta";
+          Tag_trig = "_&_Tight2012_pass"+ Tag_trig;
   }
+  //fast fix
+  if ( sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA" ) MuonID   = "Medium_ISO_ptVSeta"; //forgot to change name to Tight
+
   TFile* DATA   = TFile::Open(pathAnna+sample_data+".root" );
 
   //cout << "File is opened successfully"  << endl;
@@ -115,19 +117,19 @@ void tnp_PrintEff( bool isSave = true ) {
   ofstream myfile_HWW_tex;
   myfile_HWW_tex.open (sample_data+"_HWW_tex.txt");
   myfile_HWW_tex << "\\begin{sidewaystable}\n";
-  if (sample_data == "TnP_Medium_Run2016B_PTvsETA") myfile_HWW_tex << "\\caption{Muon ID (\"MediumHWW\") Efficiency for DATA.}\n";
+  if (sample_data == "TightID_Run2016_PTvsETA") myfile_HWW_tex << "\\caption{Muon ID (\"TightHWW\") Efficiency for DATA. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
      // We observe large max relative stat. error for $\\pt>100$~\\GeVc due to $|\\eta| > 2.1$ bin, while in $|\\eta| < 2.1$ region this error 3 times less.}\n";
-  if (sample_data == "TnP_Medium_Run2016B_PTvsETA") myfile_HWW_tex << "\\label{table:MuonID:DATA}\n";
-  if (sample_data == "TnP_Medium_DY_madgraphLikeRun2016B_PTvsETA") myfile_HWW_tex << "\\caption{Muon ID (\"MediumHWW\") Efficiency for Madgraph MC}\n";
-  if (sample_data == "TnP_Medium_DY_madgraphLikeRun2016B_PTvsETA") myfile_HWW_tex << "\\label{table:MuonID:MC}\n";
+  if (sample_data == "TightID_Run2016_PTvsETA") myfile_HWW_tex << "\\label{table:MuonID:DATA}\n";
+  if (sample_data == "TightID_DY_madgraphLikeRun2016_PTvsETA") myfile_HWW_tex << "\\caption{Muon ID (\"TightHWW\") Efficiency for Madgraph MC. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
+  if (sample_data == "TightID_DY_madgraphLikeRun2016_PTvsETA") myfile_HWW_tex << "\\label{table:MuonID:MC}\n";
   //for ISO
-  if (sample_data == "TnP_ISOTight_Run2016B_PTvsETA") myfile_HWW_tex << "\\caption{Efficiency of tight PF Isolation for DATA}\n";
-  if (sample_data == "TnP_ISOTight_Run2016B_PTvsETA") myfile_HWW_tex << "\\label{table:MuonISO:DATA}\n";
-  if (sample_data == "TnP_ISOTight_DY_madgraphLikeRun2016B_PTvsETA") myfile_HWW_tex << "\\caption{Efficiency of tight PF Isolation for Madgraph MC}\n";
-  if (sample_data == "TnP_ISOTight_DY_madgraphLikeRun2016B_PTvsETA") myfile_HWW_tex << "\\label{table:MuonISO:MC}\n";
-  if (sample_data == "TnP_ISOFake_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\caption{Efficiency of PF Isolation for Fake study for DATA}\n";
+  if (sample_data == "ISOTight_Run2016_PTvsETA") myfile_HWW_tex << "\\caption{Efficiency of tight PF Isolation for DATA. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
+  if (sample_data == "ISOTight_Run2016_PTvsETA") myfile_HWW_tex << "\\label{table:MuonISO:DATA}\n";
+  if (sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA") myfile_HWW_tex << "\\caption{Efficiency of tight PF Isolation for Madgraph MC. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
+  if (sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA") myfile_HWW_tex << "\\label{table:MuonISO:MC}\n";
+  if (sample_data == "TnP_ISOFake_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\caption{Efficiency of PF Isolation for Fake study for DATA. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
   if (sample_data == "TnP_ISOFake_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\label{table:MuonISO_FakePF:DATA}\n";
-  if (sample_data == "TnP_ISOFake_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\caption{Efficiency of PF Isolation for Fake study for MC}\n";
+  if (sample_data == "TnP_ISOFake_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\caption{Efficiency of PF Isolation for Fake study for MC. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
   if (sample_data == "TnP_ISOFake_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\label{table:MuonISO_FakePF:MC}\n";
   myfile_HWW_tex << "\\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l||l|}\n";
   myfile_HWW_tex << "\\hline\n";
@@ -147,7 +149,7 @@ void tnp_PrintEff( bool isSave = true ) {
 
 ////////////////////////////////
   for (int ipt=0; ipt<BinPtSize-1; ipt++){
-     if (BinPt[ipt] < PTmax-0.0001) continue; // plot efficiency only with pT > PTmax
+     if (BinPt[ipt] < PTmin-0.0001) continue; // plot efficiency only with pT > PTmin
      TCanvas* tDATA = (TCanvas*) DATA->Get(Form("tpTree/%s/fit_eff_plots/eta_PLOT_pt_bin%d%s",MuonID.Data(),ipt,Tag_trig.Data() ));
      if(tDATA == 0)cout << "check code: ERROR Canvas = " << tDATA << " ipt = " << ipt << endl;
      TGraphAsymmErrors* grDATA = (TGraphAsymmErrors*) tDATA -> GetListOfPrimitives()->At(1);
@@ -194,7 +196,9 @@ void tnp_PrintEff( bool isSave = true ) {
                   << BinEta[ieta] << "\t" << BinEta[ieta+1] << "\t"
                   << BinPt[ipt]   << "\t" << BinPt[ipt+1]   << "\t"
                   << eff_ptLt20[ieta]    << "\t" << deff_high_ptLt20[ieta]      << "\t " << deff_low_ptLt20[ieta] <<"\n"; //write to file
-           if(eff_ptLt20[ieta] >= 0.001){
+           if(eff_ptLt20[ieta] >= 0.001
+              && ( (BinEta[ieta] < -0.31) || (BinEta[ieta] > -0.21 && BinEta[ieta] < 0.19) || (BinEta[ieta] > 0.29) )
+             ){
               if (Max_StError < deff_high_ptLt20[ieta]/eff_ptLt20[ieta]) Max_StError = deff_high_ptLt20[ieta]/eff_ptLt20[ieta];
               if (Max_StError < deff_low_ptLt20[ieta]/eff_ptLt20[ieta]) Max_StError = deff_low_ptLt20[ieta]/eff_ptLt20[ieta];
            }
@@ -204,7 +208,9 @@ void tnp_PrintEff( bool isSave = true ) {
                   << BinEta[ieta] << "\t" << BinEta[ieta+1] << "\t"
                   << BinPt[ipt]   << "\t" << BinPt[ipt+1]   << "\t"
                   << eff_ptGt20[ieta]    << "\t" << deff_high_ptGt20[ieta]      << "\t " << deff_low_ptGt20[ieta] <<"\n"; //write to file
-          if(eff_ptGt20[ieta] >= 0.001){
+          if(eff_ptGt20[ieta] >= 0.001
+              && ( (BinEta[ieta] < -0.31) || (BinEta[ieta] > -0.21 && BinEta[ieta] < 0.19) || (BinEta[ieta] > 0.29) )
+           ){
               if (Max_StError < deff_high_ptGt20[ieta]/eff_ptGt20[ieta]) Max_StError = deff_high_ptGt20[ieta]/eff_ptGt20[ieta];
               if (Max_StError < deff_low_ptGt20[ieta]/eff_ptGt20[ieta]) Max_StError = deff_low_ptGt20[ieta]/eff_ptGt20[ieta];
           }
@@ -284,8 +290,22 @@ void ErrorCheck(TGraphAsymmErrors* histo){
   int nbin = histo -> GetN();
   for(int i = 0; i < nbin; i++){
      if( (histo -> GetErrorYhigh(i)) > 3.*(histo -> GetErrorYlow(i)) ) histo -> SetPointEYhigh(i,histo -> GetErrorYlow(i));
-     if ( (histo -> GetErrorYhigh(i)) < 0.000001) histo -> SetPointEYhigh(i,0 );// very small error set to 0
-     if ( (histo -> GetErrorYlow(i))  < 0.000001) histo -> SetPointEYlow(i,0 ); // very small error set to 0
+     Double_t YnewHigh = 0;
+     Double_t YnewLow = 0;
+     Double_t minError = 0.00001;
+     if  ((histo -> GetErrorYhigh(i)) < minError) {
+          if  ( (histo -> GetErrorYlow(i))  > minError) {YnewHigh = histo -> GetErrorYlow(i);}
+          else if (i < (nbin - 1) && (histo -> GetErrorYhigh(i+1)) > minError) {YnewHigh = histo -> GetErrorYhigh(i+1);}
+          else if (i > 1 && (histo -> GetErrorYhigh(i-1)) > minError){ YnewHigh = histo -> GetErrorYhigh(i-1);}
+     }
+     if  ((histo -> GetErrorYlow(i)) < minError) {
+          if  ( (histo -> GetErrorYhigh(i))  > minError) {YnewLow = histo -> GetErrorYhigh(i);}
+          else if (i < (nbin - 1) && (histo -> GetErrorYlow(i+1)) > minError) {YnewLow = histo -> GetErrorYlow(i+1);}
+          else if (i > 1 && (histo -> GetErrorYlow(i-1)) > minError) {YnewLow = histo -> GetErrorYlow(i-1);}
+     }
+     if  ((histo -> GetErrorYhigh(i)) < minError) histo -> SetPointEYhigh(i,YnewHigh);
+     if  ((histo -> GetErrorYlow(i)) < minError) histo -> SetPointEYlow(i,YnewLow);
+
   }
 
 }
