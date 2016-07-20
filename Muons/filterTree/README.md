@@ -28,6 +28,15 @@ Add to one Data file:
 
 hadd subTree_80X_Run2016_Run271036to275783_IdStudy.root subTree_80X_Run2016_Run271036to275125_incomplete.root subTree_80X_Run2016B_Run275126to275783.root subTree_80X_Run2016C_Run275126to275783.root
 
+IdStudy and Trigger file for fill 5043, runs 275757-275783 (latest fill in July 8 Golden json):
+      INPUT TREE (7671993 ENTRIES)
+      OUTPUT TREE (356294 ENTRIES)
+      subTree_80X_Run2016_Run275757to275783_IdStudy.root
+
+       INPUT TREE (356294 ENTRIES)
+      OUTPUT TREE (311145 ENTRIES)
+      subTree_80X_Run2016_Run275757to275783_TrigStudy.root
+
 MadGraph MC weighted to Data (probe is Global or Tracker Muon):
 
     TnPTree_80X_DYLL_M50_MadGraphMLM_part1.root
