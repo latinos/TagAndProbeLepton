@@ -67,29 +67,33 @@ void tnp_PrintEff( bool isSave = true ) {
   TString pathAnna="/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_12/src/TagAndProbeLepton/Muons/eff_tnp/";
 
   //for muon ID
-  TString sample_data = "TightID_DY_madgraphLikeRun2016_PTvsETA";
+  //TString sample_data = "TightID_DY_madgraphLikeRun2016_PTvsETA";
   //TString sample_data = "TightID_Run2016_PTvsETA";
+  //TString sample_data = "TightID_Run2016_PTvsETA_Fill5043";
+  //TString sample_data = "TightID_DY_madgraphLikeRun2016_PTvsETA_Fill5043";
 
   // for ISO
   //TString sample_data = "ISOTight_Run2016_PTvsETA";
   //TString sample_data = "ISOTight_DY_madgraphLikeRun2016_PTvsETA";
   //TString sample_data = "TnP_ISOFake_Run2015D_25ns_PTvsETA_part3";
   //TString sample_data = "TnP_ISOFake_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_part3";
+  TString sample_data = "ISOTight_Run2016_PTvsETA_Fill5043";
+  //TString sample_data = "ISOTight_DY_madgraphLikeRun2016_PTvsETA_Fill5043";
 
   //TString Tag_trig = "_&_tag_IsoMu20_pass";
   TString Tag_trig = "";
   //if (sample_data == "TightID_DY_madgraphLikeRun2016_PTvsETA") Tag_trig = ""; //we use IsoMu20 Trigger for MC too
   TString MuonID   = "Tight_ID_ptVSeta";
 
-  if (   sample_data == "ISOTight_Run2016_PTvsETA" 
-      || sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA"
+  if (   sample_data == "ISOTight_Run2016_PTvsETA" || sample_data == "ISOTight_Run2016_PTvsETA_Fill5043" 
+      || sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA" || sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA_Fill5043"
       || sample_data == "TnP_ISOFake_Run2015D_25ns_PTvsETA_part3"
       || sample_data == "TnP_ISOFake_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_part3" ){
           MuonID   = "Tight_ISO_ptVSeta";
           Tag_trig = "_&_Tight2012_pass"+ Tag_trig;
   }
   //fast fix
-  if ( sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA" ) MuonID   = "Medium_ISO_ptVSeta"; //forgot to change name to Tight
+  if ( sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA" || sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA_Fill5043" ) MuonID   = "Medium_ISO_ptVSeta"; //forgot to change name to Tight
 
   TFile* DATA   = TFile::Open(pathAnna+sample_data+".root" );
 

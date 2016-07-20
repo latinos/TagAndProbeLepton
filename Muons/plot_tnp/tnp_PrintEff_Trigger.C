@@ -47,9 +47,9 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
   // binning for Mu17 
   //double BinPt[] = {10, 15, 16, 17, 18, 19, 20, 25, 30, 40, 60, 100, 200};
   // binning for Mu22, Mu24 
-  double BinPt[] = {10, 20, 21, 22, 23, 24, 25, 26, 30, 40, 60, 100, 200};
+  //double BinPt[] = {10, 20, 21, 22, 23, 24, 25, 26, 30, 40, 60, 100, 200};
   // binning for Mu8
-  //double BinPt[] = {10, 13, 16, 20, 25, 30, 40, 60, 100, 200};
+  double BinPt[] = {10, 13, 16, 20, 25, 30, 40, 60, 100, 200};
 
   int BinPtSize = int(sizeof(BinPt)/sizeof(BinPt[0]));
   int BinEtaSize = int(sizeof(BinEta)/sizeof(BinEta[0]));
@@ -71,19 +71,24 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
   // for Run2016B
 
   //TString sample_data = "SingleMu_IsoMu22orIsoTkMu22_Run2016_PTvsETA_RunGe274094";
-  TString sample_data = "SingleMu_IsoMu22orIsoTkMu22_Run2016_PTvsETA_RunLt274094";
+  //TString sample_data = "SingleMu_IsoMu22orIsoTkMu22_Run2016_PTvsETA_RunLt274094";
+  //TString sample_data = "SingleMu_IsoMu22orIsoTkMu22_Run2016_PTvsETA_Fill5043";
 
   //TString sample_data = "SingleMu_IsoMu24orIsoTkMu24_Run2016_PTvsETA_RunGe274094";
   //TString sample_data = "SingleMu_IsoMu24orIsoTkMu24_Run2016_PTvsETA_RunLt274094";
+  //TString sample_data = "SingleMu_IsoMu24orIsoTkMu24_Run2016_PTvsETA_Fill5043";
 
   //TString sample_data = "DoubleMu_IsoMu17leg_Run2016_PTvsETA_RunGe274094";
   //TString sample_data = "DoubleMu_IsoMu17leg_Run2016_PTvsETA_RunLt274094";
+  //TString sample_data = "DoubleMu_IsoMu17leg_Run2016_PTvsETA_Fill5043";
 
   //TString sample_data = "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA_RunGe274094";
   //TString sample_data = "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA_RunLt274094";
+  //TString sample_data = "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA_Fill5043";
 
   //TString sample_data = "DoubleMu_IsoMu8leg_Run2016_PTvsETA_RunGe274094";
   //TString sample_data = "DoubleMu_IsoMu8leg_Run2016_PTvsETA_RunLt274094";
+  TString sample_data = "DoubleMu_IsoMu8leg_Run2016_PTvsETA_Fill5043";
 
   //TString sample_data = "TnP_DoubleIsoMu17TkMu8_IsoMu8leg_Run2016B_PTvsETA_RunGe274094";
   //TString sample_data = "TnP_DoubleIsoMu17TkMu8_IsoMu8leg_Run2016B_PTvsETA_RunLt274094";
