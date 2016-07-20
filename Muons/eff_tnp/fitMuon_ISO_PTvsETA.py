@@ -25,7 +25,8 @@ FileNameOpenMC = "tnp_"+Bunch+MCType+"_PUlike"+DataType+"_"+Bunch+".root";
 if MCType == "DY_madgraph":
   FileNameOpenMC1 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_DYLL_M50_MadGraphMLM_part1.root";
 
-FileNameOpenData1 = "../filterTree/subTree_80X_Run2016_Run271036to276097_IdStudy.root";
+FileNameOpenData1 = "../filterTree/subTree_80X_Run2016_Run271036to275783_IdStudy.root";
+#FileNameOpenData1 = "../filterTree/subTree_80X_MadGraphLikeRun2016_IdStudy.root";
 
 FileNameOpen1 = FileNameOpenData1;
 if DataOpen == "0": 

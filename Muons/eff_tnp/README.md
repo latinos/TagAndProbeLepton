@@ -24,8 +24,6 @@ How to mount and unmount /store
 
 Example to add weights for pile up:
 
-     root.exe -b -l -q tnp_25nsDY_madgraph.root tnp_Run2015D_PromptReco_25ns_SingleMu_v3.root tnp_Run2015D_PromptReco_25ns_SingleMu_v4.root addNVtxWeight.cxx+
+for Run2016:
 
-for Run2016B:
-
-     root.exe -b -l -q ../filterTree/subTree_80X_MadGraph_IdStudy.root ../filterTree/subTree_80X_Run2016B_v2_GoldenJSON_Run271036to274421_IdStudy.root addNVtxWeight.cxx+
+     root.exe -b -l -q ../filterTree/subTree_80X_MadGraph.root ../filterTree/subTree_80X_Run2016_Run271036to275783_IdStudy.root addNVtxWeight.cxx+

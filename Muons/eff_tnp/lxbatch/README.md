@@ -31,7 +31,7 @@ Info:
 we have memory leak in code, so should request big memory until fix bug
 but it is doesn't work, I try different ways, but they don't set up memory:
 
-bsub - M 4000000 -> run with 4 GB memory at least (5 GB is not exist)
+bsub -M 4000000 -> run with 4 GB memory at least (5 GB is not exist)
 bsub -q 2nd -R "rusage[mem=4000000]"
 
 No we fix it, just by using only part statistics (part3)

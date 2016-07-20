@@ -12,33 +12,21 @@ Example of copy for eos:
 
 
 Files used for DATA:
-    /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v1/data/TnPTree_80X_Run2016B_v2_GoldenJSON_Run271036to273730_NotCompleted.root
-       INPUT TREE (4274583 ENTRIES)
-       OUTPUT TREE (773632 ENTRIES)
-    /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v1/data/TnPTree_80X_Run2016B_v2_GoldenJSON_Run273731_to_274240_IncludingMissingLumi_Completed.root
-       INPUT TREE (1819339 ENTRIES)
-       OUTPUT TREE (317601 ENTRIES)
-    /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v1/data/TnPTree_80X_Run2016B_v2_GoldenJSON_Run274241to274421.root
-       INPUT TREE (10834544 ENTRIES)
-       OUTPUT TREE (1687217 ENTRIES)
-    /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v2/data/TnPTree_80X_Run2016B_v2_GoldenJSON_Run274422to274443.root
-       INPUT TREE (4001955 ENTRIES)
-       OUTPUT TREE (648346 ENTRIES)
-    /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v2/data/TnPTree_80X_Run2016B_v2_GoldenJSON_Run274444to275125.root
-       INPUT TREE (12062727 ENTRIES)
-       OUTPUT TREE (1911772 ENTRIES)
+    /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v3/data/TnPTree_80X_Run2016B_v2_GoldenJSON_Run271036to275125_incomplete.root
+       INPUT TREE (32693395 ENTRIES)
+       OUTPUT TREE (5301716 ENTRIES)
+       subTree_80X_Run2016_Run271036to275125_incomplete.root
     /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v3/data/TnPTree_80X_Run2016B_v2_GoldenJSON_Run275126to275783.root
        INPUT TREE (12007161 ENTRIES)
        OUTPUT TREE (1920460 ENTRIES)
+       subTree_80X_Run2016B_Run275126to275783.root
     /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v3/data/TnPTree_80X_Run2016C_v2_GoldenJSON_Run275126to275783.root
        INPUT TREE (3162594 ENTRIES)
        OUTPUT TREE (449817 ENTRIES)
-    /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v3/data/TnPTree_80X_Run2016C_v2_GoldenJSON_Run275784to276097.root
-       INPUT TREE (11138416 ENTRIES)
-       OUTPUT TREE (1657234 ENTRIES)
+       subTree_80X_Run2016C_Run275126to275783.root
+Add to one Data file:
 
-Add to one Data file subTree_80X_Run2016_Run271036to276097.root:
-       hadd subTree_80X_Run2016_Run271036to276097.root subTree_80X_Run2016_Run271036to273730_NotCompleted.root subTree_80X_Run2016_Run273731_to_274240_IncludingMissingLumi_Completed.root subTree_80X_Run2016_Run274444to275125.root subTree_80X_Run2016_Run274241to274421.root subTree_80X_Run2016_Run274422to274443.root subTree_80X_Run2016B_Run275126to275783.root subTree_80X_Run2016C_Run275126to275783.root subTree_80X_Run2016C_Run275784to276097.root 
+hadd subTree_80X_Run2016_Run271036to275783_IdStudy.root subTree_80X_Run2016_Run271036to275125_incomplete.root subTree_80X_Run2016B_Run275126to275783.root subTree_80X_Run2016C_Run275126to275783.root
 
 MadGraph MC weighted to Data (probe is Global or Tracker Muon):
 
@@ -61,14 +49,19 @@ Add to on MC file
 Summary for Run2016 Golden json for Trigger Study for Run < 274094 (use file after ID selection):
 
     subTree_80X_Run2016_Run271036to274093_TrigStudy.root
-      INPUT TREE (4690222 ENTRIES)
-      OUTPUT TREE (697182 ENTRIES)
+      INPUT TREE (7671993 ENTRIES)
+      OUTPUT TREE (696266 ENTRIES)
 
 Summary for Run2016B Golden json for Trigger Study for Run >= 274094 (use file after ID selection):
 
-    subTree_80X_Run2016_Run274094to276097_TrigStudy.root
-      INPUT TREE (4690222 ENTRIES)
-      OUTPUT TREE (3440537 ENTRIES)
+    subTree_80X_Run2016_Run274094to275783_TrigStudy.root
+      INPUT TREE (7671993 ENTRIES)
+      OUTPUT TREE (6061935 ENTRIES)
+
+Summary for Run2016B Golden json for Trigger Study for Run >= 274094 (Mu8 leg): (run>=274094 && run<274444) || run>275125 (use file after ID selection):
+      INPUT TREE  (4690222 ENTRIES)
+      OUTPUT TREE (1760536 ENTRIES)
+
 
 Summary for Run2016B Golden json for ISO (merge 2 trigger files) Run 271036 - 274421:
 
