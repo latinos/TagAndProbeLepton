@@ -43,14 +43,15 @@ void tnp_PlotEff_ID( bool isSave = true ) {
   //gStyle->SetFillColor(0);
   gStyle->SetOptTitle(kFALSE);
 
-  //double BinEta[] = {-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4}; 
-  //// binning for Mu17, Mu18, Mu20 
-  ////double BinPt[] = {10, 15, 16, 17, 18, 19, 20, 21, 22,  24,  26, 30, 35, 40, 60, 100, 200};
-  //// binning for Mu8
-  //double BinPt[] = {10, 12, 14, 16, 18, 20, 25, 30, 35, 40, 60, 100, 200};
-
-  double BinPt[] = {10, 20, 30, 50, 200};
-  double BinEta[] = {-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4};
+  double BinEta[] = {-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4};
+  // binning for Mu17 
+  //double BinPt[] = {10, 15, 16, 17, 18, 19, 20, 25, 30, 40, 60, 100, 200};
+  // binning for Mu22, Mu24 
+  //double BinPt[] = {10, 20, 21, 22, 23, 24, 25, 26, 30, 40, 60, 100, 200};
+  // binning for Mu8
+  double BinPt[] = {10, 13, 16, 20, 25, 30, 40, 60, 100, 200};
+  //Muon ID and ISO
+  //double BinPt[] = {10, 13, 16, 20, 25, 30, 40, 60, 100, 200};
 
 
   int BinPtSize = int(sizeof(BinPt)/sizeof(BinPt[0]));
@@ -60,26 +61,25 @@ void tnp_PlotEff_ID( bool isSave = true ) {
 
   // ---------------------------------------------------------------------------
   // general variables
-  TString png      = "/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_7_patch2/src/TagAndProbeLepton/Muons/plot_tnp/Plots/";
-  TString rootPlot = "/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_7_patch2/src/TagAndProbeLepton/Muons/plot_tnp/Plots/";
+  TString png      = "/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_12/src/TagAndProbeLepton/Muons/plot_tnp/Plots/";
+  TString rootPlot = "/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_12/src/TagAndProbeLepton/Muons/plot_tnp/Plots/";
   // ---------------------------------------------------------------------------
 
 
   // ---- open the MC files ----
-  TString pathAnna="/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_7_patch2/src/TagAndProbeLepton/Muons/eff_tnp/";
+  TString pathAnna="/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_12/src/TagAndProbeLepton/Muons/eff_tnp/";
 
   //change only name of file, check that you use correct pt and eta binning: 
 
   // for Run2016B:
-  TString sample_data = "TnP_Medium_Run2016B_PTvsETA"; 
-  //TString sample_data = "TnP_IsoMu20orIsoTkMu20_Run2016B_PTvsETA"; 
+  //TString sample_data = "TightID_Run2016_PTvsETA"; 
+  //TString sample_data = "SingleMu_IsoMu22orIsoTkMu22_Run2016_PTvsETA"; 
+  //TString sample_data = "DoubleMu_IsoMu17leg_Run2016_PTvsETA";
+  //TString sample_data = "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA";
+  TString sample_data = "DoubleMu_IsoMu8leg_Run2016_PTvsETA";
 
 
   // for 76X
-  //TString sample_data = "TnP_IsoMu18orIsoTkMu20_Run2015D_25ns_PTvsETA_part3";
-  //TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_part3";
-  //TString sample_data = "TnP_IsoMu8orIsoTkMu8leg_Run2015D_25ns_PTvsETA_part3";
-  //TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2015D_25ns_PTvsETA_part3";
 
   //TString sample_data = "TnP_IsoMu18_Run2015D_25ns_PTvsETA_binSmall";
   //TString sample_data = "TnP_IsoTkMu20_Run2015D_25ns_PTvsETA_binSmall";
@@ -95,9 +95,19 @@ void tnp_PlotEff_ID( bool isSave = true ) {
   //TString sample_data = "TnP_DoubleIsoMu17TkMu8_IsoMu8leg_Run2015D_25ns_PTvsETA_binVeryBig";
 
   //TString Tag_trig = "_&_tag_IsoTkMu20_pass";
-  TString Tag_trig = "_&_tag_IsoMu20_pass";
-
-  TFile* DATA   = TFile::Open(pathAnna+sample_data+".root" );
+  //TString Tag_trig = "_&_tag_IsoMu20_pass";
+  TString Tag_trig = "";
+  TString MuonID = "Tight_ID";
+  if (sample_data == "SingleMu_IsoMu22orIsoTkMu22_Run2016_PTvsETA" || sample_data == "SingleMu_IsoMu24orIsoTkMu24_Run2016_PTvsETA"
+      || sample_data == "DoubleMu_IsoMu17leg_Run2016_PTvsETA"
+      || sample_data == "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA"
+      || sample_data == "DoubleMu_IsoMu8leg_Run2016_PTvsETA"){
+     MuonID = "Trigger";
+     Tag_trig = "_&_Tight2012_pass";
+  }
+  TFile* DATA   = TFile::Open(pathAnna+sample_data+"_Fill5043.root" );
+  //TFile* DATA_start   = TFile::Open(pathAnna+"root_Run274421/"+sample_data+".root" );
+  TFile* DATA_start   = TFile::Open(pathAnna+"root_Run274421/"+sample_data+"_RunGe274094.root" );
 
 ////////////////////////////////
 
@@ -135,23 +145,41 @@ void tnp_PlotEff_ID( bool isSave = true ) {
 ////////////////////////////////
   for (int ipt=0; ipt<BinPtSize-1; ipt++){
 
-     TCanvas* tDATA = (TCanvas*) DATA->Get(Form("tpTree/Medium_ID_ptVSeta/fit_eff_plots/eta_PLOT_pt_bin%d%s",ipt,Tag_trig.Data() ));
+// open DATA:
+  //std::cout << "TEST!!! " << std::endl;
+     TCanvas* tDATA = (TCanvas*) DATA->Get(Form("tpTree/%s_ptVSeta/fit_eff_plots/eta_PLOT_pt_bin%d%s",MuonID.Data(),ipt,Tag_trig.Data() ));
+     //TCanvas* tDATA = (TCanvas*) DATA->Get(Form("tpTree/Trigger_ptVSeta/fit_eff_plots/eta_PLOT_pt_bin%d_&_Tight2012_pass%s",ipt,Tag_trig.Data() ));
+
      if(tDATA == 0)cout << "check code: ERROR Canvas = " << tDATA << " ipt = " << ipt << endl;
      TGraphAsymmErrors* grDATA = (TGraphAsymmErrors*) tDATA -> GetListOfPrimitives()->At(1);
      ErrorCheck(grDATA);
      if(grDATA == 0) cout << "check code: ERROR grDATA = " << grDATA << " ipt = " << ipt << endl;
 
-     TCanvas* tDATA_ptGt20 = (TCanvas*) DATA->Get(Form("tpTree/Medium_ID_ptVSeta_ptGt20/fit_eff_plots/eta_PLOT_pt_bin%d%s",ipt,Tag_trig.Data() ));
+     TCanvas* tDATA_ptGt20 = (TCanvas*) DATA->Get(Form("tpTree/%s_ptVSeta_ptGt20/fit_eff_plots/eta_PLOT_pt_bin%d%s",MuonID.Data(),ipt,Tag_trig.Data() ));
      TGraphAsymmErrors* grDATA_ptGt20 = (TGraphAsymmErrors*) tDATA_ptGt20 -> GetListOfPrimitives()->At(1);
      ErrorCheck(grDATA_ptGt20);
 
-     TCanvas* tDATA_ptLt20 = (TCanvas*) DATA->Get(Form("tpTree/Medium_ID_ptVSeta_ptLt20/fit_eff_plots/eta_PLOT_pt_bin%d%s",ipt,Tag_trig.Data() ));
+     TCanvas* tDATA_ptLt20 = (TCanvas*) DATA->Get(Form("tpTree/%s_ptVSeta_ptLt20/fit_eff_plots/eta_PLOT_pt_bin%d%s",MuonID.Data(),ipt,Tag_trig.Data() ));
      TGraphAsymmErrors* grDATA_ptLt20 = (TGraphAsymmErrors*) tDATA_ptLt20 -> GetListOfPrimitives()->At(1);
      ErrorCheck(grDATA_ptLt20);
 
+// open DATA_start
+     TCanvas* tDATA_start = (TCanvas*) DATA_start->Get(Form("tpTree/%s_ptVSeta/fit_eff_plots/eta_PLOT_pt_bin%d%s",MuonID.Data(),ipt,Tag_trig.Data() ));
+     if(tDATA_start == 0)cout << "check code: ERROR Canvas start = " << tDATA_start << " ipt = " << ipt << endl;
+     TGraphAsymmErrors* grDATA_start = (TGraphAsymmErrors*) tDATA_start -> GetListOfPrimitives()->At(1);
+     ErrorCheck(grDATA_start);
+     if(grDATA_start == 0) cout << "check code: ERROR grDATA_start = " << grDATA_start << " ipt = " << ipt << endl;
+
+     TCanvas* tDATA_start_ptGt20 = (TCanvas*) DATA_start->Get(Form("tpTree/%s_ptVSeta_ptGt20/fit_eff_plots/eta_PLOT_pt_bin%d%s",MuonID.Data(),ipt,Tag_trig.Data() ));
+     TGraphAsymmErrors* grDATA_start_ptGt20 = (TGraphAsymmErrors*) tDATA_start_ptGt20 -> GetListOfPrimitives()->At(1);
+     ErrorCheck(grDATA_start_ptGt20);
+
+     TCanvas* tDATA_start_ptLt20 = (TCanvas*) DATA_start->Get(Form("tpTree/%s_ptVSeta_ptLt20/fit_eff_plots/eta_PLOT_pt_bin%d%s",MuonID.Data(),ipt,Tag_trig.Data() ));
+     TGraphAsymmErrors* grDATA_start_ptLt20 = (TGraphAsymmErrors*) tDATA_start_ptLt20 -> GetListOfPrimitives()->At(1);
+     ErrorCheck(grDATA_start_ptLt20);
 
          TCanvas* CanvPlot = new TCanvas("CanvPlot", "", 650, 0, 600, 600);
-         grDATA -> SetMinimum(0.0);
+         grDATA -> SetMinimum(0.5);
          grDATA -> SetMaximum(1.0);
          grDATA -> GetYaxis()-> SetTitleOffset(1.7);
          //cout << "Test1" << endl;
@@ -174,40 +202,37 @@ void tnp_PlotEff_ID( bool isSave = true ) {
          grDATA   -> SetMarkerStyle(21);
          grDATA   -> SetMarkerColor(kRed);
          grDATA   -> Draw("AP");
+         grDATA_start   -> SetMarkerStyle(20);
+         grDATA_start   -> SetMarkerColor(kBlue);
+         grDATA_start -> SetLineColor(kBlue);
+         grDATA_start   -> Draw("P");
          //gGblMuIdDATA -> Draw("P");
 
          //if ( ptCut== "_ptGt20") PrintIt(CanvPlot, Title+"|#eta| < 2.4 && p_T > 20 GeV");
          //else if ( ptCut== "_ptLt20") PrintIt(CanvPlot, Title+"|#eta| < 2.4 && 10 < p_T < 20 GeV");
          //else PrintIt(CanvPlot, Title+"|#eta| < 2.4 && p_T > 10 GeV");
          TString PicName = sample_data;
-         TLegend* tl = SetLegend(0.32, 0.25, 0.7, 0.4);    
-         if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2015D_25ns_PTvsETA_part3") {
-             PicName = "DoubleMu_IsoMu8leg_Run2015D_25ns_PTvsETA";
-             tl->AddEntry(grDATA, "Run 2015D"           ,"lp");
-             tl->AddEntry(grDATA, "IsoMu8 leg eff."     ,"");
+         TLegend* tl = SetLegend(0.15, 0.2, 0.7, 0.4);    
+         if (sample_data == "DoubleMu_IsoMu8leg_Run2016_PTvsETA") {
+             tl->AddEntry(grDATA, "Data 2016, IsoMu8 leg eff."     ,"");
          }
-         else if (sample_data == "TnP_IsoMu8orIsoTkMu8leg_Run2015D_25ns_PTvsETA_part3"){
-             PicName = "DoubleMu_IsoMu8orIsoTkMu8leg_Run2015D_25ns_PTvsETA";
-             tl->AddEntry(grDATA, "Run 2015D"                     ,"lp");
-             tl->AddEntry(grDATA, "IsoMu8||IsoTkMu8 leg eff."     ,"");
+         else if (sample_data == "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA"){
+             tl->AddEntry(grDATA, "Data 2016, IsoMu8||IsoTkMu8 leg eff."     ,"");
          }
-         else if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_part3"){
-             PicName = "DoubleMu_IsoMu17leg_Run2015D_25ns_PTvsETA";
-             tl->AddEntry(grDATA, "Run 2015D"            ,"lp");
-             tl->AddEntry(grDATA, "IsoMu17 leg eff."     ,"");
+         else if (sample_data == "DoubleMu_IsoMu17leg_Run2016_PTvsETA"){
+             tl->AddEntry(grDATA, "Data 2016, IsoMu17 leg eff."     ,"");
          }
-         else if (sample_data == "TnP_IsoMu20orIsoTkMu20_Run2016B_PTvsETA"){
-             PicName = "SingleMu_IsoMu20orIsoTkMu20_Run2015D_25ns_PTvsETA";
-             tl->AddEntry(grDATA, "Run 2016B, run> = 273423"                          ,"lp");
-             tl->AddEntry(grDATA, "HLT_IsoMu20||HLT_IsoTkMu20 eff."     ,"");
+         else if (sample_data == "SingleMu_IsoMu22orIsoTkMu22_Run2016_PTvsETA"){
+             tl->AddEntry(grDATA, "Data 2016, HLT_IsoMu22||HLT_IsoTkMu22 eff."     ,"");
          }
-         else if (sample_data == "TnP_Medium_Run2016B_PTvsETA"){
-             PicName = "ID_Run2016B_PTvsETA";
-             tl->AddEntry(grDATA, "Run 2016B, run #geq 273423"                          ,"lp");
-             tl->AddEntry(grDATA, "Medium ID eff."     ,"");
+         else if (sample_data == "TightID_Run2016_PTvsETA"){
+             tl->AddEntry(grDATA, "Data 2016, Tight ID eff."     ,"");
          }
-         else {tl->AddEntry(grDATA, "Run 2016B, Trigger eff."     ,"lp");}
+         else {tl->AddEntry(grDATA, "Run 2016, Trigger eff."     ,"lp");}
 
+         PicName = sample_data;
+         tl->AddEntry(grDATA, " Fill 5043, 25 June"                          ,"lp");
+         tl->AddEntry(grDATA_start, "Run #leq 274421, #leq 4 July"                          ,"lp");
          tl->AddEntry(grDATA, Form("%3.0f < p_{T} < %3.0f GeV/c",BinPt[ipt],BinPt[ipt+1])     ,"");
       
          tl->Draw("same");
