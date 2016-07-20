@@ -6,7 +6,7 @@
 $p_{T}/\eta$ & \small{-2.4:-2.1} & \small{-2.1:-1.6} & \small{-1.6:-1.2} & \small{-1.2:-0.8} & \small{-0.8:-0.3} & \small{-0.3:-0.2} & \small{-0.2:0.2} & \small{0.2:0.3} & \small{0.3:0.8} & \small{0.8:1.2} & \small{1.2:1.6} & \small{1.6:2.1} & \small{2.1:2.4} & \small{max rel.} \\ 
  & & & & & & & & & & & & & & \small{st. error} \\ 
 \hline
-\small{10:13} & \cellcolor{SkyBlue} 0.89 & \cellcolor{YellowGreen} 0.94 & \cellcolor{YellowGreen} 0.94 & \cellcolor{SkyBlue} 0.8 & \cellcolor{Green} 0.98 & \cellcolor{YellowGreen} 0.9 & \cellcolor{SkyBlue} 0.88 & \cellcolor{SkyBlue} 0.87 & \cellcolor{YellowGreen} 0.93 & \cellcolor{SkyBlue} 0.82 & \cellcolor{YellowGreen} 0.93 & \cellcolor{Green} 0.96 & \cellcolor{YellowGreen} 0.91 & \cellcolor{SkyBlue} 0.046\\ 
+\small{10:13} & \cellcolor{SkyBlue} 0.89 & \cellcolor{Green} 0.95 & \cellcolor{Green} 0.95 & \cellcolor{SkyBlue} 0.8 & \cellcolor{Green} 0.98 & \cellcolor{YellowGreen} 0.9 & \cellcolor{SkyBlue} 0.88 & \cellcolor{SkyBlue} 0.87 & \cellcolor{YellowGreen} 0.93 & \cellcolor{SkyBlue} 0.82 & \cellcolor{YellowGreen} 0.93 & \cellcolor{Green} 0.96 & \cellcolor{YellowGreen} 0.91 & \cellcolor{SkyBlue} 0.046\\ 
 \hline
 \small{13:16} & \cellcolor{YellowGreen} 0.94 & \cellcolor{Green} 0.96 & \cellcolor{Green} 0.95 & \cellcolor{SkyBlue} 0.82 & \cellcolor{Green} 0.95 & \cellcolor{SkyBlue} 0.82 & \cellcolor{YellowGreen} 0.93 & \cellcolor{SkyBlue} 0.84 & \cellcolor{Green} 0.95 & \cellcolor{SkyBlue} 0.8 & \cellcolor{Green} 0.95 & \cellcolor{YellowGreen} 0.93 & \cellcolor{YellowGreen} 0.93 & \cellcolor{YellowGreen} 0.028\\ 
 \hline
