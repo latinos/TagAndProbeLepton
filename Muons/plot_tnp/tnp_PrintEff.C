@@ -67,12 +67,12 @@ void tnp_PrintEff( bool isSave = true ) {
   TString pathAnna="/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_12/src/TagAndProbeLepton/Muons/eff_tnp/";
 
   //for muon ID
-  //TString sample_data = "TightID_DY_madgraphLikeRun2016_PTvsETA";
+  TString sample_data = "TightID_DY_madgraphLikeRun2016_PTvsETA";
   //TString sample_data = "TightID_Run2016_PTvsETA";
 
   // for ISO
   //TString sample_data = "ISOTight_Run2016_PTvsETA";
-  TString sample_data = "ISOTight_DY_madgraphLikeRun2016_PTvsETA";
+  //TString sample_data = "ISOTight_DY_madgraphLikeRun2016_PTvsETA";
   //TString sample_data = "TnP_ISOFake_Run2015D_25ns_PTvsETA_part3";
   //TString sample_data = "TnP_ISOFake_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_part3";
 
@@ -131,15 +131,16 @@ void tnp_PrintEff( bool isSave = true ) {
   if (sample_data == "TnP_ISOFake_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\label{table:MuonISO_FakePF:DATA}\n";
   if (sample_data == "TnP_ISOFake_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\caption{Efficiency of PF Isolation for Fake study for MC. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
   if (sample_data == "TnP_ISOFake_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\label{table:MuonISO_FakePF:MC}\n";
-  myfile_HWW_tex << "\\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l||l|}\n";
+  //myfile_HWW_tex << "\\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l||l|}\n";
+  myfile_HWW_tex << "\\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l||l|}\n";
   myfile_HWW_tex << "\\hline\n";
   for (int ieta=0; ieta<BinEtaSize-1; ieta++){
-      if(ieta == 0)              myfile_HWW_tex <<"$p_{T}/\\eta$ & " << BinEta[ieta] << ":" << BinEta[ieta+1];
-      if(ieta > 0)               myfile_HWW_tex <<             " & " << BinEta[ieta] << ":" << BinEta[ieta+1];
+      if(ieta == 0)              myfile_HWW_tex <<"$p_{T}/\\eta$ & \\small{" << BinEta[ieta] << ":" << BinEta[ieta+1] << "}";
+      if(ieta > 0)               myfile_HWW_tex <<             " & \\small{" << BinEta[ieta] << ":" << BinEta[ieta+1] << "}";
       //if(ieta == (BinEtaSize-2)) myfile_HWW_tex <<"\\\\ \n\\hline\n";
   }
-  myfile_HWW_tex << " & max rel. \\\\ \n"  ;
-  myfile_HWW_tex << " & & & & & & & & & & & & st. error \\\\ \n\\hline\n"  ;
+  myfile_HWW_tex << " & \\small{max rel.} \\\\ \n"  ;
+  myfile_HWW_tex << " & & & & & & & & & & & & & & \\small{st. error} \\\\ \n\\hline\n"  ;
 
 ////////////////////////////////
 
@@ -267,9 +268,9 @@ void tnp_PrintEff( bool isSave = true ) {
      else{myfile_HWW_tex << setprecision(1) << Max_StError  << "\\\\ \n\\hline\n";}
   }// end ipt
 
-  myfile_HWW_tex << "\\multicolumn{13}{|c|}{Color Definition} \\\\ \n\\hline\n";
-  myfile_HWW_tex << "\\multicolumn{2}{|c|}{Efficiency} & \\multicolumn{2}{c|}{\\cellcolor{Green} 0.95-1.00} &  \\multicolumn{2}{c|}{\\cellcolor{YellowGreen} 0.90-0.95} & \\multicolumn{2}{c|}{\\cellcolor{SkyBlue} 0.80-0.90} & \\multicolumn{2}{c|}{\\cellcolor{Yellow} 0.70-0.80} & \\multicolumn{2}{c|}{\\cellcolor{Orange} 0.50-0.70} & \\cellcolor{Red} $<$ 0.50 \\\\ \n\\hline\n";
-  myfile_HWW_tex << "\\multicolumn{2}{|c|}{max rel. st. error} & \\multicolumn{2}{c|}{\\cellcolor{Green} 0.00-0.01} &  \\multicolumn{2}{c|}{\\cellcolor{YellowGreen} 0.01-0.03} & \\multicolumn{2}{c|}{\\cellcolor{SkyBlue} 0.03-0.05} & \\multicolumn{2}{c|}{\\cellcolor{Yellow} 0.05-0.07} & \\multicolumn{2}{c|}{\\cellcolor{Orange} 0.07-0.10} & \\cellcolor{Red} $>$ 0.10 \\\\ \n\\hline\n";
+  myfile_HWW_tex << "\\multicolumn{15}{|c|}{Color Definition} \\\\ \n\\hline\n";
+  myfile_HWW_tex << "\\multicolumn{3}{|c|}{Efficiency} & \\multicolumn{2}{c|}{\\cellcolor{Green} 0.95-1.00} &  \\multicolumn{2}{c|}{\\cellcolor{YellowGreen} 0.90-0.95} & \\multicolumn{2}{c|}{\\cellcolor{SkyBlue} 0.80-0.90} & \\multicolumn{2}{c|}{\\cellcolor{Yellow} 0.70-0.80} & \\multicolumn{2}{c|}{\\cellcolor{Orange} 0.50-0.70} & \\multicolumn{2}{c|}{\\cellcolor{Red} $<$ 0.50} \\\\ \n\\hline\n";
+  myfile_HWW_tex << "\\multicolumn{3}{|c|}{max rel. st. error} & \\multicolumn{2}{c|}{\\cellcolor{Green} 0.00-0.01} &  \\multicolumn{2}{c|}{\\cellcolor{YellowGreen} 0.01-0.03} & \\multicolumn{2}{c|}{\\cellcolor{SkyBlue} 0.03-0.05} & \\multicolumn{2}{c|}{\\cellcolor{Yellow} 0.05-0.07} & \\multicolumn{2}{c|}{\\cellcolor{Orange} 0.07-0.10} & \\multicolumn{2}{c|}{\\cellcolor{Red} $>$ 0.10} \\\\ \n\\hline\n";
 
   myfile_HWW_tex << "\\end{tabular}\n\\end{sidewaystable}\n";
 
