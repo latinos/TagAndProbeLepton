@@ -5,7 +5,7 @@
 
 IMPORTANT: We move from Medim selection to Tight due to efficiency degradation for Medium ID as function of inst. luminosity
 
-Efficiency is recalculated for July 8 Golden json file: Runs 271036-276097 
+Efficiency is recalculated for part July 8 Golden json file: Runs 271036-274421 
 
 for muon ID (TightHWW):
 

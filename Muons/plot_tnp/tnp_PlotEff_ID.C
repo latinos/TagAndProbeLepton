@@ -72,30 +72,16 @@ void tnp_PlotEff_ID( bool isSave = true ) {
   //change only name of file, check that you use correct pt and eta binning: 
 
   // for Run2016B:
+  
   //TString sample_data = "TightID_Run2016_PTvsETA"; 
+  TString sample_data = "ISOTight_Run2016_PTvsETA"; 
   //TString sample_data = "SingleMu_IsoMu22orIsoTkMu22_Run2016_PTvsETA"; 
   //TString sample_data = "DoubleMu_IsoMu17leg_Run2016_PTvsETA";
   //TString sample_data = "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA";
-  TString sample_data = "DoubleMu_IsoMu8leg_Run2016_PTvsETA";
+  //TString sample_data = "DoubleMu_IsoMu8leg_Run2016_PTvsETA";
 
 
-  // for 76X
-
-  //TString sample_data = "TnP_IsoMu18_Run2015D_25ns_PTvsETA_binSmall";
-  //TString sample_data = "TnP_IsoTkMu20_Run2015D_25ns_PTvsETA_binSmall";
-  //TString sample_data = "TnP_IsoTkMu18_Run2015D_25ns_PTvsETA_binSmall";
-
-  //TString sample_data = "TnP_Mu17_IsoTrkVVL_Run2015D_25ns_PTvsETA_binVeryBig";
-
-  //TString sample_data = "TnP_Mu8_IsoTrkVVL_Run2015D_25ns_PTvsETA_binVeryBig";
-  //TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2015D_25ns_PTvsETA_binVeryBig";
-
-  //TString sample_data = "TnP_IsoMu8orIsoTkMu8leg_Run2015D_25ns_PTvsETA_binSmall";
-  //TString sample_data = "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_binSmall";
-  //TString sample_data = "TnP_DoubleIsoMu17TkMu8_IsoMu8leg_Run2015D_25ns_PTvsETA_binVeryBig";
-
-  //TString Tag_trig = "_&_tag_IsoTkMu20_pass";
-  //TString Tag_trig = "_&_tag_IsoMu20_pass";
+  TString Sample_extra = "";
   TString Tag_trig = "";
   TString MuonID = "Tight_ID";
   if (sample_data == "SingleMu_IsoMu22orIsoTkMu22_Run2016_PTvsETA" || sample_data == "SingleMu_IsoMu24orIsoTkMu24_Run2016_PTvsETA"
@@ -104,10 +90,17 @@ void tnp_PlotEff_ID( bool isSave = true ) {
       || sample_data == "DoubleMu_IsoMu8leg_Run2016_PTvsETA"){
      MuonID = "Trigger";
      Tag_trig = "_&_Tight2012_pass";
+     Sample_extra = "_RunGe274094";
   }
+
+  if (sample_data == "ISOTight_Run2016_PTvsETA" || sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA" ) {
+          MuonID   = "Tight_ISO";
+          Tag_trig = "_&_Tight2012_pass"+ Tag_trig;
+  }
+  if (sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA") MuonID   = "Medium_ISO_ptVSeta"; //forgot to change name to Tight
+
   TFile* DATA   = TFile::Open(pathAnna+sample_data+"_Fill5043.root" );
-  //TFile* DATA_start   = TFile::Open(pathAnna+"root_Run274421/"+sample_data+".root" );
-  TFile* DATA_start   = TFile::Open(pathAnna+"root_Run274421/"+sample_data+"_RunGe274094.root" );
+  TFile* DATA_start   = TFile::Open(pathAnna+"root_Run274421/"+sample_data+Sample_extra+".root" );
 
 ////////////////////////////////
 
@@ -227,6 +220,9 @@ void tnp_PlotEff_ID( bool isSave = true ) {
          }
          else if (sample_data == "TightID_Run2016_PTvsETA"){
              tl->AddEntry(grDATA, "Data 2016, Tight ID eff."     ,"");
+         }
+         else if (sample_data == "ISOTight_Run2016_PTvsETA"){
+             tl->AddEntry(grDATA, "Data 2016, ISO Tight eff."     ,"");
          }
          else {tl->AddEntry(grDATA, "Run 2016, Trigger eff."     ,"lp");}
 
