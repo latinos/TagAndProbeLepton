@@ -27,15 +27,18 @@ Compile in CMSSW/src:
 
 Check 2nd time that everything is compiled
 ----- 
-### For Prompt Reco 2015B Data
+### For 2016 Data
 
     export SCRAM_ARCH=slc6_amd64_gcc530
-    cmsrel CMSSW_8_0_7_patch2
-    cd CMSSW_8_0_7_patch2/src/
+    cmsrel CMSSW_8_0_13
+    cd CMSSW_8_0_13/src/
     cmsenv
     git cms-merge-topic battibass:stage2_L1_matching
-    git clone https://github.com/battibass/MuonAnalysis-TagAndProbe.git MuonAnalysis/TagAndProbe -b 80X_trigger
+    git clone git@github.com:HuguesBrun/MuonAnalysis-TagAndProbe.git  MuonAnalysis/TagAndProbe -b toward-80X-v3
+    cmsenv
+    cd ../../
     scramv1 b -j 10
+
 
 My HWW code:
 
