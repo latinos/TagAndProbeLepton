@@ -6,7 +6,8 @@ FitFunction = "vpvPlusExpo"
 isMuonSel = 'Tight'
 #isMuonSel = 'Medium'
 
-## Tag muon is always matched to tag_IsoMu20
+## Tag muon is always matched to tag_IsoMu22
+#isTrigger = 'Mu23_TrkIsoVVL'
 #isTrigger = 'DoubleIsoMu17Mu8_IsoMu17leg'
 #isTrigger = 'DoubleIsoMu17Mu8_IsoMu8leg'
 ###isTrigger = 'DoubleIsoMu17TkMu8_IsoMu8leg'# this is correct for IsoTkMu8leg
@@ -29,7 +30,9 @@ FileNameOpenMC1 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_DYLL_M
 
 #FileNameOpenData1 = "../filterTree/subTree_80X_Run2016_Run271036to274093_TrigStudy.root";
 #FileNameOpenData1 = "../filterTree/subTree_80X_Run2016_Run274094to275783_TrigStudy.root";
-FileNameOpenData1 = "../filterTree/subTree_80X_Run2016_Run275757to275783_TrigStudy.root";
+#FileNameOpenData1 = "../filterTree/subTree_80X_Run2016_Run274094to275000_TrigStudy.root";
+FileNameOpenData1 = "../filterTree/subTree_80X_Run2016_Run275001to275783_TrigStudy.root";
+#FileNameOpenData1 = "../filterTree/subTree_80X_Run2016_Run275757to275783_TrigStudy.root";
 
 FileNameOpen1 = FileNameOpenData1;
 if DataOpen == "0":
@@ -42,6 +45,10 @@ if FileNameOpenData1 == "../filterTree/subTree_80X_Run2016_Run271036to274093_Tri
    FileNameOutData = isTrigger+"_"+DataType+"_PTvsETA_RunLt274094_RAW.root";
 if FileNameOpenData1 == "../filterTree/subTree_80X_Run2016_Run275757to275783_TrigStudy.root":
    FileNameOutData = isTrigger+"_"+DataType+"_PTvsETA_Fill5043_RAW.root";
+if FileNameOpenData1 == "../filterTree/subTree_80X_Run2016_Run274094to275000_TrigStudy.root":
+   FileNameOutData = isTrigger+"_"+DataType+"_PTvsETA_Run274094to275000_RAW.root";
+if FileNameOpenData1 == "../filterTree/subTree_80X_Run2016_Run275001to275783_TrigStudy.root":
+   FileNameOutData = isTrigger+"_"+DataType+"_PTvsETA_Run275001to275783_RAW.root";
    
  
 FileNameOut = FileNameOutData;
@@ -115,6 +122,7 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
         tag_IsoMu20 = cms.vstring("tag_IsoMu20 tag Muon", "dummy[pass=1,fail=0]"),
         #Double Trigger Info
         DoubleIsoMu17Mu8_IsoMu17leg = cms.vstring("DoubleIsoMu17Mu8_IsoMu17leg Muon", "dummy[pass=1,fail=0]"),
+        Mu23_TrkIsoVVL = cms.vstring("Mu23_TrkIsoVVL Muon", "dummy[pass=1,fail=0]"),
         DoubleIsoMu17Mu8_IsoMu8leg = cms.vstring("DoubleIsoMu17Mu8_IsoMu8leg Muon", "dummy[pass=1,fail=0]"),
         DoubleIsoMu17TkMu8_IsoMu8leg = cms.vstring("DoubleIsoMu17TkMu8_IsoMu8leg Muon", "dummy[pass=1,fail=0]"),
     ),

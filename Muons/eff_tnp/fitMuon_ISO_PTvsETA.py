@@ -183,7 +183,7 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
         Tight_ISO_ptVSeta = cms.PSet(
             UnbinnedVariables = cms.vstring("mass"),
             EfficiencyCategoryAndState = cms.vstring(IsoType, "above"), ## variable is above cut value 
-            BinnedVariables = cms.PSet(
+           BinnedVariables = cms.PSet(
                 # detailed bins -> not enought stat. for MuonID
                 pt = cms.vdouble(10, 13, 16, 20, 25, 30, 40, 60, 100, 200),
                 eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
@@ -211,14 +211,14 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
 
         Tight_ISO_ptVSeta_ptGt20 = cms.PSet(
             UnbinnedVariables = cms.vstring("mass"),
-            EfficiencyCategoryAndState = cms.vstring(IsoType, "above"), ## variable is above cut value 
+           EfficiencyCategoryAndState = cms.vstring(IsoType, "above"), ## variable is above cut value 
             BinnedVariables = cms.PSet(
                 pt = cms.vdouble(10, 13, 16, 20, 25, 30, 40, 60, 100, 200),
-                eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
+               eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
                 Tight2012 = cms.vstring("pass"),
                 dB = cms.vdouble(0., 0.02),
                 dzPV = cms.vdouble(-0.1, 0.1),
-                #tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
+               #tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
                 # tag_pt = cms.vdouble(20, 5000.),
             ),
             BinToPDFmap = cms.vstring(FitFunction), ## PDF to use, as defined below
@@ -226,13 +226,13 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
 
         ##############
         ##############
+    ),
     ## How to do the fit
     binnedFit = cms.bool(True),
     binsForFit = cms.uint32(40),
     saveDistributionsPlot = cms.bool(False),
     NumCPU = cms.uint32(1), ## leave to 1 for now, RooFit gives funny results otherwise
     SaveWorkspace = cms.bool(False),
-    ),
 )
 
 #process.p1 = cms.Path(process.TnP_Muon_ID)
