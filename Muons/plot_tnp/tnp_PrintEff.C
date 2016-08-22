@@ -67,14 +67,22 @@ void tnp_PrintEff( bool isSave = true ) {
   TString pathAnna="/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_12/src/TagAndProbeLepton/Muons/eff_tnp/";
 
   //for muon ID
-  //TString sample_data = "TightID_DY_madgraphLikeRun2016_PTvsETA";
-  //TString sample_data = "TightID_Run2016_PTvsETA";
-  TString sample_data = "TightID_Run2016_PTvsETA_Fill5043";
+  //TString sample_data = "TightID_DY_madgraphLikeRun2016_Run271036to275783_PTvsETA";
+  //TString sample_data = "TightID_DY_madgraphLikeRun2016_Run275784to276500_PTvsETA";
+  //TString sample_data = "TightID_DY_madgraphLikeRun2016_Run276501to276811_PTvsETA";
+  //TString sample_data = "TightID_Run2016_Run271036to275783_PTvsETA";
+  //TString sample_data = "TightID_Run2016_Run275784to276500_PTvsETA";
+  //TString sample_data = "TightID_Run2016_Run276501to276811_PTvsETA";
+  //TString sample_data = "TightID_Run2016_PTvsETA_Fill5043";
   //TString sample_data = "TightID_DY_madgraphLikeRun2016_PTvsETA_Fill5043";
 
   // for ISO
-  //TString sample_data = "ISOTight_Run2016_PTvsETA";
-  //TString sample_data = "ISOTight_DY_madgraphLikeRun2016_PTvsETA";
+  //TString sample_data = "ISOTight_Run2016_Run271036to275783_PTvsETA";
+  //TString sample_data = "ISOTight_Run2016_Run275784to276500_PTvsETA";
+  TString sample_data = "ISOTight_Run2016_Run276501to276811_PTvsETA";
+  //TString sample_data = "ISOTight_DY_madgraphLikeRun2016_Run271036to275783_PTvsETA";
+  //TString sample_data = "ISOTight_DY_madgraphLikeRun2016_Run275784to276500_PTvsETA";
+  //TString sample_data = "ISOTight_DY_madgraphLikeRun2016_Run276501to276811_PTvsETA";
   //TString sample_data = "TnP_ISOFake_Run2015D_25ns_PTvsETA_part3";
   //TString sample_data = "TnP_ISOFake_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_part3";
   //TString sample_data = "ISOTight_Run2016_PTvsETA_Fill5043";
@@ -82,18 +90,23 @@ void tnp_PrintEff( bool isSave = true ) {
 
   //TString Tag_trig = "_&_tag_IsoMu20_pass";
   TString Tag_trig = "";
-  //if (sample_data == "TightID_DY_madgraphLikeRun2016_PTvsETA") Tag_trig = ""; //we use IsoMu20 Trigger for MC too
+  //if (sample_data == "TightID_DY_madgraphLikeRun2016_Run271036to275783_PTvsETA") Tag_trig = ""; //we use IsoMu20 Trigger for MC too
   TString MuonID   = "Tight_ID_ptVSeta";
 
-  if (   sample_data == "ISOTight_Run2016_PTvsETA" || sample_data == "ISOTight_Run2016_PTvsETA_Fill5043" 
-      || sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA" || sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA_Fill5043"
+  if (   sample_data == "ISOTight_Run2016_Run271036to275783_PTvsETA" || sample_data == "ISOTight_Run2016_PTvsETA_Fill5043" 
+      || sample_data == "ISOTight_Run2016_Run275784to276500_PTvsETA" || sample_data == "ISOTight_Run2016_Run276501to276811_PTvsETA"
+      || sample_data == "ISOTight_DY_madgraphLikeRun2016_Run271036to275783_PTvsETA" || sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA_Fill5043"
+      || sample_data == "ISOTight_DY_madgraphLikeRun2016_Run275784to276500_PTvsETA" || sample_data == "ISOTight_DY_madgraphLikeRun2016_Run276501to276811_PTvsETA" 
       || sample_data == "TnP_ISOFake_Run2015D_25ns_PTvsETA_part3"
       || sample_data == "TnP_ISOFake_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_part3" ){
           MuonID   = "Tight_ISO_ptVSeta";
           Tag_trig = "_&_Tight2012_pass"+ Tag_trig;
   }
   //fast fix
-  if ( sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA" || sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA_Fill5043" ) MuonID   = "Medium_ISO_ptVSeta"; //forgot to change name to Tight
+  if ( sample_data == "ISOTight_DY_madgraphLikeRun2016_Run271036to275783_PTvsETA" 
+       || sample_data == "ISOTight_DY_madgraphLikeRun2016_Run275784to276500_PTvsETA"
+       || sample_data == "ISOTight_DY_madgraphLikeRun2016_Run276501to276811_PTvsETA"
+       || sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA_Fill5043" ) MuonID   = "Medium_ISO_ptVSeta"; //forgot to change name to Tight
 
   TFile* DATA   = TFile::Open(pathAnna+sample_data+".root" );
 
@@ -121,16 +134,32 @@ void tnp_PrintEff( bool isSave = true ) {
   ofstream myfile_HWW_tex;
   myfile_HWW_tex.open (sample_data+"_HWW_tex.txt");
   myfile_HWW_tex << "\\begin{sidewaystable}\n";
-  if (sample_data == "TightID_Run2016_PTvsETA" || sample_data == "TightID_Run2016_PTvsETA_Fill5043") myfile_HWW_tex << "\\caption{Muon ID (\"TightHWW\") Efficiency for DATA. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
+  if (sample_data == "TightID_Run2016_Run271036to275783_PTvsETA" || sample_data == "TightID_Run2016_PTvsETA_Fill5043") myfile_HWW_tex << "\\caption{Muon ID (\"TightHWW\") Efficiency for DATA in run period 271036-275783. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
      // We observe large max relative stat. error for $\\pt>100$~\\GeVc due to $|\\eta| > 2.1$ bin, while in $|\\eta| < 2.1$ region this error 3 times less.}\n";
-  if (sample_data == "TightID_Run2016_PTvsETA" || sample_data == "TightID_Run2016_PTvsETA_Fill5043") myfile_HWW_tex << "\\label{table:MuonID:DATA}\n";
-  if (sample_data == "TightID_DY_madgraphLikeRun2016_PTvsETA" || sample_data == "TightID_DY_madgraphLikeRun2016_PTvsETA_Fill5043" ) myfile_HWW_tex << "\\caption{Muon ID (\"TightHWW\") Efficiency for Madgraph MC. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
-  if (sample_data == "TightID_DY_madgraphLikeRun2016_PTvsETA" || sample_data == "TightID_DY_madgraphLikeRun2016_PTvsETA_Fill5043") myfile_HWW_tex << "\\label{table:MuonID:MC}\n";
+  if (sample_data == "TightID_Run2016_Run271036to275783_PTvsETA" || sample_data == "TightID_Run2016_PTvsETA_Fill5043") myfile_HWW_tex << "\\label{table:MuonID:DATA_Run271036to275783}\n";
+  if (sample_data == "TightID_Run2016_Run275784to276500_PTvsETA") myfile_HWW_tex << "\\caption{Muon ID (\"TightHWW\") Efficiency for DATA in run period 275784-276500. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
+  if (sample_data == "TightID_Run2016_Run275784to276500_PTvsETA") myfile_HWW_tex << "\\label{table:MuonID:DATA_Run275784to276500}\n";
+  if (sample_data == "TightID_Run2016_Run276501to276811_PTvsETA") myfile_HWW_tex << "\\caption{Muon ID (\"TightHWW\") Efficiency for DATA in run period 276501-276811. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
+  if (sample_data == "TightID_Run2016_Run276501to276811_PTvsETA") myfile_HWW_tex << "\\label{table:MuonID:DATA_Run276501to276811}\n";
+  if (sample_data == "TightID_DY_madgraphLikeRun2016_Run271036to275783_PTvsETA" || sample_data == "TightID_DY_madgraphLikeRun2016_PTvsETA_Fill5043" ) myfile_HWW_tex << "\\caption{Muon ID (\"TightHWW\") Efficiency for Madgraph MC weighted on DATA in run period 271036-275783. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
+  if (sample_data == "TightID_DY_madgraphLikeRun2016_Run271036to275783_PTvsETA" || sample_data == "TightID_DY_madgraphLikeRun2016_PTvsETA_Fill5043") myfile_HWW_tex << "\\label{table:MuonID:MC_Run271036to275783}\n";
+  if (sample_data == "TightID_DY_madgraphLikeRun2016_Run275784to276500_PTvsETA") myfile_HWW_tex << "\\caption{Muon ID (\"TightHWW\") Efficiency for Madgraph MC weighted on DATA in run period 275784-276500. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
+  if (sample_data == "TightID_DY_madgraphLikeRun2016_Run275784to276500_PTvsETA") myfile_HWW_tex << "\\label{table:MuonID:MC_Run275784to276500}\n";
+  if (sample_data == "TightID_DY_madgraphLikeRun2016_Run276501to276811_PTvsETA") myfile_HWW_tex << "\\caption{Muon ID (\"TightHWW\") Efficiency for Madgraph MC weighted on DATA in run period 276501-276811. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
+  if (sample_data == "TightID_DY_madgraphLikeRun2016_Run276501to276811_PTvsETA") myfile_HWW_tex << "\\label{table:MuonID:MC_Run276501to276811}\n";
   //for ISO
-  if (sample_data == "ISOTight_Run2016_PTvsETA" || sample_data == "ISOTight_Run2016_PTvsETA_Fill5043") myfile_HWW_tex << "\\caption{Efficiency of tight PF Isolation for DATA. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
-  if (sample_data == "ISOTight_Run2016_PTvsETA" || sample_data == "ISOTight_Run2016_PTvsETA_Fill5043") myfile_HWW_tex << "\\label{table:MuonISO:DATA}\n";
-  if (sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA" || sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA_Fill5043") myfile_HWW_tex << "\\caption{Efficiency of tight PF Isolation for Madgraph MC. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
-  if (sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA" || sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA_Fill5043") myfile_HWW_tex << "\\label{table:MuonISO:MC}\n";
+  if (sample_data == "ISOTight_Run2016_Run271036to275783_PTvsETA" || sample_data == "ISOTight_Run2016_PTvsETA_Fill5043") myfile_HWW_tex << "\\caption{Efficiency of tight PF Isolation for DATA in run period 271036-275783. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
+  if (sample_data == "ISOTight_Run2016_Run271036to275783_PTvsETA" || sample_data == "ISOTight_Run2016_PTvsETA_Fill5043") myfile_HWW_tex << "\\label{table:MuonISO:DATA_Run271036to275783}\n";
+  if (sample_data == "ISOTight_Run2016_Run275784to276500_PTvsETA") myfile_HWW_tex << "\\caption{Efficiency of tight PF Isolation for DATA in run period 275784-276500. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
+  if (sample_data == "ISOTight_Run2016_Run275784to276500_PTvsETA") myfile_HWW_tex << "\\label{table:MuonISO:DATA_Run275784to276500}\n";
+  if (sample_data == "ISOTight_Run2016_Run276501to276811_PTvsETA") myfile_HWW_tex << "\\caption{Efficiency of tight PF Isolation for DATA in run period 276501-276811. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
+  if (sample_data == "ISOTight_Run2016_Run276501to276811_PTvsETA") myfile_HWW_tex << "\\label{table:MuonISO:DATA_Run276501to276811}\n";
+  if (sample_data == "ISOTight_DY_madgraphLikeRun2016_Run271036to275783_PTvsETA" || sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA_Fill5043") myfile_HWW_tex << "\\caption{Efficiency of tight PF Isolation for Madgraph MC weighted on DATA in run period 271036-275783. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
+  if (sample_data == "ISOTight_DY_madgraphLikeRun2016_Run271036to275783_PTvsETA" || sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA_Fill5043") myfile_HWW_tex << "\\label{table:MuonISO:MC_Run271036to275783}\n";
+  if (sample_data == "ISOTight_DY_madgraphLikeRun2016_Run275784to276500_PTvsETA") myfile_HWW_tex << "\\caption{Efficiency of tight PF Isolation for Madgraph MC weighted on DATA in run period 275784-276500. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
+  if (sample_data == "ISOTight_DY_madgraphLikeRun2016_Run275784to276500_PTvsETA") myfile_HWW_tex << "\\label{table:MuonISO:MC_Run275784to276500}\n";
+  if (sample_data == "ISOTight_DY_madgraphLikeRun2016_Run276501to276811_PTvsETA") myfile_HWW_tex << "\\caption{Efficiency of tight PF Isolation for Madgraph MC weighted on DATA in run period 276501-276811. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
+  if (sample_data == "ISOTight_DY_madgraphLikeRun2016_Run276501to276811_PTvsETA") myfile_HWW_tex << "\\label{table:MuonISO:MC_Run276501to276811}\n";
   if (sample_data == "TnP_ISOFake_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\caption{Efficiency of PF Isolation for Fake study for DATA. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
   if (sample_data == "TnP_ISOFake_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\label{table:MuonISO_FakePF:DATA}\n";
   if (sample_data == "TnP_ISOFake_DY_madgraph25nsLikeRun2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\caption{Efficiency of PF Isolation for Fake study for MC. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
