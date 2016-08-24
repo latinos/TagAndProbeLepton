@@ -45,11 +45,11 @@ void tnp_PlotEff_ID( bool isSave = true ) {
 
   double BinEta[] = {-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4};
   // binning for Mu17 
-  double BinPt[] = {10, 15, 16, 17, 18, 19, 20, 25, 30, 40, 60, 100, 200};
+  //double BinPt[] = {10, 15, 16, 17, 18, 19, 20, 25, 30, 40, 60, 100, 200};
   // binning for Mu22, Mu24 
   //double BinPt[] = {10, 20, 21, 22, 23, 24, 25, 26, 30, 40, 60, 100, 200};
   // binning for Mu8 and Muon ID and ISO
-  //double BinPt[] = {10, 13, 16, 20, 25, 30, 40, 60, 100, 200};
+  double BinPt[] = {10, 13, 16, 20, 25, 30, 40, 60, 100, 200};
 
 
   int BinPtSize = int(sizeof(BinPt)/sizeof(BinPt[0]));
@@ -72,9 +72,9 @@ void tnp_PlotEff_ID( bool isSave = true ) {
   // for Run2016B:
   
   //TString sample_data = "TightID_Run2016_PTvsETA"; 
-  //TString sample_data = "ISOTight_Run2016_PTvsETA"; 
+  TString sample_data = "ISOTight_Run2016_PTvsETA"; 
   //TString sample_data = "SingleMu_IsoMu22orIsoTkMu22_Run2016_PTvsETA"; 
-  TString sample_data = "DoubleMu_IsoMu17leg_Run2016_PTvsETA";
+  //TString sample_data = "DoubleMu_IsoMu17leg_Run2016_PTvsETA";
   //TString sample_data = "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA";
   //TString sample_data = "DoubleMu_IsoMu8leg_Run2016_PTvsETA";
 
@@ -88,7 +88,7 @@ void tnp_PlotEff_ID( bool isSave = true ) {
       || sample_data == "DoubleMu_IsoMu8leg_Run2016_PTvsETA"){
      MuonID = "Trigger";
      Tag_trig = "_&_Tight2012_pass";
-     Sample_extra = "_RunGe274094";
+     Sample_extra = "_Run274094to275000";
   }
 
   if (sample_data == "ISOTight_Run2016_PTvsETA" || sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA" ) {
@@ -97,41 +97,25 @@ void tnp_PlotEff_ID( bool isSave = true ) {
   }
   if (sample_data == "ISOTight_DY_madgraphLikeRun2016_PTvsETA") MuonID   = "Medium_ISO_ptVSeta"; //forgot to change name to Tight
 
-  TFile* DATA   = TFile::Open(pathAnna+sample_data+"_Fill5043.root" );
-  TFile* DATA_start   = TFile::Open(pathAnna+"root_Run274421/"+sample_data+Sample_extra+".root" );
+  //TFile* DATA   = TFile::Open(pathAnna+sample_data+"_Fill5043.root" );
+  //TFile* DATA_start   = TFile::Open(pathAnna+"root_Run274421/"+sample_data+Sample_extra+".root" );
+
+  TString DATA_String = pathAnna+sample_data+"_Run276501to276811.root";
+  TString DATA_start_String = pathAnna+sample_data+Sample_extra+".root";
+  if (sample_data == "TightID_Run2016_PTvsETA"){
+     DATA_String = pathAnna+"TightID_Run2016_Run276501to276811_PTvsETA.root";
+     DATA_start_String = pathAnna+"TightID_Run2016_Run271036to275783_PTvsETA.root";
+  }
+  if (sample_data == "ISOTight_Run2016_PTvsETA"){
+     DATA_String = pathAnna+ "ISOTight_Run2016_Run276501to276811_PTvsETA.root";
+     DATA_start_String = pathAnna+ "ISOTight_Run2016_Run271036to275783_PTvsETA.root";
+  }
+  //TFile* DATA   = TFile::Open(pathAnna+sample_data+"_Run276501to276811.root" );
+  //TFile* DATA_start   = TFile::Open(pathAnna+sample_data+Sample_extra+".root" );
+  TFile* DATA   = TFile::Open(DATA_String);
+  TFile* DATA_start   = TFile::Open(DATA_start_String);
 
 ////////////////////////////////
-
-//  if (sample_data == "TnP_IsoMu18orIsoTkMu20_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_IsoMu18 or HLT\\_IsoTkMu20}\n";
-//  if (sample_data == "TnP_IsoMu18orIsoTkMu20_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_IsoMu18orIsoTkMu20}\n";
-//  if (sample_data == "TnP_IsoMu18_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_IsoMu18}\n";
-//  if (sample_data == "TnP_IsoMu18_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_IsoMu18}\n";
-//  if (sample_data == "TnP_IsoTkMu18_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_IsoTkMu18}\n";
-//  if (sample_data == "TnP_IsoTkMu18_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_IsoTkMu18}\n";
-//  if (sample_data == "TnP_IsoTkMu20_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_IsoTkMu20}\n";
-//  if (sample_data == "TnP_IsoTkMu20_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_IsoTkMu20}\n";
-//
-//  if (sample_data == "TnP_IsoMu8orIsoTkMu8leg_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu8\\_TrkIsoVVL or HLT\\_TkMu8\\_TrkIsoVVL}\n";
-//  if (sample_data == "TnP_IsoMu8orIsoTkMu8leg_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu8orTkMu8_TrkIsoVVL}\n";
-//  if (sample_data == "TnP_IsoMu8orIsoTkMu8leg_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu8\\_TrkIsoVVL or HLT\\_TkMu8\\_TrkIsoVVL}\n";
-//  if (sample_data == "TnP_IsoMu8orIsoTkMu8leg_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu8orTkMu8_TrkIsoVVL}\n";
-//
-//  if (sample_data == "TnP_Mu17_IsoTrkVVL_Run2015D_25ns_PTvsETA_binVeryBig") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu17\\_TrkIsoVVL}\n";
-//  if (sample_data == "TnP_Mu17_IsoTrkVVL_Run2015D_25ns_PTvsETA_binVeryBig") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu17_TrkIsoVVL}\n";
-//  if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu17\\_TrkIsoVVL}\n";
-//  if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu17_TrkIsoVVL}\n";
-//  if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu17\\_TrkIsoVVL}\n";
-//  if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu17leg_Run2015D_25ns_PTvsETA_binSmall") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu17_TrkIsoVVL}\n";
-//
-//  if (sample_data == "TnP_Mu8_IsoTrkVVL_Run2015D_25ns_PTvsETA_binVeryBig") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu8\\_TrkIsoVVL}\n";
-//  if (sample_data == "TnP_Mu8_IsoTrkVVL_Run2015D_25ns_PTvsETA_binVeryBig") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu8_TrkIsoVVL}\n";
-//  if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2015D_25ns_PTvsETA_binVeryBig") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu8\\_TrkIsoVVL}\n";
-//  if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2015D_25ns_PTvsETA_binVeryBig") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu8_TrkIsoVVL}\n";
-//  if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu8\\_TrkIsoVVL}\n";
-//  if (sample_data == "TnP_DoubleIsoMu17Mu8_IsoMu8leg_Run2015D_25ns_PTvsETA_part3") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu8_TrkIsoVVL}\n";
-//
-//  if (sample_data == "TnP_DoubleIsoMu17TkMu8_IsoMu8leg_Run2015D_25ns_PTvsETA_binVeryBig") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_TkMu8\\_TrkIsoVVL}\n";
-//  if (sample_data == "TnP_DoubleIsoMu17TkMu8_IsoMu8leg_Run2015D_25ns_PTvsETA_binVeryBig") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_TkMu8_TrkIsoVVL}\n";
 
 ////////////////////////////////
   for (int ipt=0; ipt<BinPtSize-1; ipt++){
@@ -206,27 +190,37 @@ void tnp_PlotEff_ID( bool isSave = true ) {
          TLegend* tl = SetLegend(0.15, 0.2, 0.7, 0.4);    
          if (sample_data == "DoubleMu_IsoMu8leg_Run2016_PTvsETA") {
              tl->AddEntry(grDATA, "Data 2016, IsoMu8 leg eff."     ,"");
+             tl->AddEntry(grDATA, " end: Run 276501-276811"                          ,"lp");
+             tl->AddEntry(grDATA_start, "start: Run 274094-275000"                          ,"lp");
          }
          else if (sample_data == "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA"){
              tl->AddEntry(grDATA, "Data 2016, IsoMu8||IsoTkMu8 leg eff."     ,"");
+             tl->AddEntry(grDATA, " end: Run 276501-276811"                          ,"lp");
+             tl->AddEntry(grDATA_start, "start: Run 274094-275000"                          ,"lp");
          }
          else if (sample_data == "DoubleMu_IsoMu17leg_Run2016_PTvsETA"){
              tl->AddEntry(grDATA, "Data 2016, IsoMu17 leg eff."     ,"");
+             tl->AddEntry(grDATA, " end: Run 276501-276811"                          ,"lp");
+             tl->AddEntry(grDATA_start, "start: Run 274094-275000"                          ,"lp");
          }
          else if (sample_data == "SingleMu_IsoMu22orIsoTkMu22_Run2016_PTvsETA"){
              tl->AddEntry(grDATA, "Data 2016, HLT_IsoMu22||HLT_IsoTkMu22 eff."     ,"");
+             tl->AddEntry(grDATA, " end: Run 276501-276811"                          ,"lp");
+             tl->AddEntry(grDATA_start, "start: Run 274094-275000"                          ,"lp");
          }
          else if (sample_data == "TightID_Run2016_PTvsETA"){
              tl->AddEntry(grDATA, "Data 2016, Tight ID eff."     ,"");
+             tl->AddEntry(grDATA, " end: Run 276501-276811"                          ,"lp");
+             tl->AddEntry(grDATA_start, "start: Run 271036-275783"                          ,"lp");
          }
          else if (sample_data == "ISOTight_Run2016_PTvsETA"){
              tl->AddEntry(grDATA, "Data 2016, ISO Tight eff."     ,"");
+             tl->AddEntry(grDATA, " end: Run 276501-276811"                          ,"lp");
+             tl->AddEntry(grDATA_start, "start: Run 271036-275783"                          ,"lp");
          }
          else {tl->AddEntry(grDATA, "Run 2016, Trigger eff."     ,"lp");}
 
          PicName = sample_data;
-         tl->AddEntry(grDATA, " Fill 5043, 25 June"                          ,"lp");
-         tl->AddEntry(grDATA_start, "Run #leq 274421, #leq 4 June"                          ,"lp");
          tl->AddEntry(grDATA, Form("%3.0f < p_{T} < %3.0f GeV/c",BinPt[ipt],BinPt[ipt+1])     ,"");
       
          tl->Draw("same");
