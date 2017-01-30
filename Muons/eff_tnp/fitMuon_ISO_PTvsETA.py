@@ -25,22 +25,26 @@ FileNameOpenMC = "tnp_"+Bunch+MCType+"_PUlike"+DataType+"_"+Bunch+".root";
 if MCType == "DY_madgraph":
   FileNameOpenMC1 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_DYLL_M50_MadGraphMLM_part1.root";
 
-FileNameOpenData1 = "../filterTree/subTree_80X_Run2016_Run271036to275783_IdStudy.root";
+#FileNameOpenData1 = "../filterTree/subTree_80X_Run2016_Run271036to275783_IdStudy.root";
+#FileNameOpenData1 = "../filterTree/subTree_80X_Run2016_Run275784to276811_IdStudy.root";
+FileNameOpenData1 = "../filterTree/../filterTree/subTree_80X_Run2016_Run275784to276500_IdStudy.root";
+#FileNameOpenData1 = "../filterTree/../filterTree/subTree_80X_Run2016_Run276501to276811_IdStudy.root";
 #FileNameOpenData1 = "../filterTree/subTree_80X_MadGraphLikeRun2016_IdStudy.root";
 
 FileNameOpen1 = FileNameOpenData1;
 if DataOpen == "0": 
    FileNameOpen1 = FileNameOpenMC1;
 
-FileNameOutMC = "TnP_"+isMuonSel+"_"+MCType+Bunch+"Like"+DataType+"_"+Bunch+"_RAW.root";
-FileNameOutData = "TnP_"+isMuonSel+"_"+DataType+"_"+Bunch+"_RAW.root";
- 
-FileNameOut = FileNameOutData;
-if DataOpen == "0": 
-   FileNameOut = FileNameOutMC;
-
 FileNameOutMCISO = "TnP_"+IsoType+"_"+MCType+Bunch+"Like"+DataType+"_"+Bunch+"_PTvsETA_RAW.root";
 FileNameOutDataISO = "TnP_"+IsoType+"_"+DataType+"_PTvsETA_RAW.root";
+if FileNameOpenData1 == "../filterTree/subTree_80X_Run2016_Run271036to275783_IdStudy.root":
+   FileNameOutDataISO = IsoType+"_"+DataType+"_PTvsETA_Run275001to275783_RAW.root";
+if FileNameOpenData1 == "../filterTree/subTree_80X_Run2016_Run275784to276811_IdStudy.root":
+   FileNameOutDataISO = IsoType+"_"+DataType+"_PTvsETA_Run275001to275783_RAW.root";
+if FileNameOpenData1 == "../filterTree/subTree_80X_Run2016_Run275784to276500_IdStudy.root":
+   FileNameOutData = IsoType+"_"+DataType+"_PTvsETA_Run275784to276500_RAW.root";
+if FileNameOpenData1 == "../filterTree/subTree_80X_Run2016_Run276501to276811_IdStudy.root":
+   FileNameOutData = IsoType+"_"+DataType+"_PTvsETA_Run276501to276811_RAW.root";
  
 FileNameOutISO = FileNameOutDataISO;
 if DataOpen == "0": 
@@ -74,7 +78,7 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
     ## copy locally to be faster: xrdcp root://eoscms//eos/cms/store/cmst3/user/botta/TnPtrees/tnpZ_Data.190456-193557.root $PWD/tnpZ_Data.190456-193557.root
     ## and then set InputFileNames = cms.vstring("tnpZ_Data.190456-193557.root"), 
     #OutputFileName = cms.string("TnP_Muon_ID_Simple_Data.root"),
-    OutputFileName = cms.string(FileNameOut),
+    OutputFileName = cms.string(FileNameOutISO),
     InputTreeName = cms.string("fitter_tree"), 
     InputDirectoryName = cms.string("tpTree"),  
     ## Variables for binning

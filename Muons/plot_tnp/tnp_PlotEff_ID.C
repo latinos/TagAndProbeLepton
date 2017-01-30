@@ -46,10 +46,10 @@ void tnp_PlotEff_ID( bool isSave = true ) {
   double BinEta[] = {-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4};
   // binning for Mu17 
   //double BinPt[] = {10, 15, 16, 17, 18, 19, 20, 25, 30, 40, 60, 100, 200};
-  // binning for Mu22, Mu24 
-  //double BinPt[] = {10, 20, 21, 22, 23, 24, 25, 26, 30, 40, 60, 100, 200};
+  // binning for Mu22, Mu24, Mu23 
+  double BinPt[] = {10, 20, 21, 22, 23, 24, 25, 26, 30, 40, 60, 100, 200};
   // binning for Mu8 and Muon ID and ISO
-  double BinPt[] = {10, 13, 16, 20, 25, 30, 40, 60, 100, 200};
+  //double BinPt[] = {10, 13, 16, 20, 25, 30, 40, 60, 100, 200};
 
 
   int BinPtSize = int(sizeof(BinPt)/sizeof(BinPt[0]));
@@ -72,9 +72,11 @@ void tnp_PlotEff_ID( bool isSave = true ) {
   // for Run2016B:
   
   //TString sample_data = "TightID_Run2016_PTvsETA"; 
-  TString sample_data = "ISOTight_Run2016_PTvsETA"; 
+  //TString sample_data = "ISOTight_Run2016_PTvsETA"; 
   //TString sample_data = "SingleMu_IsoMu22orIsoTkMu22_Run2016_PTvsETA"; 
+  //TString sample_data = "SingleMu_IsoMu24orIsoTkMu24_Run2016_PTvsETA"; 
   //TString sample_data = "DoubleMu_IsoMu17leg_Run2016_PTvsETA";
+  TString sample_data = "DoubleMu_IsoMu23leg_Run2016_PTvsETA";
   //TString sample_data = "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA";
   //TString sample_data = "DoubleMu_IsoMu8leg_Run2016_PTvsETA";
 
@@ -84,6 +86,7 @@ void tnp_PlotEff_ID( bool isSave = true ) {
   TString MuonID = "Tight_ID";
   if (sample_data == "SingleMu_IsoMu22orIsoTkMu22_Run2016_PTvsETA" || sample_data == "SingleMu_IsoMu24orIsoTkMu24_Run2016_PTvsETA"
       || sample_data == "DoubleMu_IsoMu17leg_Run2016_PTvsETA"
+      || sample_data == "DoubleMu_IsoMu23leg_Run2016_PTvsETA"
       || sample_data == "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA"
       || sample_data == "DoubleMu_IsoMu8leg_Run2016_PTvsETA"){
      MuonID = "Trigger";
@@ -203,8 +206,18 @@ void tnp_PlotEff_ID( bool isSave = true ) {
              tl->AddEntry(grDATA, " end: Run 276501-276811"                          ,"lp");
              tl->AddEntry(grDATA_start, "start: Run 274094-275000"                          ,"lp");
          }
+         else if (sample_data == "DoubleMu_IsoMu23leg_Run2016_PTvsETA"){
+             tl->AddEntry(grDATA, "Data 2016, IsoMu23 leg eff."     ,"");
+             tl->AddEntry(grDATA, " end: Run 276501-276811"                          ,"lp");
+             tl->AddEntry(grDATA_start, "start: Run 274094-275000"                          ,"lp");
+         }
          else if (sample_data == "SingleMu_IsoMu22orIsoTkMu22_Run2016_PTvsETA"){
              tl->AddEntry(grDATA, "Data 2016, HLT_IsoMu22||HLT_IsoTkMu22 eff."     ,"");
+             tl->AddEntry(grDATA, " end: Run 276501-276811"                          ,"lp");
+             tl->AddEntry(grDATA_start, "start: Run 274094-275000"                          ,"lp");
+         }
+         else if (sample_data == "SingleMu_IsoMu24orIsoTkMu24_Run2016_PTvsETA"){
+             tl->AddEntry(grDATA, "Data 2016, HLT_IsoMu24||HLT_IsoTkMu24 eff."     ,"");
              tl->AddEntry(grDATA, " end: Run 276501-276811"                          ,"lp");
              tl->AddEntry(grDATA_start, "start: Run 274094-275000"                          ,"lp");
          }

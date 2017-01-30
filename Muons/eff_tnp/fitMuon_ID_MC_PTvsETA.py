@@ -20,7 +20,9 @@ DataType = "Run2015D";
 #FileNameOpenMC1 = "../filterTree/subTree_80X_MadGraph_IdStudy.root"
 # with PU reweighting line in Run2016B
 #FileNameOpenMC1 = "../filterTree/subTree_80X_MadGraphLikeRun2016_IdStudy.root"
-FileNameOpenMC1 = "../filterTree/subTree_80X_MadGraphLikeRun2016Fill5043_IdStudy.root"
+FileNameOpenMC1 = "../filterTree/subTree_80X_MadGraphLikeRun2016_Run275784to276500_IdStudy.root"
+#FileNameOpenMC1 = "../filterTree/subTree_80X_MadGraphLikeRun2016_Run276501to276811_IdStudy.root"
+#FileNameOpenMC1 = "../filterTree/subTree_80X_MadGraphLikeRun2016Fill5043_IdStudy.root"
 
 FileNameOpenData1 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_RunD_part1.root";
 

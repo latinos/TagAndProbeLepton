@@ -47,9 +47,9 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
   // binning for Mu17 
   //double BinPt[] = {10, 15, 16, 17, 18, 19, 20, 25, 30, 40, 60, 100, 200};
   // binning for Mu22, Mu24, Mu23 
-  double BinPt[] = {10, 20, 21, 22, 23, 24, 25, 26, 30, 40, 60, 100, 200};
+  //double BinPt[] = {10, 20, 21, 22, 23, 24, 25, 26, 30, 40, 60, 100, 200};
   // binning for Mu8
-  //double BinPt[] = {10, 13, 16, 20, 25, 30, 40, 60, 100, 200};
+  double BinPt[] = {10, 13, 16, 20, 25, 30, 40, 60, 100, 200};
 
   int BinPtSize = int(sizeof(BinPt)/sizeof(BinPt[0]));
   int BinEtaSize = int(sizeof(BinEta)/sizeof(BinEta[0]));
@@ -88,7 +88,7 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
   //TString sample_data = "DoubleMu_IsoMu23leg_Run2016_PTvsETA_Run275784to276500";
   //TString sample_data = "DoubleMu_IsoMu23leg_Run2016_PTvsETA_Run275001to275783";
   //TString sample_data = "DoubleMu_IsoMu23leg_Run2016_PTvsETA_Run274094to275000";
-  TString sample_data = "DoubleMu_IsoMu23leg_Run2016_PTvsETA_RunLt274094";
+  //TString sample_data = "DoubleMu_IsoMu23leg_Run2016_PTvsETA_RunLt274094";
 
   //TString sample_data = "DoubleMu_IsoMu17leg_Run2016_PTvsETA_Run276501to276811";
   //TString sample_data = "DoubleMu_IsoMu17leg_Run2016_PTvsETA_Run275784to276500";
@@ -99,6 +99,7 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
 
   //TString sample_data = "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA_Run276501to276811";
   //TString sample_data = "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA_Run275784to276500";
+  TString sample_data = "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA_Run275001to275783";
   //TString sample_data = "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA_Run274094to275000";
   //TString sample_data = "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA_RunLt274094";
   //TString sample_data = "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA_Fill5043";

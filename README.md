@@ -1,7 +1,7 @@
 # TagAndProbeLepton
 
-Freezing version for PromptReco Run2015D you could find by following link: 
-https://github.com/latinos/TagAndProbeLepton/tree/PromptReco_Run2015D
+Freezing version for ICHEP2016 data you could find by following link: 
+https://github.com/latinos/TagAndProbeLepton/tree/ICHEP2016
  
 Contacts: 
 

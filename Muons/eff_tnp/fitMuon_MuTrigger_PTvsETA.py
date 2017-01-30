@@ -31,7 +31,9 @@ FileNameOpenMC1 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_DYLL_M
 #FileNameOpenData1 = "../filterTree/subTree_80X_Run2016_Run271036to274093_TrigStudy.root";
 #FileNameOpenData1 = "../filterTree/subTree_80X_Run2016_Run274094to275783_TrigStudy.root";
 #FileNameOpenData1 = "../filterTree/subTree_80X_Run2016_Run274094to275000_TrigStudy.root";
-FileNameOpenData1 = "../filterTree/subTree_80X_Run2016_Run275001to275783_TrigStudy.root";
+#FileNameOpenData1 = "../filterTree/subTree_80X_Run2016_Run275001to275783_TrigStudy.root";
+FileNameOpenData1 = "../filterTree/subTree_80X_Run2016_Run275784to276500_TrigStudy.root";
+#FileNameOpenData1 = "../filterTree/subTree_80X_Run2016_Run276501to276811_TrigStudy.root";
 #FileNameOpenData1 = "../filterTree/subTree_80X_Run2016_Run275757to275783_TrigStudy.root";
 
 FileNameOpen1 = FileNameOpenData1;
@@ -49,6 +51,10 @@ if FileNameOpenData1 == "../filterTree/subTree_80X_Run2016_Run274094to275000_Tri
    FileNameOutData = isTrigger+"_"+DataType+"_PTvsETA_Run274094to275000_RAW.root";
 if FileNameOpenData1 == "../filterTree/subTree_80X_Run2016_Run275001to275783_TrigStudy.root":
    FileNameOutData = isTrigger+"_"+DataType+"_PTvsETA_Run275001to275783_RAW.root";
+if FileNameOpenData1 == "../filterTree/subTree_80X_Run2016_Run275784to276500_TrigStudy.root":
+   FileNameOutData = isTrigger+"_"+DataType+"_PTvsETA_Run275784to276500_RAW.root";
+if FileNameOpenData1 == "../filterTree/subTree_80X_Run2016_Run276501to276811_TrigStudy.root":
+   FileNameOutData = isTrigger+"_"+DataType+"_PTvsETA_Run276501to276811_RAW.root";
    
  
 FileNameOut = FileNameOutData;
