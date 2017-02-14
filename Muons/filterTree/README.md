@@ -10,73 +10,57 @@ It is better to copy analysed file localy and run, because speed increase more t
 Example of copy for eos:
      eos cp /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v1/data/TnPTree_80X_Run2016B_v2_GoldenJSON_Run271036to273730_NotCompleted.root ./
 
-
+Moriond2017:
 Files used for DATA:
-    /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v3/data/TnPTree_80X_Run2016B_v2_GoldenJSON_Run271036to275125_incomplete.root
-       INPUT TREE (32693395 ENTRIES)
-       OUTPUT TREE (5301716 ENTRIES)
-       subTree_80X_Run2016_Run271036to275125_incomplete.root
-    /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v3/data/TnPTree_80X_Run2016B_v2_GoldenJSON_Run275126to275783.root
-       INPUT TREE (12007161 ENTRIES)
-       OUTPUT TREE (1920460 ENTRIES)
-       subTree_80X_Run2016B_Run275126to275783.root
-    /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v3/data/TnPTree_80X_Run2016C_v2_GoldenJSON_Run275126to275783.root
-       INPUT TREE (3162594 ENTRIES)
-       OUTPUT TREE (449817 ENTRIES)
-       subTree_80X_Run2016C_Run275126to275783.root
-Add to one Data file:
+    /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v5/data/RunB/TnPTree_80XRereco_Run2016B_GoldenJSON_Run276098to276384.root 
+       INPUT TREE (52458925 ENTRIES)
+       OUTPUT TREE (7234780 ENTRIES)
+       subTree_80XRereco_Run2016B_GoldenJSON_Run276098to276384.root
 
-        hadd subTree_80X_Run2016_Run271036to275783_IdStudy.root subTree_80X_Run2016_Run271036to275125_incomplete.root subTree_80X_Run2016B_Run275126to275783.root subTree_80X_Run2016C_Run275126to275783.root
+    /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v5/data/RunC/TnPTree_80XRereco_Run2016C_GoldenJSON_Run276098to276384.root
+       INPUT TREE (26933378 ENTRIES)
+       OUTPUT TREE (3167436 ENTRIES)
+       subTree_80XRereco_Run2016C_GoldenJSON_Run276098to276384.root 
 
-IdStudy and Trigger file for fill 5043, runs 275757-275783 (latest fill in July 8 Golden json):
-      INPUT TREE (7671993 ENTRIES)
-      OUTPUT TREE (356294 ENTRIES)
-      subTree_80X_Run2016_Run275757to275783_IdStudy.root
+    /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v5/data/RunD/TnPTree_80XRereco_Run2016D_GoldenJSON_Run276098to276384.root 
+       INPUT TREE (42466548 ENTRIES)
+       OUTPUT TREE (5284655 ENTRIES)
+       subTree_80XRereco_Run2016D_GoldenJSON_Run276098to276384.root 
 
-      INPUT TREE (356294 ENTRIES)
-      OUTPUT TREE (311145 ENTRIES)
-      subTree_80X_Run2016_Run275757to275783_TrigStudy.root
+    /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v5/data/RunE/TnPTree_80XRereco_Run2016E_GoldenJSON_Run276098to276384.root 
+       INPUT TREE (45121233 ENTRIES)
+       OUTPUT TREE (4856314 ENTRIES)
+       subTree_80XRereco_Run2016E_GoldenJSON_Run276098to276384.root
 
-IdStudy and Trigger file for Run 275784 - 276811
-    /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v3/data/TnPTree_80X_Run2016C_v2_GoldenJSON_Run275784to276097.root
-      INPUT TREE (11138416 ENTRIES)
-      OUTPUT TREE (1657234 ENTRIES)
-      subTree_80X_Run2016C_Run275784to276097.root
+    /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v5/data/RunF/TnPTree_80XRereco_Run2016F_GoldenJSON_Run276098to276384.root 
+       INPUT TREE (34868293 ENTRIES)
+       OUTPUT TREE (3747686 ENTRIES)
 
-    /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v3/data/TnPTree_80X_Run2016C_v2_GoldenJSON_Run276098to276384.root
-      INPUT TREE (7265757 ENTRIES)
-      OUTPUT TREE (1053877 ENTRIES)
-      subTree_80X_Run2016C_Run276098to276384.root
+    /store/group/phys_muon/TagAndProbe/Run2016/80X_v5/data/RunG/TnPTree_80XRereco_Run2016G_GoldenJSON_Run278819to280384.root
+       INPUT TREE (73608526 ENTRIES)
+       OUTPUT TREE (9788946 ENTRIES)
+       subTree_80XRereco_Run2016G_GoldenJSON_Run278819to280384.root
 
-    /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v3/data/TnPTree_80X_Run2016D_v2_GoldenJSON_Run276098to276384.root
-      INPUT TREE (5559318 ENTRIES)
-      OUTPUT TREE (802259 ENTRIES)
-      subTree_80X_Run2016D_Run276098to276384.root
+    /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v5/data/RunH/TnPTree_80XRereco_Run2016H_v2_GoldenJSON_Run281613to284035.root
+       INPUT TREE (91962465 ENTRIES)
+       OUTPUT TREE (11862934 ENTRIES)
 
+    /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v5/data/RunH/TnPTree_80XRereco_Run2016H_GoldenJSON_Run284036to284044.root
+       INPUT TREE (1957231 ENTRIES)
+       OUTPUT TREE (279895 ENTRIES)
 
-    /eos/cms/store/group/phys_muon/TagAndProbe/Run2016/80X_v3/data/TnPTree_80X_Run2016D_v2_GoldenJSON_Run276385to276811.root
-      INPUT TREE (29417942 ENTRIES)
-      OUTPUT TREE (4508465 ENTRIES)
-      subTree_80X_Run2016D_Run276385to276811.root
+MC:
+    /eos/cms/store/group/phys_muon/hbrun/muonPOGtnpTrees/MCDR80X/DY_Summer16PremixMoriond/ 1-5
+       INPUT TREE (7488049 ENTRIES)
+       OUTPUT TREE (4067751 ENTRIES)
+       subTree_MC_Moriond17_DY_tranch4Premix_part1_5
 
-    hadd subTree_80X_Run2016_Run275784to276811_IdStudy.root subTree_80X_Run2016C_Run275784to276097.root subTree_80X_Run2016C_Run276098to276384.root subTree_80X_Run2016D_Run276098to276384.root subTree_80X_Run2016D_Run276385to276811.root 
-
-Split to 2 part to avoid memory issue:
-      INPUT TREE (8021835 ENTRIES)
-      OUTPUT TREE (3902608 ENTRIES)
-    subTree_80X_Run2016_Run276501to276811_IdStudy.root
-
-      INPUT TREE (8021835 ENTRIES)
-      OUTPUT TREE (4119227 ENTRIES)
+    /eos/cms/store/group/phys_muon/hbrun/muonPOGtnpTrees/MCDR80X/DY_Summer16PremixMoriond/ 6-10
+       INPUT TREE (8217199 ENTRIES)
+       OUTPUT TREE (4463893 ENTRIES)
+       subTree_MC_Moriond17_DY_tranch4Premix_part6_10
 
 Trigger Study:
-      INPUT TREE (8021835 ENTRIES)
-      OUTPUT TREE (3580033 ENTRIES)
-    subTree_80X_Run2016_Run275784to276500_TrigStudy.root
-
-      INPUT TREE (8021835 ENTRIES)
-      OUTPUT TREE (3402235 ENTRIES)
-    subTree_80X_Run2016_Run276501to276811_TrigStudy.root
 
 
 
@@ -98,31 +82,8 @@ Add to on MC file
 
 ******
 
-Summary for Run2016 Golden json for Trigger Study for Run < 274094 (use file after ID selection):
-
-    subTree_80X_Run2016_Run271036to274093_TrigStudy.root
-      INPUT TREE (7671993 ENTRIES)
-      OUTPUT TREE (696266 ENTRIES)
-
-Summary for Run2016B Golden json for Trigger Study for Run >= 274094 (use file after ID selection):
-
-    subTree_80X_Run2016_Run274094to275783_TrigStudy.root
-      INPUT TREE (7671993 ENTRIES)
-      OUTPUT TREE (6061935 ENTRIES)
-    subTree_80X_Run2016_Run274094to275000_TrigStudy.root
-      INPUT TREE (7671993 ENTRIES)
-      OUTPUT TREE (?????? ENTRIES)
-    subTree_80X_Run2016_Run275001to275783_TrigStudy.root
-      INPUT TREE (7671993 ENTRIES)
-      OUTPUT TREE (2938973 ENTRIES)
-
-Summary for Run2016B Golden json for ISO (merge 2 trigger files) Run 271036 - 274421:
-
-     subTree_80X_Run2016B_v2_GoldenJSON_Run271036to274421_IsoStudy.root
-
-For for run<273423 we have low efficiency in barrel, see slide 13:
     
-https://indico.cern.ch/event/535947/contributions/2177911/attachments/1278346/1897723/2016.05.24_MuonHLT_TrigEff_80X_KPLee_v2.pdf
+    https://indico.cern.ch/event/535947/contributions/2177911/attachments/1278346/1897723/2016.05.24_MuonHLT_TrigEff_80X_KPLee_v2.pdf
 
 Finally all drop in efficiency was fixed only in Run 274094. So we skip Trigger efficiency before and after this run. 
 ID and ISO efficinecies are the same in all run period.

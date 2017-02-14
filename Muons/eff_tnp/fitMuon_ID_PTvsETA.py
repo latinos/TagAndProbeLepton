@@ -20,11 +20,14 @@ DataType = "Run2016";
 
 FileNameOpenMC1 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_DYLL_M50_MadGraphMLM_LikeRun2015D.root";
 
-#FileNameOpenData1 = "../filterTree/subTree_80X_Run2016_Run271036to275783_IdStudy.root";
-#FileNameOpenData1 = "../filterTree/subTree_80X_Run2016_Run275784to276811_IdStudy.root";
-FileNameOpenData1 = "../filterTree/../filterTree/subTree_80X_Run2016_Run275784to276500_IdStudy.root";
-#FileNameOpenData1 = "../filterTree/../filterTree/subTree_80X_Run2016_Run276501to276811_IdStudy.root";
-#FileNameOpenData1 = "../filterTree/subTree_80X_Run2016_Run275757to275783_IdStudy.root";
+FileNameOpenData1 = "../filterTree/subTree_80XRereco_Run2016B_GoldenJSON_Run276098to276384.root";
+FileNameOpenData2 = "../filterTree/subTree_80XRereco_Run2016C_GoldenJSON_Run276098to276384.root";
+FileNameOpenData3 = "../filterTree/subTree_80XRereco_Run2016D_GoldenJSON_Run276098to276384.root";
+FileNameOpenData4 = "../filterTree/subTree_80XRereco_Run2016E_GoldenJSON_Run276098to276384.root";
+FileNameOpenData5 = "../filterTree/subTree_80XRereco_Run2016F_GoldenJSON_Run276098to276384.root";
+FileNameOpenData6 = "../filterTree/subTree_80XRereco_Run2016G_GoldenJSON_Run278819to280384.root";
+FileNameOpenData7 = "../filterTree/subTree_80XRereco_Run2016H_GoldenJSON_Run284036to284044.root";
+FileNameOpenData8 = "../filterTree/subTree_80XRereco_Run2016H_v2_GoldenJSON_Run281613to284035.root";
 
 FileNameOpen1 = FileNameOpenData1;
 if DataOpen == "0": 
@@ -98,9 +101,9 @@ process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
         Tight2012 = cms.vstring("Tight2012 Muon", "dummy[pass=1,fail=0]"),
         #tag_Tight2012 = cms.vstring("Tight 2012 tag Muon", "dummy[pass=1,fail=0]"), #this variable is not included in tag muon
         Medium = cms.vstring("Medium Muon", "dummy[pass=1,fail=0]"),
-        tag_IsoMu20 = cms.vstring("tag_IsoMu20 tag Muon", "dummy[pass=1,fail=0]"),
-        IsoMu18 = cms.vstring("IsoMu18  probe Muon", "dummy[pass=1,fail=0]"),
-        IsoMu20 = cms.vstring("IsoMu20 probe Muon", "dummy[pass=1,fail=0]"),
+        #tag_IsoMu20 = cms.vstring("tag_IsoMu20 tag Muon", "dummy[pass=1,fail=0]"),
+        #IsoMu18 = cms.vstring("IsoMu18  probe Muon", "dummy[pass=1,fail=0]"),
+        #IsoMu20 = cms.vstring("IsoMu20 probe Muon", "dummy[pass=1,fail=0]"),
     ),
     ## PDF for signal and background (double voigtian + exponential background)
     PDFs = cms.PSet(
@@ -241,9 +244,9 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
         Tight2012 = cms.vstring("Tight2012 Muon", "dummy[pass=1,fail=0]"),
         #tag_Tight2012 = cms.vstring("Tight 2012 tag Muon", "dummy[pass=1,fail=0]"), #this variable is not included in tag muon
         Medium = cms.vstring("Medium Muon", "dummy[pass=1,fail=0]"),
-        tag_IsoMu20 = cms.vstring("tag_IsoMu20 tag Muon", "dummy[pass=1,fail=0]"),
-        IsoMu18 = cms.vstring("IsoMu18  probe Muon", "dummy[pass=1,fail=0]"),
-        IsoMu20 = cms.vstring("IsoMu20 probe Muon", "dummy[pass=1,fail=0]"),
+        #tag_IsoMu20 = cms.vstring("tag_IsoMu20 tag Muon", "dummy[pass=1,fail=0]"),
+        #IsoMu18 = cms.vstring("IsoMu18  probe Muon", "dummy[pass=1,fail=0]"),
+        #IsoMu20 = cms.vstring("IsoMu20 probe Muon", "dummy[pass=1,fail=0]"),
     ),    
     Expressions = cms.PSet(
 
@@ -279,7 +282,7 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
                 #pt = cms.vdouble(10, 12, 14, 16, 18, 20, 22, 24, 26, 30, 35, 40, 60, 100, 200),
                 #eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
                 Medium = cms.vstring("pass"),
-                tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
+                #tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
                 tag_pt = cms.vdouble(20, 5000.),
             ),
             BinToPDFmap = cms.vstring(FitFunction), ## PDF to use, as defined below
@@ -294,7 +297,7 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
                 Medium = cms.vstring("pass"),
                 dB = cms.vdouble(0., 0.01),
                 dzPV = cms.vdouble(-0.1, 0.1),
-                tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
+                #tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
                 tag_pt = cms.vdouble(20, 5000.),
             ),
             BinToPDFmap = cms.vstring(FitFunction), ## PDF to use, as defined below
@@ -309,7 +312,7 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
                 Medium = cms.vstring("pass"),
                 dB = cms.vdouble(0., 0.02),
                 dzPV = cms.vdouble(-0.1, 0.1),
-                tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
+                #tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
                 tag_pt = cms.vdouble(20, 5000.),
             ),
             BinToPDFmap = cms.vstring(FitFunction), ## PDF to use, as defined below

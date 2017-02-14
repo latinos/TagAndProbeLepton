@@ -1,6 +1,6 @@
 #!/bin/sh
 
-REMOTEDIR=/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_12/src/TagAndProbeLepton/Muons/eff_tnp
+REMOTEDIR=/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_25/src/TagAndProbeLepton/Muons/eff_tnp
 
 cd $REMOTEDIR
 eval `scram runtime -sh`

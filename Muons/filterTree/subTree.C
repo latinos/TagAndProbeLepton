@@ -1,5 +1,14 @@
 //for MC Id and ISOandTrig are the same, don't change size of file much:
 //for Muon ID, Golden json Run 271036-275783 and Madgraph
+//
+//Moriond 2017
+//data
+//void subTree(TString dir="tpTree", TString cut="(Glb || TM) && (tag_IsoMu24 || tag_IsoTkMu24) && tag_combRelIsoPF04dBeta < 0.15 && tag_pt >= 24 && pt >= 10. && mass > 70 && mass < 130", TString newFile="subTree_IsoMu24_ID_pt10.root") {
+//MC
+void subTree(TString dir="tpTree", TString cut="(Glb || TM) && tag_combRelIsoPF04dBeta < 0.15 && tag_pt >= 24 && pt >= 10. && mass > 70 && mass < 130", TString newFile="subTree_IsoMu24_ID_pt10.root") {
+//
+//ICHEP 2016
+//
 //void subTree(TString dir="tpTree", TString cut="(Glb || TM) && (tag_IsoMu22 || tag_IsoTkMu22) && tag_combRelIsoPF04dBeta < 0.15 && tag_pt >= 22 && pt >= 10. && mass > 70 && mass < 130 && run<=275783", TString newFile="subTree_IsoMu22_pt10.root") {
 //fill 5043, runs 275757-275783 (latest fill in July 8 Golden json) 
 //void subTree(TString dir="tpTree", TString cut="(Glb || TM) && (tag_IsoMu22 || tag_IsoTkMu22) && tag_combRelIsoPF04dBeta < 0.15 && tag_pt >= 22 && pt >= 10. && mass > 70 && mass < 130 && run>=275757 && run<=275783", TString newFile="subTree_IsoMu22_pt10.root") {
@@ -10,7 +19,7 @@
 // for run>=276501 && run <=276811
 //void subTree(TString dir="tpTree", TString cut="run>=276501 && run<=276811", TString newFile="subTree_IsoMu20_pt10.root") {
 // for run>=275784 && run <=276500
-void subTree(TString dir="tpTree", TString cut="run>=275784 && run<=276500", TString newFile="subTree_IsoMu20_pt10.root") {
+//void subTree(TString dir="tpTree", TString cut="run>=275784 && run<=276500", TString newFile="subTree_IsoMu20_pt10.root") {
 
 
 // for Trigger study:
@@ -26,6 +35,29 @@ void subTree(TString dir="tpTree", TString cut="run>=275784 && run<=276500", TSt
 //void subTree(TString dir="tpTree", TString cut=" Tight2012==1 && combRelIsoPF04dBeta < 0.15 && run<274094", TString newFile="subTree_IsoMu20_pt10.root") {
 
     //open file
+    // Moriond 2017
+    //
+    //for Data
+    // 2016B
+    //TFile *f1 = TFile::Open("TnPTree_80XRereco_Run2016B_GoldenJSON_Run276098to276384.root");
+    // 2016C      
+    //TFile *f1 = TFile::Open("TnPTree_80XRereco_Run2016C_GoldenJSON_Run276098to276384.root");
+    // 2016D      
+    //TFile *f1 = TFile::Open("TnPTree_80XRereco_Run2016D_GoldenJSON_Run276098to276384.root");
+    // 2016E      
+    //TFile *f1 = TFile::Open("TnPTree_80XRereco_Run2016E_GoldenJSON_Run276098to276384.root");
+    // 2016F      
+    //TFile *f1 = TFile::Open("TnPTree_80XRereco_Run2016F_GoldenJSON_Run276098to276384.root");
+    // 2016G      
+    //TFile *f1 = TFile::Open("TnPTree_80XRereco_Run2016G_GoldenJSON_Run278819to280384.root");
+    // 2016H      
+    //TFile *f1 = TFile::Open("TnPTree_80XRereco_Run2016H_v2_GoldenJSON_Run281613to284035.root");
+    //TFile *f1 = TFile::Open("TnPTree_80XRereco_Run2016H_GoldenJSON_Run284036to284044.root");
+    //
+    // MC      
+    //TFile *f1 = TFile::Open("MC_Moriond17_DY_tranch4Premix_part1_5.root");
+    TFile *f1 = TFile::Open("MC_Moriond17_DY_tranch4Premix_part6_10.root");
+    // ICHEP 2016
     //for MC
     //TFile *f1 = TFile::Open("TnPTree_80X_DYLL_M50_MadGraphMLM_part1.root");//much faster (x10 or even x100) compare to open from /store
     //TFile *f1 = TFile::Open("TnPTree_80X_DYLL_M50_MadGraphMLM_part2.root");//much faster (x10 or even x100) compare to open from /store
@@ -39,7 +71,7 @@ void subTree(TString dir="tpTree", TString cut="run>=275784 && run<=276500", TSt
     //TFile *f1 = TFile::Open("TnPTree_80X_Run2016D_v2_GoldenJSON_Run276098to276384.root");//much faster (x10 or even x100) compare to open from /store
     //TFile *f1 = TFile::Open("TnPTree_80X_Run2016D_v2_GoldenJSON_Run276385to276811.root");//much faster (x10 or even x100) compare to open from /store
     //for Trigger Study:
-    TFile *f1 = TFile::Open("subTree_80X_Run2016_Run275784to276811_IdStudy.root");//much faster (x10 or even x100) compare to open from /store
+    //TFile *f1 = TFile::Open("subTree_80X_Run2016_Run275784to276811_IdStudy.root");//much faster (x10 or even x100) compare to open from /store
     //TFile *f1 = TFile::Open("subTree_80X_Run2016_Run271036to275783_IdStudy.root");//much faster (x10 or even x100) compare to open from /store
     //TFile *f1 = TFile::Open("subTree_80X_Run2016_Run275757to275783_IdStudy.root");//much faster (x10 or even x100) compare to open from /store
 
