@@ -25,11 +25,15 @@ FileNameOpenMC = "tnp_"+Bunch+MCType+"_PUlike"+DataType+"_"+Bunch+".root";
 if MCType == "DY_madgraph":
   FileNameOpenMC1 = "/afs/cern.ch/work/k/kropiv/MuonPOG/Samples/TnPTree_76X_DYLL_M50_MadGraphMLM_part1.root";
 
-#FileNameOpenData1 = "../filterTree/subTree_80X_Run2016_Run271036to275783_IdStudy.root";
-#FileNameOpenData1 = "../filterTree/subTree_80X_Run2016_Run275784to276811_IdStudy.root";
-FileNameOpenData1 = "../filterTree/../filterTree/subTree_80X_Run2016_Run275784to276500_IdStudy.root";
-#FileNameOpenData1 = "../filterTree/../filterTree/subTree_80X_Run2016_Run276501to276811_IdStudy.root";
-#FileNameOpenData1 = "../filterTree/subTree_80X_MadGraphLikeRun2016_IdStudy.root";
+FileNameOpenData1 = "../filterTree/subTree_80XRereco_Run2016B_GoldenJSON_Run276098to276384.root";
+FileNameOpenData2 = "../filterTree/subTree_80XRereco_Run2016C_GoldenJSON_Run276098to276384.root";
+FileNameOpenData3 = "../filterTree/subTree_80XRereco_Run2016D_GoldenJSON_Run276098to276384.root";
+FileNameOpenData4 = "../filterTree/subTree_80XRereco_Run2016E_GoldenJSON_Run276098to276384.root";
+FileNameOpenData5 = "../filterTree/subTree_80XRereco_Run2016F_GoldenJSON_Run276098to276384.root";
+#2nd part G and H
+FileNameOpenData6 = "../filterTree/subTree_80XRereco_Run2016G_GoldenJSON_Run278819to280384.root";
+FileNameOpenData7 = "../filterTree/subTree_80XRereco_Run2016H_GoldenJSON_Run284036to284044.root";
+FileNameOpenData8 = "../filterTree/subTree_80XRereco_Run2016H_v2_GoldenJSON_Run281613to284035.root";
 
 FileNameOpen1 = FileNameOpenData1;
 if DataOpen == "0": 
@@ -37,14 +41,8 @@ if DataOpen == "0":
 
 FileNameOutMCISO = "TnP_"+IsoType+"_"+MCType+Bunch+"Like"+DataType+"_"+Bunch+"_PTvsETA_RAW.root";
 FileNameOutDataISO = "TnP_"+IsoType+"_"+DataType+"_PTvsETA_RAW.root";
-if FileNameOpenData1 == "../filterTree/subTree_80X_Run2016_Run271036to275783_IdStudy.root":
-   FileNameOutDataISO = IsoType+"_"+DataType+"_PTvsETA_Run275001to275783_RAW.root";
-if FileNameOpenData1 == "../filterTree/subTree_80X_Run2016_Run275784to276811_IdStudy.root":
-   FileNameOutDataISO = IsoType+"_"+DataType+"_PTvsETA_Run275001to275783_RAW.root";
-if FileNameOpenData1 == "../filterTree/subTree_80X_Run2016_Run275784to276500_IdStudy.root":
-   FileNameOutData = IsoType+"_"+DataType+"_PTvsETA_Run275784to276500_RAW.root";
-if FileNameOpenData1 == "../filterTree/subTree_80X_Run2016_Run276501to276811_IdStudy.root":
-   FileNameOutData = IsoType+"_"+DataType+"_PTvsETA_Run276501to276811_RAW.root";
+if FileNameOpenData1 == "../filterTree/subTree_80XRereco_Run2016B_GoldenJSON_Run276098to276384.root":
+   FileNameOutDataISO = IsoType+"_"+DataType+"_PTvsETA_Run2016B_RAW.root";
  
 FileNameOutISO = FileNameOutDataISO;
 if DataOpen == "0": 
@@ -71,8 +69,15 @@ process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(1) )
 process.TnP_Muon_ID = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
     ## Input, output 
     InputFileNames = cms.vstring(
-                                 #"file:../crab/crab_projects_tnp/crab_50ns_DY_Spring15/results/tnp_MC.root",  
-                                 "file:"+FileNameOpen1,  
+                                 #"file:"+FileNameOpen1,  
+                                 #"file:"+FileNameOpenData2,
+                                 #"file:"+FileNameOpenData3,
+                                 #"file:"+FileNameOpenData4,
+                                 #"file:"+FileNameOpenData5,
+                                 #
+                                 "file:"+FileNameOpenData6,
+                                 "file:"+FileNameOpenData7,
+                                 "file:"+FileNameOpenData8,
                                  #"root://eoscms//eos/cms/store/group/phys_higgs/cmshww/kropiv/TnP_Muons/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/crab_25ns_DY_Spring15/150707_143420/0000/tnp_MC_100.root",
                                  ), ## can put more than one
     ## copy locally to be faster: xrdcp root://eoscms//eos/cms/store/cmst3/user/botta/TnPtrees/tnpZ_Data.190456-193557.root $PWD/tnpZ_Data.190456-193557.root
@@ -198,35 +203,35 @@ process.TnP_Muon_Iso = process.TnP_Muon_ID.clone(
             BinToPDFmap = cms.vstring(FitFunction), ## PDF to use, as defined below
         ),
 
-        Tight_ISO_ptVSeta_ptLt20 = cms.PSet(
-            UnbinnedVariables = cms.vstring("mass"),
-            EfficiencyCategoryAndState = cms.vstring(IsoType, "above"), ## variable is above cut value 
-            BinnedVariables = cms.PSet(
-                pt = cms.vdouble(10, 13, 16, 20, 25, 30, 40, 60, 100, 200),
-                eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
-                Tight2012 = cms.vstring("pass"),
-                dB = cms.vdouble(0., 0.01),
-                dzPV = cms.vdouble(-0.1, 0.1),
-                #tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
-                #tag_pt = cms.vdouble(20, 5000.),
-            ),
-            BinToPDFmap = cms.vstring(FitFunction), ## PDF to use, as defined below
-        ),
-
-        Tight_ISO_ptVSeta_ptGt20 = cms.PSet(
-            UnbinnedVariables = cms.vstring("mass"),
-           EfficiencyCategoryAndState = cms.vstring(IsoType, "above"), ## variable is above cut value 
-            BinnedVariables = cms.PSet(
-                pt = cms.vdouble(10, 13, 16, 20, 25, 30, 40, 60, 100, 200),
-               eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
-                Tight2012 = cms.vstring("pass"),
-                dB = cms.vdouble(0., 0.02),
-                dzPV = cms.vdouble(-0.1, 0.1),
-               #tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
-                # tag_pt = cms.vdouble(20, 5000.),
-            ),
-            BinToPDFmap = cms.vstring(FitFunction), ## PDF to use, as defined below
-        ),
+#        Tight_ISO_ptVSeta_ptLt20 = cms.PSet(
+#            UnbinnedVariables = cms.vstring("mass"),
+#            EfficiencyCategoryAndState = cms.vstring(IsoType, "above"), ## variable is above cut value 
+#            BinnedVariables = cms.PSet(
+#                pt = cms.vdouble(10, 13, 16, 20, 25, 30, 40, 60, 100, 200),
+#                eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
+#                Tight2012 = cms.vstring("pass"),
+#                dB = cms.vdouble(0., 0.01),
+#                dzPV = cms.vdouble(-0.1, 0.1),
+#                #tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
+#                #tag_pt = cms.vdouble(20, 5000.),
+#            ),
+#            BinToPDFmap = cms.vstring(FitFunction), ## PDF to use, as defined below
+#        ),
+#
+#        Tight_ISO_ptVSeta_ptGt20 = cms.PSet(
+#            UnbinnedVariables = cms.vstring("mass"),
+#           EfficiencyCategoryAndState = cms.vstring(IsoType, "above"), ## variable is above cut value 
+#            BinnedVariables = cms.PSet(
+#                pt = cms.vdouble(10, 13, 16, 20, 25, 30, 40, 60, 100, 200),
+#               eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4),
+#                Tight2012 = cms.vstring("pass"),
+#                dB = cms.vdouble(0., 0.02),
+#                dzPV = cms.vdouble(-0.1, 0.1),
+#               #tag_IsoMu20 = cms.vstring("pass"), ## tag trigger matched
+#                # tag_pt = cms.vdouble(20, 5000.),
+#            ),
+#            BinToPDFmap = cms.vstring(FitFunction), ## PDF to use, as defined below
+#        ),
 
         ##############
         ##############

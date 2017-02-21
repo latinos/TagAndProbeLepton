@@ -24,10 +24,8 @@ How to mount and unmount /store
 
 Example to add weights for pile up:
 
-for Run2016:
-     root.exe -b -l -q ../filterTree/subTree_80X_MadGraph.root ../filterTree/subTree_80X_Run2016_Run271036to275783_IdStudy.root addNVtxWeight.cxx+
+for Run2016 B-F:
 
-     root.exe -b -l -q ../filterTree/subTree_80X_MadGraph.root ../filterTree/subTree_80X_Run2016_Run275784to276811_IdStudy.root addNVtxWeight.cxx+
-     root.exe -b -l -q ../filterTree/subTree_80X_MadGraph.root ../filterTree/subTree_80X_Run2016_Run276501to276811_IdStudy.root addNVtxWeight.cxx+
-     root.exe -b -l -q ../filterTree/subTree_80X_MadGraph.root ../filterTree/subTree_80X_Run2016_Run275784to276500_IdStudy.root addNVtxWeight.cxx+
+     root.exe -b -l -q ../filterTree/subTree_MC_Moriond17_DY_tranch4Premix_part1_5.root ../filterTree/subTree_80XRereco_Run2016B_GoldenJSON_Run276098to276384.root ../filterTree/subTree_80XRereco_Run2016C_GoldenJSON_Run276098to276384.root ../filterTree/subTree_80XRereco_Run2016D_GoldenJSON_Run276098to276384.root ../filterTree/subTree_80XRereco_Run2016E_GoldenJSON_Run276098to276384.root ../filterTree/subTree_80XRereco_Run2016F_GoldenJSON_Run276098to276384.root addNVtxWeight.cxx+
+
 

@@ -58,28 +58,27 @@ void tnp_PrintEff( bool isSave = true ) {
 
   // ---------------------------------------------------------------------------
   // general variables
-  TString png      = "/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_12/src/TagAndProbeLepton/Muons/plot_tnp/Plots/";
-  TString rootPlot = "/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_12/src/TagAndProbeLepton/Muons/plot_tnp/Plots/";
+  TString png      = "/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_25/src/TagAndProbeLepton/Muons/plot_tnp/Plots/";
+  TString rootPlot = "/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_25/src/TagAndProbeLepton/Muons/plot_tnp/Plots/";
   // ---------------------------------------------------------------------------
 
 
   // ---- open the MC files ----
-  TString pathAnna="/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_12/src/TagAndProbeLepton/Muons/eff_tnp/";
+  TString pathAnna="/afs/cern.ch/work/k/kropiv/MuonPOG/CMSSW_8_0_25/src/TagAndProbeLepton/Muons/eff_tnp/";
 
   //for muon ID
   //TString sample_data = "TightID_DY_madgraphLikeRun2016_Run271036to275783_PTvsETA";
   //TString sample_data = "TightID_DY_madgraphLikeRun2016_Run275784to276500_PTvsETA";
   //TString sample_data = "TightID_DY_madgraphLikeRun2016_Run276501to276811_PTvsETA";
-  //TString sample_data = "TightID_Run2016_Run271036to275783_PTvsETA";
+  TString sample_data = "Tight_Run2016BCDEF_PTvsETA";
   //TString sample_data = "TightID_Run2016_Run275784to276500_PTvsETA";
   //TString sample_data = "TightID_Run2016_Run276501to276811_PTvsETA";
-  //TString sample_data = "TightID_Run2016_PTvsETA_Fill5043";
   //TString sample_data = "TightID_DY_madgraphLikeRun2016_PTvsETA_Fill5043";
 
   // for ISO
   //TString sample_data = "ISOTight_Run2016_Run271036to275783_PTvsETA";
   //TString sample_data = "ISOTight_Run2016_Run275784to276500_PTvsETA";
-  TString sample_data = "ISOTight_Run2016_Run276501to276811_PTvsETA";
+  //TString sample_data = "ISOTight_Run2016_Run276501to276811_PTvsETA";
   //TString sample_data = "ISOTight_DY_madgraphLikeRun2016_Run271036to275783_PTvsETA";
   //TString sample_data = "ISOTight_DY_madgraphLikeRun2016_Run275784to276500_PTvsETA";
   //TString sample_data = "ISOTight_DY_madgraphLikeRun2016_Run276501to276811_PTvsETA";
@@ -134,9 +133,9 @@ void tnp_PrintEff( bool isSave = true ) {
   ofstream myfile_HWW_tex;
   myfile_HWW_tex.open (sample_data+"_HWW_tex.txt");
   myfile_HWW_tex << "\\begin{sidewaystable}\n";
-  if (sample_data == "TightID_Run2016_Run271036to275783_PTvsETA" || sample_data == "TightID_Run2016_PTvsETA_Fill5043") myfile_HWW_tex << "\\caption{Muon ID (\"TightHWW\") Efficiency for DATA in run period 271036-275783. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
+  if (sample_data == "Tight_Run2016BCDEF_PTvsETA") myfile_HWW_tex << "\\caption{Muon ID (\"TightHWW\") Efficiency for DATA in run period 2016 B-F. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
      // We observe large max relative stat. error for $\\pt>100$~\\GeVc due to $|\\eta| > 2.1$ bin, while in $|\\eta| < 2.1$ region this error 3 times less.}\n";
-  if (sample_data == "TightID_Run2016_Run271036to275783_PTvsETA" || sample_data == "TightID_Run2016_PTvsETA_Fill5043") myfile_HWW_tex << "\\label{table:MuonID:DATA_Run271036to275783}\n";
+  if (sample_data == "Tight_Run2016BCDEF_PTvsETA") myfile_HWW_tex << "\\label{table:MuonID:DATA_Run2016BF}\n";
   if (sample_data == "TightID_Run2016_Run275784to276500_PTvsETA") myfile_HWW_tex << "\\caption{Muon ID (\"TightHWW\") Efficiency for DATA in run period 275784-276500. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
   if (sample_data == "TightID_Run2016_Run275784to276500_PTvsETA") myfile_HWW_tex << "\\label{table:MuonID:DATA_Run275784to276500}\n";
   if (sample_data == "TightID_Run2016_Run276501to276811_PTvsETA") myfile_HWW_tex << "\\caption{Muon ID (\"TightHWW\") Efficiency for DATA in run period 276501-276811. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
