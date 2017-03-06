@@ -8,21 +8,21 @@ chmod 744 myJob.sh
 
 to run:
 
-bsub -q 1nh -J job1 < myJob.sh 
+     bsub -q 1nh -J job1 < myJob.sh 
 
-bsub -q 2nd -J j1_IDISO_1D < mylxbatch_fitMuon_MediumIDandISO_1Deff.sh
+     bsub -q 2nd -J j1_IDISO_1D < mylxbatch_fitMuon_MediumIDandISO_1Deff.sh
 
-bsub -q 2nd  -J j2_ID < mylxbatch_fitMuon_ID_PTvsETA.sh
+     bsub -q 2nd  -J j2_ID < mylxbatch_fitMuon_ID_PTvsETA.sh
 
-bsub -q 2nd -J j2_ID_MC < mylxbatch_fitMuon_ID_MC_PTvsETA.sh
+     bsub -q 2nd -J j2_ID_MC < mylxbatch_fitMuon_ID_MC_PTvsETA.sh
 
-bsub -q 2nd -J j3_ISO < mylxbatch_fitMuon_ISO_PTvsETA.sh
+     bsub -q 2nd -J j3_ISO < mylxbatch_fitMuon_ISO_PTvsETA.sh
 
-bsub -q 2nd -J j3_ISO_MC < mylxbatch_fitMuon_ISO_MC_PTvsETA.sh
+     bsub -q 2nd -J j3_ISO_MC < mylxbatch_fitMuon_ISO_MC_PTvsETA.sh
 
-bsub -q 2nd -J j4_IDISO < mylxbatch_fitMuon_MediumIDandISO_PTvsETA.sh
+     bsub -q 2nd -J j4_IDISO < mylxbatch_fitMuon_MediumIDandISO_PTvsETA.sh
 
-bsub -q 2nd  -J j5_Trig < mylxbatch_fitMuon_MuTrigger_PTvsETA.sh
+     bsub -q 2nd  -J j5_Trig < mylxbatch_fitMuon_MuTrigger_PTvsETA.sh
 
 
 Info:

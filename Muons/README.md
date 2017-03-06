@@ -13,6 +13,14 @@ https://twiki.cern.ch/twiki/bin/viewauth/CMS/MuonTagAndProbeTreesRun2
 
 ----
 
+To download CMS Muon POG Utiles:
+
+     git clone https://github.com/cms-MuonPOG/TnPUtils.git 
+
+you could add new variables, built from other variables, in existing ntuple: addBranch.py  
+
+----
+
 ### Test new memory suppression tool
 In CMSSW_8_0_12/src:
  
