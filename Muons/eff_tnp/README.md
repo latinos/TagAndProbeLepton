@@ -12,8 +12,8 @@ Triggers are used for full 2016 dataset are described here:
     https://indico.cern.ch/event/598403/sessions/218044/note/
 
 Muon legs diffent in time:
-    DoubleMu: Mu17||TrMu17 for run >=281613 esle Mu17
-    MuEG    : Mu12 for run>= 278273 esle Mu8
+    DoubleMu: Mu17||TrMu17 for run >=281613 (Run2016H) esle Mu17
+    MuEG    : Mu12 for run>= 278273 (Run2016F: RunGe278167) esle Mu8
 
 The rest legs are the same during full 2016:
     DoubleMu: Mu8||TkMu8

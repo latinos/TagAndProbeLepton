@@ -45,11 +45,11 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
 
   double BinEta[] = {-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4}; 
   // binning for Mu17 
-  //double BinPt[] = {10, 15, 16, 17, 18, 19, 20, 25, 30, 40, 60, 100, 200};
+  double BinPt[] = {10, 15, 16, 17, 18, 19, 20, 25, 30, 40, 60, 100, 200};
   // binning for Mu23 
   //double BinPt[] = {10, 21, 22, 23, 24, 25, 26, 30, 40, 60, 100, 200};
   // binning for Mu24 
-  double BinPt[] = {10, 22, 23, 24, 25, 26, 30, 40, 60, 100, 200};
+  //double BinPt[] = {10, 22, 23, 24, 25, 26, 30, 40, 60, 100, 200};
   // binning for Mu8
   //double BinPt[] = {10, 13, 16, 20, 25, 30, 40, 60, 100, 200};
 
@@ -80,8 +80,7 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
   //TString sample_data = "SingleMu_IsoMu22orIsoTkMu22_Run2016_PTvsETA_Fill5043";
 
   //TString sample_data = "SingleMu_IsoMu24orIsoTkMu24_Run2016BCDEF_PTvsETA";
-  TString sample_data = "SingleMu_IsoMu24orIsoTkMu24_Run2016GH_PTvsETA";
-  //TString sample_data = "SingleMu_IsoMu24orIsoTkMu24_Run2016_PTvsETA_Run275001to275783";
+  //TString sample_data = "SingleMu_IsoMu24orIsoTkMu24_Run2016GH_PTvsETA";
   //TString sample_data = "SingleMu_IsoMu24orIsoTkMu24_Run2016_PTvsETA_Run274094to275000";
   //TString sample_data = "SingleMu_IsoMu24orIsoTkMu24_Run2016_PTvsETA_RunLt274094";
   //TString sample_data = "SingleMu_IsoMu24orIsoTkMu24_Run2016_PTvsETA_Fill5043";
@@ -92,15 +91,15 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
   //TString sample_data = "DoubleMu_IsoMu23leg_Run2016_PTvsETA_Run274094to275000";
   //TString sample_data = "DoubleMu_IsoMu23leg_Run2016_PTvsETA_RunLt274094";
 
-  //TString sample_data = "DoubleMu_IsoMu17leg_Run2016_PTvsETA_Run276501to276811";
-  //TString sample_data = "DoubleMu_IsoMu17leg_Run2016_PTvsETA_Run275784to276500";
+  //TString sample_data = "DoubleIsoMu17Mu8_IsoMu17leg_Run2016BCDEF_PTvsETA";
+  TString sample_data = "DoubleIsoMu17Mu8_IsoMu17leg_Run2016G_PTvsETA";
   //TString sample_data = "DoubleMu_IsoMu17leg_Run2016_PTvsETA_Run275001to275783";
   //TString sample_data = "DoubleMu_IsoMu17leg_Run2016_PTvsETA_Run274094to275000";
   //TString sample_data = "DoubleMu_IsoMu17leg_Run2016_PTvsETA_RunLt274094";
   //TString sample_data = "DoubleMu_IsoMu17leg_Run2016_PTvsETA_Fill5043";
 
-  //TString sample_data = "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA_Run276501to276811";
-  //TString sample_data = "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA_Run275784to276500";
+  //TString sample_data = "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016BCDEF_PTvsETA";
+  //TString sample_data = "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016GH_PTvsETA";
   //TString sample_data = "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA_Run275001to275783";
   //TString sample_data = "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA_Run274094to275000";
   //TString sample_data = "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA_RunLt274094";
@@ -167,8 +166,6 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
   if (sample_data == "SingleMu_IsoMu24orIsoTkMu24_Run2016BCDEF_PTvsETA" || sample_data == "SingleMu_IsoMu24orIsoTkMu24_Run2016_PTvsETA_Fill5043" ) myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_IsoMu24orIsoTkMu24_Run2016BF}\n";
   if (sample_data == "SingleMu_IsoMu24orIsoTkMu24_Run2016GH_PTvsETA") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_IsoMu24 or HLT\\_IsoTkMu24 for DATA in run period 2016 G-H. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
   if (sample_data == "SingleMu_IsoMu24orIsoTkMu24_Run2016GH_PTvsETA" || sample_data == "SingleMu_IsoMu24orIsoTkMu24_Run2016_PTvsETA_Fill5043" ) myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_IsoMu24orIsoTkMu24_Run2016GH}\n";
-  if (sample_data == "SingleMu_IsoMu24orIsoTkMu24_Run2016_PTvsETA_Run275001to275783") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_IsoMu24 or HLT\\_IsoTkMu24 for DATA in run period 275001-275783. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
-  if (sample_data == "SingleMu_IsoMu24orIsoTkMu24_Run2016_PTvsETA_Run275001to275783") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_IsoMu24orIsoTkMu24_Run275001to275783}\n";
   if (sample_data == "SingleMu_IsoMu24orIsoTkMu24_Run2016_PTvsETA_Run274094to275000" || sample_data == "SingleMu_IsoMu24orIsoTkMu24_Run2016_PTvsETA_Fill5043" ) myfile_HWW_tex << "\\caption{Efficiency of HLT\\_IsoMu24 or HLT\\_IsoTkMu24 for DATA in run period 274094-275000. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
   if (sample_data == "SingleMu_IsoMu24orIsoTkMu24_Run2016_PTvsETA_Run274094to275000" || sample_data == "SingleMu_IsoMu24orIsoTkMu24_Run2016_PTvsETA_Fill5043" ) myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_IsoMu24orIsoTkMu24_Run274094to275000}\n";
   if (sample_data == "SingleMu_IsoMu24orIsoTkMu24_Run2016_PTvsETA_RunLt274094") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_IsoMu24 or HLT\\_IsoTkMu24 for Runs $< 274094$. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
@@ -187,10 +184,10 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
   if (sample_data == "DoubleMu_IsoMu23leg_Run2016_PTvsETA_RunLt274094") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu23_TrkIsoVVL_Lt274094}\n";
 
 // IsoMu17
-  if (sample_data == "DoubleMu_IsoMu17leg_Run2016_PTvsETA_Run276501to276811") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu17\\_TrkIsoVVL for DATA in run period 276501-276811. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
-  if (sample_data == "DoubleMu_IsoMu17leg_Run2016_PTvsETA_Run276501to276811") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu17_TrkIsoVVL_Run276501to276811}\n";
-  if (sample_data == "DoubleMu_IsoMu17leg_Run2016_PTvsETA_Run275784to276500") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu17\\_TrkIsoVVL for DATA in run period 275784-276500. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
-  if (sample_data == "DoubleMu_IsoMu17leg_Run2016_PTvsETA_Run275784to276500") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu17_TrkIsoVVL_Run275784to276500}\n";
+  if (sample_data == "DoubleIsoMu17Mu8_IsoMu17leg_Run2016BCDEF_PTvsETA") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu17\\_TrkIsoVVL for DATA in run period 2016 B-F. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
+  if (sample_data == "DoubleIsoMu17Mu8_IsoMu17leg_Run2016BCDEF_PTvsETA") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu17_TrkIsoVVL_Run2016BF}\n";
+  if (sample_data == "DoubleIsoMu17Mu8_IsoMu17leg_Run2016G_PTvsETA") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu17\\_TrkIsoVVL for DATA in run period 2016 G. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
+  if (sample_data == "DoubleIsoMu17Mu8_IsoMu17leg_Run2016G_PTvsETA") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu17_TrkIsoVVL_Run2016G}\n";
   if (sample_data == "DoubleMu_IsoMu17leg_Run2016_PTvsETA_Run275001to275783") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu17\\_TrkIsoVVL for DATA in run period 275001-275783. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
   if (sample_data == "DoubleMu_IsoMu17leg_Run2016_PTvsETA_Run275001to275783" || sample_data == "DoubleMu_IsoMu17leg_Run2016_PTvsETA_Fill5043") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu17_TrkIsoVVL_Run275001to275783}\n";
   if (sample_data == "DoubleMu_IsoMu17leg_Run2016_PTvsETA_Run274094to275000" || sample_data == "DoubleMu_IsoMu17leg_Run2016_PTvsETA_Fill5043") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu17\\_TrkIsoVVL for DATA in run period 274094-275000. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
@@ -199,10 +196,10 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
   if (sample_data == "DoubleMu_IsoMu17leg_Run2016_PTvsETA_RunLt274094") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu17_TrkIsoVVL_Lt274094}\n";
 
 //IsoMu8 || IsoTkMu8
-  if (sample_data == "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA_Run276501to276811") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu8\\_TrkIsoVVL or HLT\\_TkMu8\\_TrkIsoVVL for DATA in run period 276501-276811. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
-  if (sample_data == "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA_Run276501to276811") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu8orTkMu8_TrkIsoVVL_Run276501to276811}\n";
-  if (sample_data == "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA_Run275784to276500") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu8\\_TrkIsoVVL or HLT\\_TkMu8\\_TrkIsoVVL for DATA in run period 275784-276500. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
-  if (sample_data == "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA_Run275784to276500") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu8orTkMu8_TrkIsoVVL_Run275784to276500}\n";
+  if (sample_data == "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016BCDEF_PTvsETA") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu8\\_TrkIsoVVL or HLT\\_TkMu8\\_TrkIsoVVL for DATA in run period 2016 B-F. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
+  if (sample_data == "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016BCDEF_PTvsETA") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu8orTkMu8_TrkIsoVVL_Run2016BF}\n";
+  if (sample_data == "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016GH_PTvsETA") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu8\\_TrkIsoVVL or HLT\\_TkMu8\\_TrkIsoVVL for DATA in run period 2016 G-H. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
+  if (sample_data == "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016GH_PTvsETA") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu8orTkMu8_TrkIsoVVL_Run2016GH}\n";
   if (sample_data == "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA_Run275001to275783") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu8\\_TrkIsoVVL or HLT\\_TkMu8\\_TrkIsoVVL for DATA in run period 275001-275783. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
   if (sample_data == "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA_Run275001to275783") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu8orTkMu8_TrkIsoVVL_Run275001to275783}\n";
   if (sample_data == "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA_Run274094to275000" || sample_data == "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA_Fill5043") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu8\\_TrkIsoVVL or HLT\\_TkMu8\\_TrkIsoVVL for DATA in run period 274094-275000. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
