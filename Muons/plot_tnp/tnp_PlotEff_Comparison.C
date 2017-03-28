@@ -209,8 +209,8 @@ void tnp_PlotEff_Comparison( bool isSave = true ) {
          }
          else if (sample_data == "DoubleMu_IsoMu23"){
              tl->AddEntry(grDATA, "Data 2016 G-H, IsoMu23 leg eff."     ,"");
-             tl->AddEntry(grDATA, " l1 p_T > 20 GeV"                          ,"lp");
-             tl->AddEntry(grDATA_start, "l1 p_T > 23 GeV"                          ,"lp");
+             tl->AddEntry(grDATA, " l1 p_{T} > 20 GeV"                          ,"lp");
+             tl->AddEntry(grDATA_start, "l1 p_{T} > 23 GeV"                          ,"lp");
          }
          else if (sample_data == "SingleMu_IsoMu22orIsoTkMu22_Run2016_PTvsETA"){
              tl->AddEntry(grDATA, "Data 2016, HLT_IsoMu22||HLT_IsoTkMu22 eff."     ,"");
@@ -240,10 +240,128 @@ void tnp_PlotEff_Comparison( bool isSave = true ) {
          tl->Draw("same");
 
          CanvPlot -> SaveAs(Form("Plots/%s_pt_bin%d.png",PicName.Data(),ipt));
-  }
+  } //end for pt
 
 ////////////////////////////////
-  if (!isSave) return;
+////////////////////////////////
+  for (int ieta=0; ieta<BinEtaSize-1; ieta++){
+
+// open DATA:
+  //std::cout << "TEST!!! " << std::endl;
+     TCanvas* tDATA = (TCanvas*) DATA->Get(Form("tpTree/%s_ptVSeta/fit_eff_plots/pt_PLOT_eta_bin%d%s",MuonID.Data(),ieta,Tag_trig.Data() ));
+     //TCanvas* tDATA = (TCanvas*) DATA->Get(Form("tpTree/Trigger_ptVSeta/fit_eff_plots/pt_PLOT_eta_bin%d_&_Tight2012_pass%s",ieta,Tag_trig.Data() ));
+
+     if(tDATA == 0)cout << "check code: ERROR Canvas = " << tDATA << " ieta = " << ieta << endl;
+     TGraphAsymmErrors* grDATA = (TGraphAsymmErrors*) tDATA -> GetListOfPrimitives()->At(1);
+     ErrorCheck(grDATA);
+     if(grDATA == 0) cout << "check code: ERROR grDATA = " << grDATA << " ieta = " << ieta << endl;
+
+     TCanvas* tDATA_ptGt20 = (TCanvas*) DATA->Get(Form("tpTree/%s_ptVSeta_ptGt20/fit_eff_plots/pt_PLOT_eta_bin%d%s",MuonID.Data(),ieta,Tag_trig.Data() ));
+     TGraphAsymmErrors* grDATA_ptGt20 = (TGraphAsymmErrors*) tDATA_ptGt20 -> GetListOfPrimitives()->At(1);
+     ErrorCheck(grDATA_ptGt20);
+
+     TCanvas* tDATA_ptLt20 = (TCanvas*) DATA->Get(Form("tpTree/%s_ptVSeta_ptLt20/fit_eff_plots/pt_PLOT_eta_bin%d%s",MuonID.Data(),ieta,Tag_trig.Data() ));
+     TGraphAsymmErrors* grDATA_ptLt20 = (TGraphAsymmErrors*) tDATA_ptLt20 -> GetListOfPrimitives()->At(1);
+     ErrorCheck(grDATA_ptLt20);
+
+// open DATA_start
+     TCanvas* tDATA_start = (TCanvas*) DATA_start->Get(Form("tpTree/%s_ptVSeta/fit_eff_plots/pt_PLOT_eta_bin%d%s",MuonID.Data(),ieta,Tag_trig.Data() ));
+     if(tDATA_start == 0)cout << "check code: ERROR Canvas start = " << tDATA_start << " ieta = " << ieta << endl;
+     TGraphAsymmErrors* grDATA_start = (TGraphAsymmErrors*) tDATA_start -> GetListOfPrimitives()->At(1);
+     ErrorCheck(grDATA_start);
+     if(grDATA_start == 0) cout << "check code: ERROR grDATA_start = " << grDATA_start << " ieta = " << ieta << endl;
+
+     TCanvas* tDATA_start_ptGt20 = (TCanvas*) DATA_start->Get(Form("tpTree/%s_ptVSeta_ptGt20/fit_eff_plots/pt_PLOT_eta_bin%d%s",MuonID.Data(),ieta,Tag_trig.Data() ));
+     TGraphAsymmErrors* grDATA_start_ptGt20 = (TGraphAsymmErrors*) tDATA_start_ptGt20 -> GetListOfPrimitives()->At(1);
+     ErrorCheck(grDATA_start_ptGt20);
+
+     TCanvas* tDATA_start_ptLt20 = (TCanvas*) DATA_start->Get(Form("tpTree/%s_ptVSeta_ptLt20/fit_eff_plots/pt_PLOT_eta_bin%d%s",MuonID.Data(),ieta,Tag_trig.Data() ));
+     TGraphAsymmErrors* grDATA_start_ptLt20 = (TGraphAsymmErrors*) tDATA_start_ptLt20 -> GetListOfPrimitives()->At(1);
+     ErrorCheck(grDATA_start_ptLt20);
+
+         TCanvas* CanvPlot = new TCanvas("CanvPlot", "", 650, 0, 600, 600);
+         grDATA -> SetMinimum(0.);
+         grDATA -> SetMaximum(1.0);
+         grDATA -> GetYaxis()-> SetTitleOffset(1.7);
+         //cout << "Test1" << endl;
+         CanvPlot->SetLeftMargin(0.15);
+         grDATA ->GetXaxis() -> SetRangeUser(20., 50.);
+
+         grDATA -> SetFillColor(629);
+         grDATA -> SetLineColor(629);
+
+         grDATA -> GetXaxis()-> SetTitle("Probe #eta");
+         grDATA -> GetYaxis()-> SetTitle("Efficiency");
+
+         grDATA -> GetXaxis()-> SetNdivisions(509);
+         grDATA -> GetYaxis()-> SetNdivisions(514);
+
+
+         CanvPlot->SetGridx();
+         CanvPlot->SetGridy();
+
+         grDATA   -> SetMarkerStyle(21);
+         grDATA   -> SetMarkerColor(kRed);
+         grDATA   -> Draw("AP");
+         grDATA_start   -> SetMarkerStyle(20);
+         grDATA_start   -> SetMarkerColor(kBlue);
+         grDATA_start -> SetLineColor(kBlue);
+         grDATA_start   -> Draw("P");
+
+         TString PicName = sample_data;
+         TLegend* tl = SetLegend(0.25, 0.2, 0.7, 0.4);    
+         if (sample_data == "DoubleMu_IsoMu8leg_Run2016_PTvsETA") {
+             tl->AddEntry(grDATA, "Data 2016, IsoMu8 leg eff."     ,"");
+             tl->AddEntry(grDATA, " end: Run 276501-276811"                          ,"lp");
+             tl->AddEntry(grDATA_start, "start: Run 274094-275000"                          ,"lp");
+         }
+         else if (sample_data == "DoubleMu_IsoMu8orIsoTkMu8leg_Run2016_PTvsETA"){
+             tl->AddEntry(grDATA, "Data 2016, IsoMu8||IsoTkMu8 leg eff."     ,"");
+             tl->AddEntry(grDATA, " end: Run 276501-276811"                          ,"lp");
+             tl->AddEntry(grDATA_start, "start: Run 274094-275000"                          ,"lp");
+         }
+         else if (sample_data == "DoubleMu_IsoMu17leg_Run2016_PTvsETA"){
+             tl->AddEntry(grDATA, "Data 2016, IsoMu17 leg eff."     ,"");
+             tl->AddEntry(grDATA, " end: Run 276501-276811"                          ,"lp");
+             tl->AddEntry(grDATA_start, "start: Run 274094-275000"                          ,"lp");
+         }
+         else if (sample_data == "DoubleMu_IsoMu23"){
+             tl->AddEntry(grDATA, "Data 2016 G-H, IsoMu23 leg eff."     ,"");
+             tl->AddEntry(grDATA, " l1 p_{T} > 20 GeV"                          ,"lp");
+             tl->AddEntry(grDATA_start, "l1 p_{T} > 23 GeV"                          ,"lp");
+         }
+         else if (sample_data == "SingleMu_IsoMu22orIsoTkMu22_Run2016_PTvsETA"){
+             tl->AddEntry(grDATA, "Data 2016, HLT_IsoMu22||HLT_IsoTkMu22 eff."     ,"");
+             tl->AddEntry(grDATA, " end: Run 276501-276811"                          ,"lp");
+             tl->AddEntry(grDATA_start, "start: Run 274094-275000"                          ,"lp");
+         }
+         else if (sample_data == "SingleMu_IsoMu24orIsoTkMu24_Run2016_PTvsETA"){
+             tl->AddEntry(grDATA, "Data 2016, HLT_IsoMu24||HLT_IsoTkMu24 eff."     ,"");
+             tl->AddEntry(grDATA, " end: Run 276501-276811"                          ,"lp");
+             tl->AddEntry(grDATA_start, "start: Run 274094-275000"                          ,"lp");
+         }
+         else if (sample_data == "TightID_Run2016_PTvsETA"){
+             tl->AddEntry(grDATA, "Data 2016, Tight ID eff."     ,"");
+             tl->AddEntry(grDATA, " end: Run 276501-276811"                          ,"lp");
+             tl->AddEntry(grDATA_start, "start: Run 271036-275783"                          ,"lp");
+         }
+         else if (sample_data == "ISOTight_Run2016_PTvsETA"){
+             tl->AddEntry(grDATA, "Data 2016, ISO Tight eff."     ,"");
+             tl->AddEntry(grDATA, " end: Run 276501-276811"                          ,"lp");
+             tl->AddEntry(grDATA_start, "start: Run 271036-275783"                          ,"lp");
+         }
+         else {tl->AddEntry(grDATA, "Run 2016, Trigger eff."     ,"lp");}
+
+         PicName = sample_data;
+         tl->AddEntry(grDATA, Form("%3.1f < #eta < %3.1f GeV/c",BinEta[ieta],BinEta[ieta+1])     ,"");
+      
+         tl->Draw("same");
+
+         CanvPlot -> SaveAs(Form("Plots/%s_eta_bin%d.png",PicName.Data(),ieta));
+  } //end for pt
+
+////////////////////////////////
+//  if (!isSave) return;
 
 }
 
