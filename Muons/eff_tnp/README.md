@@ -24,7 +24,7 @@ To calculate Mu23 use Mu17 leg:
     Mu23_TrkIsoVVL: L1pT=23 (I see that it is seeded by L1_Mu20_EG10 OR  L1_Mu23_EG10 but I have the impression that  L1_Mu20_EG10 was prescaled at some point), L1Quality>=12, L2 pT > 10 , L3 pT > 23   
 
 To calculate Mu12 use Mu8 leg:
-
+   l1pT > 5 l1Q>=12 , l2pT> 5 , l3pT > 12 
 
 -----
 t&p trees for Re-Reco Run2015D and MC are located at:
