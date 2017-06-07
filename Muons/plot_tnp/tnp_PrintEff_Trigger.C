@@ -45,7 +45,7 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
 
   double BinEta[] = {-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4}; 
   // binning for Mu17 
-  //double BinPt[] = {10, 15, 16, 17, 18, 19, 20, 25, 30, 40, 60, 100, 200};
+  double BinPt[] = {10, 15, 16, 17, 18, 19, 20, 25, 30, 40, 60, 100, 200};
   // binning for Mu23 
   //double BinPt[] = {10, 21, 22, 23, 24, 25, 26, 30, 40, 60, 100, 200};
   // binning for Mu24 
@@ -53,7 +53,7 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
   // binning for Mu12
   //double BinPt[] = {10, 11, 12, 13, 14, 16, 20, 25, 30, 40, 60, 100, 200};
   // binning for Mu8
-  double BinPt[] = {10, 13, 16, 20, 25, 30, 40, 60, 100, 200};
+  //double BinPt[] = {10, 13, 16, 20, 25, 30, 40, 60, 100, 200};
 
   int BinPtSize = int(sizeof(BinPt)/sizeof(BinPt[0]));
   int BinEtaSize = int(sizeof(BinEta)/sizeof(BinEta[0]));
@@ -92,13 +92,13 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
   //TString sample_data = "DoubleMu_IsoMu23leg_Run2016_PTvsETA_RunLt274094";
 
   //TString sample_data = "DoubleIsoMu17Mu8_IsoMu17leg_Run2016BCDEF_PTvsETA";
-  //TString sample_data = "DoubleIsoMu17Mu8_IsoMu17leg_Run2016G_PTvsETA";
+  TString sample_data = "DoubleIsoMu17Mu8_IsoMu17leg_Run2016GH_PTvsETA";
   //TString sample_data = "DoubleMu_IsoMu23_l1pt20_Run2016BCDEF_PTvsETA";
   //TString sample_data = "DoubleMu_IsoMu23_l1pt23_Run2016BCDEF_PTvsETA";
   //TString sample_data = "DoubleMu_IsoMu23_l1pt20_Run2016GH_PTvsETA";
   //TString sample_data = "DoubleMu_IsoMu23_l1pt23_Run2016GH_PTvsETA";
   //TString sample_data = "DoubleMu_IsoMu12_Run2016FGH_RunGe278273_PTvsETA";
-  TString sample_data = "DoubleIsoMu17Mu8_IsoMu8leg_Run2016BCDEF_RunLt278273_PTvsETA";
+  //TString sample_data = "DoubleIsoMu17Mu8_IsoMu8leg_Run2016BCDEF_RunLt278273_PTvsETA";
   //TString sample_data = "DoubleMu_IsoMu17leg_Run2016_PTvsETA_Run274094to275000";
   //TString sample_data = "DoubleMu_IsoMu17leg_Run2016_PTvsETA_RunLt274094";
   //TString sample_data = "DoubleMu_IsoMu17leg_Run2016_PTvsETA_Fill5043";
@@ -191,8 +191,8 @@ void tnp_PrintEff_Trigger( bool isSave = true ) {
 // IsoMu17
   if (sample_data == "DoubleIsoMu17Mu8_IsoMu17leg_Run2016BCDEF_PTvsETA") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu17\\_TrkIsoVVL for DATA in run period 2016 B-F. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
   if (sample_data == "DoubleIsoMu17Mu8_IsoMu17leg_Run2016BCDEF_PTvsETA") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu17_TrkIsoVVL_Run2016BF}\n";
-  if (sample_data == "DoubleIsoMu17Mu8_IsoMu17leg_Run2016G_PTvsETA") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu17\\_TrkIsoVVL for DATA in run period 2016 G. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
-  if (sample_data == "DoubleIsoMu17Mu8_IsoMu17leg_Run2016G_PTvsETA") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu17_TrkIsoVVL_Run2016G}\n";
+  if (sample_data == "DoubleIsoMu17Mu8_IsoMu17leg_Run2016GH_PTvsETA") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu17\\_TrkIsoVVL for DATA in run period 2016 G-H. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
+  if (sample_data == "DoubleIsoMu17Mu8_IsoMu17leg_Run2016GH_PTvsETA") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu17_TrkIsoVVL_Run2016GH}\n";
 
   if (sample_data == "DoubleMu_IsoMu23_l1pt20_Run2016BCDEF_PTvsETA") myfile_HWW_tex << "\\caption{Efficiency of HLT\\_Mu23\\_TrkIsoVVL with l1 $p_T > 20$ GeV for DATA in run period 2016 B-F. From max relative statistic error calculation we have removed $0.2<|\\eta|<0.3$ bin, because, due to small statistics, stat. error is 2 times larger in average than calculated value.}\n";
   if (sample_data == "DoubleMu_IsoMu23_l1pt20_Run2016BCDEF_PTvsETA") myfile_HWW_tex << "\\label{table:TriggerMuon:HLT_Mu23_l1pt20_TrkIsoVVL_Run2016BF}\n";
